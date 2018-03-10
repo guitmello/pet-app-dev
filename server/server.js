@@ -9,7 +9,7 @@ var app = express();
 
 /* configurar o ejs, setar variaveis 'view engine' e 'views' do express */
 //app.set('view engine', 'ejs');
-//app.set('views', './app/views');
+app.set('views', '../src/');
 
 // configurar middleware express.static
 //app.use(express.static('./app/public'));

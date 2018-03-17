@@ -9,7 +9,7 @@ var app = express();
 
 /* configurar o ejs, setar variaveis 'view engine' e 'views' do express */
 app.set('view engine', 'ejs');
-app.set('views', './app/views');
+app.set('views', './server/app/views');
 
 // configurar middleware express.static
 //app.use(express.static('./app/public'));
@@ -22,9 +22,9 @@ app.use(expressValidator());
 
 // efetuar autoload das rotas, dos models e dos controllers para o objeto app
 consign()
-  .include('app/routes')
+  .include('server/app/routes')
   //.then('server/app/models')
-  .then('app/controllers')
+  .then('server/app/controllers')
   .into(app);
 
 // exportar o objeto app

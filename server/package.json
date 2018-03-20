@@ -1,0 +1,25 @@
+{
+  "name": "pet-app-dev",
+  "version": "1.0.0",
+  "description": "Aplicação pada adoção de animais",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guitmello/pet-app-dev.git"
+  },
+  "author": "Felipe Reis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guitmello/pet-app-dev/issues"
+  },
+  "homepage": "https://github.com/guitmello/pet-app-dev#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.3",
+    "pg-promise": "^8.2.2"
+  }
+}

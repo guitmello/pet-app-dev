@@ -10,10 +10,13 @@ var app = express();
 
 /* configurar o ejs, setar variaveis 'view engine' e 'views' do express */
 app.set('view engine', 'ejs');
-app.set('views', './server/app/views');
+//app.set('views', './server/app/views');
+app.set('views', './client/src')
+app.engine('html', require('ejs').renderFile);
 
 // configurar middleware express.static
 app.use(express.static('./server/app/public'));
+app.use(express.static('./client'));
 //app.use(express.static(path.join(__dirname, 'public')));
 
 // configurar middleware body-parser

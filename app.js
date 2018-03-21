@@ -1,5 +1,5 @@
 // Importar as configurações do servidor
-var app = require('./server/server');
+var app = require('./server/config/server');
 var PORT = process.env.PORT || 5000;
 
 // Parametrizar porta de escuta

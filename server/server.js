@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const path = require('path');
 
-var index = require('./app/routes/index');
+// var index = require('./server/app/routes/index'); VERIFICAR
 var app = express();
 
 // View Engine
@@ -17,7 +17,7 @@ app.engine('html', require('ejs').renderFile);
 
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'client')));
-//app.use(express.static('../client')); VERIFICAR
+//app.use(express.static('./client')); VERIFICAR
 
 // Set Body Parser
 app.use(bodyParser.urlencoded( {extended:true} ));
@@ -27,10 +27,10 @@ app.use(expressValidator());
 
 // Set autoload das rotas, dos models e dos controllers para o objeto app
 consign()
-  .include('app/routes')
-  .then('app/models')
-  .then('app/controllers')
+  .include('server/app/routes')
+  .then('server/app/models')
+  .then('server/app/controllers')
   .into(app);
 
-// exportar o objeto app
+// Exportar o objeto app
 module.exports = app;

@@ -1,8 +1,11 @@
+'use strict';
+
 // importar modulos
-var express = require('express');
-var consign = require('consign');
-var bodyParser = require('body-parser');
-var expressValidator = require('express-validator');
+const express = require('express');
+const consign = require('consign');
+const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+const PORT = process.env.PORT || 5000;
 
 // iniciar o objeto do express
 var app = express();
@@ -13,8 +16,11 @@ app.set('views', './client');
 app.engine('html', require('ejs').renderFile);
 
 // configurar middleware express.static
-//app.use(express.static('./client/dist'));
-app.use(express.static('./server/app/public'));
+if (PORT === 5000){ // localhost
+  app.use(express.static('./client/dist'));
+} else { // GCP
+  app.use(express.static('./server/app/public'));
+}
 
 // configurar middleware body-parser
 app.use(bodyParser.urlencoded({extended:true}));

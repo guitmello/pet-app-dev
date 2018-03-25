@@ -13,7 +13,8 @@ app.set('views', './client');
 app.engine('html', require('ejs').renderFile);
 
 // configurar middleware express.static
-app.use(express.static('./client/dist'));
+//app.use(express.static('./client/dist'));
+app.use(express.static('./server/app/public'));
 
 // configurar middleware body-parser
 app.use(bodyParser.urlencoded({extended:true}));

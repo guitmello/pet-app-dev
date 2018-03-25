@@ -1,6 +1,5 @@
 // importar modulos
 var express = require('express');
-var path = require('path');
 var consign = require('consign');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
@@ -10,7 +9,7 @@ var app = express();
 
 /* configurar o ejs, setar variaveis 'view engine' e 'views' do express */
 app.set('view engine', 'ejs');
-app.set('views', './client')
+app.set('views', './client');
 app.engine('html', require('ejs').renderFile);
 
 // configurar middleware express.static

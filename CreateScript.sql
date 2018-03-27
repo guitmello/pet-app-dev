@@ -6,7 +6,7 @@ cd_especie_pk SERIAL PRIMARY KEY
 CREATE TABLE ANIMAL (
 cd_animal_pk SERIAL PRIMARY KEY,
 nm_animal VARCHAR(50),
-cd_idade_animal INTEGER,
+cd_idade_animal SMALLINT,
 nm_cor_animal VARCHAR(20),
 ic_deficiencia_animal BOOLEAN,
 ds_deficiencia_animal VARCHAR(100),
@@ -44,7 +44,10 @@ dt_nascimento_usuario DATE,
 nm_cidade_usuario VARCHAR(50),
 cd_telefone_usuario BIGINT,
 cd_usuario_pk SERIAL PRIMARY KEY,
-cd_ip_usuario VARCHAR(30)
+cd_ip_usuario VARCHAR(30),
+nm_endereco_usuario VARCHAR(70),
+cd_numero_endereco_usuario SMALLINT,
+ds_complemento_endereco_usuario VARCHAR(50)
 );
 
 CREATE TABLE CHAT (

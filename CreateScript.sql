@@ -13,7 +13,7 @@ ds_deficiencia_animal VARCHAR(100),
 cd_especie_fk INTEGER,
 cd_raca_fk INTEGER,
 cd_usuario_fk INTEGER,
-FOREIGN KEY(cd_especie_fk) REFERENCES ESPECIE (cd_especie_pk)
+FOREIGN KEY(cd_especie_fk) REFERENCES TB_ESPECIE (cd_especie_pk)
 );
 
 CREATE TABLE TB_RACA (
@@ -31,6 +31,7 @@ dt_mensagem DATE
 CREATE TABLE TB_USUARIO (
 nm_tipo_usuario VARCHAR(30),
 cd_cnpj_usuario BIGINT,
+cd_cpf_usuario BIGINT,
 nm_razao_social_usuario VARCHAR(50),
 nm_usuario VARCHAR(50),
 nm_email_usuario VARCHAR(100),
@@ -54,8 +55,8 @@ cd_usuario_enviou_fk INTEGER,
 cd_usuario_recebeu_fk INTEGER,
 cd_ip_usuario_enviou_fk VARCHAR(30),
 cd_ip_usuario_recebeu_fk VARCHAR(30),
-FOREIGN KEY(cd_usuario_enviou_fk) REFERENCES USUARIO (cd_usuario_pk),
-FOREIGN KEY(cd_usuario_recebeu_fk) REFERENCES USUARIO (cd_usuario_pk)
+FOREIGN KEY(cd_usuario_enviou_fk) REFERENCES TB_USUARIO (cd_usuario_pk),
+FOREIGN KEY(cd_usuario_recebeu_fk) REFERENCES TB_USUARIO (cd_usuario_pk)
 );
 
 ALTER TABLE TB_ANIMAL ADD FOREIGN KEY(cd_raca_fk) REFERENCES TB_RACA (cd_raca_pk);

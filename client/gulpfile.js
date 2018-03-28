@@ -19,5 +19,6 @@ gulp.task('copy', function () {
 //Watcher para buildar e copiar
 gulp.task('watch', function () {
   gulp.watch('src/*', ['build']);
-  //gulp.watch('dist/*', ['copy']);
+  gulp.watch('src/app/*', ['build']);
+  gulp.watch('src/assets/*', ['build']);
 });

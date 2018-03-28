@@ -26,9 +26,18 @@
 .mat-toolbar-row{
   padding: 0px;
 }
+
+.subnav .mat-toolbar-row .mat-button{
+  margin: 0px 0px;
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 75px;
+}
+.subnav .mat-toolbar-row .mat-button{
+  padding: 8px 0px;
+}
 .subnav .mat-toolbar-row a{
-  margin: 0px 7px;
-  font-size: 14px;
+  padding: 0px 0px;
 }
 .subnav .mat-toolbar-row ul{
   padding: 0px;
@@ -38,12 +47,6 @@
   list-style: none;
   max-height: 20px;
 }
-
-
-
-
-
-
 
 
 

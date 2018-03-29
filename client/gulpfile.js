@@ -15,10 +15,8 @@ gulp.task('copy', function () {
     .pipe(gulp.dest('../server/app/public'))
 });
 
-
 //Watcher para buildar e copiar
 gulp.task('watch', function () {
   gulp.watch('src/*', ['build']);
-  gulp.watch('src/app/*', ['build']);
-  gulp.watch('src/assets/*', ['build']);
+  gulp.watch('src/**/*', ['build']);
 });

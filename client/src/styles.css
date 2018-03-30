@@ -10,3 +10,7 @@ html,body{
 .page-content{
     margin: 1em;
 }
+
+.nav-space{
+  flex: 1 1 auto;
+}

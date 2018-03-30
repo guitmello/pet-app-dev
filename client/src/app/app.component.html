@@ -1,9 +1,13 @@
-<mat-toolbar class="navmenu">
+<mat-toolbar class="navmenu" color="primary">
   <mat-toolbar-row>
     <a mat-icon-button (click)="sidenav.toggle()">
-      <mat-icon>menu</mat-icon>
+      <mat-icon><i class="fas fa-bars"></i></mat-icon>
     </a>
-    <span class="title">iDot</span>
+
+    <span class="nav-space"></span>
+
+    <img class="nav-logo" src="../assets/images/idot-logo36.png" alt="idot logo">
+
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -18,7 +22,7 @@
     <a mat-button>
       <ul>
         <li>
-          <mat-icon>home</mat-icon>
+          <mat-icon><i class="fas fa-home"></i></mat-icon>
         </li>
         <li>
           <span class="text-center">Home</span>
@@ -28,7 +32,7 @@
     <a mat-button>
       <ul>
         <li>
-          <mat-icon>pets</mat-icon>
+          <mat-icon><i class="fas fa-paw"></i></mat-icon>
         </li>
         <li>
           <span class="text-center">Meus Pets</span>
@@ -39,7 +43,7 @@
     <a mat-button>
       <ul>
         <li>
-          <mat-icon>add</mat-icon>
+          <mat-icon><i class="fas fa-plus"></i></mat-icon>
         </li>
         <li>
           <span class="text-center">Adicionar</span>
@@ -50,7 +54,7 @@
     <a mat-button>
       <ul>
         <li>
-          <mat-icon>star</mat-icon>
+          <mat-icon><i class="fas fa-heart"></i></mat-icon>
         </li>
         <li>
           <span class="text-center">Favoritos</span>
@@ -61,7 +65,7 @@
     <a mat-button>
       <ul>
         <li>
-          <mat-icon>search</mat-icon>
+          <mat-icon><i class="fas fa-search"></i></mat-icon>
         </li>
         <li>
           <span class="text-center">Pesquisar</span>

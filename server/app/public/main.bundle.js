@@ -115,12 +115,16 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_material_button__ = __webpack_require__("./node_modules/@angular/material/esm5/button.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_material_icon__ = __webpack_require__("./node_modules/@angular/material/esm5/icon.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_material_card__ = __webpack_require__("./node_modules/@angular/material/esm5/card.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_material_form_field__ = __webpack_require__("./node_modules/@angular/material/esm5/form-field.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__angular_material_input__ = __webpack_require__("./node_modules/@angular/material/esm5/input.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -151,7 +155,9 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_10__angular_material_icon__["a" /* MatIconModule */],
                 __WEBPACK_IMPORTED_MODULE_9__angular_material_button__["a" /* MatButtonModule */],
                 __WEBPACK_IMPORTED_MODULE_8__angular_material_list__["a" /* MatListModule */],
-                __WEBPACK_IMPORTED_MODULE_11__angular_material_card__["a" /* MatCardModule */]
+                __WEBPACK_IMPORTED_MODULE_11__angular_material_card__["a" /* MatCardModule */],
+                __WEBPACK_IMPORTED_MODULE_12__angular_material_form_field__["b" /* MatFormFieldModule */],
+                __WEBPACK_IMPORTED_MODULE_13__angular_material_input__["a" /* MatInputModule */],
             ],
             providers: [],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
@@ -174,7 +180,7 @@ module.exports = "html, body{\r\n  background: #753bab !important;\r\n}\r\n"
 /***/ "./src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"container-fluid bg-login\">\n  <mat-card>\n\n\n\n\n    <mat-form-field>\n      <input matInput placeholder=\"Email\" [formControl]=\"email\" required>\n      <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n    </mat-form-field>\n\n    <mat-form-field>\n      <input matInput placeholder=\"Senha\" [type]=\"hide ? 'password' : 'text'\">\n      <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n    </mat-form-field>\n\n  </mat-card>\n</div>\n\n\n\n\n"
+module.exports = "<div class=\"container-fluid bg-login\">\n  <mat-card>\n\n    <div class=\"col-md-12\">\n      <div class=\"row justify-content-center\">\n\n\n      <div class=\"col-md-12\">\n      <mat-form-field>\n        <input matInput placeholder=\"Email\" required>\n        <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n      </mat-form-field>\n      </div>\n\n      <div class=\"col-md-12\">\n      <mat-form-field>\n        <input matInput placeholder=\"Senha\" [type]=\"hide ? 'password' : 'text'\">\n        <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n      </mat-form-field>\n    </div>\n\n    </div>\n    </div>\n  </mat-card>\n</div>\n"
 
 /***/ }),
 
@@ -199,7 +205,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var LoginComponent = /** @class */ (function () {
     function LoginComponent() {
         this.hide = true;
-        this.email = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].email]);
+        this.email = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].email]);
     }
     LoginComponent.prototype.getErrorMessage = function () {
         return this.email.hasError('required') ? 'Você deve preencher seu email' :

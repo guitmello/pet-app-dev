@@ -12,7 +12,7 @@ var app = express();
 
 /* configurar o ejs, setar variaveis 'view engine' e 'views' do express */
 app.set('view engine', 'ejs');
-app.set('views', './client');
+app.set('views', './client/src/app');
 app.engine('html', require('ejs').renderFile);
 
 // configurar middleware express.static

@@ -4,10 +4,13 @@ import { CommonModule } from '@angular/common';
 import { AddPjuridicaRoutingModule } from './add-pjuridica-routing.module';
 import { AddPjuridicaComponent } from './add-pjuridica.component';
 
+import { MatCardModule } from '@angular/material/card';
+
 @NgModule({
   imports: [
     CommonModule,
-    AddPjuridicaRoutingModule
+    AddPjuridicaRoutingModule,
+    MatCardModule,
   ],
   declarations: [AddPjuridicaComponent]
 })

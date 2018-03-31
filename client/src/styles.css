@@ -27,3 +27,8 @@ html,body{
 .mat-card{
   padding: 20px;
 }
+
+.title{
+  text-align: center;
+  font-size: 18px;
+}

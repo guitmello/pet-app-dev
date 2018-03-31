@@ -17,6 +17,156 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/add-pet/add-pet.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/add-pet/add-pet.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid\">\r\n  <mat-card>\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n\r\n        <h1 class=\"title\">Cadastrar Pet</h1>\r\n\r\n    </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/add-pet/add-pet.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddPetComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AddPetComponent = /** @class */ (function () {
+    function AddPetComponent() {
+    }
+    AddPetComponent.prototype.ngOnInit = function () {
+    };
+    AddPetComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-add-pet',
+            template: __webpack_require__("./src/app/add-pet/add-pet.component.html"),
+            styles: [__webpack_require__("./src/app/add-pet/add-pet.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AddPetComponent);
+    return AddPetComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/add-pfisica/add-pfisica.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/add-pfisica/add-pfisica.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid\">\r\n  <mat-card>\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n\r\n        <h1 class=\"title\">Cadastrar Usuário Pessoa Física</h1>\r\n\r\n    </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/add-pfisica/add-pfisica.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddPfisicaComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AddPfisicaComponent = /** @class */ (function () {
+    function AddPfisicaComponent() {
+    }
+    AddPfisicaComponent.prototype.ngOnInit = function () {
+    };
+    AddPfisicaComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-add-pfisica',
+            template: __webpack_require__("./src/app/add-pfisica/add-pfisica.component.html"),
+            styles: [__webpack_require__("./src/app/add-pfisica/add-pfisica.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AddPfisicaComponent);
+    return AddPfisicaComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/add-pjuridica/add-pjuridica.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/add-pjuridica/add-pjuridica.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid\">\r\n  <mat-card>\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n\r\n        <h1 class=\"title\">Cadastrar Usuário Pessoa Jurídica</h1>\r\n\r\n    </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/add-pjuridica/add-pjuridica.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddPjuridicaComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AddPjuridicaComponent = /** @class */ (function () {
+    function AddPjuridicaComponent() {
+    }
+    AddPjuridicaComponent.prototype.ngOnInit = function () {
+    };
+    AddPjuridicaComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-add-pjuridica',
+            template: __webpack_require__("./src/app/add-pjuridica/add-pjuridica.component.html"),
+            styles: [__webpack_require__("./src/app/add-pjuridica/add-pjuridica.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AddPjuridicaComponent);
+    return AddPjuridicaComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/app-routing.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -25,6 +175,15 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login_component__ = __webpack_require__("./src/app/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home_component__ = __webpack_require__("./src/app/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pesquisar_pesquisar_component__ = __webpack_require__("./src/app/pesquisar/pesquisar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pet_info_pet_info_component__ = __webpack_require__("./src/app/pet-info/pet-info.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__meus_pets_meus_pets_component__ = __webpack_require__("./src/app/meus-pets/meus-pets.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__favoritos_favoritos_component__ = __webpack_require__("./src/app/favoritos/favoritos.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__chat_chat_component__ = __webpack_require__("./src/app/chat/chat.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__add_pjuridica_add_pjuridica_component__ = __webpack_require__("./src/app/add-pjuridica/add-pjuridica.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__add_pfisica_add_pfisica_component__ = __webpack_require__("./src/app/add-pfisica/add-pfisica.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__add_pet_add_pet_component__ = __webpack_require__("./src/app/add-pet/add-pet.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -34,8 +193,56 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
+
+
+
+
+
+
 var routes = [
-    { path: 'login', component: __WEBPACK_IMPORTED_MODULE_2__login_login_component__["a" /* LoginComponent */] }
+    {
+        path: 'login',
+        component: __WEBPACK_IMPORTED_MODULE_2__login_login_component__["a" /* LoginComponent */]
+    },
+    {
+        path: 'home',
+        component: __WEBPACK_IMPORTED_MODULE_3__home_home_component__["a" /* HomeComponent */]
+    },
+    {
+        path: 'add-pet',
+        component: __WEBPACK_IMPORTED_MODULE_11__add_pet_add_pet_component__["a" /* AddPetComponent */]
+    },
+    {
+        path: 'add-pfisica',
+        component: __WEBPACK_IMPORTED_MODULE_10__add_pfisica_add_pfisica_component__["a" /* AddPfisicaComponent */]
+    },
+    {
+        path: 'add-pjuridica',
+        component: __WEBPACK_IMPORTED_MODULE_9__add_pjuridica_add_pjuridica_component__["a" /* AddPjuridicaComponent */]
+    },
+    {
+        path: 'chat',
+        component: __WEBPACK_IMPORTED_MODULE_8__chat_chat_component__["a" /* ChatComponent */]
+    },
+    {
+        path: 'favoritos',
+        component: __WEBPACK_IMPORTED_MODULE_7__favoritos_favoritos_component__["a" /* FavoritosComponent */]
+    },
+    {
+        path: 'meus-pets',
+        component: __WEBPACK_IMPORTED_MODULE_6__meus_pets_meus_pets_component__["a" /* MeusPetsComponent */]
+    },
+    {
+        path: 'pesquisar',
+        component: __WEBPACK_IMPORTED_MODULE_4__pesquisar_pesquisar_component__["a" /* PesquisarComponent */]
+    },
+    {
+        path: 'pet-info',
+        component: __WEBPACK_IMPORTED_MODULE_5__pet_info_pet_info_component__["a" /* PetInfoComponent */]
+    }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -63,7 +270,7 @@ module.exports = ".text-center{\r\n  text-align: center;\r\n}\r\n\r\n.navmenu{\r
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar class=\"navmenu\" color=\"primary\">\r\n  <mat-toolbar-row>\r\n    <a mat-icon-button (click)=\"sidenav.toggle()\">\r\n      <mat-icon><i class=\"fas fa-bars\"></i></mat-icon>\r\n    </a>\r\n\r\n    <span class=\"nav-space\"></span>\r\n\r\n    <img class=\"nav-logo\" src=\"../assets/images/idot-logo36.png\" alt=\"idot logo\">\r\n\r\n  </mat-toolbar-row>\r\n</mat-toolbar>\r\n\r\n<mat-sidenav-container class=\"example-container\">\r\n  <mat-sidenav #sidenav class=\"example-sidenav\">\r\n    <p>Sidenav content goes here!</p>\r\n  </mat-sidenav>\r\n</mat-sidenav-container>\r\n\r\n<mat-toolbar class=\"subnav\">\r\n  <mat-toolbar-row>\r\n    <a mat-button routerLink=\"/login\" routerLinkActive=\"router-link-active\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-home\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Home</span>\r\n        </li>\r\n      </ul>\r\n    </a>\r\n    <a mat-button routerLink=\"/meus-pets\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-paw\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Meus Pets</span>\r\n        </li>\r\n      </ul>\r\n\r\n    </a>\r\n    <a mat-button routerLink=\"/add-pet\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-plus\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Adicionar</span>\r\n        </li>\r\n      </ul>\r\n\r\n    </a>\r\n    <a mat-button routerLink=\"/favoritos\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-heart\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Favoritos</span>\r\n        </li>\r\n      </ul>\r\n\r\n    </a>\r\n    <a mat-button routerLink=\"/pesquisar\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-search\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Pesquisar</span>\r\n        </li>\r\n      </ul>\r\n    </a>\r\n  </mat-toolbar-row>\r\n</mat-toolbar>\r\n\r\n<router-outlet></router-outlet>\r\n"
+module.exports = "<mat-toolbar class=\"navmenu\" color=\"primary\">\r\n  <mat-toolbar-row>\r\n    <a mat-icon-button (click)=\"sidenav.toggle()\">\r\n      <mat-icon><i class=\"fas fa-bars\"></i></mat-icon>\r\n    </a>\r\n\r\n    <span class=\"nav-space\"></span>\r\n\r\n    <img class=\"nav-logo\" src=\"../assets/images/idot-logo36.png\" alt=\"idot logo\">\r\n\r\n  </mat-toolbar-row>\r\n</mat-toolbar>\r\n\r\n<mat-sidenav-container class=\"example-container\">\r\n  <mat-sidenav #sidenav class=\"example-sidenav\">\r\n    <p>Sidenav content goes here!</p>\r\n  </mat-sidenav>\r\n</mat-sidenav-container>\r\n\r\n<mat-toolbar class=\"subnav\">\r\n  <mat-toolbar-row>\r\n    <a mat-button routerLink=\"/home\" routerLinkActive=\"router-link-active\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-home\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Home</span>\r\n        </li>\r\n      </ul>\r\n    </a>\r\n    <a mat-button routerLink=\"/meus-pets\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-paw\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Meus Pets</span>\r\n        </li>\r\n      </ul>\r\n\r\n    </a>\r\n    <a mat-button routerLink=\"/add-pet\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-plus\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Adicionar</span>\r\n        </li>\r\n      </ul>\r\n\r\n    </a>\r\n    <a mat-button routerLink=\"/favoritos\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-heart\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Favoritos</span>\r\n        </li>\r\n      </ul>\r\n\r\n    </a>\r\n    <a mat-button routerLink=\"/pesquisar\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-search\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Pesquisar</span>\r\n        </li>\r\n      </ul>\r\n    </a>\r\n  </mat-toolbar-row>\r\n</mat-toolbar>\r\n\r\n<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
@@ -108,21 +315,39 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_routing_module__ = __webpack_require__("./src/app/app-routing.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__("./src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__login_login_component__ = __webpack_require__("./src/app/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_material_sidenav__ = __webpack_require__("./node_modules/@angular/material/esm5/sidenav.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_material_toolbar__ = __webpack_require__("./node_modules/@angular/material/esm5/toolbar.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_material_list__ = __webpack_require__("./node_modules/@angular/material/esm5/list.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_material_button__ = __webpack_require__("./node_modules/@angular/material/esm5/button.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_material_icon__ = __webpack_require__("./node_modules/@angular/material/esm5/icon.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_material_card__ = __webpack_require__("./node_modules/@angular/material/esm5/card.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_material_form_field__ = __webpack_require__("./node_modules/@angular/material/esm5/form-field.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__angular_material_input__ = __webpack_require__("./node_modules/@angular/material/esm5/input.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__add_pet_add_pet_component__ = __webpack_require__("./src/app/add-pet/add-pet.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__add_pfisica_add_pfisica_component__ = __webpack_require__("./src/app/add-pfisica/add-pfisica.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__add_pjuridica_add_pjuridica_component__ = __webpack_require__("./src/app/add-pjuridica/add-pjuridica.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__chat_chat_component__ = __webpack_require__("./src/app/chat/chat.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__favoritos_favoritos_component__ = __webpack_require__("./src/app/favoritos/favoritos.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__home_home_component__ = __webpack_require__("./src/app/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__login_login_component__ = __webpack_require__("./src/app/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__meus_pets_meus_pets_component__ = __webpack_require__("./src/app/meus-pets/meus-pets.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pesquisar_pesquisar_component__ = __webpack_require__("./src/app/pesquisar/pesquisar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pet_info_pet_info_component__ = __webpack_require__("./src/app/pet-info/pet-info.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__angular_material_sidenav__ = __webpack_require__("./node_modules/@angular/material/esm5/sidenav.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__angular_material_toolbar__ = __webpack_require__("./node_modules/@angular/material/esm5/toolbar.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__angular_material_list__ = __webpack_require__("./node_modules/@angular/material/esm5/list.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__angular_material_button__ = __webpack_require__("./node_modules/@angular/material/esm5/button.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__angular_material_icon__ = __webpack_require__("./node_modules/@angular/material/esm5/icon.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__angular_material_card__ = __webpack_require__("./node_modules/@angular/material/esm5/card.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__angular_material_form_field__ = __webpack_require__("./node_modules/@angular/material/esm5/form-field.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__angular_material_input__ = __webpack_require__("./node_modules/@angular/material/esm5/input.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
+
+
+
+
+
 
 
 
@@ -144,26 +369,185 @@ var AppModule = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["J" /* NgModule */])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_5__login_login_component__["a" /* LoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_5__add_pet_add_pet_component__["a" /* AddPetComponent */],
+                __WEBPACK_IMPORTED_MODULE_6__add_pfisica_add_pfisica_component__["a" /* AddPfisicaComponent */],
+                __WEBPACK_IMPORTED_MODULE_7__add_pjuridica_add_pjuridica_component__["a" /* AddPjuridicaComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__chat_chat_component__["a" /* ChatComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__favoritos_favoritos_component__["a" /* FavoritosComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__home_home_component__["a" /* HomeComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__login_login_component__["a" /* LoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__meus_pets_meus_pets_component__["a" /* MeusPetsComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__pesquisar_pesquisar_component__["a" /* PesquisarComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__pet_info_pet_info_component__["a" /* PetInfoComponent */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_3__app_routing_module__["a" /* AppRoutingModule */],
-                __WEBPACK_IMPORTED_MODULE_6__angular_material_sidenav__["a" /* MatSidenavModule */],
-                __WEBPACK_IMPORTED_MODULE_7__angular_material_toolbar__["a" /* MatToolbarModule */],
-                __WEBPACK_IMPORTED_MODULE_10__angular_material_icon__["a" /* MatIconModule */],
-                __WEBPACK_IMPORTED_MODULE_9__angular_material_button__["a" /* MatButtonModule */],
-                __WEBPACK_IMPORTED_MODULE_8__angular_material_list__["a" /* MatListModule */],
-                __WEBPACK_IMPORTED_MODULE_11__angular_material_card__["a" /* MatCardModule */],
-                __WEBPACK_IMPORTED_MODULE_12__angular_material_form_field__["b" /* MatFormFieldModule */],
-                __WEBPACK_IMPORTED_MODULE_13__angular_material_input__["a" /* MatInputModule */],
+                __WEBPACK_IMPORTED_MODULE_15__angular_material_sidenav__["a" /* MatSidenavModule */],
+                __WEBPACK_IMPORTED_MODULE_16__angular_material_toolbar__["a" /* MatToolbarModule */],
+                __WEBPACK_IMPORTED_MODULE_19__angular_material_icon__["a" /* MatIconModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material_button__["a" /* MatButtonModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material_list__["a" /* MatListModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material_card__["a" /* MatCardModule */],
+                __WEBPACK_IMPORTED_MODULE_21__angular_material_form_field__["b" /* MatFormFieldModule */],
+                __WEBPACK_IMPORTED_MODULE_22__angular_material_input__["a" /* MatInputModule */],
             ],
             providers: [],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/chat/chat.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/chat/chat.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid\">\r\n  <mat-card>\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n\r\n        <h1 class=\"title\">Chat</h1>\r\n\r\n    </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/chat/chat.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ChatComponent = /** @class */ (function () {
+    function ChatComponent() {
+    }
+    ChatComponent.prototype.ngOnInit = function () {
+    };
+    ChatComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-chat',
+            template: __webpack_require__("./src/app/chat/chat.component.html"),
+            styles: [__webpack_require__("./src/app/chat/chat.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], ChatComponent);
+    return ChatComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/favoritos/favoritos.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/favoritos/favoritos.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid\">\r\n  <mat-card>\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n\r\n        <h1 class=\"title\">Favoritos</h1>\r\n\r\n    </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/favoritos/favoritos.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FavoritosComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var FavoritosComponent = /** @class */ (function () {
+    function FavoritosComponent() {
+    }
+    FavoritosComponent.prototype.ngOnInit = function () {
+    };
+    FavoritosComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-favoritos',
+            template: __webpack_require__("./src/app/favoritos/favoritos.component.html"),
+            styles: [__webpack_require__("./src/app/favoritos/favoritos.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], FavoritosComponent);
+    return FavoritosComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/home/home.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/home/home.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid\">\r\n\r\n  <mat-card>\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n\r\n          <h1 class=\"title\">Animais Cadastrados Recentemente Perto de Você</h1>\r\n\r\n      </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/home/home.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var HomeComponent = /** @class */ (function () {
+    function HomeComponent() {
+    }
+    HomeComponent.prototype.ngOnInit = function () {
+    };
+    HomeComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-home',
+            template: __webpack_require__("./src/app/home/home.component.html"),
+            styles: [__webpack_require__("./src/app/home/home.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], HomeComponent);
+    return HomeComponent;
 }());
 
 
@@ -223,6 +607,156 @@ var LoginComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], LoginComponent);
     return LoginComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/meus-pets/meus-pets.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/meus-pets/meus-pets.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid\">\n  <mat-card>\n\n    <div class=\"col-md-12\">\n      <div class=\"row justify-content-center\">\n\n      <h1 class=\"title\">Meus Pets</h1>\n\n    </div>\n    </div>\n  </mat-card>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/meus-pets/meus-pets.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MeusPetsComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var MeusPetsComponent = /** @class */ (function () {
+    function MeusPetsComponent() {
+    }
+    MeusPetsComponent.prototype.ngOnInit = function () {
+    };
+    MeusPetsComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-meus-pets',
+            template: __webpack_require__("./src/app/meus-pets/meus-pets.component.html"),
+            styles: [__webpack_require__("./src/app/meus-pets/meus-pets.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], MeusPetsComponent);
+    return MeusPetsComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pesquisar/pesquisar.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/pesquisar/pesquisar.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid\">\r\n  <mat-card>\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n\r\n\r\n      <h1 class=\"title\">Pesquisar</h1>\r\n\r\n    </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/pesquisar/pesquisar.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PesquisarComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var PesquisarComponent = /** @class */ (function () {
+    function PesquisarComponent() {
+    }
+    PesquisarComponent.prototype.ngOnInit = function () {
+    };
+    PesquisarComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-pesquisar',
+            template: __webpack_require__("./src/app/pesquisar/pesquisar.component.html"),
+            styles: [__webpack_require__("./src/app/pesquisar/pesquisar.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], PesquisarComponent);
+    return PesquisarComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pet-info/pet-info.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/pet-info/pet-info.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid\">\r\n  <mat-card>\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Informações do Pet</h1>\r\n\r\n    </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/pet-info/pet-info.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PetInfoComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var PetInfoComponent = /** @class */ (function () {
+    function PetInfoComponent() {
+    }
+    PetInfoComponent.prototype.ngOnInit = function () {
+    };
+    PetInfoComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-pet-info',
+            template: __webpack_require__("./src/app/pet-info/pet-info.component.html"),
+            styles: [__webpack_require__("./src/app/pet-info/pet-info.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], PetInfoComponent);
+    return PetInfoComponent;
 }());
 
 

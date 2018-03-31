@@ -4,10 +4,13 @@ import { CommonModule } from '@angular/common';
 import { FavoritosRoutingModule } from './favoritos-routing.module';
 import { FavoritosComponent } from './favoritos.component';
 
+import { MatCardModule } from '@angular/material/card';
+
 @NgModule({
   imports: [
     CommonModule,
-    FavoritosRoutingModule
+    FavoritosRoutingModule,
+    MatCardModule,
   ],
   declarations: [FavoritosComponent]
 })

@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { AddPetComponent } from './add-pet/add-pet.component';
 import { AddPfisicaComponent } from './add-pfisica/add-pfisica.component';
 import { AddPjuridicaComponent } from './add-pjuridica/add-pjuridica.component';
-import { ChatComponent } from './chat/chat.component'
+import { ChatComponent } from './chat/chat.component';
 import { FavoritosComponent } from './favoritos/favoritos.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -42,8 +42,8 @@ import { MatInputModule } from '@angular/material/input';
     HomeComponent,
     LoginComponent,
     MeusPetsComponent,
-    PesquisarComponent,   
-    PetInfoComponent, 
+    PesquisarComponent,
+    PetInfoComponent,
   ],
   imports: [
     BrowserModule,

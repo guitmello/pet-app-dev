@@ -4,10 +4,13 @@ import { CommonModule } from '@angular/common';
 import { PetInfoRoutingModule } from './pet-info-routing.module';
 import { PetInfoComponent } from './pet-info.component';
 
+import { MatCardModule } from '@angular/material/card';
+
 @NgModule({
   imports: [
     CommonModule,
-    PetInfoRoutingModule
+    PetInfoRoutingModule,
+    MatCardModule,
   ],
   declarations: [PetInfoComponent]
 })

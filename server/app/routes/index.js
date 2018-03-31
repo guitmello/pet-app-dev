@@ -5,4 +5,3 @@ module.exports = function(app){
     server.app.controllers.index.home(app, req, res);
   });
 };
-

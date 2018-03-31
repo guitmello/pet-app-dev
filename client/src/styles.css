@@ -14,3 +14,15 @@ html,body{
 .nav-space{
   flex: 1 1 auto;
 }
+
+.img-center{
+  margin: auto;
+  padding: auto;
+}
+.container-fluid{
+  padding-top: 80px;
+}
+
+.mat-card{
+  padding: 20px;
+}

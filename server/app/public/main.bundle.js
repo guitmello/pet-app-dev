@@ -514,7 +514,7 @@ module.exports = ""
 /***/ "./src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\r\n\r\n  <mat-card>\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n\r\n          <h1 class=\"title\">Animais Cadastrados Recentemente Perto de Você</h1>\r\n\r\n      </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid\">\r\n\r\n  <mat-card>\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n\r\n          <h1 class=\"title\">Animais Cadastrados Recentemente Perto de Você</h1>\r\n\r\n\r\n          <p>Olá</p>\r\n\r\n      </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 

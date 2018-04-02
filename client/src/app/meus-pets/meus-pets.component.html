@@ -12,6 +12,7 @@
 
     <div class="col-md-12">
       <div class="row">
+        <div class="pull-left">
         <ul class="meus-pets-list">
           <li>
             <img src="{{pets.ds_foto_animal}}" alt="foto do pet">
@@ -25,21 +26,23 @@
           <li>
             <span class="meus-pets-text">{{pets.nm_raca_animal}}</span>
           </li>
-          <li class="pull-right no-padding">
-            <ul class="buttons-inline">
-              <li>
-                <button mat-mini-fab>
-                  <i class="fas fa-pencil-alt edit"></i>
-                </button>
-              </li>
-              <li>
-                <button mat-mini-fab>
-                  <i class="fas fa-trash-alt remove"></i>
-                </button>
-              </li>
-            </ul>
+        </ul>
+      </div>
+
+        <div class="pull-right">
+        <ul class="meus-pets-list buttons-inline ">
+          <li>
+            <button mat-mini-fab>
+              <i class="fas fa-pencil-alt edit"></i>
+            </button>
+          </li>
+          <li>
+            <button mat-mini-fab>
+              <i class="fas fa-trash-alt remove"></i>
+            </button>
           </li>
         </ul>
+        </div>
 
 
       </div>

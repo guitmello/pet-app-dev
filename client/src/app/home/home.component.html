@@ -1,14 +1,28 @@
-<div class="container-fluid">
+<div id="home" class="container-fluid">
+  <div class="col-md-12">
+    <div class="row justify-content-center">
 
-  <mat-card>
-    <div class="col-md-12">
-      <div class="row justify-content-center">
-
-          <h1 class="title">Animais Cadastrados Recentemente Perto de Você</h1>
+      <h1 class="title">Animais Cadastrados Recentemente Perto de Você</h1>
 
 
-          <p>Olá</p>
-
+    </div>
+  </div>
+  <mat-card *ngFor="let shoe of typesOfShoes" (click)="teste(shoe.id)">
+    <div class="row">
+      <div class="col-md-2">
+        <img src="../../assets/images/ft-pet.jpg" alt="" class="img-animals">
+      </div>
+      <div class="col-md-2 card-content">
+        <ul>
+          <li class="font-bold">{{shoe.title}}</li>
+          <li>{{shoe.breed}}</li>
+          <li>{{shoe.city}} - {{shoe.state}}</li>
+          <li>{{shoe.street}}</li>
+        </ul>
+      </div>
+      <label class="content-date">{{shoe.date}}</label>
+      <div class="heart">
+        <i class="fas fa-heart"></i>
       </div>
     </div>
   </mat-card>

@@ -7,9 +7,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  typesOfShoes: Array<any>;
+
   constructor() { }
 
   ngOnInit() {
+    this.getAnimals();
   }
 
+
+  teste(id: string){
+    alert(id);
+  }
+
+  getAnimals(){
+    this.typesOfShoes = [
+      {id: 1, name: 'DogMau', city: 'São Vicente', state: 'SP', street: 'rua esquian8', breed: 'Vira Lata', date: '28/08/2017', title: 'Cão feio'},
+      {id: 2, name: 'DogGuilherme', city: 'Praia Grande', state: 'SP', street: 'rua esquia7n', breed: 'Gay', date: '21/03/2017', title: 'Cão feio2'},
+      {id: 3, name: 'DogArturLoko', city: 'Vicente de Caralho', state: 'SP', street: 'rua esquian6', breed: 'Homossexual', date: '18/08/2017', title: 'Cão feio1'},
+      {id: 4, name: 'DogFelipHinode', city: 'Santus', state: 'SP', street: 'rua esquian5', breed: 'daAbunda', date: '26/08/2017', title: 'Cão feio3'},
+      {id: 5, name: 'DogGuilherme2', city: 'Long Beach', state: 'SP', street: 'rua esquian4', breed: 'Labrador', date: '29/05/2017', title: 'Cão feio1'},
+      {id: 6, name: 'DogGuilherme3', city: 'Saints', state: 'SP', street: 'rua esquian2', breed: 'Não identificado', date: '15/02/2017', title: 'Cão feio7'},
+      {id: 7, name: 'DogGuilherme5', city: 'teu cu', state: 'SP', street: 'rua esquian3', breed: 'Poodle ', date: '02/01/2017', title: 'Cão feio6'},
+    ];
+  }
 }

@@ -5,12 +5,16 @@ import { MeusPetsRoutingModule } from './meus-pets-routing.module';
 import { MeusPetsComponent } from './meus-pets.component';
 
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [
     CommonModule,
     MeusPetsRoutingModule,
     MatCardModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   declarations: [MeusPetsComponent]
 })

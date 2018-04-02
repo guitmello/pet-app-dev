@@ -1,12 +1,49 @@
-<div class="container-fluid">
-  <mat-card>
+<div id="meus-pets" class="container-fluid">
 
-    <div class="col-md-12">
-      <div class="row justify-content-center">
+  <div class="col-md-12">
+    <div class="row justify-content-center">
 
       <h1 class="title">Meus Pets</h1>
 
     </div>
+  </div>
+
+  <mat-card *ngFor="let pets of meusPets">
+
+    <div class="col-md-12">
+      <div class="row">
+        <ul class="meus-pets-list">
+          <li>
+            <img src="{{pets.ds_foto_animal}}" alt="foto do pet">
+          </li>
+          <li>
+            <span class="meus-pets-text">{{pets.nm_animal}}</span>
+          </li>
+          <li>
+            <span class="meus-pets-text">{{pets.cd_idade_animal}}</span>
+          </li>
+          <li>
+            <span class="meus-pets-text">{{pets.nm_raca_animal}}</span>
+          </li>
+          <li class="pull-right no-padding">
+            <ul class="buttons-inline">
+              <li>
+                <button mat-mini-fab>
+                  <i class="fas fa-pencil-alt edit"></i>
+                </button>
+              </li>
+              <li>
+                <button mat-mini-fab>
+                  <i class="fas fa-trash-alt remove"></i>
+                </button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+
+      </div>
     </div>
+
   </mat-card>
 </div>

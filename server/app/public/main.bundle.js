@@ -616,14 +616,14 @@ var LoginComponent = /** @class */ (function () {
 /***/ "./src/app/meus-pets/meus-pets.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "#meus-pets .mat-card{\r\n  padding: 10px 5px !important;\r\n  font-size: 14px;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n\r\n.meus-pets-list{\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n\r\n.meus-pets-list li{\r\n  list-style: none;\r\n  padding-right: 5px;\r\n  display: inline-block;\r\n  vertical-align: middle\r\n}\r\n\r\n\r\n.meus-pets-list img{\r\n  width: 40px;\r\n}\r\n\r\n\r\n.meus-pets-text{\r\n  text-align: center;\r\n}\r\n\r\n\r\n.buttons-inline{\r\n  padding: 0px 0px 0px 5px;\r\n}\r\n\r\n\r\n.buttons-inline li{\r\n  display: inline-block;\r\n  list-style: none;\r\n  padding: 0px 0px;\r\n}\r\n\r\n\r\n.buttons-inline .mat-mini-fab{\r\n  background: #ffffff;\r\n}\r\n\r\n\r\n.buttons-inline .mat-mini-fab .edit{\r\n  color: #753bab;\r\n}\r\n\r\n\r\n.buttons-inline .mat-mini-fab .remove{\r\n  color: #ff4d4d;\r\n}\r\n"
 
 /***/ }),
 
 /***/ "./src/app/meus-pets/meus-pets.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n  <mat-card>\n\n    <div class=\"col-md-12\">\n      <div class=\"row justify-content-center\">\n\n      <h1 class=\"title\">Meus Pets</h1>\n\n    </div>\n    </div>\n  </mat-card>\n</div>\n"
+module.exports = "<div id=\"meus-pets\" class=\"container-fluid\">\n\n  <div class=\"col-md-12\">\n    <div class=\"row justify-content-center\">\n\n      <h1 class=\"title\">Meus Pets</h1>\n\n    </div>\n  </div>\n\n  <mat-card *ngFor=\"let pets of meusPets\">\n\n    <div class=\"col-md-12\">\n      <div class=\"row\">\n        <ul class=\"meus-pets-list\">\n          <li>\n            <img src=\"{{pets.ds_foto_animal}}\" alt=\"foto do pet\">\n          </li>\n          <li>\n            <span class=\"meus-pets-text\">{{pets.nm_animal}}</span>\n          </li>\n          <li>\n            <span class=\"meus-pets-text\">{{pets.cd_idade_animal}}</span>\n          </li>\n          <li>\n            <span class=\"meus-pets-text\">{{pets.nm_raca_animal}}</span>\n          </li>\n          <li class=\"pull-right no-padding\">\n            <ul class=\"buttons-inline\">\n              <li>\n                <button mat-mini-fab>\n                  <i class=\"fas fa-pencil-alt edit\"></i>\n                </button>\n              </li>\n              <li>\n                <button mat-mini-fab>\n                  <i class=\"fas fa-trash-alt remove\"></i>\n                </button>\n              </li>\n            </ul>\n          </li>\n        </ul>\n\n\n      </div>\n    </div>\n\n  </mat-card>\n</div>\n"
 
 /***/ }),
 
@@ -647,6 +647,15 @@ var MeusPetsComponent = /** @class */ (function () {
     function MeusPetsComponent() {
     }
     MeusPetsComponent.prototype.ngOnInit = function () {
+        this.getMeusPets();
+    };
+    MeusPetsComponent.prototype.getMeusPets = function () {
+        this.meusPets = [
+            { id: 1, nm_animal: 'Teddy', cd_idade_animal: '2 anos', nm_raca_animal: 'Chow Chow',
+                ds_foto_animal: '../../assets/images/ft-pet.jpg', nm_usuario_fk: 'Alberto' },
+            { id: 2, nm_animal: 'Pit', cd_idade_animal: '4 anos', nm_raca_animal: 'Pincher',
+                ds_foto_animal: '../../assets/images/ft-pet.jpg', nm_usuario_fk: 'Pedro' },
+        ];
     };
     MeusPetsComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({

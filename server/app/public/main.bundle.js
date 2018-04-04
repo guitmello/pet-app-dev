@@ -507,14 +507,14 @@ var FavoritosComponent = /** @class */ (function () {
 /***/ "./src/app/home/home.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "#home .mat-card{\r\n    padding: 0px !important;\r\n}\r\n\r\n>>>.card-content{\r\n    position: absolute;\r\n    left: 50%;\r\n    padding: 10px 10px;\r\n    width: 50%;\r\n}\r\n\r\n>>>.card-content  li{\r\n    padding: 5px 0px;\r\n}\r\n\r\n.card-content ul{\r\n    list-style: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n}\r\n\r\n.img-animals{\r\n    width: 50%;\r\n    height: 100%; \r\n}\r\n\r\n.content-date{\r\n    position: absolute;\r\n    left: 53%;\r\n    top: 87%;\r\n}\r\n\r\n.heart{\r\n    position: absolute;\r\n    left: 94%;\r\n    top: 87%;\r\n}"
 
 /***/ }),
 
 /***/ "./src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\r\n\r\n  <mat-card>\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n\r\n          <h1 class=\"title\">Animais Cadastrados Recentemente Perto de Você</h1>\r\n\r\n\r\n          <p>Olá</p>\r\n\r\n      </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div id=\"home\" class=\"container-fluid\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Animais Cadastrados Recentemente Perto de Você</h1>\r\n\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card *ngFor=\"let shoe of typesOfShoes\" (click)=\"teste(shoe.id)\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-2\">\r\n        <img src=\"../../assets/images/ft-pet.jpg\" alt=\"\" class=\"img-animals\">\r\n      </div>\r\n      <div class=\"col-md-2 card-content\">\r\n        <ul>\r\n          <li class=\"font-bold\">{{shoe.title}}</li>\r\n          <li>{{shoe.breed}}</li>\r\n          <li>{{shoe.city}} - {{shoe.state}}</li>\r\n          <li>{{shoe.street}}</li>\r\n        </ul>\r\n      </div>\r\n      <label class=\"content-date\">{{shoe.date}}</label>\r\n      <div class=\"heart\">\r\n        <i class=\"fas fa-heart\"></i>\r\n      </div>\r\n    </div>\r\n  </mat-card>\r\n</div>"
 
 /***/ }),
 
@@ -538,6 +538,21 @@ var HomeComponent = /** @class */ (function () {
     function HomeComponent() {
     }
     HomeComponent.prototype.ngOnInit = function () {
+        this.getAnimals();
+    };
+    HomeComponent.prototype.teste = function (id) {
+        alert(id);
+    };
+    HomeComponent.prototype.getAnimals = function () {
+        this.typesOfShoes = [
+            { id: 1, name: 'DogMau', city: 'São Vicente', state: 'SP', street: 'rua esquian8', breed: 'Vira Lata', date: '28/08/2017', title: 'Cão feio' },
+            { id: 2, name: 'DogGuilherme', city: 'Praia Grande', state: 'SP', street: 'rua esquia7n', breed: 'Gay', date: '21/03/2017', title: 'Cão feio2' },
+            { id: 3, name: 'DogArturLoko', city: 'Vicente de Caralho', state: 'SP', street: 'rua esquian6', breed: 'Homossexual', date: '18/08/2017', title: 'Cão feio1' },
+            { id: 4, name: 'DogFelipHinode', city: 'Santus', state: 'SP', street: 'rua esquian5', breed: 'daAbunda', date: '26/08/2017', title: 'Cão feio3' },
+            { id: 5, name: 'DogGuilherme2', city: 'Long Beach', state: 'SP', street: 'rua esquian4', breed: 'Labrador', date: '29/05/2017', title: 'Cão feio1' },
+            { id: 6, name: 'DogGuilherme3', city: 'Saints', state: 'SP', street: 'rua esquian2', breed: 'Não identificado', date: '15/02/2017', title: 'Cão feio7' },
+            { id: 7, name: 'DogGuilherme5', city: 'teu cu', state: 'SP', street: 'rua esquian3', breed: 'Poodle ', date: '02/01/2017', title: 'Cão feio6' },
+        ];
     };
     HomeComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -623,7 +638,7 @@ module.exports = "#meus-pets .mat-card{\r\n  padding: 10px 5px !important;\r\n  
 /***/ "./src/app/meus-pets/meus-pets.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"meus-pets\" class=\"container-fluid\">\n\n  <div class=\"col-md-12\">\n    <div class=\"row justify-content-center\">\n\n      <h1 class=\"title\">Meus Pets</h1>\n\n    </div>\n  </div>\n\n  <mat-card *ngFor=\"let pets of meusPets\">\n\n    <div class=\"col-md-12\">\n      <div class=\"row\">\n        <div class=\"pull-left\">\n        <ul class=\"meus-pets-list\">\n          <li>\n            <img src=\"{{pets.ds_foto_animal}}\" alt=\"foto do pet\">\n          </li>\n          <li>\n            <span class=\"meus-pets-text\">{{pets.nm_animal}}</span>\n          </li>\n          <li>\n            <span class=\"meus-pets-text\">{{pets.cd_idade_animal}}</span>\n          </li>\n          <li>\n            <span class=\"meus-pets-text\">{{pets.nm_raca_animal}}</span>\n          </li>\n        </ul>\n      </div>\n\n        <div class=\"pull-right\">\n        <ul class=\"meus-pets-list buttons-inline \">\n          <li>\n            <button mat-mini-fab>\n              <i class=\"fas fa-pencil-alt edit\"></i>\n            </button>\n          </li>\n          <li>\n            <button mat-mini-fab>\n              <i class=\"fas fa-trash-alt remove\"></i>\n            </button>\n          </li>\n        </ul>\n        </div>\n\n\n      </div>\n    </div>\n\n  </mat-card>\n</div>\n"
+module.exports = "<div id=\"meus-pets\" class=\"container-fluid\">\n\n  <div class=\"col-md-12\">\n    <div class=\"row justify-content-center\">\n\n      <h1 class=\"title\">Meus Pets</h1>\n\n    </div>\n  </div>\n\n  <mat-card *ngFor=\"let pets of meusPets\">\n\n    <div class=\"col-md-12\">\n      <div class=\"row\">\n        <ul class=\"meus-pets-list\">\n          <li>\n            <img src=\"{{pets.ds_foto_animal}}\" alt=\"foto do pet\">\n          </li>\n          <li>\n            <span class=\"meus-pets-text\">{{pets.nm_animal}}</span>\n          </li>\n          <li>\n            <span class=\"meus-pets-text\">{{pets.cd_idade_animal}}</span>\n          </li>\n          <li>\n            <span class=\"meus-pets-text\">{{pets.nm_raca_animal}}</span>\n          </li>\n        </ul>\n\n        <span class=\"nav-space\"></span>\n\n        <ul class=\"meus-pets-list buttons-inline \">\n          <li>\n            <button mat-mini-fab>\n              <i class=\"fas fa-pencil-alt edit\"></i>\n            </button>\n          </li>\n          <li>\n            <button mat-mini-fab>\n              <i class=\"fas fa-trash-alt remove\"></i>\n            </button>\n          </li>\n        </ul>\n      </div>\n    </div>\n\n  </mat-card>\n</div>\n"
 
 /***/ }),
 

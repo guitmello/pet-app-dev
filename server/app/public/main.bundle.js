@@ -27,7 +27,7 @@ module.exports = ""
 /***/ "./src/app/add-pet/add-pet.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\r\n  <mat-card>\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n\r\n        <h1 class=\"title\">Cadastrar Pet</h1>\r\n\r\n    </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <mat-card>\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n\r\n        <h1 class=\"title\">Cadastrar Pet</h1>\r\n\r\n    </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -578,7 +578,7 @@ module.exports = "html, body{\r\n  background: #753bab !important;\r\n}\r\n"
 /***/ "./src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid bg-login\">\n  <mat-card>\n\n    <div class=\"col-md-12\">\n      <form>\n\n        <div class=\"row justify-content-center\">\n          <div class=\"col-md-12\">\n            <mat-form-field>\n              <input matInput placeholder=\"Email\" required>\n              <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n            </mat-form-field>\n          </div>\n\n          <div class=\"col-md-12\">\n            <mat-form-field>\n              <input matInput placeholder=\"Senha\" [type]=\"hide ? 'password' : 'text'\">\n              <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n            </mat-form-field>\n          </div>\n        </div>\n\n        <div class=\"col-md-12\">\n          <div class=\"button-row row justify-content-center\">\n            <button mat-raised-button type=\"submit\" color=\"primary\">Confirmar</button>\n          </div>\n        </div>\n\n      </form>\n\n    </div>\n  </mat-card>\n</div>\n"
+module.exports = "<div class=\"container-fluid bg-login animated fadeIn\">\n  <mat-card>\n\n    <div class=\"col-md-12\">\n      <form>\n\n        <div class=\"row justify-content-center\">\n          <div class=\"col-md-12\">\n            <mat-form-field>\n              <input matInput placeholder=\"Email\" required>\n              <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n            </mat-form-field>\n          </div>\n\n          <div class=\"col-md-12\">\n            <mat-form-field>\n              <input matInput placeholder=\"Senha\" [type]=\"hide ? 'password' : 'text'\">\n              <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n            </mat-form-field>\n          </div>\n        </div>\n\n        <div class=\"col-md-12\">\n          <div class=\"button-row row justify-content-center\">\n            <button mat-raised-button type=\"submit\" color=\"primary\">Confirmar</button>\n          </div>\n        </div>\n\n      </form>\n\n    </div>\n  </mat-card>\n</div>\n"
 
 /***/ }),
 

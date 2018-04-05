@@ -313,25 +313,27 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_animations__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/animations.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_routing_module__ = __webpack_require__("./src/app/app-routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__("./src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__add_pet_add_pet_component__ = __webpack_require__("./src/app/add-pet/add-pet.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__add_pfisica_add_pfisica_component__ = __webpack_require__("./src/app/add-pfisica/add-pfisica.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__add_pjuridica_add_pjuridica_component__ = __webpack_require__("./src/app/add-pjuridica/add-pjuridica.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__chat_chat_component__ = __webpack_require__("./src/app/chat/chat.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__favoritos_favoritos_component__ = __webpack_require__("./src/app/favoritos/favoritos.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__home_home_component__ = __webpack_require__("./src/app/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__login_login_component__ = __webpack_require__("./src/app/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__meus_pets_meus_pets_component__ = __webpack_require__("./src/app/meus-pets/meus-pets.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pesquisar_pesquisar_component__ = __webpack_require__("./src/app/pesquisar/pesquisar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pet_info_pet_info_component__ = __webpack_require__("./src/app/pet-info/pet-info.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__angular_material_sidenav__ = __webpack_require__("./node_modules/@angular/material/esm5/sidenav.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__angular_material_toolbar__ = __webpack_require__("./node_modules/@angular/material/esm5/toolbar.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__angular_material_list__ = __webpack_require__("./node_modules/@angular/material/esm5/list.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__angular_material_button__ = __webpack_require__("./node_modules/@angular/material/esm5/button.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__angular_material_icon__ = __webpack_require__("./node_modules/@angular/material/esm5/icon.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__angular_material_card__ = __webpack_require__("./node_modules/@angular/material/esm5/card.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__angular_material_form_field__ = __webpack_require__("./node_modules/@angular/material/esm5/form-field.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__angular_material_input__ = __webpack_require__("./node_modules/@angular/material/esm5/input.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_service_worker__ = __webpack_require__("./node_modules/@angular/service-worker/esm5/service-worker.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__("./src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__add_pet_add_pet_component__ = __webpack_require__("./src/app/add-pet/add-pet.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__add_pfisica_add_pfisica_component__ = __webpack_require__("./src/app/add-pfisica/add-pfisica.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__add_pjuridica_add_pjuridica_component__ = __webpack_require__("./src/app/add-pjuridica/add-pjuridica.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__chat_chat_component__ = __webpack_require__("./src/app/chat/chat.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__favoritos_favoritos_component__ = __webpack_require__("./src/app/favoritos/favoritos.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__home_home_component__ = __webpack_require__("./src/app/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__login_login_component__ = __webpack_require__("./src/app/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__meus_pets_meus_pets_component__ = __webpack_require__("./src/app/meus-pets/meus-pets.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pesquisar_pesquisar_component__ = __webpack_require__("./src/app/pesquisar/pesquisar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pet_info_pet_info_component__ = __webpack_require__("./src/app/pet-info/pet-info.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__angular_material_sidenav__ = __webpack_require__("./node_modules/@angular/material/esm5/sidenav.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__angular_material_toolbar__ = __webpack_require__("./node_modules/@angular/material/esm5/toolbar.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__angular_material_list__ = __webpack_require__("./node_modules/@angular/material/esm5/list.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__angular_material_button__ = __webpack_require__("./node_modules/@angular/material/esm5/button.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__angular_material_icon__ = __webpack_require__("./node_modules/@angular/material/esm5/icon.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__angular_material_card__ = __webpack_require__("./node_modules/@angular/material/esm5/card.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__angular_material_form_field__ = __webpack_require__("./node_modules/@angular/material/esm5/form-field.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__angular_material_input__ = __webpack_require__("./node_modules/@angular/material/esm5/input.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -361,39 +363,42 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["J" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_5__add_pet_add_pet_component__["a" /* AddPetComponent */],
-                __WEBPACK_IMPORTED_MODULE_6__add_pfisica_add_pfisica_component__["a" /* AddPfisicaComponent */],
-                __WEBPACK_IMPORTED_MODULE_7__add_pjuridica_add_pjuridica_component__["a" /* AddPjuridicaComponent */],
-                __WEBPACK_IMPORTED_MODULE_8__chat_chat_component__["a" /* ChatComponent */],
-                __WEBPACK_IMPORTED_MODULE_9__favoritos_favoritos_component__["a" /* FavoritosComponent */],
-                __WEBPACK_IMPORTED_MODULE_10__home_home_component__["a" /* HomeComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__login_login_component__["a" /* LoginComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__meus_pets_meus_pets_component__["a" /* MeusPetsComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__pesquisar_pesquisar_component__["a" /* PesquisarComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__pet_info_pet_info_component__["a" /* PetInfoComponent */],
+                __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_7__add_pet_add_pet_component__["a" /* AddPetComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__add_pfisica_add_pfisica_component__["a" /* AddPfisicaComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__add_pjuridica_add_pjuridica_component__["a" /* AddPjuridicaComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__chat_chat_component__["a" /* ChatComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__favoritos_favoritos_component__["a" /* FavoritosComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__home_home_component__["a" /* HomeComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__login_login_component__["a" /* LoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__meus_pets_meus_pets_component__["a" /* MeusPetsComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__pesquisar_pesquisar_component__["a" /* PesquisarComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__pet_info_pet_info_component__["a" /* PetInfoComponent */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_3__app_routing_module__["a" /* AppRoutingModule */],
-                __WEBPACK_IMPORTED_MODULE_15__angular_material_sidenav__["a" /* MatSidenavModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material_toolbar__["a" /* MatToolbarModule */],
-                __WEBPACK_IMPORTED_MODULE_19__angular_material_icon__["a" /* MatIconModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material_button__["a" /* MatButtonModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material_list__["a" /* MatListModule */],
-                __WEBPACK_IMPORTED_MODULE_20__angular_material_card__["a" /* MatCardModule */],
-                __WEBPACK_IMPORTED_MODULE_21__angular_material_form_field__["b" /* MatFormFieldModule */],
-                __WEBPACK_IMPORTED_MODULE_22__angular_material_input__["a" /* MatInputModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material_sidenav__["a" /* MatSidenavModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material_toolbar__["a" /* MatToolbarModule */],
+                __WEBPACK_IMPORTED_MODULE_21__angular_material_icon__["a" /* MatIconModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material_button__["a" /* MatButtonModule */],
+                __WEBPACK_IMPORTED_MODULE_19__angular_material_list__["a" /* MatListModule */],
+                __WEBPACK_IMPORTED_MODULE_22__angular_material_card__["a" /* MatCardModule */],
+                __WEBPACK_IMPORTED_MODULE_23__angular_material_form_field__["b" /* MatFormFieldModule */],
+                __WEBPACK_IMPORTED_MODULE_24__angular_material_input__["a" /* MatInputModule */],
+                __WEBPACK_IMPORTED_MODULE_4__angular_service_worker__["a" /* ServiceWorkerModule */].register('/ngsw-worker.js', { enabled: __WEBPACK_IMPORTED_MODULE_5__environments_environment__["a" /* environment */].production })
             ],
             providers: [],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;

@@ -7,6 +7,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+
 import { AppComponent } from './app.component';
 import { AddPetComponent } from './add-pet/add-pet.component';
 import { AddPfisicaComponent } from './add-pfisica/add-pfisica.component';
@@ -57,6 +60,7 @@ import { MatTableModule } from '@angular/material/table';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [],
   bootstrap: [AppComponent]

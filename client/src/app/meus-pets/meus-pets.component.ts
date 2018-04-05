@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-meus-pets',
@@ -8,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
 export class MeusPetsComponent implements OnInit {
 
   meusPets: Array<any>;
-
 
   constructor() { }
 

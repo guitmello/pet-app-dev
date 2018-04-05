@@ -23,6 +23,7 @@ html,body{
 
 .container-fluid{
   padding-top: 70px;
+  margin-bottom: 70px;
 }
 
 .mat-card{
@@ -51,5 +52,10 @@ html,body{
 
 .pull-right{
   float: right;
+}
+
+.mat-button.cdk-focused.cdk-touch-focused{
+  background: rgba(245, 245, 245, .1) !important;
+  color: #753bab;
 }
 

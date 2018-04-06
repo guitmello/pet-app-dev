@@ -204,6 +204,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var routes = [
     {
+        path: '', pathMatch: 'full', redirectTo: 'home'
+    },
+    {
+        path: '**', pathMatch: 'full', redirectTo: 'home'
+    },
+    {
         path: 'login',
         component: __WEBPACK_IMPORTED_MODULE_2__login_login_component__["a" /* LoginComponent */]
     },

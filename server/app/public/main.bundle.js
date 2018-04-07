@@ -20,14 +20,14 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /***/ "./src/app/add-pet/add-pet.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".checkbox-align {\r\n  padding: .1375em 0 !important;\r\n  border-top: .84375em solid transparent !important;\r\n}\r\n"
 
 /***/ }),
 
 /***/ "./src/app/add-pet/add-pet.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <mat-card>\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n\r\n        <h1 class=\"title\">Cadastrar Pet</h1>\r\n\r\n    </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Cadastrar Pet</h1>\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card>\r\n\r\n    <form>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"Nome\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select placeholder=\"Sexo\" required>\r\n              <mat-option *ngFor=\"let sexos of sexo\" [value]=\"sexos.value\">\r\n                {{ sexos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select placeholder=\"Espécie\" required>\r\n              <mat-option *ngFor=\"let especies of especie\" [value]=\"especies.value\">\r\n                {{ especies.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select placeholder=\"Raça\" required>\r\n              <mat-option *ngFor=\"let racas of raca\" [value]=\"racas.value\">\r\n                {{ racas.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"Idade\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"Tamanho\" required>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"Cor\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6\">\r\n          <div class=\"checkbox-align\">\r\n            <mat-checkbox color=\"primary\">Deficiência</mat-checkbox>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"Qual?\">\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-12\">\r\n        <div class=\"row justify-content-center\">\r\n          <h2 class=\"sub-title\">Foto do Pet</h2>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6 button-row\" align=\"center\">\r\n          <button mat-raised-button class=\"content-center\" type=\"submit\" color=\"primary\" class=\"w-75\">Upload</button>\r\n        </div>\r\n        <div class=\"col-6 button-row\" align=\"center\">\r\n          <button mat-raised-button class=\"content-center\" type=\"submit\" color=\"primary\" class=\"w-50\">Tirar uma Foto</button>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-12\">\r\n        <div class=\"button-submit-row row justify-content-center\">\r\n          <button mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\">Confirmar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -51,6 +51,23 @@ var AddPetComponent = /** @class */ (function () {
     function AddPetComponent() {
     }
     AddPetComponent.prototype.ngOnInit = function () {
+        this.sexo = [
+            { value: 'Masculino', viewValue: 'Masculino' },
+            { value: 'Feminino', viewValue: 'Feminino' }
+        ];
+        this.especie = [
+            { value: 'Espécie 1', viewValue: 'Espécie 1' },
+            { value: 'Espécie 2', viewValue: 'Espécie 2' },
+            { value: 'Espécie 3', viewValue: 'Espécie 3' },
+            { value: 'Espécie 4', viewValue: 'Espécie 4' },
+            { value: 'Espécie 5', viewValue: 'Espécie 5' }
+        ];
+        this.raca = [
+            { value: 'Raça 1', viewValue: 'Raça 1' },
+            { value: 'Raça 2', viewValue: 'Raça 2' },
+            { value: 'Raça 3', viewValue: 'Raça 3' },
+            { value: 'Raça 4', viewValue: 'Raça 4' }
+        ];
     };
     AddPetComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -207,9 +224,6 @@ var routes = [
         path: '', pathMatch: 'full', redirectTo: 'home'
     },
     {
-        path: '**', pathMatch: 'full', redirectTo: 'home'
-    },
-    {
         path: 'login',
         component: __WEBPACK_IMPORTED_MODULE_2__login_login_component__["a" /* LoginComponent */]
     },
@@ -255,8 +269,8 @@ var AppRoutingModule = /** @class */ (function () {
     }
     AppRoutingModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
-            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forRoot(routes)],
-            exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */]]
+            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* RouterModule */].forRoot(routes)],
+            exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* RouterModule */]]
         })
     ], AppRoutingModule);
     return AppRoutingModule;
@@ -340,12 +354,16 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__angular_material_card__ = __webpack_require__("./node_modules/@angular/material/esm5/card.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__angular_material_form_field__ = __webpack_require__("./node_modules/@angular/material/esm5/form-field.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__angular_material_input__ = __webpack_require__("./node_modules/@angular/material/esm5/input.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__angular_material_checkbox__ = __webpack_require__("./node_modules/@angular/material/esm5/checkbox.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__angular_material_select__ = __webpack_require__("./node_modules/@angular/material/esm5/select.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -399,8 +417,10 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_20__angular_material_button__["a" /* MatButtonModule */],
                 __WEBPACK_IMPORTED_MODULE_19__angular_material_list__["a" /* MatListModule */],
                 __WEBPACK_IMPORTED_MODULE_22__angular_material_card__["a" /* MatCardModule */],
-                __WEBPACK_IMPORTED_MODULE_23__angular_material_form_field__["b" /* MatFormFieldModule */],
+                __WEBPACK_IMPORTED_MODULE_23__angular_material_form_field__["c" /* MatFormFieldModule */],
                 __WEBPACK_IMPORTED_MODULE_24__angular_material_input__["a" /* MatInputModule */],
+                __WEBPACK_IMPORTED_MODULE_26__angular_material_select__["a" /* MatSelectModule */],
+                __WEBPACK_IMPORTED_MODULE_25__angular_material_checkbox__["a" /* MatCheckboxModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_service_worker__["a" /* ServiceWorkerModule */].register('/ngsw-worker.js', { enabled: __WEBPACK_IMPORTED_MODULE_5__environments_environment__["a" /* environment */].production })
             ],
             providers: [],
@@ -467,14 +487,14 @@ var ChatComponent = /** @class */ (function () {
 /***/ "./src/app/favoritos/favoritos.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "#home .mat-card{\r\n    padding: 0px !important;\r\n}\r\n\r\n.card-content{\r\n    position: absolute;\r\n    left: 50%;\r\n    padding: 10px 10px;\r\n    width: 50%;\r\n}\r\n\r\n.card-content  li{\r\n    padding: 5px 0px;\r\n}\r\n\r\n.card-content ul{\r\n    list-style: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n}\r\n\r\n.img-animals{\r\n    width: 50%;\r\n    height: 100%; \r\n}\r\n\r\n.content-date{\r\n    position: absolute;\r\n    left: 53%;\r\n    top: 87%;\r\n}\r\n\r\n.heart{\r\n    position: absolute;\r\n    left: 94%;\r\n    top: 87%;\r\n}\r\n\r\n.fa-heart{\r\n    color:#753BAB;\r\n}"
 
 /***/ }),
 
 /***/ "./src/app/favoritos/favoritos.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <mat-card>\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n\r\n        <h1 class=\"title\">Favoritos</h1>\r\n\r\n    </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div id=\"home\" class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Pets Favoritos</h1>\r\n\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card *ngFor=\"let favoritePet of listOfFavoritePets\" (click)=\"moreInfo(favoritePet.id)\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-2\">\r\n        <img src=\"../../assets/images/ft-pet.jpg\" alt=\"\" class=\"img-animals\">\r\n      </div>\r\n      <div class=\"col-md-2 card-content\">\r\n        <ul>\r\n          <li class=\"font-bold\">{{favoritePet.title}}</li>\r\n          <li>{{favoritePet.breed}}</li>\r\n          <li>{{favoritePet.city}} - {{favoritePet.state}}</li>\r\n          <li>{{favoritePet.street}}</li>\r\n        </ul>\r\n      </div>\r\n      <label class=\"content-date\">{{favoritePet.date}}</label>\r\n      <div class=\"heart\">\r\n        <i class=\"fas fa-heart\"></i>\r\n      </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -484,6 +504,7 @@ module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <mat-card
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FavoritosComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -494,10 +515,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var FavoritosComponent = /** @class */ (function () {
-    function FavoritosComponent() {
+    function FavoritosComponent(router) {
+        this.router = router;
     }
     FavoritosComponent.prototype.ngOnInit = function () {
+        this.getFavoritePets();
+    };
+    FavoritosComponent.prototype.moreInfo = function (id) {
+        this.router.navigate(["pet-info"]);
+    };
+    FavoritosComponent.prototype.getFavoritePets = function () {
+        this.listOfFavoritePets = [
+            { id: 7, name: 'DogGuilherme5', city: 'São Vicente', state: 'SP', street: 'Rua Esquina 3', breed: 'Poodle ', date: '02/01/2017', title: 'Cão feio6' },
+        ];
     };
     FavoritosComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -505,7 +537,7 @@ var FavoritosComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/favoritos/favoritos.component.html"),
             styles: [__webpack_require__("./src/app/favoritos/favoritos.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]])
     ], FavoritosComponent);
     return FavoritosComponent;
 }());
@@ -517,14 +549,14 @@ var FavoritosComponent = /** @class */ (function () {
 /***/ "./src/app/home/home.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "#home .mat-card{\r\n    padding: 0px !important;\r\n}\r\n\r\n>>>.card-content{\r\n    position: absolute;\r\n    left: 50%;\r\n    padding: 10px 10px;\r\n    width: 50%;\r\n}\r\n\r\n>>>.card-content  li{\r\n    padding: 5px 0px;\r\n}\r\n\r\n.card-content ul{\r\n    list-style: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n}\r\n\r\n.img-animals{\r\n    width: 50%;\r\n    height: 100%; \r\n}\r\n\r\n.content-date{\r\n    position: absolute;\r\n    left: 53%;\r\n    top: 87%;\r\n}\r\n\r\n.heart{\r\n    position: absolute;\r\n    left: 94%;\r\n    top: 87%;\r\n}"
+module.exports = "#home .mat-card{\r\n    padding: 0px !important;\r\n}\r\n\r\n.card-content{\r\n    position: absolute;\r\n    left: 50%;\r\n    padding: 10px 10px;\r\n    width: 50%;\r\n}\r\n\r\n.card-content  li{\r\n    padding: 5px 0px;\r\n}\r\n\r\n.card-content ul{\r\n    list-style: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n}\r\n\r\n.img-animals{\r\n    width: 50%;\r\n    height: 100%; \r\n}\r\n\r\n.content-date{\r\n    position: absolute;\r\n    left: 53%;\r\n    top: 87%;\r\n}\r\n\r\n.heart{\r\n    position: absolute;\r\n    left: 94%;\r\n    top: 87%;\r\n}"
 
 /***/ }),
 
 /***/ "./src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"home\" class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Animais Cadastrados Recentemente Perto de Você</h1>\r\n\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card *ngFor=\"let shoe of typesOfShoes\" (click)=\"teste(shoe.id)\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-2\">\r\n        <img src=\"../../assets/images/ft-pet.jpg\" alt=\"\" class=\"img-animals\">\r\n      </div>\r\n      <div class=\"col-md-2 card-content\">\r\n        <ul>\r\n          <li class=\"font-bold\">{{shoe.title}}</li>\r\n          <li>{{shoe.breed}}</li>\r\n          <li>{{shoe.city}} - {{shoe.state}}</li>\r\n          <li>{{shoe.street}}</li>\r\n        </ul>\r\n      </div>\r\n      <label class=\"content-date\">{{shoe.date}}</label>\r\n      <div class=\"heart\">\r\n        <i class=\"fas fa-heart\"></i>\r\n      </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div id=\"home\" class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Pets Cadastrados Recentemente Perto de Você</h1>\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card *ngFor=\"let pet of listOfPets\" (click)=\"moreInfo(pet.id)\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-2\">\r\n        <img src=\"../../assets/images/ft-pet.jpg\" alt=\"\" class=\"img-animals\">\r\n      </div>\r\n      <div class=\"col-md-2 card-content\">\r\n        <ul>\r\n          <li class=\"font-bold\">{{pet.title}}</li>\r\n          <li>{{pet.breed}}</li>\r\n          <li>{{pet.city}} - {{pet.state}}</li>\r\n          <li>{{pet.street}}</li>\r\n        </ul>\r\n      </div>\r\n      <label class=\"content-date\">{{pet.date}}</label>\r\n      <div class=\"heart\">\r\n        <i class=\"fas fa-heart\"></i>\r\n      </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -534,6 +566,7 @@ module.exports = "<div id=\"home\" class=\"container-fluid animated fadeIn\">\r\
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -544,17 +577,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var HomeComponent = /** @class */ (function () {
-    function HomeComponent() {
+    function HomeComponent(router) {
+        this.router = router;
     }
     HomeComponent.prototype.ngOnInit = function () {
-        this.getAnimals();
+        this.getPets();
     };
-    HomeComponent.prototype.teste = function (id) {
-        alert(id);
+    HomeComponent.prototype.moreInfo = function (id) {
+        this.router.navigate(["pet-info"]);
     };
-    HomeComponent.prototype.getAnimals = function () {
-        this.typesOfShoes = [
+    HomeComponent.prototype.getPets = function () {
+        this.listOfPets = [
             { id: 1, name: 'DogMau', city: 'São Vicente', state: 'SP', street: 'rua esquian8', breed: 'Vira Lata', date: '28/08/2017', title: 'Cão feio' },
             { id: 2, name: 'DogGuilherme', city: 'Praia Grande', state: 'SP', street: 'rua esquia7n', breed: 'Gay', date: '21/03/2017', title: 'Cão feio2' },
             { id: 3, name: 'DogArturLoko', city: 'Vicente de Caralho', state: 'SP', street: 'rua esquian6', breed: 'Homossexual', date: '18/08/2017', title: 'Cão feio1' },
@@ -570,7 +605,7 @@ var HomeComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/home/home.component.html"),
             styles: [__webpack_require__("./src/app/home/home.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]])
     ], HomeComponent);
     return HomeComponent;
 }());
@@ -589,7 +624,7 @@ module.exports = "html, body{\r\n  background: #753bab !important;\r\n}\r\n"
 /***/ "./src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid bg-login animated fadeIn\">\n  <mat-card>\n\n    <div class=\"col-md-12\">\n      <form>\n\n        <div class=\"row justify-content-center\">\n          <div class=\"col-md-12\">\n            <mat-form-field>\n              <input matInput placeholder=\"Email\" required>\n              <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n            </mat-form-field>\n          </div>\n\n          <div class=\"col-md-12\">\n            <mat-form-field>\n              <input matInput placeholder=\"Senha\" [type]=\"hide ? 'password' : 'text'\">\n              <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n            </mat-form-field>\n          </div>\n        </div>\n\n        <div class=\"col-md-12\">\n          <div class=\"button-row row justify-content-center\">\n            <button mat-raised-button type=\"submit\" color=\"primary\">Confirmar</button>\n          </div>\n        </div>\n\n      </form>\n\n    </div>\n  </mat-card>\n</div>\n"
+module.exports = "<div class=\"container-fluid bg-login animated fadeIn\">\n  <mat-card>\n\n      <form>\n\n        <div class=\"row justify-content-center\">\n          <div class=\"col-12\">\n            <mat-form-field>\n              <input matInput placeholder=\"Email\" required>\n              <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n            </mat-form-field>\n          </div>\n\n          <div class=\"col-12\">\n            <mat-form-field>\n              <input matInput placeholder=\"Senha\" [type]=\"hide ? 'password' : 'text'\">\n              <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n            </mat-form-field>\n          </div>\n        </div>\n\n        <div class=\"col-12\">\n          <div class=\"button-row row justify-content-center\">\n            <button mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\">Confirmar</button>\n          </div>\n          <div class=\"button-row row justify-content-center\">\n              <button mat-raised-button color=\"primary\" class=\"w-50\">Cadastre-se</button>\n            </div>\n        </div>\n\n      </form>\n\n  </mat-card>\n</div>\n"
 
 /***/ }),
 
@@ -614,7 +649,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var LoginComponent = /** @class */ (function () {
     function LoginComponent() {
         this.hide = true;
-        this.email = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].email]);
+        this.email = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].email]);
     }
     LoginComponent.prototype.getErrorMessage = function () {
         return this.email.hasError('required') ? 'Você deve preencher seu email' :
@@ -758,14 +793,14 @@ var PesquisarComponent = /** @class */ (function () {
 /***/ "./src/app/pet-info/pet-info.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "#home .mat-card{\r\n    height: 600px;\r\n}\r\n\r\n.card-content{\r\n    position: absolute;\r\n    left: 5%;\r\n    top: 38%;\r\n    padding: 10px 10px;\r\n    width: 50%;\r\n}\r\n\r\n.card-content  li{\r\n    padding: 2px 0px;\r\n}\r\n\r\n.card-content ul{\r\n    list-style: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n}\r\n\r\n.card-content2{\r\n    position: absolute;\r\n    left: 55%;\r\n    top: 38%;\r\n    padding: 10px 10px;\r\n    width: 30%;\r\n}\r\n\r\n.card-content2  li{\r\n    padding: 2px 0px;\r\n}\r\n\r\n.card-content2 ul{\r\n    list-style: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n}\r\n\r\n.img-animals{\r\n    margin: 5% 25%;\r\n    width: 50%;\r\n    height: 100%; \r\n}\r\n\r\n.content-date{\r\n    position: absolute;\r\n    left: 53%;\r\n    top: 87%;\r\n}\r\n\r\n.heart{\r\n    position: absolute;\r\n    left: 94%;\r\n    top: 87%;\r\n}\r\n\r\n.space-top{\r\n    margin-top: 10px;\r\n}"
 
 /***/ }),
 
 /***/ "./src/app/pet-info/pet-info.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\r\n  <mat-card>\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Informações do Pet</h1>\r\n\r\n    </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div id=\"home\" class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Mais Informações do Pet - {{pet.name}}</h1>\r\n\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card (click)=\"teste(shoe.id)\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-2 text-center font-bold\"><label>{{pet.title}}</label></div>\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"col-md-2\">\r\n        <img src=\"../../assets/images/ft-pet.jpg\" alt=\"\" class=\"img-animals\">\r\n      </div>\r\n      <div class=\"col-md-2 card-content\">\r\n        <ul>\r\n          <li class=\"font-bold\">Nome</li>\r\n          <li>{{pet.name}}</li>\r\n          <li class=\"font-bold space-top\">Espécie</li>\r\n          <li>{{pet.species}}</li>\r\n          <li class=\"font-bold space-top\">Sexo</li>\r\n          <li>{{pet.genre}}</li>\r\n          <li class=\"font-bold space-top\">Cor</li>\r\n          <li>{{pet.color}}</li>\r\n          <li class=\"font-bold space-top\">Tamanho</li>\r\n          <li>{{pet.size}}</li>\r\n          <li class=\"font-bold space-top\">Endereço</li>\r\n          <li>{{pet.city}} - {{pet.state}}</li>\r\n          <li>{{pet.street}}</li>\r\n          <li class=\"font-bold space-top\">Cadastrado por:</li>\r\n          <li><a href=\"#\">ONG MyPet</a></li>\r\n        </ul>\r\n\r\n      </div>\r\n      <div class=\"col-md-2 card-content2\">\r\n        <ul>\r\n            <li class=\"font-bold\">Idade</li>\r\n            <li>{{pet.name}}</li>\r\n            <li class=\"font-bold space-top\">Raça</li>\r\n          <li>{{pet.breed}}</li>\r\n        </ul>\r\n\r\n      </div>\r\n      <!-- <label class=\"content-date\">{{shoe.date}}</label> -->\r\n      <!-- <div class=\"heart\">\r\n        <i class=\"fas fa-heart\"></i>\r\n      </div> -->\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -789,6 +824,20 @@ var PetInfoComponent = /** @class */ (function () {
     function PetInfoComponent() {
     }
     PetInfoComponent.prototype.ngOnInit = function () {
+        this.pet = {
+            'id': '7',
+            'name': 'DogGuilherme5',
+            'age': '2',
+            'breed': 'Poodle',
+            'species': 'Cachorro',
+            'genre': 'Macho',
+            'color': 'Mesclado',
+            'size': 'Pequeno',
+            'city': 'São Vicente',
+            'state': 'SP',
+            'street': 'Rua Esquina 3',
+            'title': 'Cão feio'
+        };
     };
     PetInfoComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({

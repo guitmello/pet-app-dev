@@ -2,14 +2,14 @@
     padding: 0px !important;
 }
 
->>>.card-content{
+.card-content{
     position: absolute;
     left: 50%;
     padding: 10px 10px;
     width: 50%;
 }
 
->>>.card-content  li{
+.card-content  li{
     padding: 5px 0px;
 }
 

@@ -1,0 +1,41 @@
+#home .mat-card{
+    padding: 0px !important;
+}
+
+.card-content{
+    position: absolute;
+    left: 50%;
+    padding: 10px 10px;
+    width: 50%;
+}
+
+.card-content  li{
+    padding: 5px 0px;
+}
+
+.card-content ul{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.img-animals{
+    width: 50%;
+    height: 100%; 
+}
+
+.content-date{
+    position: absolute;
+    left: 53%;
+    top: 87%;
+}
+
+.heart{
+    position: absolute;
+    left: 94%;
+    top: 87%;
+}
+
+.fa-heart{
+    color:#753BAB;
+}

@@ -1,12 +1,29 @@
-<div class="container-fluid animated fadeIn">
-  <mat-card>
+<div id="home" class="container-fluid animated fadeIn">
+  <div class="col-md-12">
+    <div class="row justify-content-center">
 
-    <div class="col-md-12">
-      <div class="row justify-content-center">
+      <h1 class="title">Meus Pets Favoritos</h1>
 
-        <h1 class="title">Favoritos</h1>
 
     </div>
+  </div>
+  <mat-card *ngFor="let favoritePet of listOfFavoritePets" (click)="teste(favoritePet.id)">
+    <div class="row">
+      <div class="col-md-2">
+        <img src="../../assets/images/ft-pet.jpg" alt="" class="img-animals">
+      </div>
+      <div class="col-md-2 card-content">
+        <ul>
+          <li class="font-bold">{{favoritePet.title}}</li>
+          <li>{{favoritePet.breed}}</li>
+          <li>{{favoritePet.city}} - {{favoritePet.state}}</li>
+          <li>{{favoritePet.street}}</li>
+        </ul>
+      </div>
+      <label class="content-date">{{favoritePet.date}}</label>
+      <div class="heart">
+        <i class="fas fa-heart"></i>
+      </div>
     </div>
   </mat-card>
 </div>

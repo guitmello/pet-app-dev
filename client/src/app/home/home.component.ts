@@ -7,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  typesOfShoes: Array<any>;
+  listOfPets: Array<any>;
 
   constructor() { }
 
   ngOnInit() {
-    this.getAnimals();
+    this.getPets();
   }
 
 
@@ -20,8 +20,8 @@ export class HomeComponent implements OnInit {
     alert(id);
   }
 
-  getAnimals(){
-    this.typesOfShoes = [
+  getPets(){
+    this.listOfPets = [
       {id: 1, name: 'DogMau', city: 'São Vicente', state: 'SP', street: 'rua esquian8', breed: 'Vira Lata', date: '28/08/2017', title: 'Cão feio'},
       {id: 2, name: 'DogGuilherme', city: 'Praia Grande', state: 'SP', street: 'rua esquia7n', breed: 'Gay', date: '21/03/2017', title: 'Cão feio2'},
       {id: 3, name: 'DogArturLoko', city: 'Vicente de Caralho', state: 'SP', street: 'rua esquian6', breed: 'Homossexual', date: '18/08/2017', title: 'Cão feio1'},

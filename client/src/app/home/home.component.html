@@ -2,25 +2,25 @@
   <div class="col-md-12">
     <div class="row justify-content-center">
 
-      <h1 class="title">Animais Cadastrados Recentemente Perto de Você</h1>
+      <h1 class="title">Pets Cadastrados Recentemente Perto de Você</h1>
 
 
     </div>
   </div>
-  <mat-card *ngFor="let shoe of typesOfShoes" (click)="teste(shoe.id)">
+  <mat-card *ngFor="let pet of listOfPets" (click)="teste(pet.id)">
     <div class="row">
       <div class="col-md-2">
         <img src="../../assets/images/ft-pet.jpg" alt="" class="img-animals">
       </div>
       <div class="col-md-2 card-content">
         <ul>
-          <li class="font-bold">{{shoe.title}}</li>
-          <li>{{shoe.breed}}</li>
-          <li>{{shoe.city}} - {{shoe.state}}</li>
-          <li>{{shoe.street}}</li>
+          <li class="font-bold">{{pet.title}}</li>
+          <li>{{pet.breed}}</li>
+          <li>{{pet.city}} - {{pet.state}}</li>
+          <li>{{pet.street}}</li>
         </ul>
       </div>
-      <label class="content-date">{{shoe.date}}</label>
+      <label class="content-date">{{pet.date}}</label>
       <div class="heart">
         <i class="fas fa-heart"></i>
       </div>

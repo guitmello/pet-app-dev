@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoritosComponent implements OnInit {
 
-  constructor() { }
+  listOfFavoritePets: Array<any>;
+  constructor() {}
 
   ngOnInit() {
+    this.getFavoritePets();
+  }
+
+  teste(id: string){
+    alert(id);
+  }
+
+  getFavoritePets(){
+    this.listOfFavoritePets = [
+      {id: 7, name: 'DogGuilherme5', city: 'teu cu', state: 'SP', street: 'rua esquian3', breed: 'Poodle ', date: '02/01/2017', title: 'Cão feio6'},
+    ];
   }
 
 }

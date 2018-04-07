@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,15 +10,17 @@ export class HomeComponent implements OnInit {
 
   listOfPets: Array<any>;
 
-  constructor() { }
+  constructor(
+    public router: Router
+  ) { }
 
   ngOnInit() {
     this.getPets();
   }
 
 
-  teste(id: string){
-    alert(id);
+  moreInfo(id: string){
+    this.router.navigate([`pet-info`]);
   }
 
   getPets(){

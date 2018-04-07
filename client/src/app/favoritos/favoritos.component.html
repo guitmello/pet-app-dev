@@ -2,12 +2,12 @@
   <div class="col-md-12">
     <div class="row justify-content-center">
 
-      <h1 class="title">Meus Pets Favoritos</h1>
+      <h1 class="title">Pets Favoritos</h1>
 
 
     </div>
   </div>
-  <mat-card *ngFor="let favoritePet of listOfFavoritePets" (click)="teste(favoritePet.id)">
+  <mat-card *ngFor="let favoritePet of listOfFavoritePets" (click)="moreInfo(favoritePet.id)">
     <div class="row">
       <div class="col-md-2">
         <img src="../../assets/images/ft-pet.jpg" alt="" class="img-animals">

@@ -1,18 +1,17 @@
 <div class="container-fluid bg-login animated fadeIn">
   <mat-card>
 
-    <div class="col-md-12">
       <form>
 
         <div class="row justify-content-center">
-          <div class="col-md-12">
+          <div class="col-12">
             <mat-form-field>
               <input matInput placeholder="Email" required>
               <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
           </div>
 
-          <div class="col-md-12">
+          <div class="col-12">
             <mat-form-field>
               <input matInput placeholder="Senha" [type]="hide ? 'password' : 'text'">
               <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
@@ -20,14 +19,16 @@
           </div>
         </div>
 
-        <div class="col-md-12">
+        <div class="col-12">
           <div class="button-row row justify-content-center">
-            <button mat-raised-button type="submit" color="primary">Confirmar</button>
+            <button mat-raised-button type="submit" color="primary" class="w-50">Confirmar</button>
           </div>
+          <div class="button-row row justify-content-center">
+              <button mat-raised-button color="primary" class="w-50">Cadastre-se</button>
+            </div>
         </div>
 
       </form>
 
-    </div>
   </mat-card>
 </div>

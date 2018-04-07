@@ -31,6 +31,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 
 
@@ -60,6 +62,8 @@ import { MatTableModule } from '@angular/material/table';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
+    MatCheckboxModule,
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [],

@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files*/
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import './assets/custom-theme.css';
 
 html,body{
     font-family: 'Roboto', sans-serif;
@@ -31,10 +31,20 @@ html,body{
   margin-bottom: 20px;
 }
 
+.text-center{
+  text-align: center;
+}
+
 .title{
   text-align: center;
   font-size: 18px;
   padding-bottom: 20px;
+  margin: 0px;
+}
+.sub-title{
+  text-align: center;
+  font-size: 16px;
+  padding: 10px;
   margin: 0px;
 }
 
@@ -58,4 +68,36 @@ html,body{
   background: rgba(245, 245, 245, .1) !important;
   color: #753bab;
 }
+
+.col-12 .mat-form-field{
+  min-width: 100%;
+}
+.mat-form-field{
+  max-width: 100%;
+}
+.mat-form-field .mat-icon{
+  color: #753bab;
+}
+
+.button-row{
+  padding: 10px 0px;
+}
+
+.button-submit-row{
+  padding-top: 30px;
+}
+
+.w-25{
+  min-width: 25% !important;
+}
+.w-50{
+  min-width: 50% !important;
+}
+.w-75{
+  min-width: 75% !important;
+}
+.w-100{
+  min-width: 100% !important;
+}
+
 

@@ -23,11 +23,11 @@ export class PetInfoComponent implements OnInit {
   };
 
   constructor() { }
-  
+
   ngOnInit() {
     this.pet = {
       'id': '7',
-      'name': 'DogGuilherme5',
+      'name': 'Cão Amigo Chocolate',
       'age': '2',
       'breed': 'Poodle',
       'species': 'Cachorro',

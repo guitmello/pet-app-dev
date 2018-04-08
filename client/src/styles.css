@@ -65,8 +65,7 @@ html,body{
 }
 
 .mat-button.cdk-focused.cdk-touch-focused{
-  background: rgba(245, 245, 245, .1) !important;
-  color: #753bab;
+  color: #755DCA;
 }
 
 .col-12 .mat-form-field{
@@ -76,7 +75,7 @@ html,body{
   max-width: 100%;
 }
 .mat-form-field .mat-icon{
-  color: #753bab;
+  color: #333333;
 }
 
 .button-row{
@@ -99,5 +98,4 @@ html,body{
 .w-100{
   min-width: 100% !important;
 }
-
 

@@ -487,7 +487,7 @@ var ChatComponent = /** @class */ (function () {
 /***/ "./src/app/favoritos/favoritos.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "#home .mat-card{\r\n    padding: 0px !important;\r\n}\r\n\r\n.card-content{\r\n    position: absolute;\r\n    left: 50%;\r\n    padding: 10px 10px;\r\n    width: 50%;\r\n}\r\n\r\n.card-content  li{\r\n    padding: 5px 0px;\r\n}\r\n\r\n.card-content ul{\r\n    list-style: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n}\r\n\r\n.img-animals{\r\n    width: 50%;\r\n    height: 100%; \r\n}\r\n\r\n.content-date{\r\n    position: absolute;\r\n    left: 53%;\r\n    top: 87%;\r\n}\r\n\r\n.heart{\r\n    position: absolute;\r\n    left: 94%;\r\n    top: 87%;\r\n}\r\n\r\n.fa-heart{\r\n    color:#753BAB;\r\n}"
+module.exports = "#home .mat-card{\r\n    padding: 0px !important;\r\n}\r\n\r\n.card-content{\r\n    position: absolute;\r\n    left: 50%;\r\n    padding: 10px 10px;\r\n    width: 50%;\r\n}\r\n\r\n.card-content  li{\r\n    padding: 5px 0px;\r\n}\r\n\r\n.card-content ul{\r\n    list-style: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n}\r\n\r\n.img-animals{\r\n    width: 50%;\r\n    height: 100%; \r\n}\r\n\r\n.content-date{\r\n    position: absolute;\r\n    left: 53%;\r\n    top: 87%;\r\n}\r\n\r\n.heart{\r\n    position: absolute;\r\n    left: 94%;\r\n    top: 87%;\r\n}\r\n\r\n.fa-heart{\r\n    color:#755DCA;\r\n}"
 
 /***/ }),
 
@@ -556,7 +556,7 @@ module.exports = "#home .mat-card{\r\n    padding: 0px !important;\r\n}\r\n\r\n.
 /***/ "./src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"home\" class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Pets Cadastrados Recentemente Perto de Você</h1>\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card *ngFor=\"let pet of listOfPets\" (click)=\"moreInfo(pet.id)\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-2\">\r\n        <img src=\"../../assets/images/ft-pet.jpg\" alt=\"\" class=\"img-animals\">\r\n      </div>\r\n      <div class=\"col-md-2 card-content\">\r\n        <ul>\r\n          <li class=\"font-bold\">{{pet.title}}</li>\r\n          <li>{{pet.breed}}</li>\r\n          <li>{{pet.city}} - {{pet.state}}</li>\r\n          <li>{{pet.street}}</li>\r\n        </ul>\r\n      </div>\r\n      <label class=\"content-date\">{{pet.date}}</label>\r\n      <div class=\"heart\">\r\n        <i class=\"fas fa-heart\"></i>\r\n      </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div id=\"home\" class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Pets Cadastrados Recentemente Perto de Você</h1>\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card *ngFor=\"let pet of listOfPets\" (click)=\"moreInfo(pet.id)\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-2\">\r\n        <img src=\"../../assets/images/ft-pet.jpg\" alt=\"\" class=\"img-animals\">\r\n      </div>\r\n      <div class=\"col-md-2 card-content\">\r\n        <ul>\r\n          <li class=\"font-bold\">{{pet.title}}</li>\r\n          <li>{{pet.breed}}</li>\r\n          <li>{{pet.street}}</li>\r\n          <li>{{pet.city}} - {{pet.state}}</li>\r\n        </ul>\r\n      </div>\r\n      <label class=\"content-date\">{{pet.date}}</label>\r\n      <div class=\"heart\">\r\n        <i class=\"fas fa-heart\"></i>\r\n      </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -590,13 +590,13 @@ var HomeComponent = /** @class */ (function () {
     };
     HomeComponent.prototype.getPets = function () {
         this.listOfPets = [
-            { id: 1, name: 'DogMau', city: 'São Vicente', state: 'SP', street: 'rua esquian8', breed: 'Vira Lata', date: '28/08/2017', title: 'Cão feio' },
-            { id: 2, name: 'DogGuilherme', city: 'Praia Grande', state: 'SP', street: 'rua esquia7n', breed: 'Gay', date: '21/03/2017', title: 'Cão feio2' },
-            { id: 3, name: 'DogArturLoko', city: 'Vicente de Caralho', state: 'SP', street: 'rua esquian6', breed: 'Homossexual', date: '18/08/2017', title: 'Cão feio1' },
-            { id: 4, name: 'DogFelipHinode', city: 'Santus', state: 'SP', street: 'rua esquian5', breed: 'daAbunda', date: '26/08/2017', title: 'Cão feio3' },
-            { id: 5, name: 'DogGuilherme2', city: 'Long Beach', state: 'SP', street: 'rua esquian4', breed: 'Labrador', date: '29/05/2017', title: 'Cão feio1' },
-            { id: 6, name: 'DogGuilherme3', city: 'Saints', state: 'SP', street: 'rua esquian2', breed: 'Não identificado', date: '15/02/2017', title: 'Cão feio7' },
-            { id: 7, name: 'DogGuilherme5', city: 'teu cu', state: 'SP', street: 'rua esquian3', breed: 'Poodle ', date: '02/01/2017', title: 'Cão feio6' },
+            { id: 1, name: 'DogMau', city: 'São Vicente', state: 'SP', street: 'Rua Araucária', breed: 'Vira Lata', date: '28/08/2017', title: 'Vira Lata Perdido' },
+            { id: 2, name: 'DogGuilherme', city: 'Praia Grande', state: 'SP', street: 'Rua Engenheiro A.', breed: 'Poodle', date: '21/03/2017', title: 'Cachorro Novo' },
+            { id: 3, name: 'DogArturLoko', city: 'São Vicente', state: 'SP', street: 'Avenida Brasil', breed: 'Chow Chow', date: '18/08/2017', title: 'Cão Abandonado' },
+            { id: 4, name: 'DogFelipHinode', city: 'Santos', state: 'SP', street: 'Avenida Paulista', breed: 'Poodle', date: '26/08/2017', title: 'Poodle Abandonado' },
+            { id: 5, name: 'DogMuriloChocolate', city: 'Santos', state: 'SP', street: 'Rua Bensdorp', breed: 'Chow Chow', date: '29/05/2017', title: 'ChowChow Perdido' },
+            { id: 6, name: 'DogAmigoChocolate', city: 'Praia Grande', state: 'SP', street: 'Rua das Flores', breed: 'Não identificado', date: '15/02/2017', title: 'Cão Bebe' },
+            { id: 7, name: 'DogPerdido', city: 'São Vicente', state: 'SP', street: 'Avenida Costa e Silva', breed: 'Poodle ', date: '02/01/2017', title: 'Cachorro' },
         ];
     };
     HomeComponent = __decorate([
@@ -617,7 +617,7 @@ var HomeComponent = /** @class */ (function () {
 /***/ "./src/app/login/login.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "html, body{\r\n  background: #753bab !important;\r\n}\r\n"
+module.exports = "html, body{\r\n  background: #755DCA !important;\r\n}\r\n"
 
 /***/ }),
 
@@ -676,7 +676,7 @@ var LoginComponent = /** @class */ (function () {
 /***/ "./src/app/meus-pets/meus-pets.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "#meus-pets .mat-card{\r\n  padding: 10px 5px !important;\r\n  font-size: 14px;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.meus-pets-list{\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.meus-pets-list li{\r\n  list-style: none;\r\n  padding-right: 5px;\r\n  display: inline-block;\r\n  vertical-align: middle\r\n}\r\n\r\n.meus-pets-list img{\r\n  width: 40px;\r\n}\r\n\r\n.meus-pets-text{\r\n  text-align: center;\r\n}\r\n\r\n.buttons-inline{\r\n  padding: 0px 0px 0px 5px;\r\n}\r\n\r\n.buttons-inline li{\r\n  display: inline-block;\r\n  list-style: none;\r\n  padding: 0px 0px;\r\n}\r\n\r\n.buttons-inline .mat-mini-fab{\r\n  background: #ffffff;\r\n}\r\n\r\n.buttons-inline .mat-mini-fab .edit{\r\n  color: #753bab;\r\n}\r\n\r\n.buttons-inline .mat-mini-fab .remove{\r\n  color: #ff4d4d;\r\n}\r\n\r\n"
+module.exports = "#meus-pets .mat-card{\r\n  padding: 10px 5px !important;\r\n  font-size: 14px;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.meus-pets-list{\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.meus-pets-list li{\r\n  list-style: none;\r\n  padding-right: 5px;\r\n  display: inline-block;\r\n  vertical-align: middle\r\n}\r\n\r\n.meus-pets-list img{\r\n  width: 40px;\r\n}\r\n\r\n.meus-pets-text{\r\n  text-align: center;\r\n}\r\n\r\n.buttons-inline{\r\n  padding: 0px 0px 0px 5px;\r\n}\r\n\r\n.buttons-inline li{\r\n  display: inline-block;\r\n  list-style: none;\r\n  padding: 0px 0px;\r\n}\r\n\r\n.buttons-inline .mat-mini-fab{\r\n  background: #ffffff;\r\n}\r\n\r\n.buttons-inline .mat-mini-fab .edit{\r\n  color: #755DCA;\r\n}\r\n\r\n.buttons-inline .mat-mini-fab .remove{\r\n  color: #ff4d4d;\r\n}\r\n\r\n"
 
 /***/ }),
 
@@ -800,7 +800,7 @@ module.exports = "#home .mat-card{\r\n    height: 600px;\r\n}\r\n\r\n.card-conte
 /***/ "./src/app/pet-info/pet-info.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"home\" class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Mais Informações do Pet - {{pet.name}}</h1>\r\n\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card (click)=\"teste(shoe.id)\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-2 text-center font-bold\"><label>{{pet.title}}</label></div>\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"col-md-2\">\r\n        <img src=\"../../assets/images/ft-pet.jpg\" alt=\"\" class=\"img-animals\">\r\n      </div>\r\n      <div class=\"col-md-2 card-content\">\r\n        <ul>\r\n          <li class=\"font-bold\">Nome</li>\r\n          <li>{{pet.name}}</li>\r\n          <li class=\"font-bold space-top\">Espécie</li>\r\n          <li>{{pet.species}}</li>\r\n          <li class=\"font-bold space-top\">Sexo</li>\r\n          <li>{{pet.genre}}</li>\r\n          <li class=\"font-bold space-top\">Cor</li>\r\n          <li>{{pet.color}}</li>\r\n          <li class=\"font-bold space-top\">Tamanho</li>\r\n          <li>{{pet.size}}</li>\r\n          <li class=\"font-bold space-top\">Endereço</li>\r\n          <li>{{pet.city}} - {{pet.state}}</li>\r\n          <li>{{pet.street}}</li>\r\n          <li class=\"font-bold space-top\">Cadastrado por:</li>\r\n          <li><a href=\"#\">ONG MyPet</a></li>\r\n        </ul>\r\n\r\n      </div>\r\n      <div class=\"col-md-2 card-content2\">\r\n        <ul>\r\n            <li class=\"font-bold\">Idade</li>\r\n            <li>{{pet.name}}</li>\r\n            <li class=\"font-bold space-top\">Raça</li>\r\n          <li>{{pet.breed}}</li>\r\n        </ul>\r\n\r\n      </div>\r\n      <!-- <label class=\"content-date\">{{shoe.date}}</label> -->\r\n      <!-- <div class=\"heart\">\r\n        <i class=\"fas fa-heart\"></i>\r\n      </div> -->\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div id=\"home\" class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Mais Informações do Pet - {{pet.name}}</h1>\r\n\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card (click)=\"teste(shoe.id)\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-2 text-center font-bold\"><label>{{pet.title}}</label></div>\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"col-md-2\">\r\n        <img src=\"../../assets/images/ft-pet.jpg\" alt=\"\" class=\"img-animals\">\r\n      </div>\r\n      <div class=\"col-md-2 card-content\">\r\n        <ul>\r\n          <li class=\"font-bold\">Nome</li>\r\n          <li>{{pet.name}}</li>\r\n          <li class=\"font-bold space-top\">Espécie</li>\r\n          <li>{{pet.species}}</li>\r\n          <li class=\"font-bold space-top\">Sexo</li>\r\n          <li>{{pet.genre}}</li>\r\n          <li class=\"font-bold space-top\">Cor</li>\r\n          <li>{{pet.color}}</li>\r\n          <li class=\"font-bold space-top\">Tamanho</li>\r\n          <li>{{pet.size}}</li>\r\n          <li class=\"font-bold space-top\">Endereço</li>\r\n          <li>{{pet.city}} - {{pet.state}}</li>\r\n          <li>{{pet.street}}</li>\r\n          <li class=\"font-bold space-top\">Cadastrado por:</li>\r\n          <li><a href=\"#\">ONG MyPet</a></li>\r\n        </ul>\r\n\r\n      </div>\r\n      <div class=\"col-md-2 card-content2\">\r\n        <ul>\r\n            <li class=\"font-bold\">Idade</li>\r\n            <li>{{pet.age}}</li>\r\n            <li class=\"font-bold space-top\">Raça</li>\r\n          <li>{{pet.breed}}</li>\r\n        </ul>\r\n\r\n      </div>\r\n      <!-- <label class=\"content-date\">{{shoe.date}}</label> -->\r\n      <!-- <div class=\"heart\">\r\n        <i class=\"fas fa-heart\"></i>\r\n      </div> -->\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -826,7 +826,7 @@ var PetInfoComponent = /** @class */ (function () {
     PetInfoComponent.prototype.ngOnInit = function () {
         this.pet = {
             'id': '7',
-            'name': 'DogGuilherme5',
+            'name': 'Cão Amigo Chocolate',
             'age': '2',
             'breed': 'Poodle',
             'species': 'Cachorro',

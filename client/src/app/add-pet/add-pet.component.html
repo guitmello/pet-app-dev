@@ -91,11 +91,11 @@
       <div class="row">
         <div class="col-6 button-row" align="center">
           <button mat-raised-button class="content-center" type="button" color="primary" class="w-75" (click)="fileInput.click()">Upload</button>
-          <input hidden type="file" accept="image/*" capture="camera" #fileInput />
+          <input hidden type="file" #fileInput />
         </div>
         <div class="col-6 button-row" align="center">
             <button mat-raised-button class="content-center" type="button" color="primary" class="w-75" (click)="imgFileInput.click()">Tirar uma Foto</button>
-            <input hidden type="file" #imgFileInput />
+            <input hidden type="file" accept="image/*" capture="camera" #imgFileInput />
         </div>
       </div>
 

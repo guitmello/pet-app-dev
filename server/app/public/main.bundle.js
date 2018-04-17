@@ -590,8 +590,8 @@ var HomeComponent = /** @class */ (function () {
     };
     HomeComponent.prototype.getPets = function () {
         this.listOfPets = [
-            { id: 1, name: 'DogMau', city: 'São Vicente', state: 'SP', street: 'Rua Araucária', breed: 'Vira Lata', date: '28/08/2017', title: 'Vira Lata Perdido' },
-            { id: 2, name: 'DogGuilherme', city: 'Praia Grande', state: 'SP', street: 'Rua Engenheiro A.', breed: 'Poodle', date: '21/03/2017', title: 'Cachorro Novo' },
+            { id: 1, name: 'DogMau', city: 'São Vicente', state: 'SP', street: 'Rua Araucária da Esquina José', breed: 'Vira Lata', date: '28/08/2017', title: 'Vira Lata Perdido' },
+            { id: 2, name: 'DogGuilherme', city: 'Praia Grande', state: 'SP', street: 'Rua Engenheiro A.', breed: 'Poodle', date: '21/03/2017', title: 'Cachorro Novo de 2 anos' },
             { id: 3, name: 'DogArturLoko', city: 'São Vicente', state: 'SP', street: 'Avenida Brasil', breed: 'Chow Chow', date: '18/08/2017', title: 'Cão Abandonado' },
             { id: 4, name: 'DogFelipHinode', city: 'Santos', state: 'SP', street: 'Avenida Paulista', breed: 'Poodle', date: '26/08/2017', title: 'Poodle Abandonado' },
             { id: 5, name: 'DogMuriloChocolate', city: 'Santos', state: 'SP', street: 'Rua Bensdorp', breed: 'Chow Chow', date: '29/05/2017', title: 'ChowChow Perdido' },

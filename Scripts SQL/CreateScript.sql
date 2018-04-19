@@ -47,7 +47,8 @@ cd_usuario_pk SERIAL PRIMARY KEY,
 cd_ip_usuario VARCHAR(30),
 nm_endereco_usuario VARCHAR(70),
 cd_numero_endereco_usuario SMALLINT,
-ds_complemento_endereco_usuario VARCHAR(50)
+ds_complemento_endereco_usuario VARCHAR(50),
+ds_foto_usuario VARCHAR(150)
 );
 
 CREATE TABLE TB_CHAT (

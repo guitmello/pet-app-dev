@@ -35,6 +35,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { MatTableModule } from '@angular/material/table';
     MatInputModule,
     MatSelectModule,
     MatCheckboxModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
+    HttpClientModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AppComponent],
   bootstrap: [AppComponent]

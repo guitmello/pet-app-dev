@@ -7,6 +7,8 @@ import { MeusPetsComponent } from './meus-pets.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   imports: [
@@ -14,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
     MeusPetsRoutingModule,
     MatCardModule,
     MatIconModule,
+    HttpClientModule,
     MatButtonModule,
   ],
   declarations: [MeusPetsComponent]

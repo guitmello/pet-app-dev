@@ -7,6 +7,7 @@ import { LoginComponent } from './login.component';
 
 @Injectable()
 export class LoginService {
+  authCheck: Array<any> = []; 
 
   usuarioAutenticado: boolean = false;
 
@@ -14,8 +15,13 @@ export class LoginService {
 
   constructor(private router: Router) { }
 
-  fazerLogin(usuario: Usuario, auth: LoginComponent) {
-    if (usuario.email === auth.data['nm_email_usuario'] && usuario.senha === auth.data['cd_senha_usuario']) {
+  fazerLogin(usuario: Usuario, auth: any) {
+    alert(usuario.email);
+    this.authCheck = auth.authUser;
+    console.log("heeeeeeeeeeeeeeeeere");
+    console.log(this.authCheck[0].cd_senha_usuario);
+    
+    if (usuario.email === this.authCheck[0].nm_email_usuario && usuario.senha === this.authCheck[0].cd_senha_usuario) {
       this.usuarioAutenticado = true;
       this.mostrarMenuEmitter.emit(true);
       this.router.navigate(['/']);

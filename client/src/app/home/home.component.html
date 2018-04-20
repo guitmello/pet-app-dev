@@ -6,20 +6,22 @@
 
     </div>
   </div>
-  <mat-card *ngFor="let pet of listOfPets" (click)="moreInfo(pet.id)">
+  <mat-card *ngFor="let pets of petsHome" (click)="moreInfo(pets.id)">
     <div class="row">
       <div class="col-md-2">
-        <img src="../../assets/images/ft-pet.jpg" alt="" class="img-animals">
+        <img src="{{pets.ds_foto_animal}}" alt="foto-animal" class="img-animals">
       </div>
       <div class="col-md-2 card-content">
         <ul>
-          <li class="font-bold">{{pet.title}}</li>
-          <li>{{pet.breed}}</li>
-          <li>{{pet.street}}</li>
-          <li>{{pet.city}} - {{pet.state}}</li>
+          <li class="font-bold">{{pets.nm_animal}}</li>
+          <li>{{pets.nm_raca}}</li>
+          <!-- <li>{{pets.cd_idade_animal}} ano(s)</li> -->
+          <li>{{pets.nm_cor_animal}}</li>
+          <li>{{pets.nm_cidade_usuario}} - {{pets.nm_estado_usuario}}</li>
+          <li>{{pets.nm_endereco_usuario}}</li>
         </ul>
       </div>
-      <label class="content-date">{{pet.date}}</label>
+      <!-- <label class="content-date">{{pet.date}}</label> -->
       <div class="heart">
         <i class="fas fa-heart"></i>
       </div>

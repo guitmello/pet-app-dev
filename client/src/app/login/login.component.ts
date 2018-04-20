@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
     this.httpClient.get(this.apiUrl).subscribe( auth => {
       this.data = auth;
       console.log(this.data);
+      this.fazerLogin();
     });
   }
 
@@ -45,7 +46,6 @@ export class LoginComponent implements OnInit {
   }
 
   fazerLogin() {
-    this.getAuth();
     this.loginService.fazerLogin(this.usuario, this.data);
   }
 

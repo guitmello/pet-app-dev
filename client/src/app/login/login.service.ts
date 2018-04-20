@@ -7,7 +7,7 @@ import { LoginComponent } from './login.component';
 
 @Injectable()
 export class LoginService {
-  authCheck: Array<any> = []; 
+  authCheck: Array<any> = [];
 
   usuarioAutenticado: boolean = false;
 
@@ -18,9 +18,7 @@ export class LoginService {
   fazerLogin(usuario: Usuario, auth: any) {
     alert(usuario.email);
     this.authCheck = auth.authUser;
-    console.log("heeeeeeeeeeeeeeeeere");
-    console.log(this.authCheck[0].cd_senha_usuario);
-    
+
     if (usuario.email === this.authCheck[0].nm_email_usuario && usuario.senha === this.authCheck[0].cd_senha_usuario) {
       this.usuarioAutenticado = true;
       this.mostrarMenuEmitter.emit(true);

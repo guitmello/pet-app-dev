@@ -25,7 +25,7 @@ export class MeusPetsComponent implements OnInit {
     this.httpClient.get(api_url + Pet).subscribe( data => {
       this.myArray = data;
       this.meusPets = this.myArray.pet;
-    })
+    });
   }
 
 }

@@ -23,6 +23,8 @@ import { MeusPetsComponent } from './meus-pets/meus-pets.component';
 import { PesquisarComponent } from './pesquisar/pesquisar.component';
 import { PetInfoComponent } from './pet-info/pet-info.component';
 
+import { LoginService } from './login/login.service';
+
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
@@ -70,7 +72,7 @@ import { MatTableModule } from '@angular/material/table';
     HttpClientModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [AppComponent],
+  providers: [AppComponent, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

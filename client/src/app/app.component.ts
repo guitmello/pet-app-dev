@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import 'rxjs/add/operator/map';
-
-const api_url = environment.apiUrl;
+import { LoginService } from './login/login.service';
 
 @Component({
   selector: 'app-root',
@@ -11,23 +10,15 @@ const api_url = environment.apiUrl;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private apiUrl = api_url;
-  data: any = {};
 
-  constructor(private http: HttpClient) {
-    this.getUsuario();
+  mostrarMenu: boolean = false;
+
+  constructor(private loginService: LoginService) { }
+
+  ngOnInit() {
+    this.loginService.mostrarMenuEmitter.subscribe(
+      mostrar => this.mostrarMenu = mostrar
+    );
   }
 
-  getData() {
-    this.apiUrl += '/login';
-    return this.http.get(this.apiUrl);
-  }
-
-  getUsuario() {
-    this.getData().subscribe(usuario => {
-      this.data = usuario;
-      console.log(usuario);
-    });
-
-  }
 }

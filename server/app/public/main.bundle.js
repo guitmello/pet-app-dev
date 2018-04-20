@@ -290,7 +290,7 @@ module.exports = ".text-center{\r\n  text-align: center;\r\n}\r\n\r\n.navmenu{\r
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar class=\"navmenu\" color=\"primary\">\r\n  <mat-toolbar-row>\r\n    <a mat-icon-button (click)=\"sidenav.toggle()\">\r\n      <mat-icon><i class=\"fas fa-bars\"></i></mat-icon>\r\n    </a>\r\n\r\n    <span class=\"nav-space\"></span>\r\n\r\n    <img class=\"nav-logo\" src=\"../assets/images/idot-logo-branca36.png\" alt=\"idot logo\">\r\n\r\n  </mat-toolbar-row>\r\n</mat-toolbar>\r\n\r\n<mat-sidenav-container class=\"example-container\">\r\n  <mat-sidenav #sidenav class=\"example-sidenav\">\r\n    <p>Sidenav content goes here!</p>\r\n  </mat-sidenav>\r\n</mat-sidenav-container>\r\n\r\n<mat-toolbar class=\"subnav\">\r\n  <mat-toolbar-row>\r\n    <a mat-button routerLink=\"/home\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-home\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Home</span>\r\n        </li>\r\n      </ul>\r\n    </a>\r\n    <a mat-button routerLink=\"/meus-pets\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-paw\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Meus Pets</span>\r\n        </li>\r\n      </ul>\r\n\r\n    </a>\r\n    <a mat-button routerLink=\"/add-pet\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-plus\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Adicionar</span>\r\n        </li>\r\n      </ul>\r\n\r\n    </a>\r\n    <a mat-button routerLink=\"/favoritos\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-heart\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Favoritos</span>\r\n        </li>\r\n      </ul>\r\n\r\n    </a>\r\n    <a mat-button routerLink=\"/pesquisar\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-search\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Pesquisar</span>\r\n        </li>\r\n      </ul>\r\n    </a>\r\n  </mat-toolbar-row>\r\n</mat-toolbar>\r\n\r\n<router-outlet></router-outlet>\r\n"
+module.exports = "<mat-toolbar *ngIf=\"mostrarMenu\" class=\"navmenu\" color=\"primary\">\r\n  <mat-toolbar-row>\r\n    <a mat-icon-button (click)=\"sidenav.toggle()\">\r\n      <mat-icon><i class=\"fas fa-bars\"></i></mat-icon>\r\n    </a>\r\n\r\n    <span class=\"nav-space\"></span>\r\n\r\n    <img class=\"nav-logo\" src=\"../assets/images/idot-logo-branca36.png\" alt=\"idot logo\">\r\n\r\n  </mat-toolbar-row>\r\n</mat-toolbar>\r\n\r\n<mat-sidenav-container class=\"example-container\">\r\n  <mat-sidenav #sidenav class=\"example-sidenav\">\r\n    <p>Sidenav content goes here!</p>\r\n  </mat-sidenav>\r\n</mat-sidenav-container>\r\n\r\n<mat-toolbar *ngIf=\"mostrarMenu\" class=\"subnav\">\r\n  <mat-toolbar-row>\r\n    <a mat-button routerLink=\"/home\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-home\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Home</span>\r\n        </li>\r\n      </ul>\r\n    </a>\r\n    <a mat-button routerLink=\"/meus-pets\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-paw\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Meus Pets</span>\r\n        </li>\r\n      </ul>\r\n\r\n    </a>\r\n    <a mat-button routerLink=\"/add-pet\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-plus\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Adicionar</span>\r\n        </li>\r\n      </ul>\r\n\r\n    </a>\r\n    <a mat-button routerLink=\"/favoritos\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-heart\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Favoritos</span>\r\n        </li>\r\n      </ul>\r\n\r\n    </a>\r\n    <a mat-button routerLink=\"/pesquisar\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-search\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Pesquisar</span>\r\n        </li>\r\n      </ul>\r\n    </a>\r\n  </mat-toolbar-row>\r\n</mat-toolbar>\r\n\r\n<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
@@ -300,22 +300,36 @@ module.exports = "<mat-toolbar class=\"navmenu\" color=\"primary\">\r\n  <mat-to
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login_service__ = __webpack_require__("./src/app/login/login.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
+    function AppComponent(loginService) {
+        this.loginService = loginService;
+        this.mostrarMenu = false;
     }
+    AppComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.loginService.mostrarMenuEmitter.subscribe(function (mostrar) { return _this.mostrarMenu = mostrar; });
+    };
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-root',
             template: __webpack_require__("./src/app/app.component.html"),
             styles: [__webpack_require__("./src/app/app.component.css")]
-        })
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__login_login_service__["a" /* LoginService */]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -332,36 +346,42 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_animations__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/animations.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_routing_module__ = __webpack_require__("./src/app/app-routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_service_worker__ = __webpack_require__("./node_modules/@angular/service-worker/esm5/service-worker.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__("./src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__add_pet_add_pet_component__ = __webpack_require__("./src/app/add-pet/add-pet.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__add_pfisica_add_pfisica_component__ = __webpack_require__("./src/app/add-pfisica/add-pfisica.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__add_pjuridica_add_pjuridica_component__ = __webpack_require__("./src/app/add-pjuridica/add-pjuridica.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__chat_chat_component__ = __webpack_require__("./src/app/chat/chat.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__favoritos_favoritos_component__ = __webpack_require__("./src/app/favoritos/favoritos.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__home_home_component__ = __webpack_require__("./src/app/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__login_login_component__ = __webpack_require__("./src/app/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__meus_pets_meus_pets_component__ = __webpack_require__("./src/app/meus-pets/meus-pets.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pesquisar_pesquisar_component__ = __webpack_require__("./src/app/pesquisar/pesquisar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pet_info_pet_info_component__ = __webpack_require__("./src/app/pet-info/pet-info.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__angular_material_sidenav__ = __webpack_require__("./node_modules/@angular/material/esm5/sidenav.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__angular_material_toolbar__ = __webpack_require__("./node_modules/@angular/material/esm5/toolbar.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__angular_material_list__ = __webpack_require__("./node_modules/@angular/material/esm5/list.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__angular_material_button__ = __webpack_require__("./node_modules/@angular/material/esm5/button.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__angular_material_icon__ = __webpack_require__("./node_modules/@angular/material/esm5/icon.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__angular_material_card__ = __webpack_require__("./node_modules/@angular/material/esm5/card.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__angular_material_form_field__ = __webpack_require__("./node_modules/@angular/material/esm5/form-field.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__angular_material_input__ = __webpack_require__("./node_modules/@angular/material/esm5/input.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__angular_material_checkbox__ = __webpack_require__("./node_modules/@angular/material/esm5/checkbox.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__angular_material_select__ = __webpack_require__("./node_modules/@angular/material/esm5/select.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_routing_module__ = __webpack_require__("./src/app/app-routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_service_worker__ = __webpack_require__("./node_modules/@angular/service-worker/esm5/service-worker.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_component__ = __webpack_require__("./src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__add_pet_add_pet_component__ = __webpack_require__("./src/app/add-pet/add-pet.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__add_pfisica_add_pfisica_component__ = __webpack_require__("./src/app/add-pfisica/add-pfisica.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__add_pjuridica_add_pjuridica_component__ = __webpack_require__("./src/app/add-pjuridica/add-pjuridica.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__chat_chat_component__ = __webpack_require__("./src/app/chat/chat.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__favoritos_favoritos_component__ = __webpack_require__("./src/app/favoritos/favoritos.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__home_home_component__ = __webpack_require__("./src/app/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__login_login_component__ = __webpack_require__("./src/app/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__meus_pets_meus_pets_component__ = __webpack_require__("./src/app/meus-pets/meus-pets.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pesquisar_pesquisar_component__ = __webpack_require__("./src/app/pesquisar/pesquisar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pet_info_pet_info_component__ = __webpack_require__("./src/app/pet-info/pet-info.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__login_login_service__ = __webpack_require__("./src/app/login/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__angular_material_sidenav__ = __webpack_require__("./node_modules/@angular/material/esm5/sidenav.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__angular_material_toolbar__ = __webpack_require__("./node_modules/@angular/material/esm5/toolbar.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__angular_material_list__ = __webpack_require__("./node_modules/@angular/material/esm5/list.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__angular_material_button__ = __webpack_require__("./node_modules/@angular/material/esm5/button.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__angular_material_icon__ = __webpack_require__("./node_modules/@angular/material/esm5/icon.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__angular_material_card__ = __webpack_require__("./node_modules/@angular/material/esm5/card.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__angular_material_form_field__ = __webpack_require__("./node_modules/@angular/material/esm5/form-field.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__angular_material_input__ = __webpack_require__("./node_modules/@angular/material/esm5/input.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__angular_material_checkbox__ = __webpack_require__("./node_modules/@angular/material/esm5/checkbox.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__angular_material_select__ = __webpack_require__("./node_modules/@angular/material/esm5/select.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -395,36 +415,39 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["J" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_7__add_pet_add_pet_component__["a" /* AddPetComponent */],
-                __WEBPACK_IMPORTED_MODULE_8__add_pfisica_add_pfisica_component__["a" /* AddPfisicaComponent */],
-                __WEBPACK_IMPORTED_MODULE_9__add_pjuridica_add_pjuridica_component__["a" /* AddPjuridicaComponent */],
-                __WEBPACK_IMPORTED_MODULE_10__chat_chat_component__["a" /* ChatComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__favoritos_favoritos_component__["a" /* FavoritosComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__home_home_component__["a" /* HomeComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__login_login_component__["a" /* LoginComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__meus_pets_meus_pets_component__["a" /* MeusPetsComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__pesquisar_pesquisar_component__["a" /* PesquisarComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__pet_info_pet_info_component__["a" /* PetInfoComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__add_pet_add_pet_component__["a" /* AddPetComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__add_pfisica_add_pfisica_component__["a" /* AddPfisicaComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__add_pjuridica_add_pjuridica_component__["a" /* AddPjuridicaComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__chat_chat_component__["a" /* ChatComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__favoritos_favoritos_component__["a" /* FavoritosComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__home_home_component__["a" /* HomeComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__login_login_component__["a" /* LoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__meus_pets_meus_pets_component__["a" /* MeusPetsComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__pesquisar_pesquisar_component__["a" /* PesquisarComponent */],
+                __WEBPACK_IMPORTED_MODULE_18__pet_info_pet_info_component__["a" /* PetInfoComponent */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
-                __WEBPACK_IMPORTED_MODULE_3__app_routing_module__["a" /* AppRoutingModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material_sidenav__["a" /* MatSidenavModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material_toolbar__["a" /* MatToolbarModule */],
-                __WEBPACK_IMPORTED_MODULE_21__angular_material_icon__["a" /* MatIconModule */],
-                __WEBPACK_IMPORTED_MODULE_20__angular_material_button__["a" /* MatButtonModule */],
-                __WEBPACK_IMPORTED_MODULE_19__angular_material_list__["a" /* MatListModule */],
-                __WEBPACK_IMPORTED_MODULE_22__angular_material_card__["a" /* MatCardModule */],
-                __WEBPACK_IMPORTED_MODULE_23__angular_material_form_field__["c" /* MatFormFieldModule */],
-                __WEBPACK_IMPORTED_MODULE_24__angular_material_input__["a" /* MatInputModule */],
-                __WEBPACK_IMPORTED_MODULE_26__angular_material_select__["a" /* MatSelectModule */],
-                __WEBPACK_IMPORTED_MODULE_25__angular_material_checkbox__["a" /* MatCheckboxModule */],
-                __WEBPACK_IMPORTED_MODULE_4__angular_service_worker__["a" /* ServiceWorkerModule */].register('/ngsw-worker.js', { enabled: __WEBPACK_IMPORTED_MODULE_5__environments_environment__["a" /* environment */].production })
+                __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["b" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_5__app_routing_module__["a" /* AppRoutingModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material_sidenav__["a" /* MatSidenavModule */],
+                __WEBPACK_IMPORTED_MODULE_21__angular_material_toolbar__["a" /* MatToolbarModule */],
+                __WEBPACK_IMPORTED_MODULE_24__angular_material_icon__["a" /* MatIconModule */],
+                __WEBPACK_IMPORTED_MODULE_23__angular_material_button__["a" /* MatButtonModule */],
+                __WEBPACK_IMPORTED_MODULE_22__angular_material_list__["a" /* MatListModule */],
+                __WEBPACK_IMPORTED_MODULE_25__angular_material_card__["a" /* MatCardModule */],
+                __WEBPACK_IMPORTED_MODULE_26__angular_material_form_field__["c" /* MatFormFieldModule */],
+                __WEBPACK_IMPORTED_MODULE_27__angular_material_input__["a" /* MatInputModule */],
+                __WEBPACK_IMPORTED_MODULE_29__angular_material_select__["a" /* MatSelectModule */],
+                __WEBPACK_IMPORTED_MODULE_28__angular_material_checkbox__["a" /* MatCheckboxModule */],
+                __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["b" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_6__angular_service_worker__["a" /* ServiceWorkerModule */].register('/ngsw-worker.js', { enabled: __WEBPACK_IMPORTED_MODULE_7__environments_environment__["a" /* environment */].production })
             ],
-            providers: [],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_19__login_login_service__["a" /* LoginService */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
@@ -624,7 +647,7 @@ module.exports = "html, body{\r\n  background: #755DCA !important;\r\n}\r\n"
 /***/ "./src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid bg-login animated fadeIn\">\n  <mat-card>\n\n      <form>\n\n        <div class=\"row justify-content-center\">\n          <div class=\"col-12\">\n            <mat-form-field>\n              <input matInput placeholder=\"Email\" required>\n              <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n            </mat-form-field>\n          </div>\n\n          <div class=\"col-12\">\n            <mat-form-field>\n              <input matInput placeholder=\"Senha\" [type]=\"hide ? 'password' : 'text'\">\n              <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n            </mat-form-field>\n          </div>\n        </div>\n\n        <div class=\"col-12\">\n          <div class=\"button-row row justify-content-center\">\n            <button mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\">Confirmar</button>\n          </div>\n          <div class=\"button-row row justify-content-center\">\n              <button mat-raised-button color=\"primary\" class=\"w-50\">Cadastre-se</button>\n            </div>\n        </div>\n\n      </form>\n\n  </mat-card>\n</div>\n"
+module.exports = "<div class=\"container-fluid bg-login animated fadeIn\">\n  <mat-card>\n\n      <form>\n\n        <div class=\"row justify-content-center\">\n          <div class=\"col-12\">\n            <mat-form-field>\n              <input [(ngModel)]=\"usuario.email\" name=\"email\" type=\"email\" matInput placeholder=\"Email\" required>\n              <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n            </mat-form-field>\n          </div>\n\n          <div class=\"col-12\">\n            <mat-form-field>\n              <input [(ngModel)]=\"usuario.senha\" name=\"senha\" matInput placeholder=\"Senha\" [type]=\"hide ? 'password' : 'text'\" required>\n              <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n            </mat-form-field>\n          </div>\n        </div>\n\n        <div class=\"col-12\">\n          <div class=\"button-row row justify-content-center\">\n            <button (click)=\"fazerLogin()\" mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\">Confirmar</button>\n          </div>\n          <div class=\"button-row row justify-content-center\">\n              <button mat-raised-button color=\"primary\" class=\"w-50\">Cadastre-se</button>\n            </div>\n        </div>\n\n      </form>\n\n  </mat-card>\n</div>\n"
 
 /***/ }),
 
@@ -635,6 +658,10 @@ module.exports = "<div class=\"container-fluid bg-login animated fadeIn\">\n  <m
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_service__ = __webpack_require__("./src/app/login/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__usuario__ = __webpack_require__("./src/app/login/usuario.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -646,17 +673,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
+
+
+var api_url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiUrl;
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent() {
+    function LoginComponent(httpClient, loginService) {
+        this.httpClient = httpClient;
+        this.loginService = loginService;
+        this.apiUrl = api_url;
+        this.data = {};
+        this.usuario = new __WEBPACK_IMPORTED_MODULE_5__usuario__["a" /* Usuario */]();
         this.hide = true;
-        this.email = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].email]);
+        this.email = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["i" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["i" /* Validators */].email]);
     }
     LoginComponent.prototype.getErrorMessage = function () {
         return this.email.hasError('required') ? 'Você deve preencher seu email' :
             this.email.hasError('email') ? 'Email incorreto' :
                 '';
     };
+    LoginComponent.prototype.getAuth = function () {
+        var _this = this;
+        this.apiUrl += '/login';
+        this.httpClient.get(this.apiUrl).subscribe(function (auth) {
+            _this.data = auth;
+            console.log(_this.data);
+        });
+    };
     LoginComponent.prototype.ngOnInit = function () {
+    };
+    LoginComponent.prototype.fazerLogin = function () {
+        this.getAuth();
+        this.loginService.fazerLogin(this.usuario, this.data);
     };
     LoginComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -664,9 +713,71 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/login/login.component.html"),
             styles: [__webpack_require__("./src/app/login/login.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_4__login_service__["a" /* LoginService */]])
     ], LoginComponent);
     return LoginComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/login/login.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var LoginService = /** @class */ (function () {
+    function LoginService(router) {
+        this.router = router;
+        this.usuarioAutenticado = false;
+        this.mostrarMenuEmitter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+    }
+    LoginService.prototype.fazerLogin = function (usuario, auth) {
+        if (usuario.email === auth.data['nm_email_usuario'] && usuario.senha === auth.data['cd_senha_usuario']) {
+            this.usuarioAutenticado = true;
+            this.mostrarMenuEmitter.emit(true);
+            this.router.navigate(['/']);
+        }
+        else {
+            this.usuarioAutenticado = false;
+            this.mostrarMenuEmitter.emit(false);
+        }
+    };
+    LoginService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]])
+    ], LoginService);
+    return LoginService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/login/usuario.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Usuario; });
+var Usuario = /** @class */ (function () {
+    function Usuario() {
+    }
+    return Usuario;
 }());
 
 
@@ -683,7 +794,7 @@ module.exports = "#meus-pets .mat-card{\r\n  padding: 10px 5px !important;\r\n  
 /***/ "./src/app/meus-pets/meus-pets.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"meus-pets\" class=\"container-fluid animated fadeIn\">\n\n  <div class=\"col-md-12\">\n    <div class=\"row justify-content-center\">\n\n      <h1 class=\"title\">Meus Pets</h1>\n\n    </div>\n  </div>\n\n  <mat-card *ngFor=\"let pets of meusPets\">\n\n    <div class=\"col-md-12\">\n      <div class=\"row\">\n        <ul class=\"meus-pets-list\">\n          <li>\n            <img src=\"{{pets.ds_foto_animal}}\" alt=\"foto do pet\">\n          </li>\n          <li>\n            <span class=\"meus-pets-text\">{{pets.nm_animal}}</span>\n          </li>\n          <li>\n            <span class=\"meus-pets-text\">{{pets.cd_idade_animal}}</span>\n          </li>\n          <li>\n            <span class=\"meus-pets-text\">{{pets.nm_raca_animal}}</span>\n          </li>\n        </ul>\n\n        <span class=\"nav-space\"></span>\n\n        <ul class=\"meus-pets-list buttons-inline \">\n          <li>\n            <button mat-mini-fab>\n              <i class=\"fas fa-pencil-alt edit\"></i>\n            </button>\n          </li>\n          <li>\n            <button mat-mini-fab>\n              <i class=\"fas fa-trash-alt remove\"></i>\n            </button>\n          </li>\n        </ul>\n      </div>\n    </div>\n\n  </mat-card>\n</div>\n"
+module.exports = "<div id=\"meus-pets\" class=\"container-fluid animated fadeIn\">\r\n\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Meus Pets</h1>\r\n\r\n    </div>\r\n  </div>\r\n\r\n  <mat-card *ngFor=\"let pets of meusPets\">\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row\">\r\n        <ul class=\"meus-pets-list\">\r\n          <li>\r\n            <img src=\"{{pets.ds_foto_animal}}\" alt=\"foto do pet\">\r\n          </li>\r\n          <li>\r\n            <span class=\"meus-pets-text\">{{pets.nm_animal}}</span>\r\n          </li>\r\n          <li>\r\n            <span class=\"meus-pets-text\">{{pets.cd_especie_fk}}</span>\r\n          </li>\r\n          <li>\r\n            <span class=\"meus-pets-text\">{{pets.cd_raca_fk}}</span>\r\n          </li>\r\n        </ul>\r\n\r\n        <span class=\"nav-space\"></span>\r\n\r\n        <ul class=\"meus-pets-list buttons-inline \">\r\n          <li>\r\n            <button mat-mini-fab>\r\n              <i class=\"fas fa-pencil-alt edit\"></i>\r\n            </button>\r\n          </li>\r\n          <li>\r\n            <button mat-mini-fab>\r\n              <i class=\"fas fa-trash-alt remove\"></i>\r\n            </button>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -693,6 +804,8 @@ module.exports = "<div id=\"meus-pets\" class=\"container-fluid animated fadeIn\
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MeusPetsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -703,27 +816,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+var api_url = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].apiUrl;
 var MeusPetsComponent = /** @class */ (function () {
-    function MeusPetsComponent() {
+    function MeusPetsComponent(httpClient) {
+        this.httpClient = httpClient;
+        this.apiUrl = api_url;
+        this.myArray = {};
     }
     MeusPetsComponent.prototype.ngOnInit = function () {
-        this.getMeusPets();
+        this.getMeusPets('/pets');
     };
-    MeusPetsComponent.prototype.getMeusPets = function () {
-        this.meusPets = [
-            { id: 1, nm_animal: 'Teddy', cd_idade_animal: '2 anos', nm_raca_animal: 'Chow Chow',
-                ds_foto_animal: '../../assets/images/ft-pet.jpg', nm_usuario_fk: 'Alberto' },
-            { id: 2, nm_animal: 'Pit', cd_idade_animal: '4 anos', nm_raca_animal: 'Pincher',
-                ds_foto_animal: '../../assets/images/ft-pet.jpg', nm_usuario_fk: 'Pedro' },
-            { id: 3, nm_animal: 'Pie', cd_idade_animal: '3 anos', nm_raca_animal: 'Desconhecida',
-                ds_foto_animal: '../../assets/images/ft-pet.jpg', nm_usuario_fk: 'Junior' },
-            { id: 4, nm_animal: 'Sapeca', cd_idade_animal: '7 anos', nm_raca_animal: 'Pincher',
-                ds_foto_animal: '../../assets/images/ft-pet.jpg', nm_usuario_fk: 'João' },
-            { id: 5, nm_animal: 'Salazar', cd_idade_animal: '9 anos', nm_raca_animal: 'Vira-Lata',
-                ds_foto_animal: '../../assets/images/ft-pet.jpg', nm_usuario_fk: 'José' },
-            { id: 6, nm_animal: 'Jr', cd_idade_animal: '5 anos', nm_raca_animal: 'Pincher',
-                ds_foto_animal: '../../assets/images/ft-pet.jpg', nm_usuario_fk: 'Maria' },
-        ];
+    MeusPetsComponent.prototype.getMeusPets = function (Pet) {
+        var _this = this;
+        this.httpClient.get(api_url + Pet).subscribe(function (data) {
+            _this.myArray = data;
+            _this.meusPets = _this.myArray.pet;
+        });
     };
     MeusPetsComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -731,7 +841,7 @@ var MeusPetsComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/meus-pets/meus-pets.component.html"),
             styles: [__webpack_require__("./src/app/meus-pets/meus-pets.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
     ], MeusPetsComponent);
     return MeusPetsComponent;
 }());
@@ -864,7 +974,8 @@ var PetInfoComponent = /** @class */ (function () {
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
-    production: false
+    production: false,
+    apiUrl: 'http://demo5541414.mockable.io'
 };
 
 

@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+
+import { LoginService } from './login.service';
+import { Usuario } from './usuario';
+
+const api_url = environment.apiUrl;
 
 @Component({
   selector: 'app-login',
@@ -9,17 +16,37 @@ import { FormControl, Validators } from '@angular/forms';
 
 export class LoginComponent implements OnInit {
 
+  private apiUrl = api_url;
+  data: any = {};
+
+  usuario: Usuario = new Usuario();
+
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
+
   getErrorMessage() {
     return this.email.hasError('required') ? 'Você deve preencher seu email' :
         this.email.hasError('email') ? 'Email incorreto' :
             '';
   }
 
-  constructor() { }
+  constructor(private httpClient: HttpClient, private loginService: LoginService) { }
+
+  getAuth() {
+    this.apiUrl += '/login';
+    this.httpClient.get(this.apiUrl).subscribe( auth => {
+      this.data = auth;
+      console.log(this.data);
+    });
+  }
 
   ngOnInit() {
+
+  }
+
+  fazerLogin() {
+    this.getAuth();
+    this.loginService.fazerLogin(this.usuario, this.data);
   }
 
 }

@@ -1,4 +1,4 @@
-<mat-toolbar class="navmenu" color="primary">
+<mat-toolbar *ngIf="mostrarMenu" class="navmenu" color="primary">
   <mat-toolbar-row>
     <a mat-icon-button (click)="sidenav.toggle()">
       <mat-icon><i class="fas fa-bars"></i></mat-icon>
@@ -17,7 +17,7 @@
   </mat-sidenav>
 </mat-sidenav-container>
 
-<mat-toolbar class="subnav">
+<mat-toolbar *ngIf="mostrarMenu" class="subnav">
   <mat-toolbar-row>
     <a mat-button routerLink="/home">
       <ul>

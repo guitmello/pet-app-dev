@@ -5,6 +5,8 @@ import { environment } from '../../environments/environment';
 
 import { LoginService } from './login.service';
 import { Usuario } from './usuario';
+import { ModalAddPComponent } from './modal-add-p/modal-add-p.component';
+import { MatDialog } from '@angular/material';
 
 const api_url = environment.apiUrl;
 
@@ -26,15 +28,28 @@ export class LoginComponent implements OnInit {
 
   getErrorMessage() {
     return this.email.hasError('required') ? 'Você deve preencher seu email' :
-        this.email.hasError('email') ? 'Email incorreto' :
-            '';
+      this.email.hasError('email') ? 'Email incorreto' :
+        '';
   }
 
-  constructor(private httpClient: HttpClient, private loginService: LoginService) { }
+  constructor(private httpClient: HttpClient, private loginService: LoginService, public dialog: MatDialog) { }
+
+  openDialog(){
+    let dialogRef = this.dialog.open(ModalAddPComponent, {
+      width: '300px',
+      height: '210px',
+      data: { }
+    });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    //   this.animal = result;
+    // });
+  }
 
   getAuth() {
     this.apiUrl += '/login';
-    this.httpClient.get(this.apiUrl).subscribe( auth => {
+    this.httpClient.get(this.apiUrl).subscribe(auth => {
       this.data = auth;
       console.log(this.data);
       this.fazerLogin();

@@ -11,6 +11,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { ModalAddPComponent } from './modal-add-p/modal-add-p.component';
+import {MatDialog, MatDialogRef } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -23,8 +25,12 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatIconModule,
     MatFormFieldModule,
+    MatDialog,
+    MatDialogRef,
+    ModalAddPComponent,
   ],
-  declarations: [LoginComponent]
+  declarations: [LoginComponent],
+  entryComponents: [ModalAddPComponent] 
 })
 export class LoginModule { }
 

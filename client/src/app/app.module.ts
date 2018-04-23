@@ -22,6 +22,7 @@ import { LoginComponent } from './login/login.component';
 import { MeusPetsComponent } from './meus-pets/meus-pets.component';
 import { PesquisarComponent } from './pesquisar/pesquisar.component';
 import { PetInfoComponent } from './pet-info/pet-info.component';
+import { ModalAddPComponent } from './login/modal-add-p/modal-add-p.component';
 
 import { LoginService } from './login/login.service';
 
@@ -37,6 +38,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material';
 
 
 @NgModule({
@@ -52,6 +54,7 @@ import { MatTableModule } from '@angular/material/table';
     MeusPetsComponent,
     PesquisarComponent,
     PetInfoComponent,
+    ModalAddPComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,10 +73,12 @@ import { MatTableModule } from '@angular/material/table';
     MatSelectModule,
     MatCheckboxModule,
     HttpClientModule,
+    MatDialogModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AppComponent, LoginService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalAddPComponent] 
 })
 export class AppModule { }
 

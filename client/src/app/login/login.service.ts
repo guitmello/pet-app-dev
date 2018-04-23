@@ -22,7 +22,7 @@ export class LoginService {
     if (usuario.email === this.authCheck[0].nm_email_usuario && usuario.senha === this.authCheck[0].cd_senha_usuario) {
       this.usuarioAutenticado = true;
       this.mostrarMenuEmitter.emit(true);
-      this.router.navigate(['/']);
+      this.router.navigate(['/home']);
 
     } else {
       this.usuarioAutenticado = false;

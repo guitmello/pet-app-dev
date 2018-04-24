@@ -10,7 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
-import { TextMaskModule } from 'angular2-text-mask'
+import { TextMaskModule } from 'angular2-text-mask';
 
 
 @NgModule({

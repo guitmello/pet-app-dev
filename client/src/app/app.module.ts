@@ -39,6 +39,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material';
+import { TextMaskModule } from 'angular2-text-mask';
 import { RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 
 @NgModule({
@@ -74,6 +75,7 @@ import { RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
     MatCheckboxModule,
     HttpClientModule,
     MatDialogModule,
+    TextMaskModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AppComponent,

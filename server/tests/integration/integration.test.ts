@@ -1,13 +1,12 @@
+import * as jwt from 'jwt-simple';
 import * as HTTPStatus from 'http-status';
 import { app, request, expect } from './config/helpers';
-import * as jwt from 'jwt-simple';
 const model = require('../../server/models');
 
 describe('Testes de Integração', () => {
 
   'use strict';
-  const config = require('../../server/config/env/config')();
-  const model = require('../../server/models');
+  const config = require('../../server/config/env/config')(); 
 
   let id;
   let token;

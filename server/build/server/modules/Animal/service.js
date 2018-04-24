@@ -10,7 +10,7 @@ var Animal = /** @class */ (function () {
     };
     Animal.prototype.getAll = function () {
         return model.Animal.findAll({
-            order: ['id']
+            order: ['nm_animal']
         })
             .then(interface_1.createAnimals);
     };

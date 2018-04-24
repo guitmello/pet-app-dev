@@ -14,7 +14,7 @@ var AnimalController = /** @class */ (function () {
             .then(_.partial(successHandler_1.onSuccess, res))
             .catch(_.partial(errorHandler_1.onError, res, "Erro ao buscar todos os animais"));
     };
-    AnimalController.prototype.create = function (req, res) {
+    AnimalController.prototype.createAnimal = function (req, res) {
         service_1.default
             .create(req.body)
             .then(_.partial(successHandler_1.onSuccess, res))

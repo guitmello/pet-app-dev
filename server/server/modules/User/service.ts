@@ -1,4 +1,4 @@
-import { IUser, IUserDetail, create, createUsers, createUserById, createUserByEmail } from './interface';
+import { IUser, IUserDetail, createUser, createUsers, createUserById, createUserByEmail } from './interface';
 import * as Bluebird from 'bluebird';
 const model = require('../../models');
 

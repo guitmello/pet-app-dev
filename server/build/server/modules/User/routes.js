@@ -8,7 +8,7 @@ var UserRoutes = /** @class */ (function () {
         return controller_1.default.getAll(req, res);
     };
     UserRoutes.prototype.create = function (req, res) {
-        return controller_1.default.create(req, res);
+        return controller_1.default.createUser(req, res);
     };
     UserRoutes.prototype.findOne = function (req, res) {
         return controller_1.default.getById(req, res);
@@ -21,4 +21,4 @@ var UserRoutes = /** @class */ (function () {
     };
     return UserRoutes;
 }());
-exports.default = UserRoutes;
+exports.default = new UserRoutes();

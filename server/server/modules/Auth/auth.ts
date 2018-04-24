@@ -6,6 +6,7 @@ import authFail from '../../api/responses/authFail';
 
 
 class TokenRoutes {
+  
   auth(req: Request, res: Response){
     const credentials = {
       email: req.body.nm_email_usuario,

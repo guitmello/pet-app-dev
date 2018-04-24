@@ -17,7 +17,7 @@ class UserController {
       .catch(_.partial(onError, res, `Erro ao buscar todos os usuários`))
   }
 
-  create(req: Request, res: Response){
+  createUser(req: Request, res: Response){
     User
       .create(req.body)
       .then(_.partial(onSuccess, res))

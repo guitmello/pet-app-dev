@@ -11,7 +11,7 @@ class UserRoutes {
   }
 
   create(req: Request, res: Response){
-    return UserController.create(req, res);
+    return UserController.createUser(req, res);
   }
 
   findOne(req: Request, res: Response){
@@ -27,4 +27,4 @@ class UserRoutes {
   }
 }
 
-export default UserRoutes;
+export default new UserRoutes();

@@ -14,7 +14,7 @@ var UserController = /** @class */ (function () {
             .then(_.partial(successHandler_1.onSuccess, res))
             .catch(_.partial(errorHandler_1.onError, res, "Erro ao buscar todos os usu\u00E1rios"));
     };
-    UserController.prototype.create = function (req, res) {
+    UserController.prototype.createUser = function (req, res) {
         service_1.default
             .create(req.body)
             .then(_.partial(successHandler_1.onSuccess, res))

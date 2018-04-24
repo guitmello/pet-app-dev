@@ -1,13 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var jwt = require("jwt-simple");
 var HTTPStatus = require("http-status");
 var helpers_1 = require("./config/helpers");
-var jwt = require("jwt-simple");
 var model = require('../../server/models');
 describe('Testes de Integração', function () {
     'use strict';
     var config = require('../../server/config/env/config')();
-    var model = require('../../server/models');
     var id;
     var token;
     var userTest = {

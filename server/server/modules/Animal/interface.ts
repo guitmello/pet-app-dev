@@ -1,5 +1,5 @@
 export interface IAnimal {
-  readonly id: number,
+  id: number,
   nm_animal: string,
   cd_idade_animal: number,
   nm_cor_animal: string,

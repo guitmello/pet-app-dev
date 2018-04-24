@@ -8,7 +8,7 @@ var AnimalRoutes = /** @class */ (function () {
         return controller_1.default.getAll(req, res);
     };
     AnimalRoutes.prototype.create = function (req, res) {
-        return controller_1.default.create(req, res);
+        return controller_1.default.createAnimal(req, res);
     };
     AnimalRoutes.prototype.findOne = function (req, res) {
         return controller_1.default.getById(req, res);
@@ -21,4 +21,4 @@ var AnimalRoutes = /** @class */ (function () {
     };
     return AnimalRoutes;
 }());
-exports.default = AnimalRoutes;
+exports.default = new AnimalRoutes();

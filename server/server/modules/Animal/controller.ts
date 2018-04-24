@@ -17,7 +17,7 @@ class AnimalController {
       .catch(_.partial(onError, res, `Erro ao buscar todos os animais`))
   }
 
-  create(req: Request, res: Response){
+  createAnimal(req: Request, res: Response){
     Animal
       .create(req.body)
       .then(_.partial(onSuccess, res))

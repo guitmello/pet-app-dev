@@ -7,7 +7,7 @@ describe('Testes Unitários do Controller', function () {
     describe('Método Create', function () {
         it('Deve criar um novo Usuario', function () {
             return service_1.default.create({
-                cd_usuario_pk: 1,
+                id: 1,
                 nm_usuario: 'teste novo usuario',
                 nm_email_usuario: 'emailteste@usuario.com',
                 cd_senha_usuario: '1234',

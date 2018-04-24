@@ -22,7 +22,7 @@ class Animal implements IAnimal {
 
   getAll(): Bluebird<IAnimal[]>{
     return model.Animal.findAll({
-      order: ['id']
+      order: ['nm_animal']
     })
     .then(createAnimals);
   }

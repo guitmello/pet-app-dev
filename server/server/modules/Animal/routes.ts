@@ -11,7 +11,7 @@ class AnimalRoutes {
   }
 
   create(req: Request, res: Response){
-    return AnimalController.create(req, res);
+    return AnimalController.createAnimal(req, res);
   }
 
   findOne(req: Request, res: Response){
@@ -27,4 +27,4 @@ class AnimalRoutes {
   }
 }
 
-export default AnimalRoutes;
+export default new AnimalRoutes();

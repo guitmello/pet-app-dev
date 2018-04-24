@@ -20,7 +20,7 @@ var Api = /** @class */ (function () {
         this.router(this.express, auth_1.default);
     };
     Api.prototype.router = function (app, auth) {
-        new routes_1.default(app, auth);
+        routes_1.default.initRoutes(app, auth);
     };
     return Api;
 }());

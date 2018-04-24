@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PFisica } from './p-fisica';
+import { HttpClient } from '@angular/common/http';
+import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'app-add-pfisica',
@@ -8,15 +11,81 @@ import { Component, OnInit } from '@angular/core';
 export class AddPfisicaComponent implements OnInit {
 
   sexo: Array<any>;
+  data: any = {};
+  public urlPf: string;
+  public cpfMask: Array<string | RegExp>;
+  public celMask: Array<string | RegExp>;
+  public cepMask: Array<string | RegExp>;
+  public numMask: Array<string | RegExp>;
 
-  constructor() { }
+  md5 = new Md5();
+  pfisica: PFisica = new PFisica();
+  senha: string;
+
+  constructor(private httpClient: HttpClient) {
+    this.cpfMask = [/\d/,/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+    this.celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+    this.cepMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
+    this.numMask = [/[1-9]/, /\d/, /\d/, /\d/, /\d/, /\d/];
+  }
 
   ngOnInit() {
-
     this.sexo = [
-      {value: 'Masculino', viewValue: 'Masculino'},
-      {value: 'Feminino', viewValue: 'Feminino'}
+      {value: 'M', viewValue: 'Masculino'},
+      {value: 'F', viewValue: 'Feminino'}
     ];
   }
+
+  registerPf() {
+    this.removeMasks();
+    alert(this.senha);
+    this.md5.appendStr(this.senha);
+    alert(this.md5.end());
+    let newSenha = this.md5.end();
+    this.pfisica.senha = newSenha.toString();
+    this.urlPf = 'http://demo5541414.mockable.io/add-pfisica%3Ftype=sucess';
+    return this.httpClient.post<PFisica>(this.urlPf, this.pfisica)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log("Error occured");
+        }
+      );
+  }
+
+
+  removeMasks() {
+    this.removeCpfMask();
+    this.removeCelMask();
+    this.removeCepMask();
+  }
+
+
+  removeCpfMask() {
+    let cpf = this.pfisica.cpf.toString();
+    let beforeCpf = cpf.replace('.', '');
+    beforeCpf = beforeCpf.replace('.', '');
+    beforeCpf = beforeCpf.replace('-', '');
+    this.pfisica.cpf = parseInt(beforeCpf);
+  }
+
+  removeCelMask() {
+    let cel = this.pfisica.celular.toString();
+    let beforeCel = cel.replace('(', '');
+    beforeCel = beforeCel.replace(')', '');
+    beforeCel = beforeCel.replace(' ', '');
+    beforeCel = beforeCel.replace('-', '');
+    this.pfisica.celular = parseInt(beforeCel);
+  }
+
+  removeCepMask() {
+    let cep = this.pfisica.cep.toString();
+    let beforeCep = cep.replace('.', '');
+    beforeCep = beforeCep.replace('-', '');
+    this.pfisica.cep = parseInt(beforeCep);
+  }
+
 
 }

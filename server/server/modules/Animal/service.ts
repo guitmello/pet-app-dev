@@ -3,7 +3,7 @@ import * as Bluebird from 'bluebird';
 const model = require('../../models');
 
 class Animal implements IAnimal {
-  public cd_animal_pk: number;
+  public id: number;
   public nm_animal: string;
   public cd_idade_animal: number;
   public nm_cor_animal: string;
@@ -22,32 +22,32 @@ class Animal implements IAnimal {
 
   getAll(): Bluebird<IAnimal[]>{
     return model.Animal.findAll({
-      order: ['cd_animal_pk']
+      order: ['id']
     })
     .then(createAnimals);
   }
 
-  getById(cd_animal_pk: number): Bluebird<IAnimalDetail>{
+  getById(id: number): Bluebird<IAnimalDetail>{
     return model.Animal.findOne({
-      where: { cd_animal_pk }
+      where: { id }
     })
     .then(createAnimalById);
   }
 
-  update(cd_animal_pk: number, animal: any){
+  update(id: number, animal: any){
     return model.Animal.update(animal, {
-      where: { cd_animal_pk },
+      where: { id },
       fields: ['nm_animal','cd_idade_animal','nm_cor_animal','ic_deficiencia_animal','ds_deficiencia_animal','ds_foto_animal','cd_especie_fk','cd_raca_fk','cd_usuario_fk'],
       hooks: true,
       individualHooks: true
     });
   }
 
-  delete(cd_animal_pk: number){
+  delete(id: number){
     return model.Animal.destroy({
-      where: { cd_animal_pk }
+      where: { id }
     });
   }
 }
 
-export default Animal;
+export default new Animal();

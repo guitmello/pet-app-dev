@@ -13,8 +13,8 @@ var Relations = function (model) {
     model.Usuario.belongsTo(model.Chat, { foreignKey: 'cd_usuario_enviou_fk' });
     model.Chat.hasMany(model.Usuario, { foreignKey: 'cd_usuario_recebeu_fk' });
     model.Usuario.belongsTo(model.Chat, { foreignKey: 'cd_usuario_recebeu_fk' });
-    model.Chat.hasMany(model.Usuario, { unique: 'cd_ip_usuario_enviou_fk' });
-    model.Usuario.belongsTo(model.Chat, { unique: 'cd_ip_usuario_enviou_fk' });
+    model.Chat.hasMany(model.Usuario, { foreignKey: 'cd_ip_usuario_enviou_fk' });
+    model.Usuario.belongsTo(model.Chat, { foreignKey: 'cd_ip_usuario_enviou_fk' });
     model.Chat.hasMany(model.Usuario, { foreignKey: 'cd_ip_usuario_recebeu_fk' });
     model.Usuario.belongsTo(model.Chat, { foreignKey: 'cd_ip_usuario_recebeu_fk' });
     //Mensagem - Chat

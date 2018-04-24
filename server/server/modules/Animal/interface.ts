@@ -1,5 +1,5 @@
 export interface IAnimal {
-  //readonly cd_animal_pk: number,
+  readonly id: number,
   nm_animal: string,
   cd_idade_animal: number,
   nm_cor_animal: string,
@@ -12,7 +12,7 @@ export interface IAnimal {
 }
 
 export interface IAnimalDetail extends IAnimal{
-  //cd_animal_pk: number,
+  id: number,
   nm_animal: string,
   cd_idade_animal: number,
   nm_cor_animal: string,
@@ -24,9 +24,9 @@ export interface IAnimalDetail extends IAnimal{
   cd_usuario_fk: number
 }
 
-export function createAnimal({ nm_animal, cd_idade_animal, nm_cor_animal, ic_deficiencia_animal, ds_deficiencia_animal, ds_foto_animal, cd_especie_fk, cd_raca_fk, cd_usuario_fk }: any): IAnimal {
+export function createAnimal({ id, nm_animal, cd_idade_animal, nm_cor_animal, ic_deficiencia_animal, ds_deficiencia_animal, ds_foto_animal, cd_especie_fk, cd_raca_fk, cd_usuario_fk }: any): IAnimal {
     return {
-      nm_animal, cd_idade_animal, nm_cor_animal, ic_deficiencia_animal, ds_deficiencia_animal, ds_foto_animal, cd_especie_fk, cd_raca_fk, cd_usuario_fk
+      id, nm_animal, cd_idade_animal, nm_cor_animal, ic_deficiencia_animal, ds_deficiencia_animal, ds_foto_animal, cd_especie_fk, cd_raca_fk, cd_usuario_fk
     }
 }
 
@@ -34,8 +34,8 @@ export function createAnimals(data: any[]): IAnimal[]{
   return data.map(createAnimal)
 }
 
-export function createAnimalById({ nm_animal, cd_idade_animal, nm_cor_animal, ic_deficiencia_animal, ds_deficiencia_animal, ds_foto_animal, cd_especie_fk, cd_raca_fk, cd_usuario_fk }: any): IAnimalDetail {
+export function createAnimalById({ id, nm_animal, cd_idade_animal, nm_cor_animal, ic_deficiencia_animal, ds_deficiencia_animal, ds_foto_animal, cd_especie_fk, cd_raca_fk, cd_usuario_fk }: any): IAnimalDetail {
     return {
-      nm_animal, cd_idade_animal, nm_cor_animal, ic_deficiencia_animal, ds_deficiencia_animal, ds_foto_animal, cd_especie_fk, cd_raca_fk, cd_usuario_fk
+      id, nm_animal, cd_idade_animal, nm_cor_animal, ic_deficiencia_animal, ds_deficiencia_animal, ds_foto_animal, cd_especie_fk, cd_raca_fk, cd_usuario_fk
     }
 }

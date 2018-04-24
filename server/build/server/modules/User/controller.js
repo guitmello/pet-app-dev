@@ -22,20 +22,20 @@ var UserController = /** @class */ (function () {
             .catch(_.partial(errorHandler_1.onError, res, "Erro ao inserir novo usu\u00E1rio"));
     };
     UserController.prototype.getById = function (req, res) {
-        var userId = parseInt(req.params.cd_usuario_pk);
+        var userId = parseInt(req.params.id);
         service_1.default.getById(userId)
             .then(_.partial(successHandler_1.onSuccess, res))
             .catch(_.partial(errorHandler_1.onError, res, "Usu\u00E1rio n\u00E3o encontrado"));
     };
     UserController.prototype.updateUser = function (req, res) {
-        var userId = parseInt(req.params.cd_usuario_pk);
+        var userId = parseInt(req.params.id);
         var props = req.body;
         service_1.default.update(userId, props)
             .then(_.partial(successHandler_1.onSuccess, res))
             .catch(_.partial(errorHandler_1.onError, res, "Erro ao atualizar usu\u00E1rio"));
     };
     UserController.prototype.deleteUser = function (req, res) {
-        var userId = parseInt(req.params.cd_usuario_pk);
+        var userId = parseInt(req.params.id);
         service_1.default.delete(userId)
             .then(_.partial(successHandler_1.onSuccess, res))
             .catch(_.partial(errorHandler_1.onError, res, "Erro ao deletar usu\u00E1rio"));

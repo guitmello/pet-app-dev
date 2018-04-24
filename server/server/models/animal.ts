@@ -1,10 +1,10 @@
 export default function (sequelize, DataTypes) {
 
   const Animal = sequelize.define('Animal', {
-    cd_animal_pk: {
-      type: DataTypes.UUID,
-      //autoIncrement: true,
-      primarykey: true
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
     },
     nm_animal: {
       type: DataTypes.STRING

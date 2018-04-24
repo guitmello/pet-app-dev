@@ -1,10 +1,10 @@
 export default function (sequelize, DataTypes) {
 
   const Chat = sequelize.define('Chat', {
-    cd_chat_pk: {
-      type: DataTypes.UUID,
-      //autoIncrement: true,
-      primarykey: true
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
     },
     cd_usuario_enviou_fk: {
       type: DataTypes.INTEGER
@@ -13,10 +13,10 @@ export default function (sequelize, DataTypes) {
       type: DataTypes.INTEGER
     },
     cd_ip_usuario_enviou_fk: {
-      type: DataTypes.UUID
+      type: DataTypes.INTEGER
     },
     cd_ip_usuario_recebeu_fk: {
-      type: DataTypes.UUID
+      type: DataTypes.INTEGER
     }
   });
 

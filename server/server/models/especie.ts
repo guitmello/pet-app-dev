@@ -4,10 +4,10 @@ export default function (sequelize, DataTypes) {
     nm_especie: {
       type: DataTypes.STRING,
     },
-    cd_especie_pk: {
-      type: DataTypes.UUID,
-      //autoIncrement: true,
-      primarykey: true
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
     }
   });
 

@@ -1,10 +1,10 @@
 export default function (sequelize, DataTypes) {
 
   const Usuario = sequelize.define('Usuario', {
-    cd_usuario_pk: {
-      type: DataTypes.UUID,
-      //autoIncrement: true,
-      primarykey: true
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
     },
     nm_tipo_usuario: {
       type: DataTypes.STRING
@@ -46,7 +46,7 @@ export default function (sequelize, DataTypes) {
       type: DataTypes.BIGINT
     },
     cd_ip_usuario: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       unique: true
     },
     nm_endereco_usuario: {

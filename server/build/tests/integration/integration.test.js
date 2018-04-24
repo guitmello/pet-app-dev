@@ -2,13 +2,16 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var HTTPStatus = require("http-status");
 var helpers_1 = require("./config/helpers");
+var jwt = require("jwt-simple");
 var model = require('../../server/models');
 describe('Testes de Integração', function () {
     'use strict';
     var config = require('../../server/config/env/config')();
-    var cd_usuario_pk;
+    var model = require('../../server/models');
+    var id;
+    var token;
     var userTest = {
-        cd_usuario_pk: 100,
+        id: 100,
         nm_usuario: 'usuarioTEST',
         nm_email_usuario: 'emailteste@usuario.com',
         cd_senha_usuario: '1234',
@@ -29,7 +32,7 @@ describe('Testes de Integração', function () {
         ds_foto_usuario: 'foto'
     };
     var userDefault = {
-        cd_usuario_pk: 1,
+        id: 1,
         nm_usuario: 'usuarioDEFAULT',
         nm_email_usuario: 'emailteste@usuario.com',
         cd_senha_usuario: '1234',
@@ -59,7 +62,38 @@ describe('Testes de Integração', function () {
             .then(function (user) {
             model.User.create(userTest)
                 .then(function () {
+                token = jwt.encode({ id: user.id }, config.secret);
                 done();
+            });
+        });
+    });
+    describe('POST /token', function () {
+        it('Deve receber um jwt', function (done) {
+            var credentials = {
+                email: userDefault.nm_email_usuario,
+                password: userDefault.cd_senha_usuario
+            };
+            helpers_1.request(helpers_1.app)
+                .post('/token')
+                .send(credentials)
+                .end(function (error, res) {
+                helpers_1.expect(res.status).to.equal(HTTPStatus.OK);
+                helpers_1.expect(res.body.token).to.equal("" + token);
+                done(error);
+            });
+        });
+        it('Não deve gerar token', function (done) {
+            var credentials = {
+                email: 'email@emailteste.com',
+                password: 'senha'
+            };
+            helpers_1.request(helpers_1.app)
+                .post('token')
+                .send(credentials)
+                .end(function (error, res) {
+                helpers_1.expect(res.status).to.equal(httpStatus.UNAUTHORIZED);
+                helpers_1.expect(res.body).to.empty;
+                done(error);
             });
         });
     });
@@ -95,12 +129,12 @@ describe('Testes de Integração', function () {
     describe('GET /api/users/:id', function () {
         it('Deve retornar um json com apenas um Usuário', function (done) {
             helpers_1.request(helpers_1.app)
-                .get("/api/users/" + userDefault.cd_usuario_pk)
+                .get("/api/users/" + userDefault.id)
                 .end(function (error, res) {
                 helpers_1.expect(res.status).to.equal(HTTPStatus.OK);
-                helpers_1.expect(res.body.payload.cd_usuario_pk).to.equal(userDefault.cd_usuario_pk);
+                helpers_1.expect(res.body.payload.id).to.equal(userDefault.id);
                 helpers_1.expect(res.body.payload).to.have.all.keys([
-                    'cd_usuario_pk', 'nm_usuario', 'nm_email_usuario', 'cd_senha_usuario', 'nm_tipo_usuario', 'cd_cnpj_usuario', 'cd_cpf_usuario', 'nm_razao_social_usuario', 'nm_sexo_usuario', 'cd_cep_usuario', 'nm_estado_usuario', 'dt_nascimento_usuario', 'nm_cidade_usuario', 'cd_telefone_usuario', 'cd_ip_usuario', 'nm_endereco_usuario', 'cd_numero_endereco_usuario', 'ds_complemento_endereco_usuario', 'ds_foto_usuario'
+                    'id', 'nm_usuario', 'nm_email_usuario', 'cd_senha_usuario', 'nm_tipo_usuario', 'cd_cnpj_usuario', 'cd_cpf_usuario', 'nm_razao_social_usuario', 'nm_sexo_usuario', 'cd_cep_usuario', 'nm_estado_usuario', 'dt_nascimento_usuario', 'nm_cidade_usuario', 'cd_telefone_usuario', 'cd_ip_usuario', 'nm_endereco_usuario', 'cd_numero_endereco_usuario', 'ds_complemento_endereco_usuario', 'ds_foto_usuario'
                 ]);
                 done(error);
             });
@@ -109,7 +143,7 @@ describe('Testes de Integração', function () {
     describe('POST /api/users/create', function () {
         it('Deve criar um novo Usuário', function (done) {
             var user = {
-                cd_usuario_pk: 5,
+                id: 5,
                 nm_usuario: 'usuarioTESTE@',
                 nm_email_usuario: 'emailteste@usuario.com',
                 cd_senha_usuario: '1234',
@@ -134,7 +168,7 @@ describe('Testes de Integração', function () {
                 .send(user)
                 .end(function (error, res) {
                 helpers_1.expect(res.status).to.equal(HTTPStatus.OK);
-                helpers_1.expect(res.body.payload.cd_usuario_pk).to.eql(user.cd_usuario_pk);
+                helpers_1.expect(res.body.payload.id).to.eql(user.id);
                 helpers_1.expect(res.body.payload.nm_usuario).to.eql(user.nm_usuario);
                 helpers_1.expect(res.body.payload.nm_email_usuario).to.eql(user.nm_email_usuario);
                 helpers_1.expect(res.body.payload.cd_senha_usuario).to.eql(user.cd_senha_usuario);
@@ -180,7 +214,7 @@ describe('Testes de Integração', function () {
                 ds_foto_usuario: 'foto update'
             };
             helpers_1.request(helpers_1.app)
-                .put("/api/users/" + userTest.cd_usuario_pk + "/update")
+                .put("/api/users/" + userTest.id + "/update")
                 .send(user)
                 .end(function (error, res) {
                 helpers_1.expect(res.status).to.equal(HTTPStatus.OK);
@@ -192,7 +226,7 @@ describe('Testes de Integração', function () {
     describe('DELETE /api/users/:id/destroy', function () {
         it('Deve deletar um Usuário', function (done) {
             helpers_1.request(helpers_1.app)
-                .delete("/api/users/" + userTest.cd_usuario_pk + "/destroy")
+                .delete("/api/users/" + userTest.id + "/destroy")
                 .end(function (error, res) {
                 helpers_1.expect(res.status).to.equal(HTTPStatus.OK);
                 helpers_1.expect(res.body.payload).to.eql(1);

@@ -1,5 +1,5 @@
 export interface IUser {
-  readonly cd_usuario_pk: number,
+  readonly id: number,
   nm_usuario: string,
   nm_email_usuario: string,
   cd_senha_usuario: string,
@@ -21,7 +21,7 @@ export interface IUser {
 }
 
 export interface IUserDetail extends IUser{
-  cd_usuario_pk: number,
+  id: number,
   nm_usuario: string,
   nm_email_usuario: string,
   cd_senha_usuario: string,
@@ -42,9 +42,9 @@ export interface IUserDetail extends IUser{
   ds_foto_usuario: string
 }
 
-export function create({ cd_usuario_pk, nm_tipo_usuario, cd_cnpj_usuario, cd_cpf_usuario, nm_razao_social_usuario, nm_usuario, nm_email_usuario, nm_sexo_usuario, cd_senha_usuario, cd_cep_usuario, nm_estado_usuario, dt_nascimento_usuario, nm_cidade_usuario, cd_telefone_usuario, cd_ip_usuario, nm_endereco_usuario, cd_numero_endereco_usuario, ds_complemento_endereco_usuario, ds_foto_usuario }: any): IUser {
+export function create({ id, nm_tipo_usuario, cd_cnpj_usuario, cd_cpf_usuario, nm_razao_social_usuario, nm_usuario, nm_email_usuario, nm_sexo_usuario, cd_senha_usuario, cd_cep_usuario, nm_estado_usuario, dt_nascimento_usuario, nm_cidade_usuario, cd_telefone_usuario, cd_ip_usuario, nm_endereco_usuario, cd_numero_endereco_usuario, ds_complemento_endereco_usuario, ds_foto_usuario }: any): IUser {
     return {
-      cd_usuario_pk, nm_tipo_usuario, cd_cnpj_usuario, cd_cpf_usuario, nm_razao_social_usuario, nm_usuario, nm_email_usuario, nm_sexo_usuario, cd_senha_usuario, cd_cep_usuario, nm_estado_usuario, dt_nascimento_usuario, nm_cidade_usuario, cd_telefone_usuario, cd_ip_usuario, nm_endereco_usuario, cd_numero_endereco_usuario, ds_complemento_endereco_usuario, ds_foto_usuario
+      id, nm_tipo_usuario, cd_cnpj_usuario, cd_cpf_usuario, nm_razao_social_usuario, nm_usuario, nm_email_usuario, nm_sexo_usuario, cd_senha_usuario, cd_cep_usuario, nm_estado_usuario, dt_nascimento_usuario, nm_cidade_usuario, cd_telefone_usuario, cd_ip_usuario, nm_endereco_usuario, cd_numero_endereco_usuario, ds_complemento_endereco_usuario, ds_foto_usuario
     }
 }
 
@@ -52,14 +52,14 @@ export function createUsers(data: any[]): IUser[]{
   return data.map(create)
 }
 
-export function createUserById({ cd_usuario_pk, nm_tipo_usuario, cd_cnpj_usuario, cd_cpf_usuario, nm_razao_social_usuario, nm_usuario, nm_email_usuario, nm_sexo_usuario, cd_senha_usuario, cd_cep_usuario, nm_estado_usuario, dt_nascimento_usuario, nm_cidade_usuario, cd_telefone_usuario, cd_ip_usuario, nm_endereco_usuario, cd_numero_endereco_usuario, ds_complemento_endereco_usuario, ds_foto_usuario }: any): IUserDetail {
+export function createUserById({ id, nm_tipo_usuario, cd_cnpj_usuario, cd_cpf_usuario, nm_razao_social_usuario, nm_usuario, nm_email_usuario, nm_sexo_usuario, cd_senha_usuario, cd_cep_usuario, nm_estado_usuario, dt_nascimento_usuario, nm_cidade_usuario, cd_telefone_usuario, cd_ip_usuario, nm_endereco_usuario, cd_numero_endereco_usuario, ds_complemento_endereco_usuario, ds_foto_usuario }: any): IUserDetail {
     return {
-      cd_usuario_pk, nm_tipo_usuario, cd_cnpj_usuario, cd_cpf_usuario, nm_razao_social_usuario, nm_usuario, nm_email_usuario, nm_sexo_usuario, cd_senha_usuario, cd_cep_usuario, nm_estado_usuario, dt_nascimento_usuario, nm_cidade_usuario, cd_telefone_usuario, cd_ip_usuario, nm_endereco_usuario, cd_numero_endereco_usuario, ds_complemento_endereco_usuario, ds_foto_usuario
+      id, nm_tipo_usuario, cd_cnpj_usuario, cd_cpf_usuario, nm_razao_social_usuario, nm_usuario, nm_email_usuario, nm_sexo_usuario, cd_senha_usuario, cd_cep_usuario, nm_estado_usuario, dt_nascimento_usuario, nm_cidade_usuario, cd_telefone_usuario, cd_ip_usuario, nm_endereco_usuario, cd_numero_endereco_usuario, ds_complemento_endereco_usuario, ds_foto_usuario
     }
 }
 
-export function createUserByEmail({ cd_usuario_pk, nm_tipo_usuario, cd_cnpj_usuario, cd_cpf_usuario, nm_razao_social_usuario, nm_usuario, nm_email_usuario, nm_sexo_usuario, cd_senha_usuario, cd_cep_usuario, nm_estado_usuario, dt_nascimento_usuario, nm_cidade_usuario, cd_telefone_usuario, cd_ip_usuario, nm_endereco_usuario, cd_numero_endereco_usuario, ds_complemento_endereco_usuario, ds_foto_usuario }: any): IUserDetail{
+export function createUserByEmail({ id, nm_tipo_usuario, cd_cnpj_usuario, cd_cpf_usuario, nm_razao_social_usuario, nm_usuario, nm_email_usuario, nm_sexo_usuario, cd_senha_usuario, cd_cep_usuario, nm_estado_usuario, dt_nascimento_usuario, nm_cidade_usuario, cd_telefone_usuario, cd_ip_usuario, nm_endereco_usuario, cd_numero_endereco_usuario, ds_complemento_endereco_usuario, ds_foto_usuario }: any): IUserDetail{
   return {
-    cd_usuario_pk, nm_tipo_usuario, cd_cnpj_usuario, cd_cpf_usuario, nm_razao_social_usuario, nm_usuario, nm_email_usuario, nm_sexo_usuario, cd_senha_usuario, cd_cep_usuario, nm_estado_usuario, dt_nascimento_usuario, nm_cidade_usuario, cd_telefone_usuario, cd_ip_usuario, nm_endereco_usuario, cd_numero_endereco_usuario, ds_complemento_endereco_usuario, ds_foto_usuario
+    id, nm_tipo_usuario, cd_cnpj_usuario, cd_cpf_usuario, nm_razao_social_usuario, nm_usuario, nm_email_usuario, nm_sexo_usuario, cd_senha_usuario, cd_cep_usuario, nm_estado_usuario, dt_nascimento_usuario, nm_cidade_usuario, cd_telefone_usuario, cd_ip_usuario, nm_endereco_usuario, cd_numero_endereco_usuario, ds_complemento_endereco_usuario, ds_foto_usuario
   }
 }

@@ -26,14 +26,14 @@ class UserController {
   }
 
   getById(req: Request, res: Response){
-    const userId = parseInt(req.params.cd_usuario_pk);
+    const userId = parseInt(req.params.id);
     User.getById(userId)
       .then(_.partial(onSuccess, res))
       .catch(_.partial(onError, res, `Usuário não encontrado`))
   }
 
   updateUser(req: Request, res: Response){
-    const userId = parseInt(req.params.cd_usuario_pk);
+    const userId = parseInt(req.params.id);
     const props = req.body;
     User.update(userId, props)
       .then(_.partial(onSuccess, res))
@@ -41,7 +41,7 @@ class UserController {
   }
 
   deleteUser(req: Request, res: Response){
-    const userId = parseInt(req.params.cd_usuario_pk);
+    const userId = parseInt(req.params.id);
     User.delete(userId)
       .then(_.partial(onSuccess, res))
       .catch(_.partial(onError, res, `Erro ao deletar usuário`))

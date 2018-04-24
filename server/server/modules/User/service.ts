@@ -3,7 +3,7 @@ import * as Bluebird from 'bluebird';
 const model = require('../../models');
 
 class User implements IUser {
-  public cd_usuario_pk: number;
+  public id: number;
   public nm_usuario: string;
   public nm_email_usuario: string;
   public cd_senha_usuario: string;
@@ -36,9 +36,9 @@ class User implements IUser {
     .then(createUsers);
   }
 
-  getById(cd_usuario_pk: number): Bluebird<IUserDetail>{
+  getById(id: number): Bluebird<IUserDetail>{
     return model.User.findOne({
-      where: { cd_usuario_pk }
+      where: { id }
     })
     .then(createUserById);
   }
@@ -50,18 +50,18 @@ class User implements IUser {
     .then(createUserByEmail);
   }
 
-  update(cd_usuario_pk: number, user: any){
+  update(id: number, user: any){
     return model.User.update(user, {
-      where: { cd_usuario_pk },
+      where: { id },
       fields: ['nm_usuario', 'nm_email_usuario','cd_senha_usuario','nm_tipo_usuario','cd_cnpj_usuario','cd_cpf_usuario','nm_razao_social_usuario','nm_sexo_usuario','cd_cep_usuario','nm_estado_usuario','dt_nascimento_usuario','nm_cidade_usuario','cd_telefone_usuario','cd_ip_usuario','nm_endereco_usuario','cd_numero_endereco_usuario','ds_complemento_endereco_usuario','ds_foto_usuario'],
       hooks: true,
       individualHooks: true
     });
   }
 
-  delete(cd_usuario_pk: number){
+  delete(id: number){
     return model.User.destroy({
-      where: { cd_usuario_pk }
+      where: { id }
     });
   }
 }

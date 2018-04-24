@@ -1,10 +1,10 @@
 export default function (sequelize, DataTypes) {
 
   const Mensagem = sequelize.define('Mensagem', {
-    cd_mensagem_pk: {
-      type: DataTypes.UUID,
-      //autoIncrement: true,
-      primarykey: true
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
     },
     ds_mensagem: {
       type: DataTypes.STRING(400)

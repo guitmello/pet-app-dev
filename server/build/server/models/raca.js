@@ -5,10 +5,10 @@ function default_1(sequelize, DataTypes) {
         nm_raca: {
             type: DataTypes.STRING,
         },
-        cd_raca_pk: {
-            type: DataTypes.UUID,
-            //autoIncrement: true,
-            primarykey: true
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
         }
     });
     return Raca;

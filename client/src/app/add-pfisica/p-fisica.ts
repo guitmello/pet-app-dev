@@ -12,4 +12,5 @@ export class PFisica {
   numero: number;
   complemento: string;
   senha: string;
+
 }

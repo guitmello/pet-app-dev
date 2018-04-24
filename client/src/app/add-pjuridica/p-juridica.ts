@@ -11,4 +11,5 @@ export class PJuridica {
   numero: number;
   complemento: string;
   senha: string;
+
 }

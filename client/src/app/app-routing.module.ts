@@ -19,7 +19,7 @@ const routes: Routes = [
     redirectTo: 'login'
   },
   {
-    path: 'site',
+    path: 'externalUrl',
     component: AppComponent,
     resolve: {
       url: 'externalUrlRedirectResolver'

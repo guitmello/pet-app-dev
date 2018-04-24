@@ -10,10 +10,23 @@ import { ChatComponent } from './chat/chat.component';
 import { AddPjuridicaComponent } from './add-pjuridica/add-pjuridica.component';
 import { AddPfisicaComponent } from './add-pfisica/add-pfisica.component';
 import { AddPetComponent } from './add-pet/add-pet.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {
-    path: '', pathMatch: 'full', redirectTo: 'login'
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'login'
+  },
+  {
+    path: 'site',
+    component: AppComponent,
+    resolve: {
+      url: 'externalUrlRedirectResolver'
+    },
+    data: {
+      externalUrl: '../site/site-institucional.html'
+    }
   },
   {
     path: 'login',

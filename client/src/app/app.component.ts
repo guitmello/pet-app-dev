@@ -19,6 +19,21 @@ export class AppComponent {
     this.loginService.mostrarMenuEmitter.subscribe(
       mostrar => this.mostrarMenu = mostrar
     );
+
+    window.onresize = function(event) {
+      let w = window.innerWidth;
+      let h = window.innerHeight;
+
+      if (w <= 500 && h <= 825) {
+        console.log('Smartphone');
+      } else if ((w >= 768 && h >= 1024) && (w <= 1024 && h <= 1366)) {
+        window.location.href = '../site/site-institucional.html';
+      } else {
+        window.location.href = '../site/site-institucional.html';
+        console.log('Desktop');
+      }
+
+    };
   }
 
 }

@@ -16,10 +16,10 @@ export class ModalAddPComponent implements OnInit {
   }
 
   goTo(route: string) {
-    if (route == 'fisica') {
+    if (route === 'fisica') {
       this.dialogRef.close();
       this.router.navigate([`add-pfisica`]);
-    } else if (route == 'juridica') {
+    } else if (route === 'juridica') {
       this.dialogRef.close();
       this.router.navigate([`add-pjuridica`]);
     }

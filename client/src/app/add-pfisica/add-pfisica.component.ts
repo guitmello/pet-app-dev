@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddPfisicaComponent implements OnInit {
 
+  sexo: Array<any>;
+
   constructor() { }
 
   ngOnInit() {
+    this.sexo = [
+      {value: 'Masculino', viewValue: 'Masculino'},
+      {value: 'Feminino', viewValue: 'Feminino'}
+    ];
   }
 
 }

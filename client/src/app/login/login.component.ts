@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private httpClient: HttpClient, private loginService: LoginService, public dialog: MatDialog) { }
 
-  openDialog(){
+  openDialog() {
     let dialogRef = this.dialog.open(ModalAddPComponent, {
       width: '300px',
       height: '210px',
@@ -51,7 +51,6 @@ export class LoginComponent implements OnInit {
     this.apiUrl += '/login';
     this.httpClient.get(this.apiUrl).subscribe(auth => {
       this.data = auth;
-      console.log(this.data);
       this.fazerLogin();
     });
   }

@@ -39,7 +39,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material';
-
+import { RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -76,9 +76,18 @@ import { MatDialogModule } from '@angular/material';
     MatDialogModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [AppComponent, LoginService],
+  providers: [AppComponent,
+              LoginService,
+              {
+                provide: 'externalUrlRedirectResolver',
+                useValue: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) =>
+                {
+                  window.location.href = (route.data as any).externalUrl;
+                }
+              }
+            ],
   bootstrap: [AppComponent],
-  entryComponents: [ModalAddPComponent] 
+  entryComponents: [ModalAddPComponent]
 })
 export class AppModule { }
 

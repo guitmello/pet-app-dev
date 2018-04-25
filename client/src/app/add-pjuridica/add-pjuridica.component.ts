@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { PJuridica } from './p-juridica';
 import { HttpClient } from '@angular/common/http';
 import { Md5 } from 'ts-md5/dist/md5';
+import { environment } from '../../environments/environment';
+
+const api_url = environment.apiUrl;
 
 @Component({
   selector: 'app-add-pjuridica',
@@ -11,7 +14,6 @@ import { Md5 } from 'ts-md5/dist/md5';
 export class AddPjuridicaComponent implements OnInit {
 
   data: any = {};
-  public urlPj: string;
   public cnpjMask: Array<string | RegExp>;
   public celMask: Array<string | RegExp>;
   public cepMask: Array<string | RegExp>;
@@ -20,6 +22,7 @@ export class AddPjuridicaComponent implements OnInit {
   md5 = new Md5();
   pjuridica: PJuridica = new PJuridica();
   senha: string;
+  private apiUrl = api_url;
 
   constructor(private httpClient: HttpClient) {
     this.cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/',
@@ -33,13 +36,12 @@ export class AddPjuridicaComponent implements OnInit {
   }
 
   registerPj() {
-
+    this.apiUrl += '/add-pjuridica%3Ftype=sucess';
     this.removeMasks();
     this.md5.appendStr(this.senha);
     let newSenha = this.md5.end();
     this.pjuridica.senha = newSenha.toString();
-    this.urlPj = 'http://demo5541414.mockable.io/add-pjuridica%3Ftype=sucess';
-    return this.httpClient.post<PJuridica>(this.urlPj, this.pjuridica)
+    return this.httpClient.post<PJuridica>(this.apiUrl, this.pjuridica)
       .subscribe(
         res => {
           console.log(res);

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Pet } from './pet';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+
+const api_url = environment.apiUrl;
 
 @Component({
   selector: 'app-add-pet',
@@ -12,13 +15,15 @@ export class AddPetComponent implements OnInit {
   sexo: Array<any>;
   especie: Array<any>;
   raca: Array<any>;
-  public urlPet: string;
+  private apiUrl = api_url;
 
   pet: Pet = new Pet();
 
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
+    this.pet.deficiencia = false;
+
     this.sexo = [
       { value: 'M', viewValue: 'Masculino' },
       { value: 'F', viewValue: 'Feminino' }
@@ -41,17 +46,16 @@ export class AddPetComponent implements OnInit {
   }
 
   registerPet() {
-    console.log(this.pet);
-    // this.urlPet = 'http://demo5541414.mockable.io/add-pet%3Ftype=sucess';
-    // return this.httpClient.post<Pet>(this.urlPet, this.pet)
-    //   .subscribe(
-    //     res => {
-    //       console.log(res);
-    //     },
-    //     err => {
-    //       console.log("Error occured");
-    //     }
-    //   );
+    this.apiUrl += '/add-pet%3Ftype=sucess';
+    return this.httpClient.post<Pet>(this.apiUrl, this.pet)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log("Error occured");
+        }
+      );
   }
 
 

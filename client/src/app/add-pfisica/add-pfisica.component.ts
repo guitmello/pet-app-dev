@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { PFisica } from './p-fisica';
 import { HttpClient } from '@angular/common/http';
 import { Md5 } from 'ts-md5/dist/md5';
+import { environment } from '../../environments/environment';
+
+const api_url = environment.apiUrl;
 
 @Component({
   selector: 'app-add-pfisica',
@@ -12,7 +15,6 @@ export class AddPfisicaComponent implements OnInit {
 
   sexo: Array<any>;
   data: any = {};
-  public urlPf: string;
   public cpfMask: Array<string | RegExp>;
   public celMask: Array<string | RegExp>;
   public cepMask: Array<string | RegExp>;
@@ -21,6 +23,7 @@ export class AddPfisicaComponent implements OnInit {
   md5 = new Md5();
   pfisica: PFisica = new PFisica();
   senha: string;
+  private apiUrl = api_url;
 
   constructor(private httpClient: HttpClient) {
     this.cpfMask = [/\d/,/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
@@ -37,12 +40,12 @@ export class AddPfisicaComponent implements OnInit {
   }
 
   registerPf() {
+    this.apiUrl += '/add-pfisica%3Ftype=sucess';
     this.removeMasks();
     this.md5.appendStr(this.senha);
     let newSenha = this.md5.end();
     this.pfisica.senha = newSenha.toString();
-    this.urlPf = 'http://demo5541414.mockable.io/add-pfisica%3Ftype=sucess';
-    return this.httpClient.post<PFisica>(this.urlPf, this.pfisica)
+    return this.httpClient.post<PFisica>(this.apiUrl, this.pfisica)
       .subscribe(
         res => {
           console.log(res);

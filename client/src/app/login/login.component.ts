@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
 
   usuario: Usuario = new Usuario();
   md5 = new Md5();
+  senha: string;
 
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -45,8 +46,7 @@ export class LoginComponent implements OnInit {
   }
 
   getAuth() {
-    this.md5.appendStr(this.usuario.senha);
-    alert(this.md5.end());
+    this.md5.appendStr(this.senha);
     let newSenha = this.md5.end();
     this.usuario.senha = newSenha.toString();
 

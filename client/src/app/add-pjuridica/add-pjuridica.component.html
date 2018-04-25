@@ -30,13 +30,13 @@
 
             <div class="col-6">
               <mat-form-field>
-                <input [(ngModel)]="pjuridica.celular" name="celular" type="text" matInput placeholder="Celular" required>
+                <input [(ngModel)]="pjuridica.celular" [textMask]="{mask: celMask}" name="celular" type="text" matInput placeholder="Celular" required>
               </mat-form-field>
             </div>
 
             <div class="col-6">
               <mat-form-field>
-                <input [(ngModel)]="pjuridica.cep" name="cep" type="text" matInput placeholder="CEP" required>
+                <input [(ngModel)]="pjuridica.cep" [textMask]="{mask: cepMask}" name="cep" type="text" matInput placeholder="CEP" required>
               </mat-form-field>
             </div>
 
@@ -60,7 +60,7 @@
 
             <div class="col-4">
               <mat-form-field>
-                <input [(ngModel)]="pjuridica.numero" name="numero" type="text" matInput placeholder="Número" required>
+                <input [(ngModel)]="pjuridica.numero" [textMask]="{mask: numMask}" name="numero" type="text" matInput placeholder="Número" required>
               </mat-form-field>
             </div>
 

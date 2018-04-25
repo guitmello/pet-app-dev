@@ -27,9 +27,9 @@ export class AppComponent {
       if (w <= 500 && h <= 825) {
         console.log('Smartphone');
       } else if ((w >= 768 && h >= 1024) && (w <= 1024 && h <= 1366)) {
-        window.location.href = 'externalUrl';
+        window.location.href='https://idotapp.github.io/site-institucional/site-institucional.html';
       } else {
-        window.location.href = 'externalUrl';
+        window.location.href='https://idotapp.github.io/site-institucional/site-institucional.html';
         console.log('Desktop');
       }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Md5 } from 'ts-md5/dist/md5';
 
 import { LoginService } from './login.service';
 import { Usuario } from './usuario';
@@ -22,6 +23,8 @@ export class LoginComponent implements OnInit {
   data: any = {};
 
   usuario: Usuario = new Usuario();
+  md5 = new Md5();
+  senha: string;
 
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -40,18 +43,18 @@ export class LoginComponent implements OnInit {
       height: '210px',
       data: { }
     });
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    //   this.animal = result;
-    // });
   }
 
   getAuth() {
+    this.md5.appendStr(this.senha);
+    let newSenha = this.md5.end();
+    this.usuario.senha = newSenha.toString();
+
     this.apiUrl += '/login';
-    this.httpClient.get(this.apiUrl).subscribe(auth => {
+    this.httpClient.post<Usuario>(this.apiUrl, this.usuario).subscribe(auth => {
       this.data = auth;
       this.fazerLogin();
+      console.log(auth);
     });
   }
 

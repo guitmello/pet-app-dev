@@ -1,2 +1,11 @@
-runtime: nodejs
-env: flex
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /
+  static_files: client/dist/index.html
+  upload: client/dist/index.html
+
+- url: /
+  static_dir: client

@@ -9,7 +9,7 @@ class Auth {
   config(){
     let opts = {
       secretOrKey: config.secret,
-      jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("jwt")
+      jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('jwt')
     };
     passport.use(new Strategy(opts, (jwtPayload, done) => {
       User

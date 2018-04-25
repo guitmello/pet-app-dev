@@ -10,7 +10,7 @@ var Auth = /** @class */ (function () {
     Auth.prototype.config = function () {
         var opts = {
             secretOrKey: config.secret,
-            jwtFromRequest: passport_jwt_1.ExtractJwt.fromAuthHeaderWithScheme("jwt")
+            jwtFromRequest: passport_jwt_1.ExtractJwt.fromAuthHeaderWithScheme('jwt')
         };
         passport.use(new passport_jwt_1.Strategy(opts, function (jwtPayload, done) {
             service_1.default

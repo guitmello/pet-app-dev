@@ -9,13 +9,13 @@ class TokenRoutes {
   
   auth(req: Request, res: Response){
     const credentials = {
-      email: req.body.nm_email_usuario,
-      password: req.body.cd_senha_usuario
+      nm_email_usuario: req.body.nm_email_usuario,
+      cd_senha_usuario: req.body.cd_senha_usuario
     };
 
-    if(credentials.hasOwnProperty('email') && credentials.hasOwnProperty('password')){
+    if(credentials.hasOwnProperty('nm_email_usuario') && credentials.hasOwnProperty('cd_senha_usuario')){
       User
-      .getByEmail(credentials.email)
+      .getByEmail(credentials.nm_email_usuario)
       .then(_.partial(authSuccess, res, credentials))
       .catch(_.partial(authFail, req, res));
     }

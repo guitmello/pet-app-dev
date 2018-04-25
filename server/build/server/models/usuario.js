@@ -47,7 +47,7 @@ function default_1(sequelize, DataTypes) {
             type: DataTypes.BIGINT
         },
         cd_ip_usuario: {
-            type: DataTypes.UUID,
+            type: DataTypes.STRING,
             unique: true
         },
         nm_endereco_usuario: {

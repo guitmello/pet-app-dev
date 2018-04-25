@@ -19,6 +19,7 @@ export class AddPjuridicaComponent implements OnInit {
 
   md5 = new Md5();
   pjuridica: PJuridica = new PJuridica();
+  senha: string;
 
   constructor(private httpClient: HttpClient) {
     this.cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/',
@@ -32,9 +33,11 @@ export class AddPjuridicaComponent implements OnInit {
   }
 
   registerPj() {
+
     this.removeMasks();
-    this.md5.appendStr(this.pjuridica.senha);
-    this.pjuridica.senha = this.md5.end().toString();
+    this.md5.appendStr(this.senha);
+    let newSenha = this.md5.end();
+    this.pjuridica.senha = newSenha.toString();
     this.urlPj = 'http://demo5541414.mockable.io/add-pjuridica%3Ftype=sucess';
     return this.httpClient.post<PJuridica>(this.urlPj, this.pjuridica)
       .subscribe(

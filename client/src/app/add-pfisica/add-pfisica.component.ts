@@ -38,9 +38,7 @@ export class AddPfisicaComponent implements OnInit {
 
   registerPf() {
     this.removeMasks();
-    alert(this.senha);
     this.md5.appendStr(this.senha);
-    alert(this.md5.end());
     let newSenha = this.md5.end();
     this.pfisica.senha = newSenha.toString();
     this.urlPf = 'http://demo5541414.mockable.io/add-pfisica%3Ftype=sucess';

@@ -19,7 +19,7 @@ export class LoginService {
 
     this.authCheck = auth.authUser;
 
-    if (usuario.email === this.authCheck[0].nm_email_usuario && this.authCheck[0].Tokken) {
+    if (usuario.email === this.authCheck[0].nm_email_usuario && !this.authCheck[0].Tokken) {
       this.usuarioAutenticado = true;
       this.mostrarMenuEmitter.emit(true);
       this.router.navigate(['/home']);

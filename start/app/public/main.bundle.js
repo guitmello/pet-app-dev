@@ -27,7 +27,7 @@ module.exports = ".checkbox-align {\r\n  padding: .1375em 0 !important;\r\n  bor
 /***/ "./src/app/add-pet/add-pet.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Cadastrar Pet</h1>\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card>\r\n\r\n    <form>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"Nome\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select placeholder=\"Sexo\" required>\r\n              <mat-option *ngFor=\"let sexos of sexo\" [value]=\"sexos.value\">\r\n                {{ sexos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select placeholder=\"Espécie\" required>\r\n              <mat-option *ngFor=\"let especies of especie\" [value]=\"especies.value\">\r\n                {{ especies.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select placeholder=\"Raça\" required>\r\n              <mat-option *ngFor=\"let racas of raca\" [value]=\"racas.value\">\r\n                {{ racas.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"Idade\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"Tamanho\" required>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"Cor\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6\">\r\n          <div class=\"checkbox-align\">\r\n            <mat-checkbox color=\"primary\">Deficiência</mat-checkbox>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input matInput placeholder=\"Qual?\">\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-12\">\r\n        <div class=\"row justify-content-center\">\r\n          <h2 class=\"sub-title\">Foto do Pet</h2>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6 button-row\" align=\"center\">\r\n          <button mat-raised-button class=\"content-center\" type=\"button\" color=\"primary\" class=\"w-75\" (click)=\"fileInput.click()\">Upload</button>\r\n          <input hidden type=\"file\" #fileInput />\r\n        </div>\r\n        <div class=\"col-6 button-row\" align=\"center\">\r\n            <button mat-raised-button class=\"content-center\" type=\"button\" color=\"primary\" class=\"w-75\" (click)=\"imgFileInput.click()\">Tirar uma Foto</button>\r\n            <input hidden type=\"file\" accept=\"image/*\" capture=\"camera\" #imgFileInput />\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-12\">\r\n        <div class=\"button-submit-row row justify-content-center\">\r\n          <button mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\">Confirmar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Cadastrar Pet</h1>\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card>\r\n\r\n    <form>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pet.nome\" name=\"nome\" matInput placeholder=\"Nome\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pet.sexo\" name=\"sexo\" placeholder=\"Sexo\" required>\r\n              <mat-option *ngFor=\"let sexos of sexo\" [value]=\"sexos.value\">\r\n                {{ sexos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pet.id_especie\" name=\"especie\" placeholder=\"Espécie\" required>\r\n              <mat-option *ngFor=\"let especies of especie\" [value]=\"especies.id\">\r\n                {{ especies.value }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pet.id_raca\" name=\"raca\" placeholder=\"Raça\" required>\r\n              <mat-option *ngFor=\"let racas of raca\" [value]=\"racas.id\">\r\n                {{ racas.value }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pet.idade\" name=\"idade\" matInput placeholder=\"Idade\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pet.tamanho\" name=\"tamanho\" matInput placeholder=\"Tamanho\" required>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pet.cor\" name=\"cor\" matInput placeholder=\"Cor\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6\">\r\n          <div class=\"checkbox-align\">\r\n            <mat-checkbox [(ngModel)]=\"pet.deficiencia\" name=\"deficiencia\" color=\"primary\">Deficiência</mat-checkbox>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-6\" *ngIf=\"!!pet.deficiencia\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pet.ds_deficiencia\" name=\"ds_deficiencia\" matInput placeholder=\"Qual?\">\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-12\">\r\n        <div class=\"row justify-content-center\">\r\n          <h2 class=\"sub-title\">Foto do Pet</h2>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6 button-row\" align=\"center\">\r\n          <button mat-raised-button class=\"content-center\" type=\"button\" color=\"primary\" class=\"w-75\" (click)=\"fileInput.click()\">Upload</button>\r\n          <input hidden type=\"file\" #fileInput />\r\n        </div>\r\n        <div class=\"col-6 button-row\" align=\"center\">\r\n            <button mat-raised-button class=\"content-center\" type=\"button\" color=\"primary\" class=\"w-75\" (click)=\"imgFileInput.click()\">Tirar uma Foto</button>\r\n            <input hidden type=\"file\" accept=\"image/*\" capture=\"camera\" #imgFileInput />\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-12\">\r\n        <div class=\"button-submit-row row justify-content-center\">\r\n          <button mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\" (click)=\"registerPet()\">Confirmar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -37,6 +37,9 @@ module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <div clas
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddPetComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pet__ = __webpack_require__("./src/app/add-pet/pet.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -47,37 +50,69 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+var api_url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiUrl;
 var AddPetComponent = /** @class */ (function () {
-    function AddPetComponent() {
+    function AddPetComponent(httpClient) {
+        this.httpClient = httpClient;
+        this.apiUrl = api_url;
+        this.pet = new __WEBPACK_IMPORTED_MODULE_1__pet__["a" /* Pet */]();
     }
     AddPetComponent.prototype.ngOnInit = function () {
+        this.pet.deficiencia = false;
         this.sexo = [
-            { value: 'Masculino', viewValue: 'Masculino' },
-            { value: 'Feminino', viewValue: 'Feminino' }
+            { value: 'M', viewValue: 'Masculino' },
+            { value: 'F', viewValue: 'Feminino' }
         ];
         this.especie = [
-            { value: 'Espécie 1', viewValue: 'Espécie 1' },
-            { value: 'Espécie 2', viewValue: 'Espécie 2' },
-            { value: 'Espécie 3', viewValue: 'Espécie 3' },
-            { value: 'Espécie 4', viewValue: 'Espécie 4' },
-            { value: 'Espécie 5', viewValue: 'Espécie 5' }
+            { id: 1, value: 'Espécie 1' },
+            { id: 2, value: 'Espécie 2' },
+            { id: 3, value: 'Espécie 3' },
+            { id: 4, value: 'Espécie 4' },
+            { id: 5, value: 'Espécie 5' }
         ];
         this.raca = [
-            { value: 'Raça 1', viewValue: 'Raça 1' },
-            { value: 'Raça 2', viewValue: 'Raça 2' },
-            { value: 'Raça 3', viewValue: 'Raça 3' },
-            { value: 'Raça 4', viewValue: 'Raça 4' }
+            { id: 1, value: 'Raça 1' },
+            { id: 2, value: 'Raça 2' },
+            { id: 3, value: 'Raça 3' },
+            { id: 4, value: 'Raça 4' }
         ];
     };
+    AddPetComponent.prototype.registerPet = function () {
+        this.apiUrl += '/add-pet%3Ftype=sucess';
+        return this.httpClient.post(this.apiUrl, this.pet)
+            .subscribe(function (res) {
+            console.log(res);
+        }, function (err) {
+            console.log("Error occured");
+        });
+    };
     AddPetComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-add-pet',
             template: __webpack_require__("./src/app/add-pet/add-pet.component.html"),
             styles: [__webpack_require__("./src/app/add-pet/add-pet.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]])
     ], AddPetComponent);
     return AddPetComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/add-pet/pet.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Pet; });
+var Pet = /** @class */ (function () {
+    function Pet() {
+    }
+    return Pet;
 }());
 
 
@@ -94,7 +129,7 @@ module.exports = ""
 /***/ "./src/app/add-pfisica/add-pfisica.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <mat-card>\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n\r\n        <h1 class=\"title\">Cadastrar Usuário Pessoa Física</h1>\r\n\r\n    </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n      <h1 class=\"title\">Cadastrar Usuário Pessoa Física</h1>\r\n    </div>\r\n  </div>\r\n\r\n  <mat-card>\r\n    <form>\r\n\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.nome\" name=\"nome\" type=\"text\" matInput placeholder=\"Nome\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.email\" name=\"email\" type=\"email\" matInput placeholder=\"Email\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.cpf\" [textMask]=\"{mask: cpfMask}\" name=\"cpf\" type=\"text\" matInput placeholder=\"CPF\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pfisica.sexo\" name=\"sexo\" placeholder=\"Sexo\" required>\r\n              <mat-option *ngFor=\"let sexos of sexo\" [value]=\"sexos.value\">\r\n                {{ sexos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.celular\" [textMask]=\"{mask: celMask}\" name=\"celular\" type=\"text\" matInput placeholder=\"Celular\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.cep\" [textMask]=\"{mask: cepMask}\" name=\"cep\" type=\"text\" matInput placeholder=\"CEP\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.estado\" name=\"estado\" type=\"text\" matInput placeholder=\"Estado\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.cidade\" name=\"cidade\" type=\"text\" matInput placeholder=\"Cidade\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.endereco\" name=\"endereco\" type=\"text\" matInput placeholder=\"Endereço\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-4\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.numero\" [textMask]=\"{mask: numMask}\" name=\"numero\" type=\"text\" matInput placeholder=\"Número\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.complemento\" name=\"complemento\" type=\"text\" matInput placeholder=\"Complemento\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"senha\" name=\"senha\" type=\"password\" matInput placeholder=\"Senha\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"button-row row justify-content-center\">\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button type=\"submit\" color=\"primary\" class=\"w-100\" (click)=\"registerPf()\">Confirmar</button>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button color=\"primary\" class=\"w-100\">Cancelar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -104,6 +139,11 @@ module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <mat-card
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddPfisicaComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__p_fisica__ = __webpack_require__("./src/app/add-pfisica/p-fisica.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5__ = __webpack_require__("./node_modules/ts-md5/dist/md5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -114,20 +154,92 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
+var api_url = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].apiUrl;
 var AddPfisicaComponent = /** @class */ (function () {
-    function AddPfisicaComponent() {
+    function AddPfisicaComponent(httpClient) {
+        this.httpClient = httpClient;
+        this.data = {};
+        this.md5 = new __WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5__["Md5"]();
+        this.pfisica = new __WEBPACK_IMPORTED_MODULE_1__p_fisica__["a" /* PFisica */]();
+        this.apiUrl = api_url;
+        this.cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+        this.celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+        this.cepMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
+        this.numMask = [/[1-9]/, /\d/, /\d/, /\d/, /\d/, /\d/];
     }
     AddPfisicaComponent.prototype.ngOnInit = function () {
+        this.sexo = [
+            { value: 'M', viewValue: 'Masculino' },
+            { value: 'F', viewValue: 'Feminino' }
+        ];
+    };
+    AddPfisicaComponent.prototype.registerPf = function () {
+        this.apiUrl += '/add-pfisica%3Ftype=sucess';
+        this.removeMasks();
+        this.md5.appendStr(this.senha);
+        var newSenha = this.md5.end();
+        this.pfisica.senha = newSenha.toString();
+        return this.httpClient.post(this.apiUrl, this.pfisica)
+            .subscribe(function (res) {
+            console.log(res);
+        }, function (err) {
+            console.log("Error occured");
+        });
+    };
+    AddPfisicaComponent.prototype.removeMasks = function () {
+        this.removeCpfMask();
+        this.removeCelMask();
+        this.removeCepMask();
+    };
+    AddPfisicaComponent.prototype.removeCpfMask = function () {
+        var cpf = this.pfisica.cpf.toString();
+        var beforeCpf = cpf.replace('.', '');
+        beforeCpf = beforeCpf.replace('.', '');
+        beforeCpf = beforeCpf.replace('-', '');
+        this.pfisica.cpf = parseInt(beforeCpf);
+    };
+    AddPfisicaComponent.prototype.removeCelMask = function () {
+        var cel = this.pfisica.celular.toString();
+        var beforeCel = cel.replace('(', '');
+        beforeCel = beforeCel.replace(')', '');
+        beforeCel = beforeCel.replace(' ', '');
+        beforeCel = beforeCel.replace('-', '');
+        this.pfisica.celular = parseInt(beforeCel);
+    };
+    AddPfisicaComponent.prototype.removeCepMask = function () {
+        var cep = this.pfisica.cep.toString();
+        var beforeCep = cep.replace('.', '');
+        beforeCep = beforeCep.replace('-', '');
+        this.pfisica.cep = parseInt(beforeCep);
     };
     AddPfisicaComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-add-pfisica',
             template: __webpack_require__("./src/app/add-pfisica/add-pfisica.component.html"),
             styles: [__webpack_require__("./src/app/add-pfisica/add-pfisica.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]])
     ], AddPfisicaComponent);
     return AddPfisicaComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/add-pfisica/p-fisica.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PFisica; });
+var PFisica = /** @class */ (function () {
+    function PFisica() {
+    }
+    return PFisica;
 }());
 
 
@@ -144,7 +256,7 @@ module.exports = ""
 /***/ "./src/app/add-pjuridica/add-pjuridica.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <mat-card>\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n\r\n        <h1 class=\"title\">Cadastrar Usuário Pessoa Jurídica</h1>\r\n\r\n    </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row justify-content-center\">\r\n        <h1 class=\"title\">Cadastrar Usuário Pessoa Jurídica</h1>\r\n    </div>\r\n    </div>\r\n\r\n    <mat-card>\r\n        <form>\r\n\r\n          <div class=\"row justify-content-center\">\r\n            <div class=\"col-12\">\r\n              <mat-form-field>\r\n                  <input [(ngModel)]=\"pjuridica.razaoSocial\" name=\"razaoSocial\" type=\"text\" matInput placeholder=\"Razão Social\" required>\r\n              </mat-form-field>\r\n            </div>\r\n\r\n            <div class=\"col-12\">\r\n              <mat-form-field>\r\n                <input [(ngModel)]=\"pjuridica.email\" name=\"email\" type=\"email\" matInput placeholder=\"Email\" required>\r\n              </mat-form-field>\r\n            </div>\r\n\r\n            <div class=\"col-6\">\r\n              <mat-form-field>\r\n                <input [(ngModel)]=\"pjuridica.cnpj\" [textMask]=\"{mask: cnpjMask}\" name=\"cnpj\" type=\"text\" matInput placeholder=\"CNPJ\" required>\r\n              </mat-form-field>\r\n            </div>\r\n\r\n            <div class=\"col-6\">\r\n              <mat-form-field>\r\n                <input [(ngModel)]=\"pjuridica.celular\" [textMask]=\"{mask: celMask}\" name=\"celular\" type=\"text\" matInput placeholder=\"Celular\" required>\r\n              </mat-form-field>\r\n            </div>\r\n\r\n            <div class=\"col-6\">\r\n              <mat-form-field>\r\n                <input [(ngModel)]=\"pjuridica.cep\" [textMask]=\"{mask: cepMask}\" name=\"cep\" type=\"text\" matInput placeholder=\"CEP\" required>\r\n              </mat-form-field>\r\n            </div>\r\n\r\n            <div class=\"col-6\">\r\n              <mat-form-field>\r\n                <input [(ngModel)]=\"pjuridica.estado\" name=\"estado\" type=\"text\" matInput placeholder=\"Estado\" required>\r\n              </mat-form-field>\r\n            </div>\r\n\r\n            <div class=\"col-12\">\r\n              <mat-form-field>\r\n                <input [(ngModel)]=\"pjuridica.cidade\" name=\"cidade\" type=\"text\" matInput placeholder=\"Cidade\" required>\r\n              </mat-form-field>\r\n            </div>\r\n\r\n            <div class=\"col-12\">\r\n              <mat-form-field>\r\n                <input [(ngModel)]=\"pjuridica.endereco\" name=\"endereco\" type=\"text\" matInput placeholder=\"Endereço\" required>\r\n              </mat-form-field>\r\n            </div>\r\n\r\n            <div class=\"col-4\">\r\n              <mat-form-field>\r\n                <input [(ngModel)]=\"pjuridica.numero\" [textMask]=\"{mask: numMask}\" name=\"numero\" type=\"text\" matInput placeholder=\"Número\" required>\r\n              </mat-form-field>\r\n            </div>\r\n\r\n            <div class=\"col-8\">\r\n              <mat-form-field>\r\n                <input [(ngModel)]=\"pjuridica.complemento\" name=\"complemento\" type=\"text\" matInput placeholder=\"Complemento\" required>\r\n              </mat-form-field>\r\n            </div>\r\n\r\n            <div class=\"col-12\">\r\n              <mat-form-field>\r\n                <input [(ngModel)]=\"pjuridica.senha\" name=\"senha\" type=\"password\" matInput placeholder=\"Senha\" required>\r\n              </mat-form-field>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"button-row row justify-content-center\">\r\n            <div class=\"col-6\">\r\n              <button mat-raised-button type=\"submit\" color=\"primary\" class=\"w-100\" (click)=\"registerPj()\">Confirmar</button>\r\n            </div>\r\n            <div class=\"col-6\">\r\n              <button mat-raised-button color=\"primary\" class=\"w-100\">Cancelar</button>\r\n            </div>\r\n          </div>\r\n\r\n        </form>\r\n      </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -154,6 +266,11 @@ module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <mat-card
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddPjuridicaComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__p_juridica__ = __webpack_require__("./src/app/add-pjuridica/p-juridica.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5__ = __webpack_require__("./node_modules/ts-md5/dist/md5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -164,20 +281,90 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
+var api_url = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].apiUrl;
 var AddPjuridicaComponent = /** @class */ (function () {
-    function AddPjuridicaComponent() {
+    function AddPjuridicaComponent(httpClient) {
+        this.httpClient = httpClient;
+        this.data = {};
+        this.md5 = new __WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5__["Md5"]();
+        this.pjuridica = new __WEBPACK_IMPORTED_MODULE_1__p_juridica__["a" /* PJuridica */]();
+        this.apiUrl = api_url;
+        this.cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/',
+            /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+        this.celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+        this.cepMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
+        this.numMask = [/[1-9]/, /\d/, /\d/, /\d/, /\d/, /\d/];
     }
     AddPjuridicaComponent.prototype.ngOnInit = function () {
     };
+    AddPjuridicaComponent.prototype.registerPj = function () {
+        this.apiUrl += '/add-pjuridica%3Ftype=sucess';
+        this.removeMasks();
+        this.md5.appendStr(this.senha);
+        var newSenha = this.md5.end();
+        this.pjuridica.senha = newSenha.toString();
+        return this.httpClient.post(this.apiUrl, this.pjuridica)
+            .subscribe(function (res) {
+            console.log(res);
+        }, function (err) {
+            console.log("Error occured");
+        });
+    };
+    AddPjuridicaComponent.prototype.removeMasks = function () {
+        this.removeCnpjMask();
+        this.removeCelMask();
+        this.removeCepMask();
+    };
+    AddPjuridicaComponent.prototype.removeCnpjMask = function () {
+        var cnpj = this.pjuridica.cnpj.toString();
+        var beforeCnpj = cnpj.replace('.', '');
+        beforeCnpj = beforeCnpj.replace('.', '');
+        beforeCnpj = beforeCnpj.replace('/', '');
+        beforeCnpj = beforeCnpj.replace('-', '');
+        this.pjuridica.cnpj = parseInt(beforeCnpj);
+    };
+    AddPjuridicaComponent.prototype.removeCelMask = function () {
+        var cel = this.pjuridica.celular.toString();
+        var beforeCel = cel.replace('(', '');
+        beforeCel = beforeCel.replace(')', '');
+        beforeCel = beforeCel.replace(' ', '');
+        beforeCel = beforeCel.replace('-', '');
+        this.pjuridica.celular = parseInt(beforeCel);
+    };
+    AddPjuridicaComponent.prototype.removeCepMask = function () {
+        var cep = this.pjuridica.cep.toString();
+        var beforeCep = cep.replace('.', '');
+        beforeCep = beforeCep.replace('-', '');
+        this.pjuridica.cep = parseInt(beforeCep);
+    };
     AddPjuridicaComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-add-pjuridica',
             template: __webpack_require__("./src/app/add-pjuridica/add-pjuridica.component.html"),
             styles: [__webpack_require__("./src/app/add-pjuridica/add-pjuridica.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]])
     ], AddPjuridicaComponent);
     return AddPjuridicaComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/add-pjuridica/p-juridica.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PJuridica; });
+var PJuridica = /** @class */ (function () {
+    function PJuridica() {
+    }
+    return PJuridica;
 }());
 
 
@@ -201,6 +388,7 @@ var AddPjuridicaComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__add_pjuridica_add_pjuridica_component__ = __webpack_require__("./src/app/add-pjuridica/add-pjuridica.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__add_pfisica_add_pfisica_component__ = __webpack_require__("./src/app/add-pfisica/add-pfisica.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__add_pet_add_pet_component__ = __webpack_require__("./src/app/add-pet/add-pet.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_component__ = __webpack_require__("./src/app/app.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -219,9 +407,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var routes = [
     {
-        path: '', pathMatch: 'full', redirectTo: 'home'
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'login'
+    },
+    {
+        path: 'externalUrl',
+        component: __WEBPACK_IMPORTED_MODULE_12__app_component__["a" /* AppComponent */],
+        resolve: {
+            url: 'externalUrlRedirectResolver'
+        },
+        data: {
+            externalUrl: '../site/site-institucional.html'
+        }
     },
     {
         path: 'login',
@@ -268,7 +469,7 @@ var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
     }
     AppRoutingModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* RouterModule */].forRoot(routes)],
             exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* RouterModule */]]
         })
@@ -322,9 +523,23 @@ var AppComponent = /** @class */ (function () {
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.loginService.mostrarMenuEmitter.subscribe(function (mostrar) { return _this.mostrarMenu = mostrar; });
+        window.onresize = function (event) {
+            var w = window.innerWidth;
+            var h = window.innerHeight;
+            if (w <= 500 && h <= 825) {
+                console.log('Smartphone');
+            }
+            else if ((w >= 768 && h >= 1024) && (w <= 1024 && h <= 1366)) {
+                window.location.href = 'https://idotapp.github.io/site-institucional/site-institucional.html';
+            }
+            else {
+                window.location.href = 'https://idotapp.github.io/site-institucional/site-institucional.html';
+                console.log('Desktop');
+            }
+        };
     };
     AppComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
             template: __webpack_require__("./src/app/app.component.html"),
             styles: [__webpack_require__("./src/app/app.component.css")]
@@ -362,17 +577,21 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__meus_pets_meus_pets_component__ = __webpack_require__("./src/app/meus-pets/meus-pets.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pesquisar_pesquisar_component__ = __webpack_require__("./src/app/pesquisar/pesquisar.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pet_info_pet_info_component__ = __webpack_require__("./src/app/pet-info/pet-info.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__login_login_service__ = __webpack_require__("./src/app/login/login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__angular_material_sidenav__ = __webpack_require__("./node_modules/@angular/material/esm5/sidenav.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__angular_material_toolbar__ = __webpack_require__("./node_modules/@angular/material/esm5/toolbar.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__angular_material_list__ = __webpack_require__("./node_modules/@angular/material/esm5/list.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__angular_material_button__ = __webpack_require__("./node_modules/@angular/material/esm5/button.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__angular_material_icon__ = __webpack_require__("./node_modules/@angular/material/esm5/icon.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__angular_material_card__ = __webpack_require__("./node_modules/@angular/material/esm5/card.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__angular_material_form_field__ = __webpack_require__("./node_modules/@angular/material/esm5/form-field.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__angular_material_input__ = __webpack_require__("./node_modules/@angular/material/esm5/input.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__angular_material_checkbox__ = __webpack_require__("./node_modules/@angular/material/esm5/checkbox.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__angular_material_select__ = __webpack_require__("./node_modules/@angular/material/esm5/select.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__login_modal_add_p_modal_add_p_component__ = __webpack_require__("./src/app/login/modal-add-p/modal-add-p.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__login_login_service__ = __webpack_require__("./src/app/login/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__angular_material_sidenav__ = __webpack_require__("./node_modules/@angular/material/esm5/sidenav.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__angular_material_toolbar__ = __webpack_require__("./node_modules/@angular/material/esm5/toolbar.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__angular_material_list__ = __webpack_require__("./node_modules/@angular/material/esm5/list.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__angular_material_button__ = __webpack_require__("./node_modules/@angular/material/esm5/button.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__angular_material_icon__ = __webpack_require__("./node_modules/@angular/material/esm5/icon.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__angular_material_card__ = __webpack_require__("./node_modules/@angular/material/esm5/card.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__angular_material_form_field__ = __webpack_require__("./node_modules/@angular/material/esm5/form-field.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__angular_material_input__ = __webpack_require__("./node_modules/@angular/material/esm5/input.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__angular_material_checkbox__ = __webpack_require__("./node_modules/@angular/material/esm5/checkbox.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__angular_material_select__ = __webpack_require__("./node_modules/@angular/material/esm5/select.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32_angular2_text_mask__ = __webpack_require__("./node_modules/angular2-text-mask/dist/angular2TextMask.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32_angular2_text_mask___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_32_angular2_text_mask__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -409,11 +628,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["J" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["NgModule"])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_9__add_pet_add_pet_component__["a" /* AddPetComponent */],
@@ -426,28 +648,40 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_16__meus_pets_meus_pets_component__["a" /* MeusPetsComponent */],
                 __WEBPACK_IMPORTED_MODULE_17__pesquisar_pesquisar_component__["a" /* PesquisarComponent */],
                 __WEBPACK_IMPORTED_MODULE_18__pet_info_pet_info_component__["a" /* PetInfoComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__login_modal_add_p_modal_add_p_component__["a" /* ModalAddPComponent */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["b" /* HttpClientModule */],
-                __WEBPACK_IMPORTED_MODULE_3__angular_forms__["d" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormsModule"],
                 __WEBPACK_IMPORTED_MODULE_5__app_routing_module__["a" /* AppRoutingModule */],
-                __WEBPACK_IMPORTED_MODULE_20__angular_material_sidenav__["a" /* MatSidenavModule */],
-                __WEBPACK_IMPORTED_MODULE_21__angular_material_toolbar__["a" /* MatToolbarModule */],
-                __WEBPACK_IMPORTED_MODULE_24__angular_material_icon__["a" /* MatIconModule */],
-                __WEBPACK_IMPORTED_MODULE_23__angular_material_button__["a" /* MatButtonModule */],
-                __WEBPACK_IMPORTED_MODULE_22__angular_material_list__["a" /* MatListModule */],
-                __WEBPACK_IMPORTED_MODULE_25__angular_material_card__["a" /* MatCardModule */],
-                __WEBPACK_IMPORTED_MODULE_26__angular_material_form_field__["c" /* MatFormFieldModule */],
-                __WEBPACK_IMPORTED_MODULE_27__angular_material_input__["a" /* MatInputModule */],
-                __WEBPACK_IMPORTED_MODULE_29__angular_material_select__["a" /* MatSelectModule */],
-                __WEBPACK_IMPORTED_MODULE_28__angular_material_checkbox__["a" /* MatCheckboxModule */],
+                __WEBPACK_IMPORTED_MODULE_21__angular_material_sidenav__["a" /* MatSidenavModule */],
+                __WEBPACK_IMPORTED_MODULE_22__angular_material_toolbar__["a" /* MatToolbarModule */],
+                __WEBPACK_IMPORTED_MODULE_25__angular_material_icon__["a" /* MatIconModule */],
+                __WEBPACK_IMPORTED_MODULE_24__angular_material_button__["a" /* MatButtonModule */],
+                __WEBPACK_IMPORTED_MODULE_23__angular_material_list__["a" /* MatListModule */],
+                __WEBPACK_IMPORTED_MODULE_26__angular_material_card__["a" /* MatCardModule */],
+                __WEBPACK_IMPORTED_MODULE_27__angular_material_form_field__["c" /* MatFormFieldModule */],
+                __WEBPACK_IMPORTED_MODULE_28__angular_material_input__["b" /* MatInputModule */],
+                __WEBPACK_IMPORTED_MODULE_30__angular_material_select__["a" /* MatSelectModule */],
+                __WEBPACK_IMPORTED_MODULE_29__angular_material_checkbox__["a" /* MatCheckboxModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["b" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_31__angular_material__["c" /* MatDialogModule */],
+                __WEBPACK_IMPORTED_MODULE_32_angular2_text_mask__["TextMaskModule"],
                 __WEBPACK_IMPORTED_MODULE_6__angular_service_worker__["a" /* ServiceWorkerModule */].register('/ngsw-worker.js', { enabled: __WEBPACK_IMPORTED_MODULE_7__environments_environment__["a" /* environment */].production })
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_19__login_login_service__["a" /* LoginService */]],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__login_login_service__["a" /* LoginService */],
+                {
+                    provide: 'externalUrlRedirectResolver',
+                    useValue: function (route, state) {
+                        window.location.href = route.data.externalUrl;
+                    }
+                }
+            ],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]],
+            entryComponents: [__WEBPACK_IMPORTED_MODULE_19__login_modal_add_p_modal_add_p_component__["a" /* ModalAddPComponent */]]
         })
     ], AppModule);
     return AppModule;
@@ -493,7 +727,7 @@ var ChatComponent = /** @class */ (function () {
     ChatComponent.prototype.ngOnInit = function () {
     };
     ChatComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-chat',
             template: __webpack_require__("./src/app/chat/chat.component.html"),
             styles: [__webpack_require__("./src/app/chat/chat.component.css")]
@@ -555,7 +789,7 @@ var FavoritosComponent = /** @class */ (function () {
         ];
     };
     FavoritosComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-favoritos',
             template: __webpack_require__("./src/app/favoritos/favoritos.component.html"),
             styles: [__webpack_require__("./src/app/favoritos/favoritos.component.css")]
@@ -579,7 +813,7 @@ module.exports = "#home .mat-card{\r\n    padding: 0px !important;\r\n}\r\n\r\n.
 /***/ "./src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"home\" class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Pets Cadastrados Recentemente Perto de Você</h1>\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card *ngFor=\"let pet of listOfPets\" (click)=\"moreInfo(pet.id)\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-2\">\r\n        <img src=\"../../assets/images/ft-pet.jpg\" alt=\"\" class=\"img-animals\">\r\n      </div>\r\n      <div class=\"col-md-2 card-content\">\r\n        <ul>\r\n          <li class=\"font-bold\">{{pet.title}}</li>\r\n          <li>{{pet.breed}}</li>\r\n          <li>{{pet.street}}</li>\r\n          <li>{{pet.city}} - {{pet.state}}</li>\r\n        </ul>\r\n      </div>\r\n      <label class=\"content-date\">{{pet.date}}</label>\r\n      <div class=\"heart\">\r\n        <i class=\"fas fa-heart\"></i>\r\n      </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div id=\"home\" class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Pets Cadastrados Recentemente Perto de Você</h1>\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card *ngFor=\"let pets of petsHome\" (click)=\"moreInfo(pets.id)\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-2\">\r\n        <img src=\"{{pets.ds_foto_animal}}\" alt=\"foto-animal\" class=\"img-animals\">\r\n      </div>\r\n      <div class=\"col-md-2 card-content\">\r\n        <ul>\r\n          <li class=\"font-bold\">{{pets.nm_animal}}</li>\r\n          <li>{{pets.nm_raca}}</li>\r\n          <!-- <li>{{pets.cd_idade_animal}} ano(s)</li> -->\r\n          <li>{{pets.nm_cor_animal}}</li>\r\n          <li>{{pets.nm_cidade_usuario}} - {{pets.nm_estado_usuario}}</li>\r\n          <li>{{pets.nm_endereco_usuario}}</li>\r\n        </ul>\r\n      </div>\r\n      <!-- <label class=\"content-date\">{{pet.date}}</label> -->\r\n      <div class=\"heart\">\r\n        <i class=\"fas fa-heart\"></i>\r\n      </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -590,6 +824,8 @@ module.exports = "<div id=\"home\" class=\"container-fluid animated fadeIn\">\r\
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -601,34 +837,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
+var api_url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiUrl;
 var HomeComponent = /** @class */ (function () {
-    function HomeComponent(router) {
+    function HomeComponent(router, httpClient) {
         this.router = router;
+        this.httpClient = httpClient;
+        this.apiUrl = api_url;
+        this.data = {};
     }
     HomeComponent.prototype.ngOnInit = function () {
-        this.getPets();
+        this.getPets('/home');
+    };
+    HomeComponent.prototype.getPets = function (URL) {
+        var _this = this;
+        this.httpClient.get(api_url + URL).subscribe(function (pets) {
+            _this.data = pets;
+            _this.petsHome = _this.data.pets;
+            console.log(_this.petsHome);
+        });
     };
     HomeComponent.prototype.moreInfo = function (id) {
         this.router.navigate(["pet-info"]);
     };
-    HomeComponent.prototype.getPets = function () {
-        this.listOfPets = [
-            { id: 1, name: 'DogMau', city: 'São Vicente', state: 'SP', street: 'Rua Araucária da Esquina José', breed: 'Vira Lata', date: '28/08/2017', title: 'Vira Lata Perdido' },
-            { id: 2, name: 'DogGuilherme', city: 'Praia Grande', state: 'SP', street: 'Rua Engenheiro A.', breed: 'Poodle', date: '21/03/2017', title: 'Cachorro Novo de 2 anos' },
-            { id: 3, name: 'DogArturLoko', city: 'São Vicente', state: 'SP', street: 'Avenida Brasil', breed: 'Chow Chow', date: '18/08/2017', title: 'Cão Abandonado' },
-            { id: 4, name: 'DogFelipHinode', city: 'Santos', state: 'SP', street: 'Avenida Paulista', breed: 'Poodle', date: '26/08/2017', title: 'Poodle Abandonado' },
-            { id: 5, name: 'DogMuriloChocolate', city: 'Santos', state: 'SP', street: 'Rua Bensdorp', breed: 'Chow Chow', date: '29/05/2017', title: 'ChowChow Perdido' },
-            { id: 6, name: 'DogAmigoChocolate', city: 'Praia Grande', state: 'SP', street: 'Rua das Flores', breed: 'Não identificado', date: '15/02/2017', title: 'Cão Bebe' },
-            { id: 7, name: 'DogPerdido', city: 'São Vicente', state: 'SP', street: 'Avenida Costa e Silva', breed: 'Poodle ', date: '02/01/2017', title: 'Cachorro' },
-        ];
-    };
     HomeComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-home',
             template: __webpack_require__("./src/app/home/home.component.html"),
             styles: [__webpack_require__("./src/app/home/home.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]])
     ], HomeComponent);
     return HomeComponent;
 }());
@@ -640,14 +879,14 @@ var HomeComponent = /** @class */ (function () {
 /***/ "./src/app/login/login.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "html, body{\r\n  background: #755DCA !important;\r\n}\r\n"
+module.exports = ".container-fluid{\r\n  margin-bottom: 0px !important;\r\n}\r\n.bg-login{\r\n  background: #755DCA !important;\r\n  height: 100vh\r\n}\r\n.mat-card{\r\n  margin-top: 125px;\r\n}\r\n.logo{\r\n  margin-top: -100px;\r\n}\r\n.logo img{\r\n  margin: auto;\r\n  display: block;\r\n}\r\nform{\r\n  margin-top: 20px;\r\n}\r\n\r\n"
 
 /***/ }),
 
 /***/ "./src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid bg-login animated fadeIn\">\n  <mat-card>\n\n      <form>\n\n        <div class=\"row justify-content-center\">\n          <div class=\"col-12\">\n            <mat-form-field>\n              <input [(ngModel)]=\"usuario.email\" name=\"email\" type=\"email\" matInput placeholder=\"Email\" required>\n              <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n            </mat-form-field>\n          </div>\n\n          <div class=\"col-12\">\n            <mat-form-field>\n              <input [(ngModel)]=\"usuario.senha\" name=\"senha\" matInput placeholder=\"Senha\" [type]=\"hide ? 'password' : 'text'\" required>\n              <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\n            </mat-form-field>\n          </div>\n        </div>\n\n        <div class=\"col-12\">\n          <div class=\"button-row row justify-content-center\">\n            <button (click)=\"fazerLogin()\" mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\">Confirmar</button>\n          </div>\n          <div class=\"button-row row justify-content-center\">\n              <button mat-raised-button color=\"primary\" class=\"w-50\">Cadastre-se</button>\n            </div>\n        </div>\n\n      </form>\n\n  </mat-card>\n</div>\n"
+module.exports = "<div class=\"container-fluid bg-login animated fadeIn\">\r\n\r\n  <mat-card>\r\n    <div class=\"col-md-12\">\r\n      <div class=\"logo\">\r\n        <img src=\"../../assets/images/idot-logo-branca128.png\" alt=\"\" srcset=\"\">\r\n      </div>\r\n    </div>\r\n\r\n      <form>\r\n\r\n        <div class=\"row justify-content-center\">\r\n          <div class=\"col-12\">\r\n            <mat-form-field>\r\n              <input [(ngModel)]=\"usuario.email\" name=\"email\" type=\"email\" matInput placeholder=\"Email\" required>\r\n              <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\r\n            </mat-form-field>\r\n          </div>\r\n\r\n          <div class=\"col-12\">\r\n            <mat-form-field>\r\n              <input [(ngModel)]=\"senha\" name=\"senha\" matInput placeholder=\"Senha\" [type]=\"hide ? 'password' : 'text'\" required>\r\n              <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\r\n            </mat-form-field>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <div class=\"button-row row justify-content-center\">\r\n            <button (click)=\"getAuth()\" mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\">Confirmar</button>\r\n          </div>\r\n          <div class=\"button-row row justify-content-center\">\r\n              <button mat-raised-button color=\"primary\" class=\"w-50\" (click)=\"openDialog()\">Cadastre-se</button>\r\n            </div>\r\n        </div>\r\n\r\n      </form>\r\n\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -660,8 +899,12 @@ module.exports = "<div class=\"container-fluid bg-login animated fadeIn\">\n  <m
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_service__ = __webpack_require__("./src/app/login/login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__usuario__ = __webpack_require__("./src/app/login/usuario.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ts_md5_dist_md5__ = __webpack_require__("./node_modules/ts-md5/dist/md5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ts_md5_dist_md5___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_ts_md5_dist_md5__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__login_service__ = __webpack_require__("./src/app/login/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__usuario__ = __webpack_require__("./src/app/login/usuario.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modal_add_p_modal_add_p_component__ = __webpack_require__("./src/app/login/modal-add-p/modal-add-p.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -677,43 +920,58 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
 var api_url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiUrl;
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(httpClient, loginService) {
+    function LoginComponent(httpClient, loginService, dialog) {
         this.httpClient = httpClient;
         this.loginService = loginService;
+        this.dialog = dialog;
         this.apiUrl = api_url;
         this.data = {};
-        this.usuario = new __WEBPACK_IMPORTED_MODULE_5__usuario__["a" /* Usuario */]();
+        this.usuario = new __WEBPACK_IMPORTED_MODULE_6__usuario__["a" /* Usuario */]();
+        this.md5 = new __WEBPACK_IMPORTED_MODULE_4_ts_md5_dist_md5__["Md5"]();
         this.hide = true;
-        this.email = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]('', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["i" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["i" /* Validators */].email]);
+        this.email = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].email]);
     }
     LoginComponent.prototype.getErrorMessage = function () {
         return this.email.hasError('required') ? 'Você deve preencher seu email' :
             this.email.hasError('email') ? 'Email incorreto' :
                 '';
     };
+    LoginComponent.prototype.openDialog = function () {
+        var dialogRef = this.dialog.open(__WEBPACK_IMPORTED_MODULE_7__modal_add_p_modal_add_p_component__["a" /* ModalAddPComponent */], {
+            width: '300px',
+            height: '210px',
+            data: {}
+        });
+    };
     LoginComponent.prototype.getAuth = function () {
         var _this = this;
+        this.md5.appendStr(this.senha);
+        var newSenha = this.md5.end();
+        this.usuario.senha = newSenha.toString();
         this.apiUrl += '/login';
-        this.httpClient.get(this.apiUrl).subscribe(function (auth) {
+        this.httpClient.post(this.apiUrl, this.usuario).subscribe(function (auth) {
             _this.data = auth;
-            console.log(_this.data);
+            _this.fazerLogin();
+            console.log(auth);
         });
     };
     LoginComponent.prototype.ngOnInit = function () {
     };
     LoginComponent.prototype.fazerLogin = function () {
-        this.getAuth();
         this.loginService.fazerLogin(this.usuario, this.data);
     };
     LoginComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-login',
             template: __webpack_require__("./src/app/login/login.component.html"),
             styles: [__webpack_require__("./src/app/login/login.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_4__login_service__["a" /* LoginService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_5__login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_8__angular_material__["b" /* MatDialog */]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -744,14 +1002,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var LoginService = /** @class */ (function () {
     function LoginService(router) {
         this.router = router;
+        this.authCheck = [];
         this.usuarioAutenticado = false;
-        this.mostrarMenuEmitter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.mostrarMenuEmitter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     LoginService.prototype.fazerLogin = function (usuario, auth) {
-        if (usuario.email === auth.data['nm_email_usuario'] && usuario.senha === auth.data['cd_senha_usuario']) {
+        this.authCheck = auth.authUser;
+        if (usuario.email === this.authCheck[0].nm_email_usuario && !this.authCheck[0].Tokken) {
             this.usuarioAutenticado = true;
             this.mostrarMenuEmitter.emit(true);
-            this.router.navigate(['/']);
+            this.router.navigate(['/home']);
         }
         else {
             this.usuarioAutenticado = false;
@@ -759,10 +1019,81 @@ var LoginService = /** @class */ (function () {
         }
     };
     LoginService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]])
     ], LoginService);
     return LoginService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/login/modal-add-p/modal-add-p.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/login/modal-add-p/modal-add-p.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div>\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h3 class=\"title\">Escolha o Tipo de Cadastro</h3>\r\n\r\n    </div>\r\n  </div>\r\n  <div class=\"col-12\">\r\n    <div class=\"button-row row justify-content-center\">\r\n      <button (click)=\"goTo('fisica')\" mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\">Pessoa Física</button>\r\n    </div>\r\n    <div class=\"button-row row justify-content-center\">\r\n      <button mat-raised-button color=\"primary\" class=\"w-50\" (click)=\"goTo('juridica')\">Pessoa Jurídica</button>\r\n    </div>\r\n  </div>\r\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/login/modal-add-p/modal-add-p.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModalAddPComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+
+var ModalAddPComponent = /** @class */ (function () {
+    function ModalAddPComponent(dialogRef, data, router) {
+        this.dialogRef = dialogRef;
+        this.data = data;
+        this.router = router;
+    }
+    ModalAddPComponent.prototype.ngOnInit = function () {
+    };
+    ModalAddPComponent.prototype.goTo = function (route) {
+        if (route === 'fisica') {
+            this.dialogRef.close();
+            this.router.navigate(["add-pfisica"]);
+        }
+        else if (route === 'juridica') {
+            this.dialogRef.close();
+            this.router.navigate(["add-pjuridica"]);
+        }
+    };
+    ModalAddPComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-modal-add-p',
+            template: __webpack_require__("./src/app/login/modal-add-p/modal-add-p.component.html"),
+            styles: [__webpack_require__("./src/app/login/modal-add-p/modal-add-p.component.css")]
+        }),
+        __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MAT_DIALOG_DATA */])),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MatDialogRef */], Object, __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]])
+    ], ModalAddPComponent);
+    return ModalAddPComponent;
 }());
 
 
@@ -836,7 +1167,7 @@ var MeusPetsComponent = /** @class */ (function () {
         });
     };
     MeusPetsComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-meus-pets',
             template: __webpack_require__("./src/app/meus-pets/meus-pets.component.html"),
             styles: [__webpack_require__("./src/app/meus-pets/meus-pets.component.css")]
@@ -886,7 +1217,7 @@ var PesquisarComponent = /** @class */ (function () {
     PesquisarComponent.prototype.ngOnInit = function () {
     };
     PesquisarComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-pesquisar',
             template: __webpack_require__("./src/app/pesquisar/pesquisar.component.html"),
             styles: [__webpack_require__("./src/app/pesquisar/pesquisar.component.css")]
@@ -950,7 +1281,7 @@ var PetInfoComponent = /** @class */ (function () {
         };
     };
     PetInfoComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-pet-info',
             template: __webpack_require__("./src/app/pet-info/pet-info.component.html"),
             styles: [__webpack_require__("./src/app/pet-info/pet-info.component.css")]
@@ -995,7 +1326,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_15" /* enableProdMode */])();
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["enableProdMode"])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */])
     .catch(function (err) { return console.log(err); });

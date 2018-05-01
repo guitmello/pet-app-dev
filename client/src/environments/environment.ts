@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://demo5541414.mockable.io'
+  apiUrl: 'http://idot-api.appspot.com'
 };

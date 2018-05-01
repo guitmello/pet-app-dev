@@ -2,8 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var _ = require("lodash");
 var service_1 = require("../User/service");
-var authSuccess_1 = require("../../api/responses/authSuccess");
-var authFail_1 = require("../../api/responses/authFail");
+var handlers_1 = require("../../api/responses/handlers");
 var TokenRoutes = /** @class */ (function () {
     function TokenRoutes() {
     }
@@ -15,8 +14,8 @@ var TokenRoutes = /** @class */ (function () {
         if (credentials.hasOwnProperty('nm_email_usuario') && credentials.hasOwnProperty('cd_senha_usuario')) {
             service_1.default
                 .getByEmail(credentials.nm_email_usuario)
-                .then(_.partial(authSuccess_1.default, res, credentials))
-                .catch(_.partial(authFail_1.default, req, res));
+                .then(_.partial(handlers_1.default.authSuccess, res, credentials))
+                .catch(_.partial(handlers_1.default.authFail, req, res));
         }
     };
     return TokenRoutes;

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+//import * as bcrypt from 'bcrypt';
 function default_1(sequelize, DataTypes) {
     var Usuario = sequelize.define('Usuario', {
         id: {
@@ -63,6 +64,19 @@ function default_1(sequelize, DataTypes) {
             type: DataTypes.STRING
         }
     });
+    /*
+    Usuario.beforeCreate((usuario) => {
+      return hashPassword(usuario);
+    });
+  
+    Usuario.beforeUpdate((usuario) => {
+      return hashPassword(usuario);
+    });
+  
+    function hashPassword(usuario){
+      const salt = bcrypt.genSaltSync(10);
+      usuario.set('cd_senha_usuario', bcrypt.hashSync(usuario.cd_senha_usuario, salt));
+    } */
     return Usuario;
 }
 exports.default = default_1;

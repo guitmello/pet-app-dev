@@ -1,3 +1,4 @@
+//import * as bcrypt from 'bcrypt';
 export default function (sequelize, DataTypes) {
 
   const Usuario = sequelize.define('Usuario', {
@@ -62,6 +63,20 @@ export default function (sequelize, DataTypes) {
       type: DataTypes.STRING
     }
   });
+  
+  /*
+  Usuario.beforeCreate((usuario) => {
+    return hashPassword(usuario);
+  });
+
+  Usuario.beforeUpdate((usuario) => {
+    return hashPassword(usuario);
+  });
+
+  function hashPassword(usuario){
+    const salt = bcrypt.genSaltSync(10);
+    usuario.set('cd_senha_usuario', bcrypt.hashSync(usuario.cd_senha_usuario, salt));
+  } */
 
   return Usuario;
 }

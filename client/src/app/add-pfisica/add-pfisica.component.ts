@@ -15,6 +15,7 @@ export class AddPfisicaComponent implements OnInit {
 
   sexo: Array<any>;
   data: any = {};
+  postData: any = {};
   public cpfMask: Array<string | RegExp>;
   public celMask: Array<string | RegExp>;
   public cepMask: Array<string | RegExp>;
@@ -23,7 +24,7 @@ export class AddPfisicaComponent implements OnInit {
   md5 = new Md5();
   pfisica: PFisica = new PFisica();
   senha: string;
-  private apiUrl = api_url;
+  private apiUrl = api_url + '/api/users/create';
 
   constructor(private httpClient: HttpClient) {
     this.cpfMask = [/\d/,/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
@@ -40,15 +41,33 @@ export class AddPfisicaComponent implements OnInit {
   }
 
   registerPf() {
-    this.apiUrl += '/add-pfisica%3Ftype=sucess';
     this.removeMasks();
     this.md5.appendStr(this.senha);
     let newSenha = this.md5.end();
     this.pfisica.senha = newSenha.toString();
-    return this.httpClient.post<PFisica>(this.apiUrl, this.pfisica)
+
+    this.postData = {
+      nm_email_usuario: this.pfisica.email,
+      cd_senha_usuario: this.pfisica.senha,
+      nm_tipo_usuario: 'Pessoa Física',
+      cd_cpf_usuario: this.pfisica.cpf,
+      nm_usuario: this.pfisica.nome,
+      nm_sexo_usuario: this.pfisica.sexo,
+      dt_nascimento_usuario: this.pfisica.data,
+      cd_telefone_usuario: this.pfisica.telefone,
+      cd_cep_usuario: this.pfisica.cep,
+      nm_estado_usuario: this.pfisica.estado,
+      nm_cidade_usuario: this.pfisica.cidade,
+      nm_endereco_usuario: this.pfisica.endereco,
+      cd_numero_endereco_usuario: this.pfisica.numero,
+      ds_complemento_endereco_usuario: this.pfisica.complemento
+    };
+
+    return this.httpClient.post<PFisica>(this.apiUrl, this.postData)
       .subscribe(
         res => {
           console.log(res);
+          alert('Cadastrado');
         },
         err => {
           console.log("Error occured");

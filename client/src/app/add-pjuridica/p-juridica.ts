@@ -3,7 +3,7 @@ export class PJuridica {
   razaoSocial: string;
   email: string;
   cnpj: number;
-  celular: number;
+  telefone: number;
   cep: number;
   estado: string;
   cidade: string;

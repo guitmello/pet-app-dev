@@ -4,7 +4,7 @@ export class PFisica {
   email: string;
   cpf: number;
   sexo: string;
-  celular: number;
+  telefone: number;
   cep: number;
   estado: string;
   cidade: string;
@@ -12,5 +12,6 @@ export class PFisica {
   numero: number;
   complemento: string;
   senha: string;
+  data: Date;
 
 }

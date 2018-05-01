@@ -14,6 +14,7 @@ const api_url = environment.apiUrl;
 export class AddPjuridicaComponent implements OnInit {
 
   data: any = {};
+  postData: any = {};
   public cnpjMask: Array<string | RegExp>;
   public celMask: Array<string | RegExp>;
   public cepMask: Array<string | RegExp>;
@@ -22,7 +23,7 @@ export class AddPjuridicaComponent implements OnInit {
   md5 = new Md5();
   pjuridica: PJuridica = new PJuridica();
   senha: string;
-  private apiUrl = api_url;
+  private apiUrl = api_url + '/api/users/create';
 
   constructor(private httpClient: HttpClient) {
     this.cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/',
@@ -36,12 +37,27 @@ export class AddPjuridicaComponent implements OnInit {
   }
 
   registerPj() {
-    this.apiUrl += '/add-pjuridica%3Ftype=sucess';
     this.removeMasks();
     this.md5.appendStr(this.senha);
     let newSenha = this.md5.end();
     this.pjuridica.senha = newSenha.toString();
-    return this.httpClient.post<PJuridica>(this.apiUrl, this.pjuridica)
+
+    this.postData = {
+      nm_email_usuario: this.pjuridica.email,
+      cd_senha_usuario: this.pjuridica.senha,
+      nm_tipo_usuario: 'Pessoa Jurídica',
+      cd_cpf_usuario: this.pjuridica.cnpj,
+      nm_usuario: this.pjuridica.razaoSocial,
+      cd_telefone_usuario: this.pjuridica.telefone,
+      cd_cep_usuario: this.pjuridica.cep,
+      nm_estado_usuario: this.pjuridica.estado,
+      nm_cidade_usuario: this.pjuridica.cidade,
+      nm_endereco_usuario: this.pjuridica.endereco,
+      cd_numero_endereco_usuario: this.pjuridica.numero,
+      ds_complemento_endereco_usuario: this.pjuridica.complemento
+    };
+
+    return this.httpClient.post<PJuridica>(this.apiUrl, this.postData)
       .subscribe(
         res => {
           console.log(res);

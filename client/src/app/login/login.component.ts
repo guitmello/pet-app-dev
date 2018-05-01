@@ -19,9 +19,9 @@ const api_url = environment.apiUrl;
 
 export class LoginComponent implements OnInit {
 
-  private apiUrl = api_url;
+  private apiUrl = api_url + '/token';
   data: any = {};
-
+  postData: any = {};
   usuario: Usuario = new Usuario();
   md5 = new Md5();
   senha: string;
@@ -45,16 +45,22 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  getAuth() {
-    this.md5.appendStr(this.senha);
-    let newSenha = this.md5.end();
-    this.usuario.senha = newSenha.toString();
 
-    this.apiUrl += '/login';
-    this.httpClient.post<Usuario>(this.apiUrl, this.usuario).subscribe(auth => {
+
+  getAuth() {
+    //this.md5.appendStr(this.senha);
+    //let newSenha = this.md5.end();
+    //this.usuario.senha = newSenha.toString();
+
+    this.postData = {
+      nm_email_usuario: this.usuario.email,
+      cd_senha_usuario: this.usuario.senha
+    };
+
+    this.httpClient.post<Usuario>(this.apiUrl, this.postData).subscribe(auth => {
       this.data = auth;
-      this.fazerLogin();
       console.log(auth);
+      this.fazerLogin();
     });
   }
 

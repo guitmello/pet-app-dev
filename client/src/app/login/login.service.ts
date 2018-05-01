@@ -7,7 +7,7 @@ import { LoginComponent } from './login.component';
 
 @Injectable()
 export class LoginService {
-  authCheck: Array<any> = [];
+  authCheck: any = {};
 
   usuarioAutenticado: boolean = false;
 
@@ -15,11 +15,16 @@ export class LoginService {
 
   constructor(private router: Router) { }
 
+
+
   fazerLogin(usuario: Usuario, auth: any) {
 
-    this.authCheck = auth.authUser;
+    this.authCheck = auth;
+    console.log(auth);
+    console.log(this.authCheck.token);
 
-    if (usuario.email === this.authCheck[0].nm_email_usuario && !this.authCheck[0].Tokken) {
+    if (this.authCheck.token) {
+      localStorage.setItem('token', this.authCheck.token);
       this.usuarioAutenticado = true;
       this.mostrarMenuEmitter.emit(true);
       this.router.navigate(['/home']);

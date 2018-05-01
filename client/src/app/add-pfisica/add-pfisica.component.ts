@@ -92,12 +92,12 @@ export class AddPfisicaComponent implements OnInit {
   }
 
   removeCelMask() {
-    let cel = this.pfisica.celular.toString();
+    let cel = this.pfisica.telefone.toString();
     let beforeCel = cel.replace('(', '');
     beforeCel = beforeCel.replace(')', '');
     beforeCel = beforeCel.replace(' ', '');
     beforeCel = beforeCel.replace('-', '');
-    this.pfisica.celular = parseInt(beforeCel);
+    this.pfisica.telefone = parseInt(beforeCel);
   }
 
   removeCepMask() {

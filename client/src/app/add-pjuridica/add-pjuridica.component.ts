@@ -84,12 +84,12 @@ export class AddPjuridicaComponent implements OnInit {
   }
 
   removeCelMask() {
-    let cel = this.pjuridica.celular.toString();
+    let cel = this.pjuridica.telefone.toString();
     let beforeCel = cel.replace('(', '');
     beforeCel = beforeCel.replace(')', '');
     beforeCel = beforeCel.replace(' ', '');
     beforeCel = beforeCel.replace('-', '');
-    this.pjuridica.celular = parseInt(beforeCel);
+    this.pjuridica.telefone = parseInt(beforeCel);
   }
 
   removeCepMask() {

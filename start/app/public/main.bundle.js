@@ -163,9 +163,10 @@ var AddPfisicaComponent = /** @class */ (function () {
     function AddPfisicaComponent(httpClient) {
         this.httpClient = httpClient;
         this.data = {};
+        this.postData = {};
         this.md5 = new __WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5__["Md5"]();
         this.pfisica = new __WEBPACK_IMPORTED_MODULE_1__p_fisica__["a" /* PFisica */]();
-        this.apiUrl = api_url;
+        this.apiUrl = api_url + '/api/users/create';
         this.cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
         this.celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
         this.cepMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
@@ -178,14 +179,30 @@ var AddPfisicaComponent = /** @class */ (function () {
         ];
     };
     AddPfisicaComponent.prototype.registerPf = function () {
-        this.apiUrl += '/add-pfisica%3Ftype=sucess';
         this.removeMasks();
         this.md5.appendStr(this.senha);
         var newSenha = this.md5.end();
         this.pfisica.senha = newSenha.toString();
-        return this.httpClient.post(this.apiUrl, this.pfisica)
+        this.postData = {
+            nm_email_usuario: this.pfisica.email,
+            cd_senha_usuario: this.pfisica.senha,
+            nm_tipo_usuario: 'Pessoa Física',
+            cd_cpf_usuario: this.pfisica.cpf,
+            nm_usuario: this.pfisica.nome,
+            nm_sexo_usuario: this.pfisica.sexo,
+            dt_nascimento_usuario: this.pfisica.data,
+            cd_telefone_usuario: this.pfisica.telefone,
+            cd_cep_usuario: this.pfisica.cep,
+            nm_estado_usuario: this.pfisica.estado,
+            nm_cidade_usuario: this.pfisica.cidade,
+            nm_endereco_usuario: this.pfisica.endereco,
+            cd_numero_endereco_usuario: this.pfisica.numero,
+            ds_complemento_endereco_usuario: this.pfisica.complemento
+        };
+        return this.httpClient.post(this.apiUrl, this.postData)
             .subscribe(function (res) {
             console.log(res);
+            alert('Cadastrado');
         }, function (err) {
             console.log("Error occured");
         });
@@ -203,12 +220,12 @@ var AddPfisicaComponent = /** @class */ (function () {
         this.pfisica.cpf = parseInt(beforeCpf);
     };
     AddPfisicaComponent.prototype.removeCelMask = function () {
-        var cel = this.pfisica.celular.toString();
+        var cel = this.pfisica.telefone.toString();
         var beforeCel = cel.replace('(', '');
         beforeCel = beforeCel.replace(')', '');
         beforeCel = beforeCel.replace(' ', '');
         beforeCel = beforeCel.replace('-', '');
-        this.pfisica.celular = parseInt(beforeCel);
+        this.pfisica.telefone = parseInt(beforeCel);
     };
     AddPfisicaComponent.prototype.removeCepMask = function () {
         var cep = this.pfisica.cep.toString();
@@ -290,9 +307,10 @@ var AddPjuridicaComponent = /** @class */ (function () {
     function AddPjuridicaComponent(httpClient) {
         this.httpClient = httpClient;
         this.data = {};
+        this.postData = {};
         this.md5 = new __WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5__["Md5"]();
         this.pjuridica = new __WEBPACK_IMPORTED_MODULE_1__p_juridica__["a" /* PJuridica */]();
-        this.apiUrl = api_url;
+        this.apiUrl = api_url + '/api/users/create';
         this.cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/',
             /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
         this.celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
@@ -302,12 +320,25 @@ var AddPjuridicaComponent = /** @class */ (function () {
     AddPjuridicaComponent.prototype.ngOnInit = function () {
     };
     AddPjuridicaComponent.prototype.registerPj = function () {
-        this.apiUrl += '/add-pjuridica%3Ftype=sucess';
         this.removeMasks();
         this.md5.appendStr(this.senha);
         var newSenha = this.md5.end();
         this.pjuridica.senha = newSenha.toString();
-        return this.httpClient.post(this.apiUrl, this.pjuridica)
+        this.postData = {
+            nm_email_usuario: this.pjuridica.email,
+            cd_senha_usuario: this.pjuridica.senha,
+            nm_tipo_usuario: 'Pessoa Jurídica',
+            cd_cpf_usuario: this.pjuridica.cnpj,
+            nm_usuario: this.pjuridica.razaoSocial,
+            cd_telefone_usuario: this.pjuridica.telefone,
+            cd_cep_usuario: this.pjuridica.cep,
+            nm_estado_usuario: this.pjuridica.estado,
+            nm_cidade_usuario: this.pjuridica.cidade,
+            nm_endereco_usuario: this.pjuridica.endereco,
+            cd_numero_endereco_usuario: this.pjuridica.numero,
+            ds_complemento_endereco_usuario: this.pjuridica.complemento
+        };
+        return this.httpClient.post(this.apiUrl, this.postData)
             .subscribe(function (res) {
             console.log(res);
         }, function (err) {
@@ -328,12 +359,12 @@ var AddPjuridicaComponent = /** @class */ (function () {
         this.pjuridica.cnpj = parseInt(beforeCnpj);
     };
     AddPjuridicaComponent.prototype.removeCelMask = function () {
-        var cel = this.pjuridica.celular.toString();
+        var cel = this.pjuridica.telefone.toString();
         var beforeCel = cel.replace('(', '');
         beforeCel = beforeCel.replace(')', '');
         beforeCel = beforeCel.replace(' ', '');
         beforeCel = beforeCel.replace('-', '');
-        this.pjuridica.celular = parseInt(beforeCel);
+        this.pjuridica.telefone = parseInt(beforeCel);
     };
     AddPjuridicaComponent.prototype.removeCepMask = function () {
         var cep = this.pjuridica.cep.toString();
@@ -929,8 +960,9 @@ var LoginComponent = /** @class */ (function () {
         this.httpClient = httpClient;
         this.loginService = loginService;
         this.dialog = dialog;
-        this.apiUrl = api_url;
+        this.apiUrl = api_url + '/token';
         this.data = {};
+        this.postData = {};
         this.usuario = new __WEBPACK_IMPORTED_MODULE_6__usuario__["a" /* Usuario */]();
         this.md5 = new __WEBPACK_IMPORTED_MODULE_4_ts_md5_dist_md5__["Md5"]();
         this.hide = true;
@@ -949,15 +981,18 @@ var LoginComponent = /** @class */ (function () {
         });
     };
     LoginComponent.prototype.getAuth = function () {
+        //this.md5.appendStr(this.senha);
+        //let newSenha = this.md5.end();
+        //this.usuario.senha = newSenha.toString();
         var _this = this;
-        this.md5.appendStr(this.senha);
-        var newSenha = this.md5.end();
-        this.usuario.senha = newSenha.toString();
-        this.apiUrl += '/login';
-        this.httpClient.post(this.apiUrl, this.usuario).subscribe(function (auth) {
+        this.postData = {
+            nm_email_usuario: this.usuario.email,
+            cd_senha_usuario: this.usuario.senha
+        };
+        this.httpClient.post(this.apiUrl, this.postData).subscribe(function (auth) {
             _this.data = auth;
-            _this.fazerLogin();
             console.log(auth);
+            _this.fazerLogin();
         });
     };
     LoginComponent.prototype.ngOnInit = function () {
@@ -1002,13 +1037,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var LoginService = /** @class */ (function () {
     function LoginService(router) {
         this.router = router;
-        this.authCheck = [];
+        this.authCheck = {};
         this.usuarioAutenticado = false;
         this.mostrarMenuEmitter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     LoginService.prototype.fazerLogin = function (usuario, auth) {
-        this.authCheck = auth.authUser;
-        if (usuario.email === this.authCheck[0].nm_email_usuario && !this.authCheck[0].Tokken) {
+        this.authCheck = auth;
+        console.log(auth);
+        console.log(this.authCheck.token);
+        if (this.authCheck.token) {
+            localStorage.setItem('token', this.authCheck.token);
             this.usuarioAutenticado = true;
             this.mostrarMenuEmitter.emit(true);
             this.router.navigate(['/home']);
@@ -1306,7 +1344,7 @@ var PetInfoComponent = /** @class */ (function () {
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
     production: false,
-    apiUrl: 'http://demo5541414.mockable.io'
+    apiUrl: 'http://idot-api.appspot.com'
 };
 
 

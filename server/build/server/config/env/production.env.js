@@ -1,5 +1,5 @@
 module.exports = {
-    env: 'production',
+    env: 'development',
     db: 'idot_db',
     dialect: 'postgres',
     username: 'postgres',

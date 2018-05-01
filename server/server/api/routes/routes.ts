@@ -23,11 +23,11 @@ class Routes {
     app.route('/token').post(this.tokenRoute.auth);
 
     //animal routes
-    app.route('/api/animals/all').get(UserRoutes.index);
-    app.route('/api/animals/create').post(UserRoutes.create);
-    app.route('/api/animals/:id').get(UserRoutes.findOne);
-    app.route('/api/animals/:id/update').put(UserRoutes.update);
-    app.route('/api/animals/:id/destroy').delete(UserRoutes.destroy);
+    app.route('/api/animals/all').all(auth.config().authenticate()).get(AnimalRoutes.index);
+    app.route('/api/animals/create').all(auth.config().authenticate()).post(AnimalRoutes.create);
+    app.route('/api/animals/:id').all(auth.config().authenticate()).get(AnimalRoutes.findOne);
+    app.route('/api/animals/:id/update').all(auth.config().authenticate()).put(AnimalRoutes.update);
+    app.route('/api/animals/:id/destroy').all(auth.config().authenticate()).delete(AnimalRoutes.destroy);
   }
 }
 

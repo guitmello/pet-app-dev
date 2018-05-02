@@ -41,6 +41,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material';
 import { TextMaskModule } from 'angular2-text-mask';
 import { RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
+import { MatSnackBarModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -75,19 +76,19 @@ import { RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
     MatCheckboxModule,
     HttpClientModule,
     MatDialogModule,
+    MatSnackBarModule,
     TextMaskModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AppComponent,
-              LoginService,
-              {
-                provide: 'externalUrlRedirectResolver',
-                useValue: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) =>
-                {
-                  window.location.href = (route.data as any).externalUrl;
-                }
-              }
-            ],
+    LoginService,
+    {
+      provide: 'externalUrlRedirectResolver',
+      useValue: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+        window.location.href = (route.data as any).externalUrl;
+      }
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [ModalAddPComponent]
 })

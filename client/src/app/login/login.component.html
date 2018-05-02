@@ -24,7 +24,7 @@
             </mat-form-field>
           </div>
         </div>
-
+        <div class="row" *ngIf="errorLogin"><div class="col-12"><a style="color:red;font-size: 11px;">Senha ou Usuário incorretos*</a></div></div>
         <div class="col-12">
           <div class="button-row row justify-content-center">
             <button (click)="getAuth()" mat-raised-button type="submit" color="primary" class="w-50">Confirmar</button>

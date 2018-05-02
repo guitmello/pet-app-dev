@@ -7,7 +7,7 @@ import { Md5 } from 'ts-md5/dist/md5';
 import { LoginService } from './login.service';
 import { Usuario } from './usuario';
 import { ModalAddPComponent } from './modal-add-p/modal-add-p.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 
 const api_url = environment.apiUrl;
 
@@ -21,10 +21,12 @@ export class LoginComponent implements OnInit {
 
   private apiUrl = api_url + '/token';
   data: any = {};
+  dataError: any = {};
   postData: any = {};
   usuario: Usuario = new Usuario();
   md5 = new Md5();
   senha: string;
+  errorLogin: boolean;
 
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -35,13 +37,13 @@ export class LoginComponent implements OnInit {
         '';
   }
 
-  constructor(private httpClient: HttpClient, private loginService: LoginService, public dialog: MatDialog) { }
+  constructor(private httpClient: HttpClient, private loginService: LoginService, public dialog: MatDialog, public snackBar: MatSnackBar) { }
 
   openDialog() {
     let dialogRef = this.dialog.open(ModalAddPComponent, {
       width: '300px',
       height: '210px',
-      data: { }
+      data: {}
     });
   }
 
@@ -61,11 +63,18 @@ export class LoginComponent implements OnInit {
       this.data = auth;
       console.log(auth);
       this.fazerLogin();
+    }, error => {
+      this.dataError = error;
+      if (this.dataError) {
+        this.snackBar.open('Senha ou Usuário incorreto*', 'OK', {
+          duration: 2000,
+        });
+      }
     });
   }
 
   ngOnInit() {
-
+    this.errorLogin = false;
   }
 
   fazerLogin() {

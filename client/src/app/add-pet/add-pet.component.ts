@@ -12,6 +12,8 @@ const api_url = environment.apiUrl;
 })
 export class AddPetComponent implements OnInit {
 
+  postData: any = {};
+
   sexo: Array<any>;
   especie: Array<any>;
   raca: Array<any>;
@@ -47,6 +49,19 @@ export class AddPetComponent implements OnInit {
 
   registerPet() {
     this.apiUrl += '/add-pet%3Ftype=sucess';
+
+    this.postData = {
+      nm_animal: this.pet.nome,
+      cd_idade_animal: this.pet.idade,
+      nm_cor_animal: this.pet.cor,
+      ic_deficiencia_animal: this.pet.deficiencia,
+      ds_deficiencia_animal: this.pet.ds_deficiencia,
+      ds_foto_animal: null,
+      cd_raca_fk: this.pet.id_raca,
+      cd_usuario_fk: this.pet.id_usuario,
+      cd_especie_fk: this.pet.id_especie
+    };
+
     return this.httpClient.post<Pet>(this.apiUrl, this.pet)
       .subscribe(
         res => {

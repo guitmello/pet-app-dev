@@ -47,20 +47,24 @@ export class AddPfisicaComponent implements OnInit {
     this.pfisica.senha = newSenha.toString();
 
     this.postData = {
-      nm_email_usuario: this.pfisica.email,
-      cd_senha_usuario: this.pfisica.senha,
       nm_tipo_usuario: 'Pessoa Física',
+      cd_cnpj_usuario: null,
       cd_cpf_usuario: this.pfisica.cpf,
+      nm_razao_social_usuario: null,
       nm_usuario: this.pfisica.nome,
+      nm_email_usuario: this.pfisica.email,
       nm_sexo_usuario: this.pfisica.sexo,
-      dt_nascimento_usuario: this.pfisica.data,
-      cd_telefone_usuario: this.pfisica.telefone,
+      cd_senha_usuario: this.pfisica.senha,
       cd_cep_usuario: this.pfisica.cep,
       nm_estado_usuario: this.pfisica.estado,
+      dt_nascimento_usuario: this.pfisica.data,
       nm_cidade_usuario: this.pfisica.cidade,
+      cd_telefone_usuario: this.pfisica.telefone,
+      cd_ip_usuario: null,
       nm_endereco_usuario: this.pfisica.endereco,
       cd_numero_endereco_usuario: this.pfisica.numero,
-      ds_complemento_endereco_usuario: this.pfisica.complemento
+      ds_complemento_endereco_usuario: this.pfisica.complemento,
+      ds_foto_usuario: null
     };
 
     return this.httpClient.post<PFisica>(this.apiUrl, this.postData)

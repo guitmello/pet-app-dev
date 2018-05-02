@@ -57,6 +57,7 @@ var api_url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* env
 var AddPetComponent = /** @class */ (function () {
     function AddPetComponent(httpClient) {
         this.httpClient = httpClient;
+        this.postData = {};
         this.apiUrl = api_url;
         this.pet = new __WEBPACK_IMPORTED_MODULE_1__pet__["a" /* Pet */]();
     }
@@ -82,6 +83,17 @@ var AddPetComponent = /** @class */ (function () {
     };
     AddPetComponent.prototype.registerPet = function () {
         this.apiUrl += '/add-pet%3Ftype=sucess';
+        this.postData = {
+            nm_animal: this.pet.nome,
+            cd_idade_animal: this.pet.idade,
+            nm_cor_animal: this.pet.cor,
+            ic_deficiencia_animal: this.pet.deficiencia,
+            ds_deficiencia_animal: this.pet.ds_deficiencia,
+            ds_foto_animal: null,
+            cd_raca_fk: this.pet.id_raca,
+            cd_usuario_fk: this.pet.id_usuario,
+            cd_especie_fk: this.pet.id_especie
+        };
         return this.httpClient.post(this.apiUrl, this.pet)
             .subscribe(function (res) {
             console.log(res);
@@ -184,20 +196,24 @@ var AddPfisicaComponent = /** @class */ (function () {
         var newSenha = this.md5.end();
         this.pfisica.senha = newSenha.toString();
         this.postData = {
-            nm_email_usuario: this.pfisica.email,
-            cd_senha_usuario: this.pfisica.senha,
             nm_tipo_usuario: 'Pessoa Física',
+            cd_cnpj_usuario: null,
             cd_cpf_usuario: this.pfisica.cpf,
+            nm_razao_social_usuario: null,
             nm_usuario: this.pfisica.nome,
+            nm_email_usuario: this.pfisica.email,
             nm_sexo_usuario: this.pfisica.sexo,
-            dt_nascimento_usuario: this.pfisica.data,
-            cd_telefone_usuario: this.pfisica.telefone,
+            cd_senha_usuario: this.pfisica.senha,
             cd_cep_usuario: this.pfisica.cep,
             nm_estado_usuario: this.pfisica.estado,
+            dt_nascimento_usuario: this.pfisica.data,
             nm_cidade_usuario: this.pfisica.cidade,
+            cd_telefone_usuario: this.pfisica.telefone,
+            cd_ip_usuario: null,
             nm_endereco_usuario: this.pfisica.endereco,
             cd_numero_endereco_usuario: this.pfisica.numero,
-            ds_complemento_endereco_usuario: this.pfisica.complemento
+            ds_complemento_endereco_usuario: this.pfisica.complemento,
+            ds_foto_usuario: null
         };
         return this.httpClient.post(this.apiUrl, this.postData)
             .subscribe(function (res) {
@@ -325,18 +341,24 @@ var AddPjuridicaComponent = /** @class */ (function () {
         var newSenha = this.md5.end();
         this.pjuridica.senha = newSenha.toString();
         this.postData = {
-            nm_email_usuario: this.pjuridica.email,
-            cd_senha_usuario: this.pjuridica.senha,
             nm_tipo_usuario: 'Pessoa Jurídica',
-            cd_cpf_usuario: this.pjuridica.cnpj,
-            nm_usuario: this.pjuridica.razaoSocial,
-            cd_telefone_usuario: this.pjuridica.telefone,
+            cd_cnpj_usuario: this.pjuridica.cnpj,
+            cd_cpf_usuario: null,
+            nm_razao_social_usuario: this.pjuridica.razaoSocial,
+            nm_usuario: null,
+            nm_email_usuario: this.pjuridica.email,
+            nm_sexo_usuario: null,
+            cd_senha_usuario: this.pjuridica.senha,
             cd_cep_usuario: this.pjuridica.cep,
             nm_estado_usuario: this.pjuridica.estado,
+            dt_nascimento_usuario: null,
             nm_cidade_usuario: this.pjuridica.cidade,
+            cd_telefone_usuario: this.pjuridica.telefone,
+            cd_ip_usuario: null,
             nm_endereco_usuario: this.pjuridica.endereco,
             cd_numero_endereco_usuario: this.pjuridica.numero,
-            ds_complemento_endereco_usuario: this.pjuridica.complemento
+            ds_complemento_endereco_usuario: this.pjuridica.complemento,
+            ds_foto_usuario: null
         };
         return this.httpClient.post(this.apiUrl, this.postData)
             .subscribe(function (res) {
@@ -662,6 +684,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -699,6 +722,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_29__angular_material_checkbox__["a" /* MatCheckboxModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_31__angular_material__["c" /* MatDialogModule */],
+                __WEBPACK_IMPORTED_MODULE_31__angular_material__["f" /* MatSnackBarModule */],
                 __WEBPACK_IMPORTED_MODULE_32_angular2_text_mask__["TextMaskModule"],
                 __WEBPACK_IMPORTED_MODULE_6__angular_service_worker__["a" /* ServiceWorkerModule */].register('/ngsw-worker.js', { enabled: __WEBPACK_IMPORTED_MODULE_7__environments_environment__["a" /* environment */].production })
             ],
@@ -870,6 +894,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var api_url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiUrl;
 var HomeComponent = /** @class */ (function () {
     function HomeComponent(router, httpClient) {
@@ -879,15 +904,19 @@ var HomeComponent = /** @class */ (function () {
         this.data = {};
     }
     HomeComponent.prototype.ngOnInit = function () {
-        this.getPets('/home');
+        this.getPets('/api/animals/all');
     };
     HomeComponent.prototype.getPets = function (URL) {
         var _this = this;
-        this.httpClient.get(api_url + URL).subscribe(function (pets) {
+        var userToken = 'JWT ' + localStorage.getItem('token');
+        console.log(userToken);
+        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', userToken);
+        this.httpClient.get(api_url + URL, { headers: headers }).subscribe(function (pets) {
             _this.data = pets;
             _this.petsHome = _this.data.pets;
             console.log(_this.petsHome);
         });
+        console.log(headers.get('Authorization'));
     };
     HomeComponent.prototype.moreInfo = function (id) {
         this.router.navigate(["pet-info"]);
@@ -917,7 +946,7 @@ module.exports = ".container-fluid{\r\n  margin-bottom: 0px !important;\r\n}\r\n
 /***/ "./src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid bg-login animated fadeIn\">\r\n\r\n  <mat-card>\r\n    <div class=\"col-md-12\">\r\n      <div class=\"logo\">\r\n        <img src=\"../../assets/images/idot-logo-branca128.png\" alt=\"\" srcset=\"\">\r\n      </div>\r\n    </div>\r\n\r\n      <form>\r\n\r\n        <div class=\"row justify-content-center\">\r\n          <div class=\"col-12\">\r\n            <mat-form-field>\r\n              <input [(ngModel)]=\"usuario.email\" name=\"email\" type=\"email\" matInput placeholder=\"Email\" required>\r\n              <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\r\n            </mat-form-field>\r\n          </div>\r\n\r\n          <div class=\"col-12\">\r\n            <mat-form-field>\r\n              <input [(ngModel)]=\"senha\" name=\"senha\" matInput placeholder=\"Senha\" [type]=\"hide ? 'password' : 'text'\" required>\r\n              <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\r\n            </mat-form-field>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <div class=\"button-row row justify-content-center\">\r\n            <button (click)=\"getAuth()\" mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\">Confirmar</button>\r\n          </div>\r\n          <div class=\"button-row row justify-content-center\">\r\n              <button mat-raised-button color=\"primary\" class=\"w-50\" (click)=\"openDialog()\">Cadastre-se</button>\r\n            </div>\r\n        </div>\r\n\r\n      </form>\r\n\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid bg-login animated fadeIn\">\r\n\r\n  <mat-card>\r\n    <div class=\"col-md-12\">\r\n      <div class=\"logo\">\r\n        <img src=\"../../assets/images/idot-logo-branca128.png\" alt=\"\" srcset=\"\">\r\n      </div>\r\n    </div>\r\n\r\n      <form>\r\n\r\n        <div class=\"row justify-content-center\">\r\n          <div class=\"col-12\">\r\n            <mat-form-field>\r\n              <input [(ngModel)]=\"usuario.email\" name=\"email\" type=\"email\" matInput placeholder=\"Email\" required>\r\n              <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\r\n            </mat-form-field>\r\n          </div>\r\n\r\n          <div class=\"col-12\">\r\n            <mat-form-field>\r\n              <input [(ngModel)]=\"senha\" name=\"senha\" matInput placeholder=\"Senha\" [type]=\"hide ? 'password' : 'text'\" required>\r\n              <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\r\n            </mat-form-field>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\" *ngIf=\"errorLogin\"><div class=\"col-12\"><a style=\"color:red;font-size: 11px;\">Senha ou Usuário incorretos*</a></div></div>\r\n        <div class=\"col-12\">\r\n          <div class=\"button-row row justify-content-center\">\r\n            <button (click)=\"getAuth()\" mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\">Confirmar</button>\r\n          </div>\r\n          <div class=\"button-row row justify-content-center\">\r\n              <button mat-raised-button color=\"primary\" class=\"w-50\" (click)=\"openDialog()\">Cadastre-se</button>\r\n            </div>\r\n        </div>\r\n\r\n      </form>\r\n\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -956,12 +985,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var api_url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiUrl;
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(httpClient, loginService, dialog) {
+    function LoginComponent(httpClient, loginService, dialog, snackBar) {
         this.httpClient = httpClient;
         this.loginService = loginService;
         this.dialog = dialog;
+        this.snackBar = snackBar;
         this.apiUrl = api_url + '/token';
         this.data = {};
+        this.dataError = {};
         this.postData = {};
         this.usuario = new __WEBPACK_IMPORTED_MODULE_6__usuario__["a" /* Usuario */]();
         this.md5 = new __WEBPACK_IMPORTED_MODULE_4_ts_md5_dist_md5__["Md5"]();
@@ -993,9 +1024,17 @@ var LoginComponent = /** @class */ (function () {
             _this.data = auth;
             console.log(auth);
             _this.fazerLogin();
+        }, function (error) {
+            _this.dataError = error;
+            if (_this.dataError) {
+                _this.snackBar.open('Senha ou Usuário incorreto*', 'OK', {
+                    duration: 2000,
+                });
+            }
         });
     };
     LoginComponent.prototype.ngOnInit = function () {
+        this.errorLogin = false;
     };
     LoginComponent.prototype.fazerLogin = function () {
         this.loginService.fazerLogin(this.usuario, this.data);
@@ -1006,7 +1045,7 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/login/login.component.html"),
             styles: [__webpack_require__("./src/app/login/login.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_5__login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_8__angular_material__["b" /* MatDialog */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_5__login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_8__angular_material__["b" /* MatDialog */], __WEBPACK_IMPORTED_MODULE_8__angular_material__["e" /* MatSnackBar */]])
     ], LoginComponent);
     return LoginComponent;
 }());

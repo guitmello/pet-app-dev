@@ -24,7 +24,9 @@ export class HomeComponent implements OnInit {
   }
 
   getPets(URL) {
-    let headers = new HttpHeaders().set('Authorization', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.ILTRSG9d5bPDeXc15gol_yUR68sEp2AbulBv-SZmbak')
+    let userToken = 'JWT ' + localStorage.getItem('token');
+    console.log(userToken);
+    let headers = new HttpHeaders().set('Authorization', userToken);
     this.httpClient.get(api_url + URL, { headers }).subscribe(pets => {
       this.data = pets;
       this.petsHome = this.data.pets;

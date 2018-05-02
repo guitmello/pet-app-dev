@@ -8,5 +8,5 @@ export class Pet {
     tamanho: number;
     cor: string;
     deficiencia: boolean;
-    ds_deficiencia: string;  
+    ds_deficiencia: string;
   }

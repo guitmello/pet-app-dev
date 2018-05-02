@@ -43,18 +43,24 @@ export class AddPjuridicaComponent implements OnInit {
     this.pjuridica.senha = newSenha.toString();
 
     this.postData = {
-      nm_email_usuario: this.pjuridica.email,
-      cd_senha_usuario: this.pjuridica.senha,
       nm_tipo_usuario: 'Pessoa Jurídica',
-      cd_cpf_usuario: this.pjuridica.cnpj,
-      nm_usuario: this.pjuridica.razaoSocial,
-      cd_telefone_usuario: this.pjuridica.telefone,
+      cd_cnpj_usuario: this.pjuridica.cnpj,
+      cd_cpf_usuario: null,
+      nm_razao_social_usuario: this.pjuridica.razaoSocial,
+      nm_usuario: null,
+      nm_email_usuario: this.pjuridica.email,
+      nm_sexo_usuario: null,
+      cd_senha_usuario: this.pjuridica.senha,
       cd_cep_usuario: this.pjuridica.cep,
       nm_estado_usuario: this.pjuridica.estado,
+      dt_nascimento_usuario: null,
       nm_cidade_usuario: this.pjuridica.cidade,
+      cd_telefone_usuario: this.pjuridica.telefone,
+      cd_ip_usuario: null,
       nm_endereco_usuario: this.pjuridica.endereco,
       cd_numero_endereco_usuario: this.pjuridica.numero,
-      ds_complemento_endereco_usuario: this.pjuridica.complemento
+      ds_complemento_endereco_usuario: this.pjuridica.complemento,
+      ds_foto_usuario: null
     };
 
     return this.httpClient.post<PJuridica>(this.apiUrl, this.postData)

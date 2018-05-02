@@ -20,10 +20,10 @@ export class LoginService {
   fazerLogin(usuario: Usuario, auth: any) {
 
     this.authCheck = auth;
-    console.log(auth);
     console.log(this.authCheck.token);
 
     if (this.authCheck.token) {
+      localStorage.setItem('id', this.authCheck.id);
       localStorage.setItem('token', this.authCheck.token);
       this.usuarioAutenticado = true;
       this.mostrarMenuEmitter.emit(true);

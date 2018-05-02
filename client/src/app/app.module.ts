@@ -42,6 +42,7 @@ import { MatDialogModule } from '@angular/material';
 import { TextMaskModule } from 'angular2-text-mask';
 import { RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { MatSnackBarModule } from '@angular/material';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { MatSnackBarModule } from '@angular/material';
     PesquisarComponent,
     PetInfoComponent,
     ModalAddPComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,

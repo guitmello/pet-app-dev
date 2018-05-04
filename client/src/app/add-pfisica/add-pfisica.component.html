@@ -40,7 +40,7 @@
 
         <div class="col-6">
           <mat-form-field>
-            <input [(ngModel)]="pfisica.celular" [textMask]="{mask: celMask}" name="celular" type="text" matInput placeholder="Celular" required>
+            <input [(ngModel)]="pfisica.telefone" [textMask]="{mask: celMask}" name="telefone" type="text" matInput placeholder="Celular" required>
           </mat-form-field>
         </div>
 
@@ -92,7 +92,7 @@
           <button mat-raised-button type="submit" color="primary" class="w-100" (click)="registerPf()">Confirmar</button>
         </div>
         <div class="col-6">
-          <button mat-raised-button color="primary" class="w-100">Cancelar</button>
+          <button mat-raised-button color="primary" class="w-100" (click)="goTo('login')">Cancelar</button>
         </div>
       </div>
 

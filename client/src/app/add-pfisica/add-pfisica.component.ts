@@ -3,6 +3,7 @@ import { PFisica } from './p-fisica';
 import { HttpClient } from '@angular/common/http';
 import { Md5 } from 'ts-md5/dist/md5';
 import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
 
 const api_url = environment.apiUrl;
 
@@ -26,7 +27,7 @@ export class AddPfisicaComponent implements OnInit {
   senha: string;
   private apiUrl = api_url + '/api/users/create';
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, public router: Router) {
     this.cpfMask = [/\d/,/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
     this.celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
     this.cepMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
@@ -40,6 +41,10 @@ export class AddPfisicaComponent implements OnInit {
     ];
   }
 
+  goTo(route: string) {
+    this.router.navigate([route]);
+  }
+
   registerPf() {
     this.removeMasks();
     this.md5.appendStr(this.senha);
@@ -47,21 +52,19 @@ export class AddPfisicaComponent implements OnInit {
     this.pfisica.senha = newSenha.toString();
 
     this.postData = {
-      nm_tipo_usuario: 'Pessoa Física',
-      cd_cnpj_usuario: null,
-      cd_cpf_usuario: this.pfisica.cpf,
-      nm_razao_social_usuario: null,
-      nm_usuario: this.pfisica.nome,
       nm_email_usuario: this.pfisica.email,
-      nm_sexo_usuario: this.pfisica.sexo,
       cd_senha_usuario: this.pfisica.senha,
+      nm_tipo_usuario: 'Pessoa Física',
+      cd_cpf_usuario: this.pfisica.cpf,
+      nm_usuario: this.pfisica.nome,
+      nm_sexo_usuario: this.pfisica.sexo,
+      dt_nascimento_usuario: this.pfisica.data,
+      cd_telefone_usuario: this.pfisica.telefone,
       cd_cep_usuario: this.pfisica.cep,
       nm_estado_usuario: this.pfisica.estado,
-      dt_nascimento_usuario: this.pfisica.data,
       nm_cidade_usuario: this.pfisica.cidade,
-      cd_telefone_usuario: this.pfisica.telefone,
-      cd_ip_usuario: null,
       nm_endereco_usuario: this.pfisica.endereco,
+      cd_ip_usuario: null,
       cd_numero_endereco_usuario: this.pfisica.numero,
       ds_complemento_endereco_usuario: this.pfisica.complemento,
       ds_foto_usuario: null

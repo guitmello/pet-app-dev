@@ -21,10 +21,11 @@ export class LoginService {
 
     this.authCheck = auth;
     console.log(this.authCheck.token);
+    console.log(this.authCheck.id);
 
     if (this.authCheck.token) {
       localStorage.setItem('id', this.authCheck.id);
-      localStorage.setItem('token', this.authCheck.token);
+      localStorage.setItem('token', 'JWT ' + this.authCheck.token);
       this.usuarioAutenticado = true;
       this.mostrarMenuEmitter.emit(true);
       this.router.navigate(['/home']);

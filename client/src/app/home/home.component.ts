@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpHeaders, HttpParams } from '@angular/common/http';
 
 const api_url = environment.apiUrl;
 
@@ -24,9 +24,15 @@ export class HomeComponent implements OnInit {
 
   getPets(URL) {
     const userToken = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', userToken);
-    console.log(headers);
-      this.httpClient.get(api_url + URL, { headers } ).subscribe(pets => {
+
+    //const headers = new HttpHeaders().set('Authorization', userToken);
+    //console.log(headers);
+
+      let headers = new HttpHeaders();
+      headers = headers.append('Authorization', userToken);
+      console.log(headers);
+
+      this.httpClient.get(api_url + URL, { headers: headers } ).subscribe(pets => {
       this.data = pets;
       this.petsHome = this.data.pets;
       console.log(this.petsHome);

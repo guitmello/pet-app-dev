@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
   senha: string;
   errorLogin: boolean;
 
+  checkPassword: boolean;
+
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
 
@@ -50,14 +52,19 @@ export class LoginComponent implements OnInit {
 
 
   getAuth() {
-    //this.md5.appendStr(this.senha);
-    //let newSenha = this.md5.end();
-    //this.usuario.senha = newSenha.toString();
+      if (this.checkPassword) {
+        this.checkPassword = false;
+       this.md5.appendStr(this.senha);
+       let newSenha = this.md5.end();
+       this.usuario.senha = newSenha.toString();
+      } else { this.usuario.senha = this.senha }
 
     this.postData = {
       nm_email_usuario: this.usuario.email,
       cd_senha_usuario: this.usuario.senha
     };
+
+    console.log(this.postData);
 
     this.httpClient.post<Usuario>(this.apiUrl, this.postData).subscribe(auth => {
       this.data = auth;
@@ -75,6 +82,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.errorLogin = false;
+    this.checkPassword = true;
   }
 
   fazerLogin() {
@@ -82,4 +90,3 @@ export class LoginComponent implements OnInit {
   }
 
 }
-

@@ -60,16 +60,11 @@ export class HomeComponent implements OnInit {
   }
 
   async getPets(url: string) {
-    // const userToken = localStorage.getItem('token');
+     const userToken = localStorage.getItem('token');
 
-    //const headers = new HttpHeaders().set('Authorization', userToken);
-    //console.log(headers);
+    const headers = new HttpHeaders().set('Authorization', userToken);
 
-    // let headers = new HttpHeaders();
-    // headers = headers.append('Authorization', userToken);
-    // console.log(headers);
-
-    this.httpClient.get(api_url + url).subscribe(pets => {
+    this.httpClient.get(api_url + url, { headers }).subscribe(pets => {
       this.dataPets = pets;
       this.petsHome = this.dataPets.payload;
       this.petsHome.forEach(element => {

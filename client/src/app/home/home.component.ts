@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
+// import { Animal } from './animal';
+// import { Raca } from './raca';
 
 const api_url = environment.apiUrl;
 
@@ -13,28 +15,72 @@ const api_url = environment.apiUrl;
 })
 export class HomeComponent implements OnInit {
   private apiUrl = api_url;
-  data: any = {};
+  dataPets: any = {};
+  dataRacas: any = {};
+  dataEspecies: any = {};
+  dataUsuarios: any = {};
   petsHome: Array<any>;
+  racas: Array<any>;
+  especies: Array<any>;
+  usuarios: Array<any>;
 
   constructor(public router: Router, private httpClient: HttpClient) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.getRacas('/api/racas/all');
+    await this.getEspecies('/api/especies/all');
+    await this.getUsers('/api/users/all');
     this.getPets('/api/animals/all');
+
+
   }
 
-  getPets(URL) {
-    const userToken = localStorage.getItem('token');
+  getRacas(url: string) {
+    this.httpClient.get(api_url + url).subscribe(racas => {
+      this.dataRacas = racas;
+      this.racas = this.dataRacas.payload;
+      console.log(this.racas);
+    });
+  }
+
+  getUsers(url: string) {
+    this.httpClient.get(api_url + url).subscribe(usuarios => {
+      this.dataUsuarios = usuarios;
+      this.usuarios = this.dataUsuarios.payload;
+      console.log(this.usuarios);
+    });
+  }
+
+  getEspecies(url: string) {
+    this.httpClient.get(api_url + url).subscribe(especies => {
+      this.dataEspecies = especies;
+      this.especies = this.dataEspecies.payload;
+      console.log(this.especies);
+    });
+  }
+
+  async getPets(url: string) {
+    // const userToken = localStorage.getItem('token');
 
     //const headers = new HttpHeaders().set('Authorization', userToken);
     //console.log(headers);
 
-      let headers = new HttpHeaders();
-      headers = headers.append('Authorization', userToken);
-      console.log(headers);
+    // let headers = new HttpHeaders();
+    // headers = headers.append('Authorization', userToken);
+    // console.log(headers);
 
-      this.httpClient.get(api_url + URL, { headers: headers } ).subscribe(pets => {
-      this.data = pets;
-      this.petsHome = this.data.pets;
+    this.httpClient.get(api_url + url).subscribe(pets => {
+      this.dataPets = pets;
+      this.petsHome = this.dataPets.payload;
+      this.petsHome.forEach(element => {
+        for (let x = 0; x <= this.racas.length - 1; x++) {
+          if (element.id_raca == this.racas[x].id_raca)
+            element.nm_raca = this.racas[x].nm_raca;
+        }
+        for (let y = 0; y <= this.especies.length - 1; y++)
+          if (element.id_especie == this.especies[y].id_especie)
+            element.nm_especie = this.especies[y].nm_especie;
+      });
       console.log(this.petsHome);
     });
   }
@@ -44,3 +90,25 @@ export class HomeComponent implements OnInit {
   }
 
 }
+
+
+// export class Raca {
+//   id: number;
+//   nm_raca: string;
+// }
+
+// export class Animal {
+//   id_usuario: number;
+//   nm_usuario: string;
+//   nome: string;
+//   sexo: string;
+//   id_especie: number;
+//   nm_especie: string;
+//   id_raca: number;
+//   nm_raca: string;
+//   idade: number;
+//   tamanho: number;
+//   cor: string;
+//   deficiencia: boolean;
+//   ds_deficiencia: string;
+// }

@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   async ngOnInit() {
     await this.getRacas('/api/racas/all');
     await this.getEspecies('/api/especies/all');
-    await this.getUsers('/api/users/all');
+    // await this.getUsers('/api/users/all');
     this.getPets('/api/animals/all');
   }
 
@@ -39,13 +39,13 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  getUsers(url: string) {
-    this.httpClient.get(api_url + url).subscribe(usuarios => {
-      this.dataUsuarios = usuarios;
-      this.usuarios = this.dataUsuarios.payload;
-      console.log(this.usuarios);
-    });
-  }
+  // getUsers(url: string) {
+  //   this.httpClient.get(api_url + url).subscribe(usuarios => {
+  //     this.dataUsuarios = usuarios;
+  //     this.usuarios = this.dataUsuarios.payload;
+  //     console.log(this.usuarios);
+  //   });
+  // }
 
   getEspecies(url: string) {
     this.httpClient.get(api_url + url).subscribe(especies => {
@@ -74,13 +74,18 @@ export class HomeComponent implements OnInit {
             element.nm_especie = this.especies[y].nm_especie;
           }
         }
+        this.httpClient.get(api_url + '/api/users/' + element.cd_usuario_fk, { headers }).subscribe(elementUser => {
+          console.log(elementUser.payload);
+          element.address1 = elementUser.payload.nm_cidade_usuario + ' - ' + elementUser.payload.nm_estado_usuario;
+          element.address2 = elementUser.payload.nm_endereco_usuario;
+        });
       });
       console.log(this.petsHome);
     });
   }
 
-  moreInfo(id: string) {
-    this.router.navigate([`pet-info`]);
-  }
+  // moreInfo(id: string) {
+  //   this.router.navigate([`pet-info?` + id]);
+  // }
 
 }

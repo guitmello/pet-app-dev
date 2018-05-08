@@ -6,7 +6,7 @@
 
     </div>
   </div>
-  <mat-card *ngFor="let pets of petsHome" (click)="moreInfo(pets.id)">
+  <mat-card *ngFor="let pets of petsHome" routerLink="/pet-info" [queryParams] ="{id: pets.id}">
     <div class="row">
       <div class="col-md-2">
         <img src="{{pets.ds_foto_animal}}" alt="foto-animal" class="img-animals">
@@ -17,8 +17,8 @@
           <li>{{pets.nm_raca}}</li>
           <!-- <li>{{pets.cd_idade_animal}} ano(s)</li> -->
           <li>{{pets.nm_cor_animal}}</li>
-          <li>{{pets.nm_cidade_usuario}} - {{pets.nm_estado_usuario}}</li>
-          <li>{{pets.nm_endereco_usuario}}</li>
+          <li>{{pets.address1}}</li>
+          <li>{{pets.address2}}</li>
         </ul>
       </div>
       <!-- <label class="content-date">{{pet.date}}</label> -->

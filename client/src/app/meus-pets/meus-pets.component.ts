@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { ModalDeletePetComponent } from './modal-delete-pet/modal-delete-pet.component';
-import { MatDialog, MatDialogRef } from '@angular/material';
 import { MeusPetsService } from './meus-pets.service';
 import { MeusPets } from './meus-pets';
+import { ModalDeletePetComponent } from './modal-delete-pet/modal-delete-pet.component';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 const api_url = environment.apiUrl;
 
@@ -14,6 +14,7 @@ const api_url = environment.apiUrl;
   templateUrl: './meus-pets.component.html',
   styleUrls: ['./meus-pets.component.css']
 })
+
 export class MeusPetsComponent implements OnInit {
   private apiUrl = api_url;
   dataPets: any = {};
@@ -72,8 +73,13 @@ export class MeusPetsComponent implements OnInit {
     });
   }
 
-  fazerLogin() {
-    this.meusPetsService.openDialog(this.meusPets.id);
+  openDialog() {
+    this.meusPetsService.emitirDelete(this.meusPets.id);
+    let dialogRef = this.dialog.open(ModalDeletePetComponent, {
+      width: '300px',
+      height: '210px',
+      data: {}
+    });
   }
 
 }

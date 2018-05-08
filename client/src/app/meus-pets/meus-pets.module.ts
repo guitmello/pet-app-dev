@@ -10,6 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { ModalDeletePetComponent } from './modal-delete-pet/modal-delete-pet.component';
+import { MeusPetsService } from './meus-pets.service';
+import { MeusPets } from './meus-pets';
 
 @NgModule({
   imports: [

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MeusPets } from './meus-pets';
+import { MeusPetsComponent } from './meus-pets.component';
 import { EventEmitter } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { ModalDeletePetComponent } from './modal-delete-pet/modal-delete-pet.component';
@@ -13,13 +14,8 @@ export class MeusPetsService {
 
   }
 
-  openDialog(id: number) {
+  emitirDelete(id: number) {
     this.emitirId.emit(id);
-    let dialogRef = this.dialog.open(ModalDeletePetComponent, {
-      width: '300px',
-      height: '210px',
-      data: {}
-    });
   }
 
 }

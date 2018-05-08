@@ -3,7 +3,6 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { MeusPetsService } from '../meus-pets.service';
-import { MeusPets } from '../meus-pets';
 
 const api_url = environment.apiUrl;
 
@@ -15,13 +14,13 @@ const api_url = environment.apiUrl;
 export class ModalDeletePetComponent implements OnInit {
   idDelete: number;
 
-  constructor(public dialogRef: MatDialogRef<ModalDeletePetComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private httpClient: HttpClient, private meusPetsService: MeusPetsService,
-    private meusPets: MeusPets) {}
+  constructor(
+    public dialogRef: MatDialogRef<ModalDeletePetComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any, 
+    private httpClient: HttpClient, 
+    private meusPetsService: MeusPetsService) {}
 
-  ngOnInit() {
-    //this.deletePet('/api/animals/delete/');
-  }
+  ngOnInit() { }
 
   getId() {
     this.meusPetsService.emitirId.subscribe(
@@ -29,7 +28,7 @@ export class ModalDeletePetComponent implements OnInit {
     );
   }
 
-  deletePet(id: number) {
+  deletePet() {
     this.getId();
     let url = '/api/animals/delete/' + this.idDelete;
     const userToken = localStorage.getItem('token');

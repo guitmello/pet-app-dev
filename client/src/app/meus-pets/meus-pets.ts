@@ -1,4 +1,4 @@
-export class Animal {
+export class MeusPets {
     id: number;
     id_usuario: number;
     nm_usuario: string;
@@ -14,4 +14,4 @@ export class Animal {
     deficiencia: boolean;
     ds_deficiencia: string;
     foto: string;
-  }
+}

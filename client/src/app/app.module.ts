@@ -43,6 +43,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { MatSnackBarModule } from '@angular/material';
 import { AuthComponent } from './auth/auth.component';
+import { ModalDeletePetComponent } from './meus-pets/modal-delete-pet/modal-delete-pet.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { AuthComponent } from './auth/auth.component';
     PesquisarComponent,
     PetInfoComponent,
     ModalAddPComponent,
+    ModalDeletePetComponent,
     AuthComponent,
   ],
   imports: [
@@ -92,7 +94,7 @@ import { AuthComponent } from './auth/auth.component';
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ModalAddPComponent]
+  entryComponents: [ModalAddPComponent, ModalDeletePetComponent]
 })
 export class AppModule { }
 

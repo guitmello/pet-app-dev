@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
-// import { Animal } from './animal';
-// import { Raca } from './raca';
 
 const api_url = environment.apiUrl;
 
@@ -31,8 +29,6 @@ export class HomeComponent implements OnInit {
     await this.getEspecies('/api/especies/all');
     await this.getUsers('/api/users/all');
     this.getPets('/api/animals/all');
-
-
   }
 
   getRacas(url: string) {
@@ -60,7 +56,7 @@ export class HomeComponent implements OnInit {
   }
 
   async getPets(url: string) {
-     const userToken = localStorage.getItem('token');
+    const userToken = localStorage.getItem('token');
 
     const headers = new HttpHeaders().set('Authorization', userToken);
 
@@ -69,12 +65,15 @@ export class HomeComponent implements OnInit {
       this.petsHome = this.dataPets.payload;
       this.petsHome.forEach(element => {
         for (let x = 0; x <= this.racas.length - 1; x++) {
-          if (element.id_raca == this.racas[x].id_raca)
+          if (element.id_raca === this.racas[x].id_raca) {
             element.nm_raca = this.racas[x].nm_raca;
+          }
         }
-        for (let y = 0; y <= this.especies.length - 1; y++)
-          if (element.id_especie == this.especies[y].id_especie)
+        for (let y = 0; y <= this.especies.length - 1; y++) {
+          if (element.id_especie === this.especies[y].id_especie) {
             element.nm_especie = this.especies[y].nm_especie;
+          }
+        }
       });
       console.log(this.petsHome);
     });
@@ -85,25 +84,3 @@ export class HomeComponent implements OnInit {
   }
 
 }
-
-
-// export class Raca {
-//   id: number;
-//   nm_raca: string;
-// }
-
-// export class Animal {
-//   id_usuario: number;
-//   nm_usuario: string;
-//   nome: string;
-//   sexo: string;
-//   id_especie: number;
-//   nm_especie: string;
-//   id_raca: number;
-//   nm_raca: string;
-//   idade: number;
-//   tamanho: number;
-//   cor: string;
-//   deficiencia: boolean;
-//   ds_deficiencia: string;
-// }

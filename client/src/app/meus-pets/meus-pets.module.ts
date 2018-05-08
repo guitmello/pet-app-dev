@@ -8,6 +8,8 @@ import { MeusPetsComponent } from './meus-pets.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { ModalDeletePetComponent } from './modal-delete-pet/modal-delete-pet.component';
 
 @NgModule({
   imports: [
@@ -17,7 +19,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     HttpClientModule,
     MatButtonModule,
+    MatDialog,
+    MatDialogRef
   ],
-  declarations: [MeusPetsComponent]
+  declarations: [MeusPetsComponent, ModalDeletePetComponent]
 })
 export class MeusPetsModule { }

@@ -8,22 +8,22 @@
     </div>
   </div>
 
-  <mat-card *ngFor="let pets of meusPets">
+  <mat-card *ngFor="let pet of pets">
 
     <div class="col-md-12">
       <div class="row">
         <ul class="meus-pets-list">
           <li>
-            <img src="{{pets.ds_foto_animal}}" alt="foto do pet">
+            <img src="{{pet.ds_foto_animal}}" alt="foto do pet">
           </li>
           <li>
-            <span class="meus-pets-text">{{pets.nm_animal}}</span>
+            <span class="meus-pets-text">{{pet.nm_animal}}</span>
           </li>
           <li>
-            <span class="meus-pets-text">{{pets.cd_especie_fk}}</span>
+            <span class="meus-pets-text">{{pet.cd_especie_fk}}</span>
           </li>
           <li>
-            <span class="meus-pets-text">{{pets.cd_raca_fk}}</span>
+            <span class="meus-pets-text">{{pet.cd_raca_fk}}</span>
           </li>
         </ul>
 
@@ -36,7 +36,7 @@
             </button>
           </li>
           <li>
-            <button mat-mini-fab (click)="openDialog(pets.id)">
+            <button mat-mini-fab (click)="openDialog(pet.id)">
               <i class="fas fa-trash-alt remove"></i>
             </button>
           </li>

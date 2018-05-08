@@ -4,6 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { ModalDeletePetComponent } from './modal-delete-pet/modal-delete-pet.component';
 import { MatDialog, MatDialogRef } from '@angular/material';
+import { MeusPetsService } from './meus-pets.service';
+import { MeusPets } from './meus-pets';
 
 const api_url = environment.apiUrl;
 
@@ -17,11 +19,12 @@ export class MeusPetsComponent implements OnInit {
   dataPets: any = {};
   dataRacas: any = {};
   dataEspecies: any = {};
-  meusPets: Array<any>;
+  pets: Array<any>;
   racas: Array<any>;
   especies: Array<any>;
 
-  constructor(private httpClient: HttpClient, public dialog: MatDialog) { }
+  constructor(private httpClient: HttpClient, public dialog: MatDialog, private meusPetsService: MeusPetsService,
+  private meusPets: MeusPets) { }
 
   async ngOnInit() {
     await this.getRacas('/api/racas/all');
@@ -51,8 +54,8 @@ export class MeusPetsComponent implements OnInit {
 
     this.httpClient.get(api_url + url, { headers }).subscribe( data => {
       this.dataPets = data;
-      this.meusPets = this.dataPets.payload;
-      this.meusPets.forEach(element => {
+      this.pets = this.dataPets.payload;
+      this.pets.forEach(element => {
         for (let x = 0; x <= this.racas.length - 1; x++) {
           if ( element.id_raca === this.racas[x].id_raca ) {
             element.nm_raca = this.racas[x].nm_raca;
@@ -65,16 +68,12 @@ export class MeusPetsComponent implements OnInit {
           }
         }
       });
-      console.log(this.meusPets);
+      console.log(this.pets);
     });
   }
 
-  openDialog(id: string) {
-    let dialogRef = this.dialog.open(ModalDeletePetComponent, {
-      width: '300px',
-      height: '210px',
-      data: {}
-    });
+  fazerLogin() {
+    this.meusPetsService.openDialog(this.meusPets.id);
   }
 
 }

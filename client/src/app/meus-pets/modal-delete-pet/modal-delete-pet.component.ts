@@ -1,8 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Component, OnInit, Inject, EventEmitter, Input, Output} from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { MeusPetsService } from '../meus-pets.service';
 
 const api_url = environment.apiUrl;
 
@@ -12,32 +11,35 @@ const api_url = environment.apiUrl;
   styleUrls: ['./modal-delete-pet.component.css']
 })
 export class ModalDeletePetComponent implements OnInit {
-  idDelete: number;
 
   constructor(
     public dialogRef: MatDialogRef<ModalDeletePetComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, 
-    private httpClient: HttpClient, 
-    private meusPetsService: MeusPetsService) {}
+    private httpClient: HttpClient,
+    public snackBar: MatSnackBar) {}
 
   ngOnInit() { }
 
-  getId() {
-    this.meusPetsService.emitirId.subscribe(
-      idEmitido => this.idDelete
-    );
-  }
-
-  deletePet() {
-    this.getId();
-    let url = '/api/animals/delete/' + this.idDelete;
-    const userToken = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', userToken);
-
-    this.httpClient.delete(api_url + url, { headers });
-  }
   cancel() {
     this.dialogRef.close();
   }
+
+  deletePet() {
+    //this.meusPetsComponent.emitirId.subscribe(
+      //idEmitido => this.idDelete
+    //);
+    
+    let url = '/api/animals/' + this.data.id + '/destroy' ;
+    
+    const userToken = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', userToken);
+    
+    this.httpClient.delete(api_url + url, { headers }).subscribe( destroy => {
+      this.snackBar.open('Pet excluído', 'OK', {
+        duration: 2000,
+      });
+      this.cancel();
+    }
+    )}
 
 }

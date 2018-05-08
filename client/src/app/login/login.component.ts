@@ -39,7 +39,9 @@ export class LoginComponent implements OnInit {
         '';
   }
 
-  constructor(private httpClient: HttpClient, private loginService: LoginService, public dialog: MatDialog, public snackBar: MatSnackBar) { }
+  constructor(private httpClient: HttpClient, private loginService: LoginService, 
+    public dialog: MatDialog, 
+    public snackBar: MatSnackBar) { }
 
   openDialog() {
     let dialogRef = this.dialog.open(ModalAddPComponent, {

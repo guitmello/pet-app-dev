@@ -23,6 +23,7 @@ import { MeusPetsComponent } from './meus-pets/meus-pets.component';
 import { PesquisarComponent } from './pesquisar/pesquisar.component';
 import { PetInfoComponent } from './pet-info/pet-info.component';
 import { ModalAddPComponent } from './login/modal-add-p/modal-add-p.component';
+import { ModalDeletePetComponent } from './meus-pets/modal-delete-pet/modal-delete-pet.component';
 
 import { LoginService } from './login/login.service';
 
@@ -43,8 +44,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { MatSnackBarModule } from '@angular/material';
 import { AuthComponent } from './auth/auth.component';
-import { ModalDeletePetComponent } from './meus-pets/modal-delete-pet/modal-delete-pet.component';
-import { MeusPetsService } from './meus-pets/meus-pets.service';
+import { MeusPets } from './meus-pets/meus-pets';
 
 @NgModule({
   declarations: [
@@ -85,7 +85,7 @@ import { MeusPetsService } from './meus-pets/meus-pets.service';
     TextMaskModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [AppComponent, LoginService, MeusPetsService,
+  providers: [AppComponent, LoginService, MeusPetsComponent, MeusPets,
     {
       provide: 'externalUrlRedirectResolver',
       useValue: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {

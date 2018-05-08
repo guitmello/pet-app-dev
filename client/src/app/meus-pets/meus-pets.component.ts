@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { MeusPetsService } from './meus-pets.service';
 import { MeusPets } from './meus-pets';
 import { ModalDeletePetComponent } from './modal-delete-pet/modal-delete-pet.component';
 import { MatDialog, MatDialogRef } from '@angular/material';
@@ -24,8 +23,15 @@ export class MeusPetsComponent implements OnInit {
   racas: Array<any>;
   especies: Array<any>;
 
-  constructor(private httpClient: HttpClient, public dialog: MatDialog, private meusPetsService: MeusPetsService,
-  private meusPets: MeusPets) { }
+  deleteId: number;
+
+  
+
+  constructor(private httpClient: HttpClient, public dialog: MatDialog,
+  private meusPets: MeusPets) { 
+    
+    console.log(this.deleteId);
+  }
 
   async ngOnInit() {
     await this.getRacas('/api/racas/all');
@@ -73,12 +79,16 @@ export class MeusPetsComponent implements OnInit {
     });
   }
 
-  openDialog() {
-    this.meusPetsService.emitirDelete(this.meusPets.id);
+  openDialog(id: number) {
+    
+    //this.emitirId.emit(this.meusPets.id);
+
     let dialogRef = this.dialog.open(ModalDeletePetComponent, {
       width: '300px',
       height: '210px',
-      data: {}
+      data: {
+        id: id
+      }
     });
   }
 

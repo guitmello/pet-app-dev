@@ -14,7 +14,7 @@ const api_url = environment.apiUrl;
 export class ModalDeletePetComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<ModalDeletePetComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private httpClient: HttpClient) { }
+    @Inject(MAT_DIALOG_DATA) public data: any, private httpClient: HttpClient) {}
 
   ngOnInit() {
     this.deletePet('/api/animals/delete/');

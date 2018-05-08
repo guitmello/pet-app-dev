@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   private apiUrl = api_url;
   dataPets: any = {};
   dataRacas: any = {};
+  elementData: any = {};
   dataEspecies: any = {};
   dataUsuarios: any = {};
   petsHome: Array<any>;
@@ -75,9 +76,10 @@ export class HomeComponent implements OnInit {
           }
         }
         this.httpClient.get(api_url + '/api/users/' + element.cd_usuario_fk, { headers }).subscribe(elementUser => {
-          console.log(elementUser.payload);
-          element.address1 = elementUser.payload.nm_cidade_usuario + ' - ' + elementUser.payload.nm_estado_usuario;
-          element.address2 = elementUser.payload.nm_endereco_usuario;
+          this.elementData = elementUser;
+          console.log(this.elementData);
+          element.address1 = this.elementData.payload.nm_cidade_usuario + ' - ' + this.elementData.payload.nm_estado_usuario;
+          element.address2 = this.elementData.payload.nm_endereco_usuario;
         });
       });
       console.log(this.petsHome);

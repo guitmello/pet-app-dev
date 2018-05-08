@@ -33,12 +33,13 @@ export class PetInfoComponent implements OnInit {
   };
   dataRacas: any = {};
   dataEspecies: any = {};
-  petsHome: Array<any>;
+  elementDataPet: any = {};
+  elementDataUser: any = {};
   racas: Array<any>;
   especies: Array<any>;
 
   constructor(private route: ActivatedRoute, private httpClient: HttpClient) {
-    this.getPetInfo(this.route.snapshot.queryParams["id"]);
+    this.getPetInfo(this.route.snapshot.queryParams['id']);
   }
 
   ngOnInit() {
@@ -72,24 +73,25 @@ export class PetInfoComponent implements OnInit {
     const headers = new HttpHeaders().set('Authorization', userToken);
 
     this.httpClient.get(api_url + '/api/animals/' + id, { headers }).subscribe(element => {
-      this.pet = element.payload;
+      this.elementDataPet = element;
+      this.pet = this.elementDataPet.payload;
       this.pet.title = '';
-      this.httpClient.get(api_url + '/api/users/' + element.payload.cd_usuario_fk, { headers }).subscribe(elementUser => {
-        // console.log('elementUser', elementUser);
-        this.pet.address1 = elementUser.payload.nm_cidade_usuario + ' - ' + elementUser.payload.nm_estado_usuario;
-        this.pet.address2 = elementUser.payload.nm_endereco_usuario;
+      this.httpClient.get(api_url + '/api/users/' + this.elementDataPet.payload.cd_usuario_fk, { headers })
+      .subscribe(elementUser => {
+        this.elementDataUser = elementUser;
+        this.pet.address1 = this.elementDataUser.payload.nm_cidade_usuario + ' - ' + this.elementDataUser.payload.nm_estado_usuario;
+        this.pet.address2 = this.elementDataUser.payload.nm_endereco_usuario;
       });
       for (let x = 0; x <= this.racas.length - 1; x++) {
-        if (element.cd_raca_fk === this.racas[x].id_raca) {
+        if (this.elementDataUser.cd_raca_fk === this.racas[x].id_raca) {
           this.pet.breed = this.racas[x].nm_raca;
         }
       }
       for (let y = 0; y <= this.especies.length - 1; y++) {
-        if (element.cd_especie_fk === this.especies[y].id_especie) {
+        if (this.elementDataUser.cd_especie_fk === this.especies[y].id_especie) {
           this.pet.species = this.especies[y].nm_especie;
         }
       }
-      // console.log('element.payload',element.payload);
       console.log('this.pet', this.pet);
     });
   }

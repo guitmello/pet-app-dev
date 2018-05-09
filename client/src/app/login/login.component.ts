@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
        this.md5.appendStr(this.senha);
        let newSenha = this.md5.end();
        this.usuario.senha = newSenha.toString();
-      } else { this.usuario.senha = this.senha }
+      } else { this.usuario.senha = this.senha; }
 
     this.postData = {
       nm_email_usuario: this.usuario.email,

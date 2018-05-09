@@ -20,7 +20,7 @@ export class MeusPetsComponent implements OnInit {
   dataPets: any = {};
   dataRacas: any = {};
   dataEspecies: any = {};
-  pets: Array<any>;
+  pets: any = {};
   racas: Array<any>;
   especies: Array<any>;
 
@@ -62,12 +62,14 @@ export class MeusPetsComponent implements OnInit {
         for (let x = 0; x <= this.racas.length - 1; x++) {
           if ( element.id_raca === this.racas[x].id_raca ) {
             element.nm_raca = this.racas[x].nm_raca;
+            this.pets.nm_raca = element.nm_raca;
           }
         }
 
         for (let y = 0; y <= this.especies.length - 1; y++) {
           if (element.id_especie === this.especies[y].id_especie) {
             element.nm_especie = this.especies[y].nm_especie;
+            this.pets.nm_especie = element.nm_especie;
           }
         }
       });

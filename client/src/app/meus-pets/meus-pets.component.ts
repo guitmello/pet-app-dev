@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { NgModel } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { MeusPets } from './meus-pets';
@@ -25,13 +26,8 @@ export class MeusPetsComponent implements OnInit {
 
   deleteId: number;
 
-  
-
   constructor(private httpClient: HttpClient, public dialog: MatDialog,
-  private meusPets: MeusPets) { 
-    
-    console.log(this.deleteId);
-  }
+  private meusPets: MeusPets, public router: Router) {}
 
   async ngOnInit() {
     await this.getRacas('/api/racas/all');
@@ -75,14 +71,10 @@ export class MeusPetsComponent implements OnInit {
           }
         }
       });
-      console.log(this.pets);
     });
   }
 
   openDialog(id: number) {
-    
-    //this.emitirId.emit(this.meusPets.id);
-
     let dialogRef = this.dialog.open(ModalDeletePetComponent, {
       width: '300px',
       height: '210px',

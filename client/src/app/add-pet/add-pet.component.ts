@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Pet } from './pet';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { HttpHeaders, HttpParams } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
 
 const api_url = environment.apiUrl;
 
@@ -32,10 +34,10 @@ export class AddPetComponent implements OnInit {
     ];
 
     this.especie = [
-      { id: 1, value: 'Espécie 1' },
-      { id: 2, value: 'Espécie 2' },
-      { id: 3, value: 'Espécie 3' },
-      { id: 4, value: 'Espécie 4' },
+      { id: 1, value: 'Cachorro' },
+      { id: 2, value: 'Gato' },
+      { id: 3, value: 'Coelho' },
+      { id: 4, value: '' },
       { id: 5, value: 'Espécie 5' }
     ];
 
@@ -48,17 +50,21 @@ export class AddPetComponent implements OnInit {
   }
 
   registerPet() {
-    this.apiUrl += '/add-pet%3Ftype=sucess';
+    this.apiUrl = this.apiUrl + '/api/animals/create';
+    const userToken = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', userToken);
 
     this.postData = {
       nm_animal: this.pet.nome,
       cd_idade_animal: this.pet.idade,
       nm_cor_animal: this.pet.cor,
+      nm_sexo_animal: this.pet.sexo,
+      nm_tamanho_animal: this.pet.tamanho,
       ic_deficiencia_animal: this.pet.deficiencia,
       ds_deficiencia_animal: this.pet.ds_deficiencia,
       ds_foto_animal: null,
       cd_raca_fk: this.pet.id_raca,
-      cd_usuario_fk: this.pet.id_usuario,
+      cd_usuario_fk: localStorage.getItem('id'),
       cd_especie_fk: this.pet.id_especie
     };
 

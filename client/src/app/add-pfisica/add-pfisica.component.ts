@@ -71,8 +71,7 @@ export class AddPfisicaComponent implements OnInit {
     };
 
     return this.httpClient.post<PFisica>(this.apiUrl, this.postData)
-      .subscribe(
-        res => {
+      .subscribe( res => {
           console.log(res);
           alert('Cadastrado');
         },

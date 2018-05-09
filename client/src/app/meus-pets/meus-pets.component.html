@@ -31,7 +31,7 @@
 
         <ul class="meus-pets-list buttons-inline ">
           <li>
-            <button mat-mini-fab >
+            <button mat-mini-fab routerLink="/edit-pet" [queryParams] ="{id: pet.id}">
               <i class="fas fa-pencil-alt edit"></i>
             </button>
           </li>

@@ -47,7 +47,6 @@ export class AddPetComponent implements OnInit {
       { id: 1, value: 'Pincher' },
       { id: 2, value: 'Pastor Alemão' },
       { id: 3, value: 'Siamês' },
-      { id: 4, value: 'Pit Bull' }
     ];
   }
 

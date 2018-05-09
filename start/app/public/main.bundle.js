@@ -86,7 +86,6 @@ var AddPetComponent = /** @class */ (function () {
             { id: 1, value: 'Pincher' },
             { id: 2, value: 'Pastor Alemão' },
             { id: 3, value: 'Siamês' },
-            { id: 4, value: 'Pit Bull' }
         ];
     };
     AddPetComponent.prototype.goTo = function (route) {
@@ -1452,8 +1451,8 @@ var LoginComponent = /** @class */ (function () {
     };
     LoginComponent.prototype.getAuth = function () {
         var _this = this;
-        if (this.checkPassword) {
-            this.checkPassword = false;
+        if (this.checkPassword === 0) {
+            console.log(this.checkPassword);
             this.md5.appendStr(this.senha);
             var newSenha = this.md5.end();
             this.usuario.senha = newSenha.toString();
@@ -1469,6 +1468,7 @@ var LoginComponent = /** @class */ (function () {
         this.httpClient.post(this.apiUrl, this.postData).subscribe(function (auth) {
             _this.data = auth;
             console.log(auth);
+            _this.checkPassword = 1;
             _this.fazerLogin();
         }, function (error) {
             _this.dataError = error;
@@ -1480,8 +1480,7 @@ var LoginComponent = /** @class */ (function () {
         });
     };
     LoginComponent.prototype.ngOnInit = function () {
-        this.errorLogin = false;
-        this.checkPassword = true;
+        this.checkPassword = 0;
     };
     LoginComponent.prototype.fazerLogin = function () {
         this.loginService.fazerLogin(this.usuario, this.data);
@@ -1651,7 +1650,7 @@ module.exports = "#meus-pets .mat-card{\r\n  padding: 10px 5px !important;\r\n  
 /***/ "./src/app/meus-pets/meus-pets.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"meus-pets\" class=\"container-fluid animated fadeIn\">\r\n\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Meus Pets</h1>\r\n\r\n    </div>\r\n  </div>\r\n\r\n  <mat-card *ngFor=\"let pet of pets\">\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row\">\r\n        <ul class=\"meus-pets-list\">\r\n          <li>\r\n            <img class=\"img-circle\" src=\"{{pet.ds_foto_animal}}\" alt=\"foto do pet\">\r\n          </li>\r\n          <li>\r\n            <span class=\"meus-pets-text\">{{pet.nm_animal}}</span>\r\n          </li>\r\n          <li>\r\n            <span class=\"meus-pets-text\">{{pet.cd_especie_fk}}</span>\r\n          </li>\r\n          <li>\r\n            <span class=\"meus-pets-text\">{{pet.cd_raca_fk}}</span>\r\n          </li>\r\n        </ul>\r\n\r\n        <span class=\"nav-space\"></span>\r\n\r\n        <ul class=\"meus-pets-list buttons-inline \">\r\n          <li>\r\n            <button mat-mini-fab routerLink=\"/edit-pet\" [queryParams] =\"{id: pet.id}\">\r\n              <i class=\"fas fa-pencil-alt edit\"></i>\r\n            </button>\r\n          </li>\r\n          <li>\r\n            <button mat-mini-fab (click)=\"openDialog(pet.id)\">\r\n              <i class=\"fas fa-trash-alt remove\"></i>\r\n            </button>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div id=\"meus-pets\" class=\"container-fluid animated fadeIn\">\r\n\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Meus Pets</h1>\r\n\r\n    </div>\r\n  </div>\r\n\r\n  <mat-card *ngFor=\"let pet of pets\">\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row\">\r\n        <ul class=\"meus-pets-list\">\r\n          <li>\r\n            <img class=\"img-circle\" src=\"{{pet.ds_foto_animal}}\" alt=\"foto do pet\">\r\n          </li>\r\n          <li>\r\n            <span class=\"meus-pets-text\">{{pet.nm_animal}}</span>\r\n          </li>\r\n          <li>\r\n            <span class=\"meus-pets-text\">{{pet.nm_especie}}</span>\r\n          </li>\r\n          <li>\r\n            <span class=\"meus-pets-text\">{{pet.nm_raca}}</span>\r\n          </li>\r\n        </ul>\r\n\r\n        <span class=\"nav-space\"></span>\r\n\r\n        <ul class=\"meus-pets-list buttons-inline \">\r\n          <li>\r\n            <button mat-mini-fab routerLink=\"/edit-pet\" [queryParams] =\"{id: pet.id}\">\r\n              <i class=\"fas fa-pencil-alt edit\"></i>\r\n            </button>\r\n          </li>\r\n          <li>\r\n            <button mat-mini-fab (click)=\"openDialog(pet.id)\">\r\n              <i class=\"fas fa-trash-alt remove\"></i>\r\n            </button>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1729,6 +1728,7 @@ var MeusPetsComponent = /** @class */ (function () {
         this.dataPets = {};
         this.dataRacas = {};
         this.dataEspecies = {};
+        this.pets = {};
     }
     MeusPetsComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -1773,11 +1773,13 @@ var MeusPetsComponent = /** @class */ (function () {
                 for (var x = 0; x <= _this.racas.length - 1; x++) {
                     if (element.id_raca === _this.racas[x].id_raca) {
                         element.nm_raca = _this.racas[x].nm_raca;
+                        _this.pets.nm_raca = element.nm_raca;
                     }
                 }
                 for (var y = 0; y <= _this.especies.length - 1; y++) {
                     if (element.id_especie === _this.especies[y].id_especie) {
                         element.nm_especie = _this.especies[y].nm_especie;
+                        _this.pets.nm_especie = element.nm_especie;
                     }
                 }
             });
@@ -1833,7 +1835,7 @@ module.exports = ""
 /***/ "./src/app/meus-pets/modal-delete-pet/modal-delete-pet.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h3 class=\"title\">Deseja realmente deletar?</h3>\r\n\r\n    </div>\r\n  </div>\r\n  <div class=\"col-12\">\r\n    <div class=\"button-row row justify-content-center\">\r\n      <button mat-raised-button color=\"primary\" class=\"w-50\" (click)=\"deletePet()\">Deletar</button>\r\n    </div>\r\n    <div class=\"button-row row justify-content-center\">\r\n      <button (click)=\"cancel()\" mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\">Cancelar</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div>\n  <div class=\"col-md-12\">\n    <div class=\"row justify-content-center\">\n\n      <h3 class=\"title\">Deseja realmente deletar?</h3>\n\n    </div>\n  </div>\n  <div class=\"col-12\">\n    <div class=\"button-row row justify-content-center\">\n      <button mat-raised-button color=\"primary\" class=\"w-50\" (click)=\"deletePet()\">Deletar</button>\n    </div>\n    <div class=\"button-row row justify-content-center\">\n      <button (click)=\"cancel()\" mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\">Cancelar</button>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 

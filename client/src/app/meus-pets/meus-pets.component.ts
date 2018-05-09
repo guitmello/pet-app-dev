@@ -77,7 +77,7 @@ export class MeusPetsComponent implements OnInit {
   }
 
   openDialog(id: number) {
-    let dialogRef = this.dialog.open(ModalDeletePetComponent, {
+    const dialogRef = this.dialog.open(ModalDeletePetComponent, {
       width: '300px',
       height: '210px',
       data: {

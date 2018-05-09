@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   senha: string;
   errorLogin: boolean;
 
-  checkPassword: boolean;
+  checkPassword: number;
 
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     public snackBar: MatSnackBar) { }
 
   openDialog() {
-    let dialogRef = this.dialog.open(ModalAddPComponent, {
+    const dialogRef = this.dialog.open(ModalAddPComponent, {
       width: '300px',
       height: '210px',
       data: {}
@@ -52,11 +52,11 @@ export class LoginComponent implements OnInit {
   }
 
   getAuth() {
-      if (this.checkPassword) {
-        this.checkPassword = false;
-       this.md5.appendStr(this.senha);
-       let newSenha = this.md5.end();
-       this.usuario.senha = newSenha.toString();
+      if (this.checkPassword === 0) {
+        console.log(this.checkPassword);
+        this.md5.appendStr(this.senha);
+        let newSenha = this.md5.end();
+        this.usuario.senha = newSenha.toString();
       } else { this.usuario.senha = this.senha; }
 
     this.postData = {
@@ -69,6 +69,7 @@ export class LoginComponent implements OnInit {
     this.httpClient.post<Usuario>(this.apiUrl, this.postData).subscribe(auth => {
       this.data = auth;
       console.log(auth);
+      this.checkPassword = 1;
       this.fazerLogin();
     }, error => {
       this.dataError = error;
@@ -81,8 +82,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.errorLogin = false;
-    this.checkPassword = true;
+    this.checkPassword = 0;
   }
 
   fazerLogin() {

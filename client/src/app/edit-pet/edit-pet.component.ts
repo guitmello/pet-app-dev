@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 const api_url = environment.apiUrl;
 
@@ -14,8 +15,10 @@ const api_url = environment.apiUrl;
 })
 export class EditPetComponent implements OnInit {
 
+  sexo: Array<any>;
   postData: any = {};
   editpet: EditPet = new EditPet();
+  pets: Array<any>;
   private apiUrl = api_url;
 
   dataPets: any = {};
@@ -27,14 +30,38 @@ export class EditPetComponent implements OnInit {
   racas: Array<any>;
   especies: Array<any>;
 
-  constructor(private httpClient: HttpClient, private editPet: EditPet, private route: ActivatedRoute) { }
+  constructor(private httpClient: HttpClient, private editPet: EditPet, public router: Router,
+    private route: ActivatedRoute, public snackBar: MatSnackBar) { }
 
   id = this.route.snapshot.queryParams['id'];
 
-  ngOnInit() {
+  async ngOnInit() {
 
+    this.sexo = [
+      {value: 'M', viewValue: 'Macho'},
+      {value: 'F', viewValue: 'Femêa'}
+    ];
+
+    await this.getRacas('/api/racas/all');
+    await this.getEspecies('/api/especies/all');
     this.getDataPet();
 
+  }
+
+  getRacas(url: string) {
+    this.httpClient.get(api_url + url).subscribe(racas => {
+      this.dataRacas = racas;
+      this.racas = this.dataRacas.payload;
+      console.log(this.racas);
+    });
+  }
+
+  getEspecies(url: string) {
+    this.httpClient.get(api_url + url).subscribe(especies => {
+      this.dataEspecies = especies;
+      this.especies = this.dataEspecies.payload;
+      console.log(this.especies);
+    });
   }
 
   getDataPet() {
@@ -42,49 +69,60 @@ export class EditPetComponent implements OnInit {
     const userToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', userToken);
 
-    this.httpClient.get(this.apiUrl, { headers }).subscribe( pets =>
-      this.dataPets = pets);
-      this.petsEdit = this.dataPets.payload;
-      this.petsEdit.forEach(element => {
+    this.httpClient.get(this.apiUrl, { headers }).subscribe( pets => {
+      this.dataPets = pets;
+      this.editPet = this.dataPets.payload;
+      console.log(this.editPet);
+
         for (let x = 0; x <= this.racas.length - 1; x++) {
-          if (element.id_raca === this.racas[x].id_raca) {
-            element.nm_raca = this.racas[x].nm_raca;
+          if ( this.editPet.cd_raca_fk === this.racas[x].id_raca ) {
+            this.editPet.nm_raca_animal = this.racas[x].nm_raca;
           }
         }
+
         for (let y = 0; y <= this.especies.length - 1; y++) {
-          if (element.id_especie === this.especies[y].id_especie) {
-            element.nm_especie = this.especies[y].nm_especie;
+          if (this.editPet.cd_especie_fk === this.especies[y].id_especie) {
+            this.editPet.nm_especie_animal = this.especies[y].nm_especie;
           }
         }
       });
   }
 
-  updatePet() {
-    this.apiUrl = this.apiUrl + '/api/animals/' + this.id + '/update';
+  goTo(route: string) {
+    this.router.navigate([route]);
+  }
+
+  updatePet(URL) {
     const userToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', userToken);
 
     this.postData = {
-      nm_animal: this.editPet.nome,
-      cd_idade_animal: this.editPet.idade,
-      nm_cor_animal: this.editPet.cor,
-      nm_sexo_animal: this.editPet.sexo,
-      nm_tamanho_animal: this.editPet.tamanho,
-      ic_deficiencia_animal: this.editPet.deficiencia,
-      ds_deficiencia_animal: this.editPet.ds_deficiencia,
+      nm_animal: this.editPet.nm_animal,
+      cd_idade_animal: this.editPet.cd_idade_animal,
+      nm_cor_animal: this.editPet.nm_cor_animal,
+      nm_sexo_animal: this.editPet.nm_sexo_animal,
+      nm_tamanho_animal: this.editPet.nm_tamanho_animal,
+      ic_deficiencia_animal: this.editPet.ic_deficiencia_animal,
+      ds_deficiencia_animal: this.editPet.ds_deficiencia_animal,
       ds_foto_animal: '../../assets/images/ft-pet.jpg',
-      cd_raca_fk: this.editPet.id_raca,
+      cd_raca_fk: this.editPet.cd_raca_fk,
       cd_usuario_fk: localStorage.getItem('id'),
-      cd_especie_fk: this.editPet.id_especie
+      cd_especie_fk: this.editPet.cd_especie_fk
     };
 
-    this.httpClient.post<EditPet>(this.apiUrl, this.postData, { headers })
+    this.httpClient.put<EditPet>(this.apiUrl + URL, this.postData, { headers })
       .subscribe(
         res => {
-          console.log(res);
+          this.snackBar.open('Pet Editado com Sucesso!', 'OK', {
+            duration: 2000,
+          });
+          this.goTo('meus-pets');
         },
         err => {
-          console.log("Error occured");
+          this.snackBar.open('Erro ao Editar Pet', 'OK', {
+            duration: 2000,
+          });
+          this.goTo('meus-pets');
         }
       );
   }

@@ -1,91 +1,93 @@
 <div class="container-fluid animated fadeIn">
 
-    <div class="col-md-12">
+  <div class="col-md-12">
+    <div class="row justify-content-center">
+      <h1 class="title">Cadastrar Usuário Pessoa Jurídica</h1>
+    </div>
+  </div>
+
+  <mat-card>
+    <form>
+
       <div class="row justify-content-center">
-        <h1 class="title">Cadastrar Usuário Pessoa Jurídica</h1>
-    </div>
-    </div>
+        <div class="col-12">
+          <mat-form-field>
+            <input [(ngModel)]="pjuridica.razaoSocial" name="razaoSocial" type="text" matInput placeholder="Razão Social" required>
+          </mat-form-field>
+        </div>
 
-    <mat-card>
-        <form>
+        <div class="col-12">
+          <mat-form-field>
+            <input [(ngModel)]="pjuridica.email" name="email" type="email" matInput placeholder="Email" required>
+          </mat-form-field>
+        </div>
 
-          <div class="row justify-content-center">
-            <div class="col-12">
-              <mat-form-field>
-                  <input [(ngModel)]="pjuridica.razaoSocial" name="razaoSocial" type="text" matInput placeholder="Razão Social" required>
-              </mat-form-field>
-            </div>
+        <div class="col-6">
+          <mat-form-field>
+            <input [(ngModel)]="pjuridica.cnpj" [textMask]="{mask: cnpjMask}" name="cnpj" type="text" matInput placeholder="CNPJ" required>
+          </mat-form-field>
+        </div>
 
-            <div class="col-12">
-              <mat-form-field>
-                <input [(ngModel)]="pjuridica.email" name="email" type="email" matInput placeholder="Email" required>
-              </mat-form-field>
-            </div>
+        <div class="col-6">
+          <mat-form-field>
+            <input [(ngModel)]="pjuridica.telefone" [textMask]="{mask: celMask}" name="telefone" type="text" matInput placeholder="Celular"
+              required>
+          </mat-form-field>
+        </div>
 
-            <div class="col-6">
-              <mat-form-field>
-                <input [(ngModel)]="pjuridica.cnpj" [textMask]="{mask: cnpjMask}" name="cnpj" type="text" matInput placeholder="CNPJ" required>
-              </mat-form-field>
-            </div>
+        <div class="col-6">
+          <mat-form-field>
+            <input [(ngModel)]="pjuridica.cep" [textMask]="{mask: cepMask}" name="cep" type="text" matInput placeholder="CEP" required>
+          </mat-form-field>
+        </div>
 
-            <div class="col-6">
-              <mat-form-field>
-                <input [(ngModel)]="pjuridica.telefone" [textMask]="{mask: celMask}" name="telefone" type="text" matInput placeholder="Celular" required>
-              </mat-form-field>
-            </div>
+        <div class="col-6">
+          <mat-form-field>
+            <input [(ngModel)]="pjuridica.estado" name="estado" type="text" matInput placeholder="Estado" required>
+          </mat-form-field>
+        </div>
 
-            <div class="col-6">
-              <mat-form-field>
-                <input [(ngModel)]="pjuridica.cep" [textMask]="{mask: cepMask}" name="cep" type="text" matInput placeholder="CEP" required>
-              </mat-form-field>
-            </div>
+        <div class="col-12">
+          <mat-form-field>
+            <input [(ngModel)]="pjuridica.cidade" name="cidade" type="text" matInput placeholder="Cidade" required>
+          </mat-form-field>
+        </div>
 
-            <div class="col-6">
-              <mat-form-field>
-                <input [(ngModel)]="pjuridica.estado" name="estado" type="text" matInput placeholder="Estado" required>
-              </mat-form-field>
-            </div>
+        <div class="col-12">
+          <mat-form-field>
+            <input [(ngModel)]="pjuridica.endereco" name="endereco" type="text" matInput placeholder="Endereço" required>
+          </mat-form-field>
+        </div>
 
-            <div class="col-12">
-              <mat-form-field>
-                <input [(ngModel)]="pjuridica.cidade" name="cidade" type="text" matInput placeholder="Cidade" required>
-              </mat-form-field>
-            </div>
+        <div class="col-4">
+          <mat-form-field>
+            <input [(ngModel)]="pjuridica.numero" [textMask]="{mask: numMask}" name="numero" type="text" matInput placeholder="Número"
+              required>
+          </mat-form-field>
+        </div>
 
-            <div class="col-12">
-              <mat-form-field>
-                <input [(ngModel)]="pjuridica.endereco" name="endereco" type="text" matInput placeholder="Endereço" required>
-              </mat-form-field>
-            </div>
+        <div class="col-8">
+          <mat-form-field>
+            <input [(ngModel)]="pjuridica.complemento" name="complemento" type="text" matInput placeholder="Complemento" required>
+          </mat-form-field>
+        </div>
 
-            <div class="col-4">
-              <mat-form-field>
-                <input [(ngModel)]="pjuridica.numero" [textMask]="{mask: numMask}" name="numero" type="text" matInput placeholder="Número" required>
-              </mat-form-field>
-            </div>
+        <div class="col-12">
+          <mat-form-field>
+            <input [(ngModel)]="senha" name="senha" type="password" matInput placeholder="Senha" required>
+          </mat-form-field>
+        </div>
+      </div>
 
-            <div class="col-8">
-              <mat-form-field>
-                <input [(ngModel)]="pjuridica.complemento" name="complemento" type="text" matInput placeholder="Complemento" required>
-              </mat-form-field>
-            </div>
+      <div class="button-row row justify-content-center">
+        <div class="col-6">
+          <button mat-raised-button type="submit" color="primary" class="w-100" (click)="registerPj()">Confirmar</button>
+        </div>
+        <div class="col-6">
+          <button mat-raised-button color="primary" class="w-100" (click)="goTo('login')">Cancelar</button>
+        </div>
+      </div>
 
-            <div class="col-12">
-              <mat-form-field>
-                <input [(ngModel)]="senha" name="senha" type="password" matInput placeholder="Senha" required>
-              </mat-form-field>
-            </div>
-          </div>
-
-          <div class="button-row row justify-content-center">
-            <div class="col-6">
-              <button mat-raised-button type="submit" color="primary" class="w-100" (click)="registerPj()">Confirmar</button>
-            </div>
-            <div class="col-6">
-              <button mat-raised-button color="primary" class="w-100" (click)="goTo('login')">Cancelar</button>
-            </div>
-          </div>
-
-        </form>
-      </mat-card>
+    </form>
+  </mat-card>
 </div>

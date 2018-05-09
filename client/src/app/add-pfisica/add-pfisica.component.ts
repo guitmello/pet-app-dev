@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Md5 } from 'ts-md5/dist/md5';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 const api_url = environment.apiUrl;
 
@@ -27,7 +28,7 @@ export class AddPfisicaComponent implements OnInit {
   senha: string;
   private apiUrl = api_url + '/api/users/create';
 
-  constructor(private httpClient: HttpClient, public router: Router) {
+  constructor(private httpClient: HttpClient, public router: Router, public snackBar: MatSnackBar) {
     this.cpfMask = [/\d/,/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
     this.celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
     this.cepMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
@@ -73,10 +74,15 @@ export class AddPfisicaComponent implements OnInit {
     return this.httpClient.post<PFisica>(this.apiUrl, this.postData)
       .subscribe( res => {
           console.log(res);
-          alert('Cadastrado');
+          this.snackBar.open('Usuário Cadastrado com Sucesso!', 'OK', {
+            duration: 2000,
+          });
+          this.goTo('login');
         },
         err => {
-          console.log("Error occured");
+          this.snackBar.open('Erro ao Cadastrar Usuário', 'OK', {
+            duration: 2000,
+          });
         }
       );
   }

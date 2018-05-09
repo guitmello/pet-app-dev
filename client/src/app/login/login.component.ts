@@ -39,8 +39,8 @@ export class LoginComponent implements OnInit {
         '';
   }
 
-  constructor(private httpClient: HttpClient, private loginService: LoginService, 
-    public dialog: MatDialog, 
+  constructor(private httpClient: HttpClient, private loginService: LoginService,
+    public dialog: MatDialog,
     public snackBar: MatSnackBar) { }
 
   openDialog() {
@@ -50,8 +50,6 @@ export class LoginComponent implements OnInit {
       data: {}
     });
   }
-
-
 
   getAuth() {
       if (this.checkPassword) {

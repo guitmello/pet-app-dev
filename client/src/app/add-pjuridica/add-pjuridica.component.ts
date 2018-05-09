@@ -47,7 +47,7 @@ export class AddPjuridicaComponent implements OnInit {
       nm_email_usuario: this.pjuridica.email,
       cd_senha_usuario: this.pjuridica.senha,
       nm_tipo_usuario: 'Pessoa Jurídica',
-      cd_cpf_usuario: this.pjuridica.cnpj,
+      cd_cnpj_usuario: this.pjuridica.cnpj,
       nm_usuario: this.pjuridica.razaoSocial,
       cd_telefone_usuario: this.pjuridica.telefone,
       cd_cep_usuario: this.pjuridica.cep,

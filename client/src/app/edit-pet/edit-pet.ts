@@ -1,14 +1,16 @@
 export class EditPet {
   id: number;
   id_usuario: number;
-  nome: string;
-  sexo: string;
-  id_especie: number;
-  id_raca: number;
-  idade: number;
-  tamanho: number;
-  cor: string;
-  deficiencia: boolean;
-  ds_deficiencia: string;
+  nm_animal: string;
+  nm_sexo_animal: string;
+  cd_especie_fk: number;
+  nm_especie_animal: number;
+  cd_raca_fk: number;
+  nm_raca_animal: string;
+  cd_idade_animal: number;
+  nm_tamanho_animal: number;
+  nm_cor_animal: string;
+  ic_deficiencia_animal: boolean;
+  ds_deficiencia_animal: string;
   ds_foto_animal: string;
 }

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 const api_url = environment.apiUrl;
 
@@ -23,14 +24,14 @@ export class AddPetComponent implements OnInit {
 
   pet: Pet = new Pet();
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, public router: Router, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.pet.deficiencia = false;
 
     this.sexo = [
-      { value: 'M', viewValue: 'Masculino' },
-      { value: 'F', viewValue: 'Feminino' }
+      { value: 'M', viewValue: 'Macho' },
+      { value: 'F', viewValue: 'Femêa' }
     ];
 
     this.especie = [
@@ -50,6 +51,10 @@ export class AddPetComponent implements OnInit {
     ];
   }
 
+  goTo(route: string) {
+    this.router.navigate([route]);
+  }
+
   registerPet() {
     this.apiUrl = this.apiUrl + '/api/animals/create';
     const userToken = localStorage.getItem('token');
@@ -63,7 +68,7 @@ export class AddPetComponent implements OnInit {
       nm_tamanho_animal: this.pet.tamanho,
       ic_deficiencia_animal: this.pet.deficiencia,
       ds_deficiencia_animal: this.pet.ds_deficiencia,
-      ds_foto_animal: null,
+      ds_foto_animal: '../../assets/images/ft-pet.jpg',
       cd_raca_fk: this.pet.id_raca,
       cd_usuario_fk: localStorage.getItem('id'),
       cd_especie_fk: this.pet.id_especie
@@ -72,10 +77,16 @@ export class AddPetComponent implements OnInit {
     return this.httpClient.post<Pet>(this.apiUrl, this.postData, { headers })
       .subscribe(
         res => {
-          console.log(res);
+          this.snackBar.open('Pet Cadastrado com Sucesso!', 'OK', {
+            duration: 2000,
+          });
+          this.goTo('home');
         },
         err => {
-          console.log('Error occured');
+          this.snackBar.open('Erro ao Cadastrar Pet', 'OK', {
+            duration: 2000,
+          });
+          this.goTo('home');
         }
       );
   }

@@ -2,7 +2,7 @@
   <div class="col-12">
     <div class="row justify-content-center">
 
-      <h1 class="title">Editando Pet - </h1>
+      <h1 class="title">Editando Pet - {{editPet.nm_animal}} </h1>
 
     </div>
   </div>
@@ -13,7 +13,7 @@
       <div class="row">
         <div class="col-12">
           <mat-form-field>
-            <input [(ngModel)]="editpet.nome" name="nome" matInput placeholder="Nome" required>
+            <input [(ngModel)]="editPet.nm_animal" name="nm_animal" matInput placeholder="Nome" required>
           </mat-form-field>
         </div>
       </div>
@@ -21,7 +21,7 @@
       <div class="row">
         <div class="col-6">
           <mat-form-field>
-            <mat-select [(ngModel)]="editpet.sexo" name="sexo" placeholder="Sexo" required>
+            <mat-select [(ngModel)]="editPet.nm_sexo_animal" name="nm_sexo_animal" placeholder="Sexo" required>
               <mat-option *ngFor="let sexos of sexo" [value]="sexos.value">
                 {{ sexos.viewValue }}
               </mat-option>
@@ -30,7 +30,7 @@
         </div>
         <div class="col-6">
           <mat-form-field>
-            <mat-select [(ngModel)]="editpet.id_especie" name="especie" placeholder="Espécie" required>
+            <mat-select [(ngModel)]="editPet.nm_especie_animal" name="cd_especie_fk" placeholder="Espécie" required>
               <mat-option *ngFor="let especies of especie" [value]="especies.id">
                 {{ especies.value }}
               </mat-option>
@@ -42,7 +42,7 @@
       <div class="row">
         <div class="col-6">
           <mat-form-field>
-            <mat-select [(ngModel)]="editpet.id_raca" name="raca" placeholder="Raça" required>
+            <mat-select [(ngModel)]="editPet.nm_raca_animal" name="cd_raca_fk" placeholder="Raça" required>
               <mat-option *ngFor="let racas of raca" [value]="racas.id">
                 {{ racas.value }}
               </mat-option>
@@ -51,7 +51,7 @@
         </div>
         <div class="col-6">
           <mat-form-field>
-            <input [(ngModel)]="editpet.idade" name="idade" matInput placeholder="Idade" required>
+            <input [(ngModel)]="editPet.cd_idade_animal" name="cd_idade_animal" matInput placeholder="Idade" required>
           </mat-form-field>
         </div>
       </div>
@@ -59,12 +59,12 @@
       <div class="row">
         <div class="col-6">
           <mat-form-field>
-            <input [(ngModel)]="editpet.tamanho" name="tamanho" matInput placeholder="Tamanho" required>
+            <input [(ngModel)]="editPet.nm_tamanho_animal" name="nm_tamanho_animal" matInput placeholder="Tamanho" required>
           </mat-form-field>
         </div>
         <div class="col-6">
           <mat-form-field>
-            <input [(ngModel)]="editpet.cor" name="cor" matInput placeholder="Cor" required>
+            <input [(ngModel)]="editPet.nm_cor_animal" name="nm_cor_animal" matInput placeholder="Cor" required>
           </mat-form-field>
         </div>
       </div>
@@ -72,12 +72,12 @@
       <div class="row">
         <div class="col-6">
           <div class="checkbox-align">
-            <mat-checkbox [(ngModel)]="editpet.deficiencia" name="deficiencia" color="primary">Deficiência</mat-checkbox>
+            <mat-checkbox [(ngModel)]="editPet.ic_deficiencia_animal" name="ic_deficiencia_animal" color="primary">Deficiência</mat-checkbox>
           </div>
         </div>
-        <div class="col-6" *ngIf="!!editpet.deficiencia">
+        <div class="col-6" *ngIf="!!editPet.ic_deficiencia_animal">
           <mat-form-field>
-            <input [(ngModel)]="editpet.ds_deficiencia" name="ds_deficiencia" matInput placeholder="Qual?">
+            <input [(ngModel)]="editPet.ds_deficiencia_animal" name="ds_deficiencia_animal" matInput placeholder="Qual?">
           </mat-form-field>
         </div>
       </div>
@@ -101,7 +101,7 @@
 
       <div class="col-12">
         <div class="button-submit-row row justify-content-center">
-          <button mat-raised-button type="submit" color="primary" class="w-50" (click)="updatePet()">Confirmar</button>
+          <button mat-raised-button type="submit" color="primary" class="w-50" (click)="updatePet('/update')">Confirmar</button>
         </div>
       </div>
 

@@ -35,6 +35,7 @@ export class PetInfoComponent implements OnInit {
   dataEspecies: any = {};
   elementDataPet: any = {};
   elementDataUser: any = {};
+  postData: any = {};
   racas: Array<any>;
   especies: Array<any>;
 
@@ -43,9 +44,13 @@ export class PetInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pet.ic_deficiencia_animal = false;
-    this.getRacas('/api/racas/all');
-    this.getEspecies('/api/especies/all');
+    if (this.pet.ic_deficiencia_animal == undefined) {
+      this.pet.ic_deficiencia_animal = false;
+      let deficiencia_view = false;
+    } else if (this.pet.ic_deficiencia_animal == true) {
+      this.pet.ic_deficiencia_animal = true;
+      let deficiencia_view = true;
+    }
   }
 
 
@@ -65,9 +70,27 @@ export class PetInfoComponent implements OnInit {
     });
   }
 
+  favoritarPet(id: number) {
+    this.postData = {
+      cd_animal_fk: id,
+      cd_usuario_fk: parseInt(localStorage.getItem('id'))
+    };
+    return this.httpClient.post<Pet>(api_url + '/api/favoritos/create', this.postData)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log("Error occured");
+        }
+      );
+  }
 
 
   getPetInfo(id) {
+    this.getRacas('/api/racas/all');
+    this.getEspecies('/api/especies/all');
+
     const userToken = localStorage.getItem('token');
 
     const headers = new HttpHeaders().set('Authorization', userToken);
@@ -77,11 +100,11 @@ export class PetInfoComponent implements OnInit {
       this.pet = this.elementDataPet.payload;
       this.pet.title = '';
       this.httpClient.get(api_url + '/api/users/' + this.elementDataPet.payload.cd_usuario_fk, { headers })
-      .subscribe(elementUser => {
-        this.elementDataUser = elementUser;
-        this.pet.address1 = this.elementDataUser.payload.nm_cidade_usuario + ' - ' + this.elementDataUser.payload.nm_estado_usuario;
-        this.pet.address2 = this.elementDataUser.payload.nm_endereco_usuario;
-      });
+        .subscribe(elementUser => {
+          this.elementDataUser = elementUser;
+          this.pet.address1 = this.elementDataUser.payload.nm_cidade_usuario + ' - ' + this.elementDataUser.payload.nm_estado_usuario;
+          this.pet.address2 = this.elementDataUser.payload.nm_endereco_usuario;
+        });
       for (let x = 0; x <= this.racas.length - 1; x++) {
         if (this.elementDataUser.cd_raca_fk === this.racas[x].id_raca) {
           this.pet.breed = this.racas[x].nm_raca;
@@ -96,4 +119,9 @@ export class PetInfoComponent implements OnInit {
     });
   }
 
+}
+
+export class Pet {
+  cd_animal_fk: number
+  cd_usuario_fk: number
 }

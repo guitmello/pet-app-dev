@@ -45,11 +45,13 @@
           <li> {{pet.cd_idade_animal}} ano(s) </li>
           <li class="font-bold space-top">Raça</li>
           <li> {{pet.breed}} </li>
-          <span *ngIf='pet.ic_deficiencia_animal' ><li class="font-bold space-top">Deficiência</li>
+          <span *ngIf='deficiencia_view' ><li class="font-bold space-top">Deficiência</li>
           <li> {{pet.ds_deficiencia_animal}} </li></span>
         </ul>
 
+        <button mat-button (click)='favoritarPet(pet.id)'>Favoritar</button>
       </div>
+      
       <!-- <label class="content-date"> shoe.date </label> -->
       <!-- <div class="heart">
         <i class="fas fa-heart"></i>

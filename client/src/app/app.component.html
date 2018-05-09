@@ -1,3 +1,12 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav class="example-sidenav">
+        <ul id="sidenav-menu">
+          <li> <i class="fas fa-sign-out-alt icon-menu"></i> <a href="" (click)="logoff('login')"> Logoff</a></li>
+          <li> <i class="fas fa-pencil-alt icon-menu"></i> <a href=""> Editar Perfil</a></li>
+          <!-- <li> <i class="fas fa-trash icon-menu"></i> <a href=""> Excluir Conta</a></li> -->
+        </ul>
+        </mat-sidenav>
+      <mat-sidenav-content>
 <mat-toolbar *ngIf="mostrarMenu" class="navmenu" color="primary">
   <mat-toolbar-row>
     <a mat-icon-button (click)="sidenav.toggle()">
@@ -11,11 +20,8 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav class="example-sidenav">
-    <p>Sidenav content goes here!</p>
-  </mat-sidenav>
-</mat-sidenav-container>
+
+  
 
 <mat-toolbar *ngIf="mostrarMenu" class="subnav">
   <mat-toolbar-row>
@@ -76,3 +82,6 @@
 </mat-toolbar>
 
 <router-outlet></router-outlet>
+</mat-sidenav-content>
+</mat-sidenav-container>
+

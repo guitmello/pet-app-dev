@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import 'rxjs/add/operator/map';
 import { LoginService } from './login/login.service';
+import { Router } from '@angular/router'
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,11 @@ export class AppComponent {
 
   mostrarMenu: boolean = false;
 
-  constructor(private loginService: LoginService) { }
+  mostrarMenuEmitter = new EventEmitter<boolean>();
+
+  constructor(private loginService: LoginService, public router: Router) { }
+
+  
 
   ngOnInit() {
     this.loginService.mostrarMenuEmitter.subscribe(
@@ -34,6 +40,12 @@ export class AppComponent {
       }
 
     };
+  }
+
+  logoff(route: string) {
+    this.router.navigate([route]);
+    localStorage.clear();
+    this.mostrarMenuEmitter.emit(false);
   }
 
 }

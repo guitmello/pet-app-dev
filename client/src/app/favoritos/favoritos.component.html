@@ -7,7 +7,7 @@
 
     </div>
   </div>
-  <mat-card *ngFor="let favoritePet of listOfFavoritePets" (click)="moreInfo(favoritePet.id)">
+  <mat-card *ngFor="let favoritePet of listOfFavoritePets" routerLink="/pet-info" [queryParams] ="{id: favoritePet.id}">
     <div class="row">
       <div class="col-md-2">
         <img src="../../assets/images/ft-pet.jpg" alt="" class="img-animals">

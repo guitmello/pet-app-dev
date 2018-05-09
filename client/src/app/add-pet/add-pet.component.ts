@@ -37,15 +37,16 @@ export class AddPetComponent implements OnInit {
       { id: 1, value: 'Cachorro' },
       { id: 2, value: 'Gato' },
       { id: 3, value: 'Coelho' },
-      { id: 4, value: '' },
-      { id: 5, value: 'Espécie 5' }
+      { id: 4, value: 'Hamster' },
+      { id: 5, value: 'Passáro' },
+      { id: 5, value: 'Cavalo' }
     ];
 
     this.raca = [
-      { id: 1, value: 'Raça 1' },
-      { id: 2, value: 'Raça 2' },
-      { id: 3, value: 'Raça 3' },
-      { id: 4, value: 'Raça 4' }
+      { id: 1, value: 'Pincher' },
+      { id: 2, value: 'Pastor Alemão' },
+      { id: 3, value: 'Siamês' },
+      { id: 4, value: 'Pit Bull' }
     ];
   }
 
@@ -68,13 +69,13 @@ export class AddPetComponent implements OnInit {
       cd_especie_fk: this.pet.id_especie
     };
 
-    return this.httpClient.post<Pet>(this.apiUrl, this.pet)
+    return this.httpClient.post<Pet>(this.apiUrl, this.postData, { headers })
       .subscribe(
         res => {
           console.log(res);
         },
         err => {
-          console.log("Error occured");
+          console.log('Error occured');
         }
       );
   }

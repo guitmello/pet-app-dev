@@ -18,18 +18,51 @@ export class EditPetComponent implements OnInit {
   editpet: EditPet = new EditPet();
   private apiUrl = api_url;
 
-  constructor(private httpClient: HttpClient, private editPet: EditPet, private route: ActivatedRoute) {
-    this.updatePet(this.route.snapshot.queryParams['id']);
-   }
+  dataPets: any = {};
+  dataRacas: any = {};
+  elementData: any = {};
+  dataEspecies: any = {};
+  dataUsuarios: any = {};
+  petsEdit: Array<any>;
+  racas: Array<any>;
+  especies: Array<any>;
+
+  constructor(private httpClient: HttpClient, private editPet: EditPet, private route: ActivatedRoute) { }
+
+  id = this.route.snapshot.queryParams['id'];
 
   ngOnInit() {
+
+    this.getDataPet();
+
   }
 
-  updatePet(id) {
-    this.apiUrl = this.apiUrl + '/api/animals/' + id + '/update';
+  getDataPet() {
+    this.apiUrl = this.apiUrl + '/api/animals/' + this.id ;
     const userToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', userToken);
-    console.log(headers);
+
+    this.httpClient.get(this.apiUrl, { headers }).subscribe( pets =>
+      this.dataPets = pets);
+      this.petsEdit = this.dataPets.payload;
+      this.petsEdit.forEach(element => {
+        for (let x = 0; x <= this.racas.length - 1; x++) {
+          if (element.id_raca === this.racas[x].id_raca) {
+            element.nm_raca = this.racas[x].nm_raca;
+          }
+        }
+        for (let y = 0; y <= this.especies.length - 1; y++) {
+          if (element.id_especie === this.especies[y].id_especie) {
+            element.nm_especie = this.especies[y].nm_especie;
+          }
+        }
+      });
+  }
+
+  updatePet() {
+    this.apiUrl = this.apiUrl + '/api/animals/' + this.id + '/update';
+    const userToken = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', userToken);
 
     this.postData = {
       nm_animal: this.editPet.nome,
@@ -39,7 +72,7 @@ export class EditPetComponent implements OnInit {
       nm_tamanho_animal: this.editPet.tamanho,
       ic_deficiencia_animal: this.editPet.deficiencia,
       ds_deficiencia_animal: this.editPet.ds_deficiencia,
-      ds_foto_animal: null,
+      ds_foto_animal: '../../assets/images/ft-pet.jpg',
       cd_raca_fk: this.editPet.id_raca,
       cd_usuario_fk: localStorage.getItem('id'),
       cd_especie_fk: this.editPet.id_especie

@@ -14,7 +14,7 @@ export class ModalDeletePetComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ModalDeletePetComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, 
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private httpClient: HttpClient,
     public snackBar: MatSnackBar) {}
 
@@ -25,15 +25,10 @@ export class ModalDeletePetComponent implements OnInit {
   }
 
   deletePet() {
-    //this.meusPetsComponent.emitirId.subscribe(
-      //idEmitido => this.idDelete
-    //);
-    
-    let url = '/api/animals/' + this.data.id + '/destroy' ;
-    
+    const url = '/api/animals/' + this.data.id + '/destroy' ;
     const userToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', userToken);
-    
+
     this.httpClient.delete(api_url + url, { headers }).subscribe( destroy => {
       this.snackBar.open('Pet excluído', 'OK', {
         duration: 2000,

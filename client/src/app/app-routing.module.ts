@@ -11,6 +11,7 @@ import { AddPjuridicaComponent } from './add-pjuridica/add-pjuridica.component';
 import { AddPfisicaComponent } from './add-pfisica/add-pfisica.component';
 import { AddPetComponent } from './add-pet/add-pet.component';
 import { AppComponent } from './app.component';
+import { EditPetComponent } from './edit-pet/edit-pet.component';
 
 const routes: Routes = [
   {
@@ -67,6 +68,10 @@ const routes: Routes = [
   {
     path: 'pet-info',
     component: PetInfoComponent
+  },
+  {
+    path: 'edit-pet',
+    component: EditPetComponent
   }
 ];
 

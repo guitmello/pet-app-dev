@@ -92,8 +92,19 @@ export class AddPfisicaComponent implements OnInit {
     this.removeCpfMask();
     this.removeCelMask();
     this.removeCepMask();
+    this.removeNumeroMask();
   }
 
+  removeNumeroMask() {
+    let numberHome = this.pfisica.numero.toString();
+    let beforeNumberH = numberHome;
+    for(let x = 0 ; x<=beforeNumberH.length; x++){
+      if(!parseInt(numberHome.slice(x,x+1))){
+        numberHome.replace('_', '');
+      }
+    }
+    this.pfisica.numero = parseInt(numberHome);
+  }
 
   removeCpfMask() {
     let cpf = this.pfisica.cpf.toString();

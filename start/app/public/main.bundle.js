@@ -261,6 +261,17 @@ var AddPfisicaComponent = /** @class */ (function () {
         this.removeCpfMask();
         this.removeCelMask();
         this.removeCepMask();
+        this.removeNumeroMask();
+    };
+    AddPfisicaComponent.prototype.removeNumeroMask = function () {
+        var numberHome = this.pfisica.numero.toString();
+        var beforeNumberH = numberHome;
+        for (var x = 0; x <= beforeNumberH.length; x++) {
+            if (!parseInt(numberHome.slice(x, x + 1))) {
+                numberHome.replace('_', '');
+            }
+        }
+        this.pfisica.numero = parseInt(numberHome);
     };
     AddPfisicaComponent.prototype.removeCpfMask = function () {
         var cpf = this.pfisica.cpf.toString();
@@ -339,6 +350,7 @@ module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n\r\n  <div 
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -354,11 +366,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var api_url = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].apiUrl;
 var AddPjuridicaComponent = /** @class */ (function () {
-    function AddPjuridicaComponent(httpClient, router) {
+    function AddPjuridicaComponent(httpClient, router, snackBar) {
         this.httpClient = httpClient;
         this.router = router;
+        this.snackBar = snackBar;
         this.data = {};
         this.postData = {};
         this.md5 = new __WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5__["Md5"]();
@@ -373,6 +387,7 @@ var AddPjuridicaComponent = /** @class */ (function () {
     AddPjuridicaComponent.prototype.ngOnInit = function () {
     };
     AddPjuridicaComponent.prototype.registerPj = function () {
+        var _this = this;
         this.removeMasks();
         this.md5.appendStr(this.senha);
         var newSenha = this.md5.end();
@@ -394,8 +409,14 @@ var AddPjuridicaComponent = /** @class */ (function () {
         return this.httpClient.post(this.apiUrl, this.postData)
             .subscribe(function (res) {
             console.log(res);
+            _this.snackBar.open('Usuário Cadastrado com Sucesso!', 'OK', {
+                duration: 2000,
+            });
+            _this.goTo('login');
         }, function (err) {
-            console.log("Error occured");
+            _this.snackBar.open('Erro ao Cadastrar Usuário', 'OK', {
+                duration: 2000,
+            });
         });
     };
     AddPjuridicaComponent.prototype.goTo = function (route) {
@@ -405,6 +426,17 @@ var AddPjuridicaComponent = /** @class */ (function () {
         this.removeCnpjMask();
         this.removeCelMask();
         this.removeCepMask();
+        this.removeNumeroMask();
+    };
+    AddPjuridicaComponent.prototype.removeNumeroMask = function () {
+        var numberHome = this.pjuridica.numero.toString();
+        var beforeNumberH = numberHome;
+        for (var x = 0; x <= beforeNumberH.length; x++) {
+            if (!parseInt(numberHome.slice(x, x + 1))) {
+                numberHome.replace('_', '');
+            }
+        }
+        this.pjuridica.numero = parseInt(numberHome);
     };
     AddPjuridicaComponent.prototype.removeCnpjMask = function () {
         var cnpj = this.pjuridica.cnpj.toString();
@@ -434,7 +466,7 @@ var AddPjuridicaComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/add-pjuridica/add-pjuridica.component.html"),
             styles: [__webpack_require__("./src/app/add-pjuridica/add-pjuridica.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_5__angular_router__["b" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_5__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_6__angular_material__["e" /* MatSnackBar */]])
     ], AddPjuridicaComponent);
     return AddPjuridicaComponent;
 }());

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Md5 } from 'ts-md5/dist/md5';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 const api_url = environment.apiUrl;
 
@@ -26,7 +27,7 @@ export class AddPjuridicaComponent implements OnInit {
   senha: string;
   private apiUrl = api_url + '/api/users/create';
 
-  constructor(private httpClient: HttpClient, public router: Router) {
+  constructor(private httpClient: HttpClient, public router: Router, public snackBar: MatSnackBar) {
     this.cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/',
       /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
     this.celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
@@ -36,6 +37,8 @@ export class AddPjuridicaComponent implements OnInit {
 
   ngOnInit() {
   }
+
+
 
   registerPj() {
     this.removeMasks();
@@ -59,14 +62,19 @@ export class AddPjuridicaComponent implements OnInit {
     };
 
     return this.httpClient.post<PJuridica>(this.apiUrl, this.postData)
-      .subscribe(
-        res => {
-          console.log(res);
-        },
-        err => {
-          console.log("Error occured");
-        }
-      );
+      .subscribe( res => {
+        console.log(res);
+        this.snackBar.open('Usuário Cadastrado com Sucesso!', 'OK', {
+          duration: 2000,
+        });
+        this.goTo('login');
+      },
+      err => {
+        this.snackBar.open('Erro ao Cadastrar Usuário', 'OK', {
+          duration: 2000,
+        });
+      }
+    );
   }
 
   goTo(route: string) {
@@ -77,6 +85,18 @@ export class AddPjuridicaComponent implements OnInit {
     this.removeCnpjMask();
     this.removeCelMask();
     this.removeCepMask();
+    this.removeNumeroMask();
+  }
+
+  removeNumeroMask() {
+    let numberHome = this.pjuridica.numero.toString();
+    let beforeNumberH = numberHome;
+    for(let x = 0 ; x<=beforeNumberH.length; x++){
+      if(!parseInt(numberHome.slice(x,x+1))){
+        numberHome.replace('_', '');
+      }
+    }
+    this.pjuridica.numero = parseInt(numberHome);
   }
 
   removeCnpjMask() {

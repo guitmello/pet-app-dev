@@ -8,54 +8,84 @@
     </div>
   </div>
   <mat-card>
+
     <div class="row">
-      <div class="col-md-2 text-center font-bold">
-        <label> {{pet.title}} </label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-12">
         <img src="{{pet.ds_foto_animal}}" alt="" class="img-animals">
       </div>
-      <div class="col-md-2 card-content">
-        <ul>
-          <li class="font-bold">Nome</li>
-          <li> {{pet.nm_animal}} </li>
-          <li class="font-bold space-top">Espécie</li>
-          <li> {{pet.species}} </li>
-          <li class="font-bold space-top">Sexo</li>
-          <li> pet.genre </li>
-          <li class="font-bold space-top">Cor</li>
-          <li> {{pet.nm_cor_animal}} </li>
-          <li class="font-bold space-top">Tamanho</li>
-          <li> pet.size </li>
-          <li class="font-bold space-top">Endereço</li>
-          <li> {{pet.address1}} </li>
-          <li> {{pet.address2}}</li>
-          <li class="font-bold space-top">Cadastrado por:</li>
-          <li>
-            <a href="#">ONG MyPet</a>
-          </li>
-        </ul>
+    </div>
 
-      </div>
-      <div class="col-md-2 card-content2">
-        <ul>
-          <li class="font-bold">Idade</li>
-          <li> {{pet.cd_idade_animal}} ano(s) </li>
-          <li class="font-bold space-top">Raça</li>
-          <li> {{pet.breed}} </li>
-          <span *ngIf='deficiencia_view' ><li class="font-bold space-top">Deficiência</li>
-          <li> {{pet.ds_deficiencia_animal}} </li></span>
-        </ul>
+    <div class="col-12 card-content">
+      <ul>
+        <div class="row">
+          <div class="col-6">
+            <li class="font-bold">Nome</li>
+            <li> {{pet.nm_animal}} </li>
+          </div>
+          <div class="col-6">
+            <li class="font-bold">Idade</li>
+            <li> {{pet.cd_idade_animal}} ano(s) </li>
+          </div>
+        </div>
 
-        <button mat-button (click)='favoritarPet(pet.id)'>Favoritar</button>
-      </div>
-      
-      <!-- <label class="content-date"> shoe.date </label> -->
-      <!-- <div class="heart">
+        <div class="row">
+          <div class="col-6">
+            <li class="font-bold space-top">Espécie</li>
+            <li> {{pet.species}} </li>
+          </div>
+          <div class="col-6">
+            <li class="font-bold space-top">Raça</li>
+            <li> {{pet.breed}} </li>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <li class="font-bold space-top">Sexo</li>
+            <li> pet.genre </li>
+          </div>
+          <div class="col-6">
+            <li class="font-bold space-top">Cor</li>
+            <li> {{pet.nm_cor_animal}} </li>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <li class="font-bold space-top">Tamanho</li>
+            <li> pet.size </li>
+          </div>
+          <div class="col-6">
+            <span *ngIf='deficiencia_view'>
+              <li class="font-bold space-top">Deficiência</li>
+              <li> {{pet.ds_deficiencia_animal}} </li>
+            </span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <li class="font-bold space-top">Endereço</li>
+            <li> {{pet.address1}} </li>
+            <li> {{pet.address2}}</li>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <li class="font-bold space-top">Cadastrado por:</li>
+            <li>
+              <a href="#">ONG MyPet</a>
+            </li>
+          </div>
+        </div>
+      </ul>
+    </div>
+
+    <button mat-button (click)='favoritarPet(pet.id)'>Favoritar</button>
+    <!-- <label class="content-date"> shoe.date </label> -->
+    <!-- <div class="heart">
         <i class="fas fa-heart"></i>
       </div> -->
-    </div>
   </mat-card>
 </div>

@@ -23,6 +23,9 @@ export class LoginService {
     console.log(this.authCheck);
 
     if (this.authCheck.token) {
+      sessionStorage.setItem('id', this.authCheck.id);
+      sessionStorage.setItem('email', this.authCheck.nm_email_usuario);
+
       localStorage.setItem('id', this.authCheck.id);
       localStorage.setItem('token', 'jwt ' + this.authCheck.token);
       this.usuarioAutenticado = true;

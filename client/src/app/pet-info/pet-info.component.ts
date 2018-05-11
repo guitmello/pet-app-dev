@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
+import { MatButtonModule, MatIconModule } from '@angular/material';
 
 const api_url = environment.apiUrl;
 
@@ -38,9 +39,11 @@ export class PetInfoComponent implements OnInit {
   postData: any = {};
   racas: Array<any>;
   especies: Array<any>;
+  url: string;
 
   constructor(private route: ActivatedRoute, private httpClient: HttpClient) {
     this.getPetInfo(this.route.snapshot.queryParams['id']);
+    this.url = '/api/favoritos/create';
   }
 
   ngOnInit() {
@@ -71,11 +74,15 @@ export class PetInfoComponent implements OnInit {
   }
 
   favoritarPet(id: number) {
+    const userToken = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', userToken);
+
     this.postData = {
       cd_animal_fk: id,
-      cd_usuario_fk: parseInt(localStorage.getItem('id'))
+      cd_usuario_fk: localStorage.getItem('id')
     };
-    return this.httpClient.post<Pet>(api_url + '/api/favoritos/create', this.postData)
+
+    return this.httpClient.post<Pet>(api_url + this.url, this.postData, { headers })
       .subscribe(
         res => {
           console.log(res);

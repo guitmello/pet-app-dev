@@ -1,14 +1,14 @@
-#home .mat-card{
-    height: 600px;
-}
-
 .mat-card{
     padding: 0px !important;
 }
 
 .card-content{
-    padding: 20px 10px;
+    padding: 10px 10px;
     width: 100%;
+}
+
+.btn-favorite-area{
+  margin-top: -25px;
 }
 
 ul .row{
@@ -27,11 +27,5 @@ ul .row{
 
 .img-animals{
     width: 100%;
-    height: 200px; 
-}
-
-.content-date{
-    position: absolute;
-    left: 53%;
-    top: 87%;
+    height: 200px;
 }

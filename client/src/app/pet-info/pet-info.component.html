@@ -15,6 +15,14 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-1 offset-9 btn-favorite-area">
+        <button mat-mini-fab color="primary" (click)='favoritarPet(pet.id)'>
+          <mat-icon aria-label="Favoritar">favorite</mat-icon>
+        </button>
+      </div>
+    </div>
+
     <div class="col-12 card-content">
       <ul>
         <div class="row">
@@ -81,11 +89,5 @@
         </div>
       </ul>
     </div>
-
-    <button mat-button (click)='favoritarPet(pet.id)'>Favoritar</button>
-    <!-- <label class="content-date"> shoe.date </label> -->
-    <!-- <div class="heart">
-        <i class="fas fa-heart"></i>
-      </div> -->
   </mat-card>
 </div>

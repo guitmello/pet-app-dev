@@ -29,7 +29,7 @@ export class AddPfisicaComponent implements OnInit {
   private apiUrl = api_url + '/api/users/create';
 
   constructor(private httpClient: HttpClient, public router: Router, public snackBar: MatSnackBar) {
-    this.cpfMask = [/\d/,/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+    this.cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
     this.celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
     this.cepMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
     this.numMask = [/[1-9]/, /\d/, /\d/, /\d/, /\d/, /\d/];

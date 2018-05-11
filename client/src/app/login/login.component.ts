@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
   }
 
   getAuth() {
+    this.checkPassword = 0;
       if (this.checkPassword === 0) {
         console.log(this.checkPassword);
         this.md5.appendStr(this.senha);
@@ -64,12 +65,9 @@ export class LoginComponent implements OnInit {
       cd_senha_usuario: this.usuario.senha
     };
 
-    console.log(this.postData);
-
     this.httpClient.post<Usuario>(this.apiUrl, this.postData).subscribe(auth => {
       this.data = auth;
       console.log(auth);
-      this.checkPassword = 1;
       this.fazerLogin();
     }, error => {
       this.dataError = error;
@@ -81,9 +79,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.checkPassword = 0;
-  }
+  ngOnInit() {}
 
   fazerLogin() {
     this.loginService.fazerLogin(this.usuario, this.data);

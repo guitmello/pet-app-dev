@@ -20,6 +20,7 @@ export class AddPetComponent implements OnInit {
   sexo: Array<any>;
   especie: Array<any>;
   raca: Array<any>;
+  tamanho: Array<any>;
   private apiUrl = api_url;
 
   pet: Pet = new Pet();
@@ -31,7 +32,13 @@ export class AddPetComponent implements OnInit {
 
     this.sexo = [
       { value: 'M', viewValue: 'Macho' },
-      { value: 'F', viewValue: 'Femêa' }
+      { value: 'F', viewValue: 'Fêmea' }
+    ];
+
+    this.tamanho = [
+      { value: 'Pequeno', viewValue: 'Pequeno' },
+      { value: 'Médio', viewValue: 'Médio' },
+      { value: 'Grande', viewValue: 'Grande' }
     ];
 
     this.especie = [
@@ -39,7 +46,7 @@ export class AddPetComponent implements OnInit {
       { id: 2, value: 'Gato' },
       { id: 3, value: 'Coelho' },
       { id: 4, value: 'Hamster' },
-      { id: 5, value: 'Passáro' },
+      { id: 5, value: 'Pássaro' },
       { id: 5, value: 'Cavalo' }
     ];
 

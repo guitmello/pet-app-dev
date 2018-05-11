@@ -19,12 +19,21 @@ export class AppComponent {
 
   constructor(private loginService: LoginService, public router: Router) { }
 
-  
-
   ngOnInit() {
-    this.loginService.mostrarMenuEmitter.subscribe(
-      mostrar => this.mostrarMenu = mostrar
-    );
+
+    window.onload = function(event) {
+      let w = window.innerWidth;
+      let h = window.innerHeight;
+
+      if (w <= 500 && h <= 825) {
+        console.log('Smartphone');
+      } else if ((w >= 768 && h >= 1024) && (w <= 1024 && h <= 1366)) {
+        window.location.href = 'https://idotapp.github.io/site-institucional/site-institucional.html';
+      } else {
+        window.location.href = 'https://idotapp.github.io/site-institucional/site-institucional.html';
+        console.log('Desktop');
+      }
+    };
 
     window.onresize = function(event) {
       let w = window.innerWidth;
@@ -33,17 +42,29 @@ export class AppComponent {
       if (w <= 500 && h <= 825) {
         console.log('Smartphone');
       } else if ((w >= 768 && h >= 1024) && (w <= 1024 && h <= 1366)) {
-        window.location.href='https://idotapp.github.io/site-institucional/site-institucional.html';
+        window.location.href = 'https://idotapp.github.io/site-institucional/site-institucional.html';
       } else {
-        window.location.href='https://idotapp.github.io/site-institucional/site-institucional.html';
+        window.location.href = 'https://idotapp.github.io/site-institucional/site-institucional.html';
         console.log('Desktop');
       }
 
     };
+
+
+  if ((!localStorage.getItem('token')) || (!sessionStorage.getItem('id')) /*|| (this.mostrarMenu === false)*/ ) {
+      this.logoff('login');
+    }
+
+
+    this.loginService.mostrarMenuEmitter.subscribe(
+      mostrar => this.mostrarMenu = mostrar,
+    );
+
   }
 
   logoff(route: string) {
     this.router.navigate([route]);
+    sessionStorage.clear();
     localStorage.clear();
     this.mostrarMenuEmitter.emit(false);
   }

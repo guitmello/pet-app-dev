@@ -28,6 +28,23 @@ export class AddPetComponent implements OnInit {
   constructor(private httpClient: HttpClient, public router: Router, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
+
+    document.querySelector('#imgupload').addEventListener('change',function() {
+      let fotoAnimal;
+      let filesSelected = (<HTMLInputElement>document.getElementById('imgupload')).files;
+      if (filesSelected.length > 0) {
+        let fileToLoad = filesSelected[0];
+        let fileReader = new FileReader();
+        fileReader.onload = function(fileLoadEvent) {
+          let base64value = <FileReader>event.target;
+          (<HTMLInputElement>document.getElementById('imgupload')).setAttribute('base64-value',base64value.result);
+        };
+        fileReader.readAsDataURL(fileToLoad);
+      }
+    });
+
+    
+
     this.pet.deficiencia = false;
 
     this.sexo = [
@@ -66,6 +83,16 @@ export class AddPetComponent implements OnInit {
     const userToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', userToken);
 
+    let fotobase64 = (<HTMLInputElement>document.getElementById('imgupload')).getAttribute('base64-value');
+    console.log(fotobase64);
+
+    if (!fotobase64) {
+      fotobase64 = '../../assets/images/ft-pet.jpg';
+      console.log(fotobase64);
+    }
+
+
+
     this.postData = {
       nm_animal: this.pet.nome,
       cd_idade_animal: this.pet.idade,
@@ -74,7 +101,7 @@ export class AddPetComponent implements OnInit {
       nm_tamanho_animal: this.pet.tamanho,
       ic_deficiencia_animal: this.pet.deficiencia,
       ds_deficiencia_animal: this.pet.ds_deficiencia,
-      ds_foto_animal: '../../assets/images/ft-pet.jpg',
+      ds_foto_animal: fotobase64,
       cd_raca_fk: this.pet.id_raca,
       cd_usuario_fk: localStorage.getItem('id'),
       cd_especie_fk: this.pet.id_especie
@@ -86,15 +113,17 @@ export class AddPetComponent implements OnInit {
           this.snackBar.open('Pet Cadastrado com Sucesso!', 'OK', {
             duration: 2000,
           });
-          this.goTo('home');
+          this.goTo('meus-pets');
         },
         err => {
           this.snackBar.open('Erro ao Cadastrar Pet', 'OK', {
             duration: 2000,
           });
-          this.goTo('home');
+          this.goTo('meus-pets');
         }
       );
+
+      
   }
 
 

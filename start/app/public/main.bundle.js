@@ -20,14 +20,14 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /***/ "./src/app/add-pet/add-pet.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".checkbox-align {\r\n  padding: .1375em 0 !important;\r\n  border-top: .84375em solid transparent !important;\r\n}\r\n\r\n"
+module.exports = ".mat-card{\r\n  padding-top: 0px !important;\r\n}\r\n\r\n.pet-form{\r\n  border-bottom: 1px solid #ccc;\r\n  padding: 20px 0px\r\n}\r\n\r\n.pet-sub-form{\r\n  padding-top: 10px;\r\n}\r\n\r\n.col-3{\r\n  padding-left: 10px;\r\n}\r\n\r\nh6{\r\n  font-size: 14px;\r\n  font-weight: 600;\r\n  padding-top: 17px !important;\r\n  margin: 0px;\r\n  vertical-align: middle;\r\n  color: #755DCA;\r\n}\r\n\r\n.checkbox-align {\r\n  padding: .1375em 0 !important;\r\n  border-top: .84375em solid transparent !important;\r\n}\r\n"
 
 /***/ }),
 
 /***/ "./src/app/add-pet/add-pet.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Cadastrar Pet</h1>\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card>\r\n\r\n    <form>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pet.nome\" name=\"nome\" matInput placeholder=\"Nome\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pet.sexo\" name=\"sexo\" placeholder=\"Sexo\" required>\r\n              <mat-option *ngFor=\"let sexos of sexo\" [value]=\"sexos.value\">\r\n                {{ sexos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pet.id_especie\" name=\"especie\" placeholder=\"Espécie\" required>\r\n              <mat-option *ngFor=\"let especies of especie\" [value]=\"especies.id\">\r\n                {{ especies.value }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pet.id_raca\" name=\"raca\" placeholder=\"Raça\" required>\r\n              <mat-option *ngFor=\"let racas of raca\" [value]=\"racas.id\">\r\n                {{ racas.value }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pet.idade\" name=\"idade\" matInput placeholder=\"Idade\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pet.tamanho\" name=\"tamanho\" matInput placeholder=\"Tamanho\" required>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pet.cor\" name=\"cor\" matInput placeholder=\"Cor\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6\">\r\n          <div class=\"checkbox-align\">\r\n            <mat-checkbox [(ngModel)]=\"pet.deficiencia\" name=\"deficiencia\" color=\"primary\">Deficiência</mat-checkbox>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-6\" *ngIf=\"!!pet.deficiencia\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pet.ds_deficiencia\" name=\"ds_deficiencia\" matInput placeholder=\"Qual?\">\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-12\">\r\n        <div class=\"row justify-content-center\">\r\n          <h2 class=\"sub-title\">Foto do Pet</h2>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6 button-row\" align=\"center\">\r\n          <button mat-raised-button class=\"content-center\" type=\"button\" color=\"primary\" class=\"w-75\" (click)=\"fileInput.click()\">Upload</button>\r\n          <input hidden type=\"file\" #fileInput />\r\n        </div>\r\n        <div class=\"col-6 button-row\" align=\"center\">\r\n            <button mat-raised-button class=\"content-center\" type=\"button\" color=\"primary\" class=\"w-75\" (click)=\"imgFileInput.click()\">Tirar uma Foto</button>\r\n            <input hidden type=\"file\" accept=\"image/*\" capture=\"camera\" #imgFileInput />\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-12\">\r\n        <div class=\"button-submit-row row justify-content-center\">\r\n          <button mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\" (click)=\"registerPet()\">Confirmar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Cadastrar Pet</h1>\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card>\r\n\r\n    <form>\r\n\r\n      <div class=\"row pet-form\">\r\n        <div class=\"col-4\">\r\n          <button mat-fab color=\"primary\" (click)='imgFileInput.click()'>\r\n            <mat-icon aria-label=\"Tirar Foto\">photo_camera</mat-icon>\r\n            <input hidden type=\"file\" accept=\"image/*\" id=\"imgupload\" capture=\"camera\" #imgFileInput />\r\n          </button>\r\n        </div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pet.nome\" name=\"nome\" matInput placeholder=\"Nome\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row pet-sub-form\">\r\n        <div class=\"col-4\"><h6>Informações</h6></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pet.idade\" name=\"idade\" matInput placeholder=\"Idade\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pet.sexo\" name=\"sexo\" placeholder=\"Sexo\" required>\r\n              <mat-option *ngFor=\"let sexos of sexo\" [value]=\"sexos.value\">\r\n                {{ sexos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pet.tamanho\" name=\"tamanho\" placeholder=\"Tamanho\" required>\r\n              <mat-option *ngFor=\"let tamanhos of tamanho\" [value]=\"tamanhos.value\">\r\n                {{ tamanhos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pet.cor\" name=\"cor\" matInput placeholder=\"Cor\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pet.id_especie\" name=\"especie\" placeholder=\"Espécie\" required>\r\n              <mat-option *ngFor=\"let especies of especie\" [value]=\"especies.id\">\r\n                {{ especies.value }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pet.id_raca\" name=\"raca\" placeholder=\"Raça\" required>\r\n              <mat-option *ngFor=\"let racas of raca\" [value]=\"racas.id\">\r\n                {{ racas.value }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <div class=\"checkbox-align\">\r\n            <mat-checkbox [(ngModel)]=\"pet.deficiencia\" name=\"deficiencia\" color=\"primary\">Há alguma deficiência?</mat-checkbox>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row pet-form\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\" *ngIf=\"!!pet.deficiencia\">\r\n            <mat-form-field>\r\n              <input [(ngModel)]=\"pet.ds_deficiencia\" name=\"ds_deficiencia\" matInput placeholder=\"Qual?\">\r\n            </mat-form-field>\r\n          </div>\r\n      </div>\r\n\r\n      <div class=\"col-12\">\r\n        <div class=\"button-submit-row row justify-content-center\">\r\n          <button mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\" (click)=\"registerPet()\">Confirmar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -69,17 +69,35 @@ var AddPetComponent = /** @class */ (function () {
         this.pet = new __WEBPACK_IMPORTED_MODULE_1__pet__["a" /* Pet */]();
     }
     AddPetComponent.prototype.ngOnInit = function () {
+        document.querySelector('#imgupload').addEventListener('change', function () {
+            var fotoAnimal;
+            var filesSelected = document.getElementById('imgupload').files;
+            if (filesSelected.length > 0) {
+                var fileToLoad = filesSelected[0];
+                var fileReader = new FileReader();
+                fileReader.onload = function (fileLoadEvent) {
+                    var base64value = event.target;
+                    document.getElementById('imgupload').setAttribute('base64-value', base64value.result);
+                };
+                fileReader.readAsDataURL(fileToLoad);
+            }
+        });
         this.pet.deficiencia = false;
         this.sexo = [
             { value: 'M', viewValue: 'Macho' },
-            { value: 'F', viewValue: 'Femêa' }
+            { value: 'F', viewValue: 'Fêmea' }
+        ];
+        this.tamanho = [
+            { value: 'Pequeno', viewValue: 'Pequeno' },
+            { value: 'Médio', viewValue: 'Médio' },
+            { value: 'Grande', viewValue: 'Grande' }
         ];
         this.especie = [
             { id: 1, value: 'Cachorro' },
             { id: 2, value: 'Gato' },
             { id: 3, value: 'Coelho' },
             { id: 4, value: 'Hamster' },
-            { id: 5, value: 'Passáro' },
+            { id: 5, value: 'Pássaro' },
             { id: 5, value: 'Cavalo' }
         ];
         this.raca = [
@@ -96,6 +114,12 @@ var AddPetComponent = /** @class */ (function () {
         this.apiUrl = this.apiUrl + '/api/animals/create';
         var userToken = localStorage.getItem('token');
         var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', userToken);
+        var fotobase64 = document.getElementById('imgupload').getAttribute('base64-value');
+        console.log(fotobase64);
+        if (!fotobase64) {
+            fotobase64 = '../../assets/images/ft-pet.jpg';
+            console.log(fotobase64);
+        }
         this.postData = {
             nm_animal: this.pet.nome,
             cd_idade_animal: this.pet.idade,
@@ -104,7 +128,7 @@ var AddPetComponent = /** @class */ (function () {
             nm_tamanho_animal: this.pet.tamanho,
             ic_deficiencia_animal: this.pet.deficiencia,
             ds_deficiencia_animal: this.pet.ds_deficiencia,
-            ds_foto_animal: '../../assets/images/ft-pet.jpg',
+            ds_foto_animal: fotobase64,
             cd_raca_fk: this.pet.id_raca,
             cd_usuario_fk: localStorage.getItem('id'),
             cd_especie_fk: this.pet.id_especie
@@ -114,12 +138,12 @@ var AddPetComponent = /** @class */ (function () {
             _this.snackBar.open('Pet Cadastrado com Sucesso!', 'OK', {
                 duration: 2000,
             });
-            _this.goTo('home');
+            _this.goTo('meus-pets');
         }, function (err) {
             _this.snackBar.open('Erro ao Cadastrar Pet', 'OK', {
                 duration: 2000,
             });
-            _this.goTo('home');
+            _this.goTo('meus-pets');
         });
     };
     AddPetComponent = __decorate([
@@ -162,7 +186,7 @@ module.exports = ""
 /***/ "./src/app/add-pfisica/add-pfisica.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n      <h1 class=\"title\">Cadastrar Usuário Pessoa Física</h1>\r\n    </div>\r\n  </div>\r\n\r\n  <mat-card>\r\n    <form>\r\n\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.nome\" name=\"nome\" type=\"text\" matInput placeholder=\"Nome\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.email\" name=\"email\" type=\"email\" matInput placeholder=\"Email\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.cpf\" [textMask]=\"{mask: cpfMask}\" name=\"cpf\" type=\"text\" matInput placeholder=\"CPF\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pfisica.sexo\" name=\"sexo\" placeholder=\"Sexo\" required>\r\n              <mat-option *ngFor=\"let sexos of sexo\" [value]=\"sexos.value\">\r\n                {{ sexos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.telefone\" [textMask]=\"{mask: celMask}\" name=\"telefone\" type=\"text\" matInput placeholder=\"Celular\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.cep\" [textMask]=\"{mask: cepMask}\" name=\"cep\" type=\"text\" matInput placeholder=\"CEP\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.estado\" name=\"estado\" type=\"text\" matInput placeholder=\"Estado\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.cidade\" name=\"cidade\" type=\"text\" matInput placeholder=\"Cidade\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.endereco\" name=\"endereco\" type=\"text\" matInput placeholder=\"Endereço\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-4\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.numero\" [textMask]=\"{mask: numMask}\" name=\"numero\" type=\"text\" matInput placeholder=\"Número\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.complemento\" name=\"complemento\" type=\"text\" matInput placeholder=\"Complemento\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"senha\" name=\"senha\" type=\"password\" matInput placeholder=\"Senha\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"button-row row justify-content-center\">\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button type=\"submit\" color=\"primary\" class=\"w-100\" (click)=\"registerPf()\">Confirmar</button>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button color=\"primary\" class=\"w-100\" (click)=\"goTo('login')\">Cancelar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n      <h1 class=\"title\">Cadastrar Usuário Pessoa Física</h1>\r\n    </div>\r\n  </div>\r\n\r\n  <mat-card>\r\n    <form>\r\n\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.nome\" name=\"nome\" type=\"text\" matInput placeholder=\"Nome\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.email\" name=\"email\" type=\"email\" matInput placeholder=\"Email\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.cpf\" [textMask]=\"{mask: cpfMask}\" name=\"cpf\" type=\"text\" matInput placeholder=\"CPF\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pfisica.sexo\" name=\"sexo\" placeholder=\"Sexo\" required>\r\n              <mat-option *ngFor=\"let sexos of sexo\" [value]=\"sexos.value\">\r\n                {{ sexos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.telefone\" [textMask]=\"{mask: celMask}\" name=\"telefone\" type=\"text\" matInput placeholder=\"Celular\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.cep\" [textMask]=\"{mask: cepMask}\" name=\"cep\" type=\"text\" matInput placeholder=\"CEP\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.estado\" name=\"estado\" type=\"text\" matInput placeholder=\"Estado\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.cidade\" name=\"cidade\" type=\"text\" matInput placeholder=\"Cidade\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.endereco\" name=\"endereco\" type=\"text\" matInput placeholder=\"Endereço\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-4\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.numero\" [textMask]=\"{mask: numMask}\" name=\"numero\" type=\"text\" matInput placeholder=\"Número\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.complemento\" name=\"complemento\" type=\"text\" matInput placeholder=\"Complemento\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"senha\" name=\"senha\" type=\"password\" matInput placeholder=\"Senha\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"button-row row justify-content-center\">\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button type=\"submit\" color=\"primary\" class=\"w-100\" (click)=\"registerPf()\">Confirmar</button>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button color=\"primary\" class=\"w-100\" (click)=\"goTo('login')\">Cancelar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -334,7 +358,7 @@ module.exports = ""
 /***/ "./src/app/add-pjuridica/add-pjuridica.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n      <h1 class=\"title\">Cadastrar Usuário Pessoa Jurídica</h1>\r\n    </div>\r\n  </div>\r\n\r\n  <mat-card>\r\n    <form>\r\n\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.razaoSocial\" name=\"razaoSocial\" type=\"text\" matInput placeholder=\"Razão Social\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.email\" name=\"email\" type=\"email\" matInput placeholder=\"Email\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.cnpj\" [textMask]=\"{mask: cnpjMask}\" name=\"cnpj\" type=\"text\" matInput placeholder=\"CNPJ\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.telefone\" [textMask]=\"{mask: celMask}\" name=\"telefone\" type=\"text\" matInput placeholder=\"Celular\"\r\n              required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.cep\" [textMask]=\"{mask: cepMask}\" name=\"cep\" type=\"text\" matInput placeholder=\"CEP\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.estado\" name=\"estado\" type=\"text\" matInput placeholder=\"Estado\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.cidade\" name=\"cidade\" type=\"text\" matInput placeholder=\"Cidade\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.endereco\" name=\"endereco\" type=\"text\" matInput placeholder=\"Endereço\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-4\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.numero\" [textMask]=\"{mask: numMask}\" name=\"numero\" type=\"text\" matInput placeholder=\"Número\"\r\n              required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.complemento\" name=\"complemento\" type=\"text\" matInput placeholder=\"Complemento\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"senha\" name=\"senha\" type=\"password\" matInput placeholder=\"Senha\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"button-row row justify-content-center\">\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button type=\"submit\" color=\"primary\" class=\"w-100\" (click)=\"registerPj()\">Confirmar</button>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button color=\"primary\" class=\"w-100\" (click)=\"goTo('login')\">Cancelar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n      <h1 class=\"title\">Cadastrar Usuário Pessoa Jurídica</h1>\r\n    </div>\r\n  </div>\r\n\r\n  <mat-card>\r\n    <form>\r\n\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.razaoSocial\" name=\"razaoSocial\" type=\"text\" matInput placeholder=\"Razão Social\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.email\" name=\"email\" type=\"email\" matInput placeholder=\"Email\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.cnpj\" [textMask]=\"{mask: cnpjMask}\" name=\"cnpj\" type=\"text\" matInput placeholder=\"CNPJ\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.telefone\" [textMask]=\"{mask: celMask}\" name=\"telefone\" type=\"text\" matInput placeholder=\"Celular\"\r\n              required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.cep\" [textMask]=\"{mask: cepMask}\" name=\"cep\" type=\"text\" matInput placeholder=\"CEP\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.estado\" name=\"estado\" type=\"text\" matInput placeholder=\"Estado\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.cidade\" name=\"cidade\" type=\"text\" matInput placeholder=\"Cidade\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.endereco\" name=\"endereco\" type=\"text\" matInput placeholder=\"Endereço\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-4\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.numero\" [textMask]=\"{mask: numMask}\" name=\"numero\" type=\"text\" matInput placeholder=\"Número\"\r\n              required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.complemento\" name=\"complemento\" type=\"text\" matInput placeholder=\"Complemento\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"senha\" name=\"senha\" type=\"password\" matInput placeholder=\"Senha\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"button-row row justify-content-center\">\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button type=\"submit\" color=\"primary\" class=\"w-100\" (click)=\"registerPj()\">Confirmar</button>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button color=\"primary\" class=\"w-100\" (click)=\"goTo('login')\">Cancelar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -652,7 +676,20 @@ var AppComponent = /** @class */ (function () {
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.loginService.mostrarMenuEmitter.subscribe(function (mostrar) { return _this.mostrarMenu = mostrar; });
+        window.onload = function (event) {
+            var w = window.innerWidth;
+            var h = window.innerHeight;
+            if (w <= 500 && h <= 825) {
+                console.log('Smartphone');
+            }
+            else if ((w >= 768 && h >= 1024) && (w <= 1024 && h <= 1366)) {
+                window.location.href = 'https://idotapp.github.io/site-institucional/site-institucional.html';
+            }
+            else {
+                window.location.href = 'https://idotapp.github.io/site-institucional/site-institucional.html';
+                console.log('Desktop');
+            }
+        };
         window.onresize = function (event) {
             var w = window.innerWidth;
             var h = window.innerHeight;
@@ -667,9 +704,14 @@ var AppComponent = /** @class */ (function () {
                 console.log('Desktop');
             }
         };
+        if ((!localStorage.getItem('token')) || (!sessionStorage.getItem('id')) /*|| (this.mostrarMenu === false)*/) {
+            this.logoff('login');
+        }
+        this.loginService.mostrarMenuEmitter.subscribe(function (mostrar) { return _this.mostrarMenu = mostrar; });
     };
     AppComponent.prototype.logoff = function (route) {
         this.router.navigate([route]);
+        sessionStorage.clear();
         localStorage.clear();
         this.mostrarMenuEmitter.emit(false);
     };
@@ -1409,7 +1451,7 @@ var HomeComponent = /** @class */ (function () {
 /***/ "./src/app/login/login.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".container-fluid{\r\n  margin-bottom: 0px !important;\r\n}\r\n.bg-login{\r\n  background: #755DCA !important;\r\n  height: 100vh\r\n}\r\n.mat-card{\r\n  margin-top: 125px;\r\n}\r\n.logo{\r\n  margin-top: -100px;\r\n}\r\n.logo img{\r\n  margin: auto;\r\n  display: block;\r\n}\r\nform{\r\n  margin-top: 20px;\r\n}\r\n\r\n"
+module.exports = ".container-fluid{\r\n  margin-bottom: 0px !important;\r\n}\r\n.bg-login{\r\n  background: #755DCA !important;\r\n  height: 100%;\r\n}\r\n.mat-card{\r\n  margin-top: 125px;\r\n}\r\n.logo{\r\n  margin-top: -100px;\r\n}\r\n.logo img{\r\n  margin: auto;\r\n  display: block;\r\n}\r\nform{\r\n  margin-top: 20px;\r\n}\r\n\r\n"
 
 /***/ }),
 
@@ -1483,6 +1525,7 @@ var LoginComponent = /** @class */ (function () {
     };
     LoginComponent.prototype.getAuth = function () {
         var _this = this;
+        this.checkPassword = 0;
         if (this.checkPassword === 0) {
             console.log(this.checkPassword);
             this.md5.appendStr(this.senha);
@@ -1496,11 +1539,9 @@ var LoginComponent = /** @class */ (function () {
             nm_email_usuario: this.usuario.email,
             cd_senha_usuario: this.usuario.senha
         };
-        console.log(this.postData);
         this.httpClient.post(this.apiUrl, this.postData).subscribe(function (auth) {
             _this.data = auth;
             console.log(auth);
-            _this.checkPassword = 1;
             _this.fazerLogin();
         }, function (error) {
             _this.dataError = error;
@@ -1511,9 +1552,7 @@ var LoginComponent = /** @class */ (function () {
             }
         });
     };
-    LoginComponent.prototype.ngOnInit = function () {
-        this.checkPassword = 0;
-    };
+    LoginComponent.prototype.ngOnInit = function () { };
     LoginComponent.prototype.fazerLogin = function () {
         this.loginService.fazerLogin(this.usuario, this.data);
     };
@@ -1564,6 +1603,8 @@ var LoginService = /** @class */ (function () {
         this.authCheck = auth;
         console.log(this.authCheck);
         if (this.authCheck.token) {
+            sessionStorage.setItem('id', this.authCheck.id);
+            sessionStorage.setItem('email', this.authCheck.nm_email_usuario);
             localStorage.setItem('id', this.authCheck.id);
             localStorage.setItem('token', 'jwt ' + this.authCheck.token);
             this.usuarioAutenticado = true;
@@ -1867,7 +1908,7 @@ module.exports = ""
 /***/ "./src/app/meus-pets/modal-delete-pet/modal-delete-pet.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div class=\"col-md-12\">\n    <div class=\"row justify-content-center\">\n\n      <h3 class=\"title\">Deseja realmente deletar?</h3>\n\n    </div>\n  </div>\n  <div class=\"col-12\">\n    <div class=\"button-row row justify-content-center\">\n      <button mat-raised-button color=\"primary\" class=\"w-50\" (click)=\"deletePet()\">Deletar</button>\n    </div>\n    <div class=\"button-row row justify-content-center\">\n      <button (click)=\"cancel()\" mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\">Cancelar</button>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div>\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h3 class=\"title\">Deseja realmente deletar?</h3>\r\n\r\n    </div>\r\n  </div>\r\n  <div class=\"col-12\">\r\n    <div class=\"button-row row justify-content-center\">\r\n      <button mat-raised-button color=\"primary\" class=\"w-50\" (click)=\"deletePet()\">Deletar</button>\r\n    </div>\r\n    <div class=\"button-row row justify-content-center\">\r\n      <button (click)=\"cancel()\" mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\">Cancelar</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -2003,14 +2044,14 @@ var PesquisarComponent = /** @class */ (function () {
 /***/ "./src/app/pet-info/pet-info.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "#home .mat-card{\r\n    height: 600px;\r\n}\r\n\r\n.card-content{\r\n    position: absolute;\r\n    left: 5%;\r\n    top: 38%;\r\n    padding: 10px 10px;\r\n    width: 50%;\r\n}\r\n\r\n.card-content  li{\r\n    padding: 2px 0px;\r\n}\r\n\r\n.card-content ul{\r\n    list-style: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n}\r\n\r\n.card-content2{\r\n    position: absolute;\r\n    left: 55%;\r\n    top: 38%;\r\n    padding: 10px 10px;\r\n    width: 30%;\r\n}\r\n\r\n.card-content2  li{\r\n    padding: 2px 0px;\r\n}\r\n\r\n.card-content2 ul{\r\n    list-style: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n}\r\n\r\n.img-animals{\r\n    margin: 5% 25%;\r\n    width: 50%;\r\n    height: 100%; \r\n}\r\n\r\n.content-date{\r\n    position: absolute;\r\n    left: 53%;\r\n    top: 87%;\r\n}\r\n\r\n.heart{\r\n    position: absolute;\r\n    left: 94%;\r\n    top: 87%;\r\n}\r\n\r\n.space-top{\r\n    margin-top: 10px;\r\n}"
+module.exports = ".mat-card{\r\n    padding: 0px !important;\r\n}\r\n\r\n.card-content{\r\n    padding: 10px 10px;\r\n    width: 100%;\r\n}\r\n\r\n.btn-favorite-area{\r\n  margin-top: -25px;\r\n}\r\n\r\nul .row{\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.card-content li{\r\n    padding: 2px 0px;\r\n}\r\n\r\n.card-content ul{\r\n    list-style: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n}\r\n\r\n.img-animals{\r\n    width: 100%;\r\n    height: 200px;\r\n}\r\n"
 
 /***/ }),
 
 /***/ "./src/app/pet-info/pet-info.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"home\" class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Mais Informações do Pet - {{pet.nm_animal}} </h1>\r\n\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card>\r\n    <div class=\"row\">\r\n      <div class=\"col-md-2 text-center font-bold\">\r\n        <label> {{pet.title}} </label>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"col-md-2\">\r\n        <img src=\"{{pet.ds_foto_animal}}\" alt=\"\" class=\"img-animals\">\r\n      </div>\r\n      <div class=\"col-md-2 card-content\">\r\n        <ul>\r\n          <li class=\"font-bold\">Nome</li>\r\n          <li> {{pet.nm_animal}} </li>\r\n          <li class=\"font-bold space-top\">Espécie</li>\r\n          <li> {{pet.species}} </li>\r\n          <li class=\"font-bold space-top\">Sexo</li>\r\n          <li> pet.genre </li>\r\n          <li class=\"font-bold space-top\">Cor</li>\r\n          <li> {{pet.nm_cor_animal}} </li>\r\n          <li class=\"font-bold space-top\">Tamanho</li>\r\n          <li> pet.size </li>\r\n          <li class=\"font-bold space-top\">Endereço</li>\r\n          <li> {{pet.address1}} </li>\r\n          <li> {{pet.address2}}</li>\r\n          <li class=\"font-bold space-top\">Cadastrado por:</li>\r\n          <li>\r\n            <a href=\"#\">ONG MyPet</a>\r\n          </li>\r\n        </ul>\r\n\r\n      </div>\r\n      <div class=\"col-md-2 card-content2\">\r\n        <ul>\r\n          <li class=\"font-bold\">Idade</li>\r\n          <li> {{pet.cd_idade_animal}} ano(s) </li>\r\n          <li class=\"font-bold space-top\">Raça</li>\r\n          <li> {{pet.breed}} </li>\r\n          <span *ngIf='deficiencia_view' ><li class=\"font-bold space-top\">Deficiência</li>\r\n          <li> {{pet.ds_deficiencia_animal}} </li></span>\r\n        </ul>\r\n\r\n        <button mat-button (click)='favoritarPet(pet.id)'>Favoritar</button>\r\n      </div>\r\n      \r\n      <!-- <label class=\"content-date\"> shoe.date </label> -->\r\n      <!-- <div class=\"heart\">\r\n        <i class=\"fas fa-heart\"></i>\r\n      </div> -->\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div id=\"home\" class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Mais Informações do Pet - {{pet.nm_animal}} </h1>\r\n\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card>\r\n\r\n    <div class=\"row\">\r\n      <div class=\"col-md-12\">\r\n        <img src=\"{{pet.ds_foto_animal}}\" alt=\"\" class=\"img-animals\">\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n      <div class=\"col-1 offset-9 btn-favorite-area\">\r\n        <button mat-mini-fab color=\"primary\" (click)='favoritarPet(pet.id)'>\r\n          <mat-icon aria-label=\"Favoritar\">favorite</mat-icon>\r\n        </button>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"col-12 card-content\">\r\n      <ul>\r\n        <div class=\"row\">\r\n          <div class=\"col-6\">\r\n            <li class=\"font-bold\">Nome</li>\r\n            <li> {{pet.nm_animal}} </li>\r\n          </div>\r\n          <div class=\"col-6\">\r\n            <li class=\"font-bold\">Idade</li>\r\n            <li> {{pet.cd_idade_animal}} ano(s) </li>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n          <div class=\"col-6\">\r\n            <li class=\"font-bold space-top\">Espécie</li>\r\n            <li> {{pet.species}} </li>\r\n          </div>\r\n          <div class=\"col-6\">\r\n            <li class=\"font-bold space-top\">Raça</li>\r\n            <li> {{pet.breed}} </li>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n          <div class=\"col-6\">\r\n            <li class=\"font-bold space-top\">Sexo</li>\r\n            <li> pet.genre </li>\r\n          </div>\r\n          <div class=\"col-6\">\r\n            <li class=\"font-bold space-top\">Cor</li>\r\n            <li> {{pet.nm_cor_animal}} </li>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n          <div class=\"col-6\">\r\n            <li class=\"font-bold space-top\">Tamanho</li>\r\n            <li> pet.size </li>\r\n          </div>\r\n          <div class=\"col-6\">\r\n            <span *ngIf='deficiencia_view'>\r\n              <li class=\"font-bold space-top\">Deficiência</li>\r\n              <li> {{pet.ds_deficiencia_animal}} </li>\r\n            </span>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n          <div class=\"col-6\">\r\n            <li class=\"font-bold space-top\">Endereço</li>\r\n            <li> {{pet.address1}} </li>\r\n            <li> {{pet.address2}}</li>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n          <div class=\"col-12\">\r\n            <li class=\"font-bold space-top\">Cadastrado por:</li>\r\n            <li>\r\n              <a href=\"#\">ONG MyPet</a>\r\n            </li>\r\n          </div>\r\n        </div>\r\n      </ul>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -2049,6 +2090,7 @@ var PetInfoComponent = /** @class */ (function () {
         this.elementDataUser = {};
         this.postData = {};
         this.getPetInfo(this.route.snapshot.queryParams['id']);
+        this.url = '/api/favoritos/create';
     }
     PetInfoComponent.prototype.ngOnInit = function () {
         if (this.pet.ic_deficiencia_animal == undefined) {
@@ -2077,11 +2119,13 @@ var PetInfoComponent = /** @class */ (function () {
         });
     };
     PetInfoComponent.prototype.favoritarPet = function (id) {
+        var userToken = localStorage.getItem('token');
+        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', userToken);
         this.postData = {
             cd_animal_fk: id,
-            cd_usuario_fk: parseInt(localStorage.getItem('id'))
+            cd_usuario_fk: localStorage.getItem('id')
         };
-        return this.httpClient.post(api_url + '/api/favoritos/create', this.postData)
+        return this.httpClient.post(api_url + this.url, this.postData, { headers: headers })
             .subscribe(function (res) {
             console.log(res);
         }, function (err) {
@@ -2150,6 +2194,7 @@ var Pet = /** @class */ (function () {
 var environment = {
     production: false,
     apiUrl: 'http://idot-api.appspot.com'
+    //apiUrl: 'http://localhost:3000'
 };
 
 

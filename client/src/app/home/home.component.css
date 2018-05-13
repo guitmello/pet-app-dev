@@ -30,8 +30,10 @@
     top: 87%;
 }
 
-.heart{
-    position: absolute;
-    left: 94%;
-    top: 87%;
-}
+.img-square {
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    width: 50%;
+    height: 150px;
+  }

@@ -1,41 +1,49 @@
-#meus-pets .mat-card{
+#meus-pets .mat-card {
   padding: 10px 5px !important;
   font-size: 14px;
   margin-bottom: 10px;
 }
 
-.meus-pets-list{
+.meus-pets-list {
   padding: 0px;
   margin: 0px;
 }
-.meus-pets-list li{
+.meus-pets-list li {
   list-style: none;
   padding-right: 5px;
   display: inline-block;
-  vertical-align: middle
+  vertical-align: middle;
 }
-.meus-pets-list img{
+.meus-pets-list img {
   width: 40px;
 }
-.meus-pets-text{
+.meus-pets-text {
   text-align: center;
 }
 
-.buttons-inline{
+.buttons-inline {
   padding: 0px 0px 0px 5px;
 }
-.buttons-inline li{
+.buttons-inline li {
   display: inline-block;
   list-style: none;
   padding: 0px 0px;
 }
-.buttons-inline .mat-mini-fab{
+.buttons-inline .mat-mini-fab {
   background: #ffffff;
 }
-.buttons-inline .mat-mini-fab .edit{
-  color: #755DCA;
+.buttons-inline .mat-mini-fab .edit {
+  color: #755dca;
 }
-.buttons-inline .mat-mini-fab .remove{
+.buttons-inline .mat-mini-fab .remove {
   color: #ff4d4d;
+}
+
+.img-circle {
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
 }
 

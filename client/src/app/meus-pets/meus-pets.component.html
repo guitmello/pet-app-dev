@@ -14,16 +14,11 @@
       <div class="row">
         <ul class="meus-pets-list">
           <li>
-            <img class="img-circle" src="{{pet.ds_foto_animal}}" alt="foto do pet">
+            <div class="img-circle" [id]="pet.id" (init)="imgLoad(pet.id, pet.ds_foto_animal )"></div>
+            <!--<img class="img-circle" [name]="pet.id" src="{{pet.ds_foto_animal}}" alt="foto do pet">-->
           </li>
           <li>
             <span class="meus-pets-text">{{pet.nm_animal}}</span>
-          </li>
-          <li>
-            <span class="meus-pets-text">{{pet.nm_especie}}</span>
-          </li>
-          <li>
-            <span class="meus-pets-text">{{pet.nm_raca}}</span>
           </li>
         </ul>
 

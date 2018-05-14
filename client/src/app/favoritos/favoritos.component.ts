@@ -34,9 +34,9 @@ export class FavoritosComponent implements OnInit {
     const userToken = localStorage.getItem('token');
 
     const headers = new HttpHeaders().set('Authorization', userToken);
-    debugger
+    //debugger
     this.httpClient.get(api_url + '/api/animal/myfavorites/' + id, { headers }).subscribe(element => {
-      debugger
+      //debugger
       this.elementFavorite = element;
       this.elementFavorite.forEach(element => {
         console.log(element);

@@ -91,8 +91,6 @@ export class AddPetComponent implements OnInit {
       console.log(fotobase64);
     }
 
-
-
     this.postData = {
       nm_animal: this.pet.nome,
       cd_idade_animal: this.pet.idade,

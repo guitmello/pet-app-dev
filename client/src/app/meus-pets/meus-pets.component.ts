@@ -19,6 +19,7 @@ export class MeusPetsComponent implements OnInit {
   dataPets: any = {};
   dataRacas: any = {};
   dataEspecies: any = {};
+  petsObject: any = {};
   pets: Array<any>;
   racas: Array<any>;
   especies: Array<any>;
@@ -68,6 +69,7 @@ export class MeusPetsComponent implements OnInit {
       this.dataPets = data;
       this.pets = this.dataPets.payload;
     });
+
   }
 
   openDialog(id: number) {

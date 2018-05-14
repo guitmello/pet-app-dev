@@ -1278,7 +1278,7 @@ var FavoritosComponent = /** @class */ (function () {
 /***/ "./src/app/home/home.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "#home .mat-card{\r\n    padding: 0px !important;\r\n}\r\n\r\n.card-content{\r\n    position: absolute;\r\n    left: 50%;\r\n    padding: 10px 10px;\r\n    width: 50%;\r\n}\r\n\r\n.card-content  li{\r\n    padding: 5px 0px;\r\n}\r\n\r\n.card-content ul{\r\n    list-style: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n}\r\n\r\n.img-animals{\r\n    width: 50%;\r\n    height: 100%; \r\n}\r\n\r\n.content-date{\r\n    position: absolute;\r\n    left: 53%;\r\n    top: 87%;\r\n}\r\n\r\n.heart{\r\n    position: absolute;\r\n    left: 94%;\r\n    top: 87%;\r\n}"
+module.exports = "#home .mat-card{\r\n    padding: 0px !important;\r\n}\r\n\r\n.card-content{\r\n    position: absolute;\r\n    left: 50%;\r\n    padding: 10px 10px;\r\n    width: 50%;\r\n}\r\n\r\n.card-content  li{\r\n    padding: 5px 0px;\r\n}\r\n\r\n.card-content ul{\r\n    list-style: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n}\r\n\r\n.img-animals{\r\n    width: 50%;\r\n    height: 100%; \r\n}\r\n\r\n.content-date{\r\n    position: absolute;\r\n    left: 53%;\r\n    top: 87%;\r\n}\r\n\r\n.img-square {\r\n    background-position: center;\r\n    background-size: cover;\r\n    border-radius: 50%;\r\n    width: 50%;\r\n    height: 150px;\r\n  }"
 
 /***/ }),
 
@@ -1716,14 +1716,14 @@ var Usuario = /** @class */ (function () {
 /***/ "./src/app/meus-pets/meus-pets.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "#meus-pets .mat-card{\r\n  padding: 10px 5px !important;\r\n  font-size: 14px;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.meus-pets-list{\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.meus-pets-list li{\r\n  list-style: none;\r\n  padding-right: 5px;\r\n  display: inline-block;\r\n  vertical-align: middle\r\n}\r\n\r\n.meus-pets-list img{\r\n  width: 40px;\r\n}\r\n\r\n.meus-pets-text{\r\n  text-align: center;\r\n}\r\n\r\n.buttons-inline{\r\n  padding: 0px 0px 0px 5px;\r\n}\r\n\r\n.buttons-inline li{\r\n  display: inline-block;\r\n  list-style: none;\r\n  padding: 0px 0px;\r\n}\r\n\r\n.buttons-inline .mat-mini-fab{\r\n  background: #ffffff;\r\n}\r\n\r\n.buttons-inline .mat-mini-fab .edit{\r\n  color: #755DCA;\r\n}\r\n\r\n.buttons-inline .mat-mini-fab .remove{\r\n  color: #ff4d4d;\r\n}\r\n\r\n"
+module.exports = "#meus-pets .mat-card {\r\n  padding: 10px 5px !important;\r\n  font-size: 14px;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.meus-pets-list {\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.meus-pets-list li {\r\n  list-style: none;\r\n  padding-right: 5px;\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n}\r\n\r\n.meus-pets-list img {\r\n  width: 40px;\r\n}\r\n\r\n.meus-pets-text {\r\n  text-align: center;\r\n}\r\n\r\n.buttons-inline {\r\n  padding: 0px 0px 0px 5px;\r\n}\r\n\r\n.buttons-inline li {\r\n  display: inline-block;\r\n  list-style: none;\r\n  padding: 0px 0px;\r\n}\r\n\r\n.buttons-inline .mat-mini-fab {\r\n  background: #ffffff;\r\n}\r\n\r\n.buttons-inline .mat-mini-fab .edit {\r\n  color: #755dca;\r\n}\r\n\r\n.buttons-inline .mat-mini-fab .remove {\r\n  color: #ff4d4d;\r\n}\r\n\r\n.img-circle {\r\n  background-position: center;\r\n  background-size: cover;\r\n  border-radius: 50%;\r\n  width: 40px;\r\n  height: 40px;\r\n}\r\n\r\n.img-square{\r\n  background-position: center;\r\n  background-size: cover;\r\n  width: 50%;\r\n  height: 150px;\r\n}\r\n\r\n"
 
 /***/ }),
 
 /***/ "./src/app/meus-pets/meus-pets.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"meus-pets\" class=\"container-fluid animated fadeIn\">\r\n\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Meus Pets</h1>\r\n\r\n    </div>\r\n  </div>\r\n\r\n  <mat-card *ngFor=\"let pet of pets\">\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row\">\r\n        <ul class=\"meus-pets-list\">\r\n          <li>\r\n            <img class=\"img-circle\" src=\"{{pet.ds_foto_animal}}\" alt=\"foto do pet\">\r\n          </li>\r\n          <li>\r\n            <span class=\"meus-pets-text\">{{pet.nm_animal}}</span>\r\n          </li>\r\n          <li>\r\n            <span class=\"meus-pets-text\">{{pet.nm_especie}}</span>\r\n          </li>\r\n          <li>\r\n            <span class=\"meus-pets-text\">{{pet.nm_raca}}</span>\r\n          </li>\r\n        </ul>\r\n\r\n        <span class=\"nav-space\"></span>\r\n\r\n        <ul class=\"meus-pets-list buttons-inline \">\r\n          <li>\r\n            <button mat-mini-fab routerLink=\"/edit-pet\" [queryParams] =\"{id: pet.id}\">\r\n              <i class=\"fas fa-pencil-alt edit\"></i>\r\n            </button>\r\n          </li>\r\n          <li>\r\n            <button mat-mini-fab (click)=\"openDialog(pet.id)\">\r\n              <i class=\"fas fa-trash-alt remove\"></i>\r\n            </button>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div id=\"meus-pets\" class=\"container-fluid animated fadeIn\">\r\n\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Meus Pets</h1>\r\n\r\n    </div>\r\n  </div>\r\n\r\n  <mat-card *ngFor=\"let pet of pets\">\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row\">\r\n        <ul class=\"meus-pets-list\">\r\n          <li>\r\n            <div class=\"img-circle\" [ngStyle]=\"{ 'background-image': 'url(' + pet.ds_foto_animal + ') '}\"></div>\r\n            <!--<img class=\"img-circle\" [name]=\"pet.id\" src=\"{{pet.ds_foto_animal}}\" alt=\"foto do pet\">-->\r\n          </li>\r\n          <li>\r\n            <span class=\"meus-pets-text\">{{pet.nm_animal}}</span>\r\n          </li>\r\n        </ul>\r\n\r\n        <span class=\"nav-space\"></span>\r\n\r\n        <ul class=\"meus-pets-list buttons-inline \">\r\n          <li>\r\n            <button mat-mini-fab routerLink=\"/edit-pet\" [queryParams] =\"{id: pet.id}\">\r\n              <i class=\"fas fa-pencil-alt edit\"></i>\r\n            </button>\r\n          </li>\r\n          <li>\r\n            <button mat-mini-fab (click)=\"openDialog(pet.id)\">\r\n              <i class=\"fas fa-trash-alt remove\"></i>\r\n            </button>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1801,23 +1801,22 @@ var MeusPetsComponent = /** @class */ (function () {
         this.dataPets = {};
         this.dataRacas = {};
         this.dataEspecies = {};
-        this.pets = {};
+        this.petsObject = {};
     }
     MeusPetsComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.getRacas('/api/racas/all')];
-                    case 1:
-                        _a.sent();
-                        return [4 /*yield*/, this.getEspecies('/api/especies/all')];
-                    case 2:
-                        _a.sent();
-                        this.getMeusPets('/api/animals/myanimals/' + localStorage.getItem('id'));
-                        return [2 /*return*/];
-                }
+                //await this.getRacas("/api/racas/all");
+                //await this.getEspecies("/api/especies/all");
+                this.getMeusPets("/api/animals/myanimals/" + localStorage.getItem("id"));
+                return [2 /*return*/];
             });
         });
+    };
+    MeusPetsComponent.prototype.imgLoad = function (id, img) {
+        document.getElementById(id).style.backgroundImage = "url(" + img + ")";
+        console.log(id);
+        console.log(img);
     };
     MeusPetsComponent.prototype.getRacas = function (url) {
         var _this = this;
@@ -1837,31 +1836,17 @@ var MeusPetsComponent = /** @class */ (function () {
     };
     MeusPetsComponent.prototype.getMeusPets = function (url) {
         var _this = this;
-        var userToken = localStorage.getItem('token');
-        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', userToken);
+        var userToken = localStorage.getItem("token");
+        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]().set("Authorization", userToken);
         this.httpClient.get(api_url + url, { headers: headers }).subscribe(function (data) {
             _this.dataPets = data;
             _this.pets = _this.dataPets.payload;
-            _this.pets.forEach(function (element) {
-                for (var x = 0; x <= _this.racas.length - 1; x++) {
-                    if (element.id_raca === _this.racas[x].id_raca) {
-                        element.nm_raca = _this.racas[x].nm_raca;
-                        _this.pets.nm_raca = element.nm_raca;
-                    }
-                }
-                for (var y = 0; y <= _this.especies.length - 1; y++) {
-                    if (element.id_especie === _this.especies[y].id_especie) {
-                        element.nm_especie = _this.especies[y].nm_especie;
-                        _this.pets.nm_especie = element.nm_especie;
-                    }
-                }
-            });
         });
     };
     MeusPetsComponent.prototype.openDialog = function (id) {
         var dialogRef = this.dialog.open(__WEBPACK_IMPORTED_MODULE_5__modal_delete_pet_modal_delete_pet_component__["a" /* ModalDeletePetComponent */], {
-            width: '300px',
-            height: '210px',
+            width: "300px",
+            height: "210px",
             data: {
                 id: id
             }
@@ -1869,12 +1854,14 @@ var MeusPetsComponent = /** @class */ (function () {
     };
     MeusPetsComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'app-meus-pets',
+            selector: "app-meus-pets",
             template: __webpack_require__("./src/app/meus-pets/meus-pets.component.html"),
             styles: [__webpack_require__("./src/app/meus-pets/meus-pets.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_6__angular_material__["b" /* MatDialog */],
-            __WEBPACK_IMPORTED_MODULE_4__meus_pets__["a" /* MeusPets */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_6__angular_material__["b" /* MatDialog */],
+            __WEBPACK_IMPORTED_MODULE_4__meus_pets__["a" /* MeusPets */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
     ], MeusPetsComponent);
     return MeusPetsComponent;
 }());

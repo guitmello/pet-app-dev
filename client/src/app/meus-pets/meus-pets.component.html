@@ -14,7 +14,7 @@
       <div class="row">
         <ul class="meus-pets-list">
           <li>
-            <div class="img-circle" [id]="pet.id" (init)="imgLoad(pet.id, pet.ds_foto_animal )"></div>
+            <div class="img-circle" [ngStyle]="{ 'background-image': 'url(' + pet.ds_foto_animal + ') '}"></div>
             <!--<img class="img-circle" [name]="pet.id" src="{{pet.ds_foto_animal}}" alt="foto do pet">-->
           </li>
           <li>

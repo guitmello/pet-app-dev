@@ -50,7 +50,8 @@
         <div class="row">
           <div class="col-6">
             <li class="font-bold space-top">Sexo</li>
-            <li> pet.genre </li>
+            <li *ngIf="pet.nm_sexo_animal == 'M'"> Macho </li>
+            <li *ngIf="pet.nm_sexo_animal == 'F'"> Femêa </li>
           </div>
           <div class="col-6">
             <li class="font-bold space-top">Cor</li>
@@ -61,7 +62,7 @@
         <div class="row">
           <div class="col-6">
             <li class="font-bold space-top">Tamanho</li>
-            <li> pet.size </li>
+            <li> {{pet.nm_tamanho_animal}} </li>
           </div>
           <div class="col-6">
             <span *ngIf='deficiencia_view'>

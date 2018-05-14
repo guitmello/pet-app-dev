@@ -14,6 +14,7 @@ export class FavoritosComponent implements OnInit {
 
   elementFavorite: any = {};
   listOfFavoritePets: Array<any>;
+  listOfFavoritePets2: Array<any>;
 
   constructor(
     public router: Router, private httpClient: HttpClient
@@ -33,14 +34,13 @@ export class FavoritosComponent implements OnInit {
     const userToken = localStorage.getItem('token');
 
     const headers = new HttpHeaders().set('Authorization', userToken);
-
-    this.httpClient.get(api_url + '/api/favoritos/myfavorites/' + id, { headers }).subscribe(element => {
+    debugger
+    this.httpClient.get(api_url + '/api/animal/myfavorites/' + id, { headers }).subscribe(element => {
+      debugger
       this.elementFavorite = element;
-      if (this.elementFavorite.cd_usuario_fk == id) {
-        this.httpClient.get(api_url + '/api/animals/' + this.elementFavorite.cd_animal_fk, { headers }).subscribe(elementPet => {
-
-        });
-      }
+      this.elementFavorite.forEach(element => {
+        console.log(element);
+      });
     });
 
   }

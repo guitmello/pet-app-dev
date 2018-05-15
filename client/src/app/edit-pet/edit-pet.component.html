@@ -8,29 +8,80 @@
   </div>
   <mat-card>
 
-    <form>
+    <form id="edit-pet" name="edit-pet">
 
-      <div class="row">
-        <div class="col-12">
+      <div class="row pet-form">
+        <div class="col-4">
+          <button mat-fab color="primary" (click)='imgFileInput.click()'>
+            <mat-icon aria-label="Tirar Foto">photo_camera</mat-icon>
+            <input hidden type="file" accept="image/*" id="imgupload" capture="camera" #imgFileInput />
+          </button>
+        </div>
+        <div class="col-8">
           <mat-form-field>
-            <input [(ngModel)]="editPet.nm_animal" name="nm_animal" matInput placeholder="Nome" required>
+            <input [(ngModel)]="editPet.nome" name="nome" matInput placeholder="Nome" required>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row pet-sub-form">
+        <div class="col-4"><h6>Informações</h6></div>
+        <div class="col-4">
+          <mat-form-field>
+            <input [(ngModel)]="editPet.idade" name="idade" matInput placeholder="Idade" pattern="[0-9]" max-length="2" required>
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <mat-select [(ngModel)]="editPet.text_idade" name="text_idade" placeholder="Meses" required>
+              <mat-option *ngFor="let idades of idade" [value]="idades.value">
+                {{ idades.viewValue }}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-6">
+        <div class="col-4"></div>
+        <div class="col-8">
           <mat-form-field>
-            <mat-select [(ngModel)]="editPet.nm_sexo_animal" name="nm_sexo_animal" placeholder="Sexo" required>
+            <mat-select [(ngModel)]="editPet.sexo" name="sexo" placeholder="Sexo" required>
               <mat-option *ngFor="let sexos of sexo" [value]="sexos.value">
                 {{ sexos.viewValue }}
               </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="col-6">
+      </div>
+
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-8">
           <mat-form-field>
-            <mat-select [(ngModel)]="editPet.nm_especie_animal" name="cd_especie_fk" placeholder="Espécie" required>
+            <mat-select [(ngModel)]="editPet.tamanho" name="tamanho" placeholder="Tamanho" required>
+              <mat-option *ngFor="let tamanhos of tamanho" [value]="tamanhos.value">
+                {{ tamanhos.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-8">
+          <mat-form-field>
+            <input [(ngModel)]="editPet.cor" name="cor" matInput placeholder="Cor" required>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-8">
+          <mat-form-field>
+            <mat-select [(ngModel)]="editPet.id_especie" name="especie" placeholder="Espécie" required>
               <mat-option *ngFor="let especies of especie" [value]="especies.id">
                 {{ especies.value }}
               </mat-option>
@@ -40,68 +91,39 @@
       </div>
 
       <div class="row">
-        <div class="col-6">
+        <div class="col-4"></div>
+        <div class="col-8">
           <mat-form-field>
-            <mat-select [(ngModel)]="editPet.nm_raca_animal" name="cd_raca_fk" placeholder="Raça" required>
+            <mat-select [(ngModel)]="editPet.id_raca" name="raca" placeholder="Raça" required>
               <mat-option *ngFor="let racas of raca" [value]="racas.id">
                 {{ racas.value }}
               </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="col-6">
-          <mat-form-field>
-            <input [(ngModel)]="editPet.cd_idade_animal" name="cd_idade_animal" matInput placeholder="Idade" required>
-          </mat-form-field>
-        </div>
       </div>
 
       <div class="row">
-        <div class="col-6">
-          <mat-form-field>
-            <input [(ngModel)]="editPet.nm_tamanho_animal" name="nm_tamanho_animal" matInput placeholder="Tamanho" required>
-          </mat-form-field>
-        </div>
-        <div class="col-6">
-          <mat-form-field>
-            <input [(ngModel)]="editPet.nm_cor_animal" name="nm_cor_animal" matInput placeholder="Cor" required>
-          </mat-form-field>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-6">
+        <div class="col-4"></div>
+        <div class="col-8">
           <div class="checkbox-align">
-            <mat-checkbox [(ngModel)]="editPet.ic_deficiencia_animal" name="ic_deficiencia_animal" color="primary">Deficiência</mat-checkbox>
+            <mat-checkbox [(ngModel)]="editPet.deficiencia" name="deficiencia" color="primary">Há alguma deficiência?</mat-checkbox>
           </div>
         </div>
-        <div class="col-6" *ngIf="!!editPet.ic_deficiencia_animal">
-          <mat-form-field>
-            <input [(ngModel)]="editPet.ds_deficiencia_animal" name="ds_deficiencia_animal" matInput placeholder="Qual?">
-          </mat-form-field>
-        </div>
       </div>
 
-      <div class="col-12">
-        <div class="row justify-content-center">
-          <h2 class="sub-title">Foto do Pet</h2>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-6 button-row" align="center">
-          <button mat-raised-button class="content-center" type="button" color="primary" class="w-75" (click)="fileInput.click()">Upload</button>
-          <input hidden type="file" #fileInput />
-        </div>
-        <div class="col-6 button-row" align="center">
-            <button mat-raised-button class="content-center" type="button" color="primary" class="w-75" (click)="imgFileInput.click()">Tirar uma Foto</button>
-            <input hidden type="file" accept="image/*" capture="camera" #imgFileInput />
-        </div>
+      <div class="row pet-form">
+        <div class="col-4"></div>
+        <div class="col-8" *ngIf="!!editPet.deficiencia">
+            <mat-form-field>
+              <input [(ngModel)]="editPet.ds_deficiencia" name="ds_deficiencia" matInput placeholder="Qual?">
+            </mat-form-field>
+          </div>
       </div>
 
       <div class="col-12">
         <div class="button-submit-row row justify-content-center">
-          <button mat-raised-button type="submit" color="primary" class="w-50" (click)="updatePet('/update')">Confirmar</button>
+          <button mat-raised-button form="edit-pet" type="submit" color="primary" class="w-50" (click)="updatePet('/update')">Confirmar</button>
         </div>
       </div>
 
@@ -109,3 +131,7 @@
 
   </mat-card>
 </div>
+
+
+
+

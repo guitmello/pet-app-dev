@@ -91,7 +91,6 @@ export class AddPetComponent implements OnInit {
 
     if (!fotobase64) {
       fotobase64 = '../../assets/images/ft-pet.png';
-      console.log(fotobase64);
     }
 
     this.postData = {

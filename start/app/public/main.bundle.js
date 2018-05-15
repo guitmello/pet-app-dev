@@ -121,7 +121,6 @@ var AddPetComponent = /** @class */ (function () {
         var fotobase64 = document.getElementById('imgupload').getAttribute('base64-value');
         if (!fotobase64) {
             fotobase64 = '../../assets/images/ft-pet.png';
-            console.log(fotobase64);
         }
         this.postData = {
             nm_animal: this.pet.nome,
@@ -988,14 +987,14 @@ var ChatComponent = /** @class */ (function () {
 /***/ "./src/app/edit-pet/edit-pet.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".checkbox-align {\r\n  padding: .1375em 0 !important;\r\n  border-top: .84375em solid transparent !important;\r\n}\r\n"
+module.exports = ".mat-card{\r\n  padding-top: 0px !important;\r\n}\r\n\r\n.pet-form{\r\n  border-bottom: 1px solid #ccc;\r\n  padding: 20px 0px\r\n}\r\n\r\n.pet-sub-form{\r\n  padding-top: 10px;\r\n}\r\n\r\n.col-3{\r\n  padding-left: 10px;\r\n}\r\n\r\nh6{\r\n  font-size: 14px;\r\n  font-weight: 600;\r\n  padding-top: 17px !important;\r\n  margin: 0px;\r\n  vertical-align: middle;\r\n  color: #755DCA;\r\n}\r\n\r\n.checkbox-align {\r\n  padding: .1375em 0 !important;\r\n  border-top: .84375em solid transparent !important;\r\n}\r\n"
 
 /***/ }),
 
 /***/ "./src/app/edit-pet/edit-pet.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Editando Pet - {{editPet.nm_animal}} </h1>\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card>\r\n\r\n    <form>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editPet.nm_animal\" name=\"nm_animal\" matInput placeholder=\"Nome\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"editPet.nm_sexo_animal\" name=\"nm_sexo_animal\" placeholder=\"Sexo\" required>\r\n              <mat-option *ngFor=\"let sexos of sexo\" [value]=\"sexos.value\">\r\n                {{ sexos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"editPet.nm_especie_animal\" name=\"cd_especie_fk\" placeholder=\"Espécie\" required>\r\n              <mat-option *ngFor=\"let especies of especie\" [value]=\"especies.id\">\r\n                {{ especies.value }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"editPet.nm_raca_animal\" name=\"cd_raca_fk\" placeholder=\"Raça\" required>\r\n              <mat-option *ngFor=\"let racas of raca\" [value]=\"racas.id\">\r\n                {{ racas.value }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editPet.cd_idade_animal\" name=\"cd_idade_animal\" matInput placeholder=\"Idade\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editPet.nm_tamanho_animal\" name=\"nm_tamanho_animal\" matInput placeholder=\"Tamanho\" required>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editPet.nm_cor_animal\" name=\"nm_cor_animal\" matInput placeholder=\"Cor\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6\">\r\n          <div class=\"checkbox-align\">\r\n            <mat-checkbox [(ngModel)]=\"editPet.ic_deficiencia_animal\" name=\"ic_deficiencia_animal\" color=\"primary\">Deficiência</mat-checkbox>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-6\" *ngIf=\"!!editPet.ic_deficiencia_animal\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editPet.ds_deficiencia_animal\" name=\"ds_deficiencia_animal\" matInput placeholder=\"Qual?\">\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-12\">\r\n        <div class=\"row justify-content-center\">\r\n          <h2 class=\"sub-title\">Foto do Pet</h2>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-6 button-row\" align=\"center\">\r\n          <button mat-raised-button class=\"content-center\" type=\"button\" color=\"primary\" class=\"w-75\" (click)=\"fileInput.click()\">Upload</button>\r\n          <input hidden type=\"file\" #fileInput />\r\n        </div>\r\n        <div class=\"col-6 button-row\" align=\"center\">\r\n            <button mat-raised-button class=\"content-center\" type=\"button\" color=\"primary\" class=\"w-75\" (click)=\"imgFileInput.click()\">Tirar uma Foto</button>\r\n            <input hidden type=\"file\" accept=\"image/*\" capture=\"camera\" #imgFileInput />\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-12\">\r\n        <div class=\"button-submit-row row justify-content-center\">\r\n          <button mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\" (click)=\"updatePet('/update')\">Confirmar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Editando Pet - {{editPet.nm_animal}} </h1>\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card>\r\n\r\n    <form id=\"edit-pet\" name=\"edit-pet\">\r\n\r\n      <div class=\"row pet-form\">\r\n        <div class=\"col-4\">\r\n          <button mat-fab color=\"primary\" (click)='imgFileInput.click()'>\r\n            <mat-icon aria-label=\"Tirar Foto\">photo_camera</mat-icon>\r\n            <input hidden type=\"file\" accept=\"image/*\" id=\"imgupload\" capture=\"camera\" #imgFileInput />\r\n          </button>\r\n        </div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editPet.nome\" name=\"nome\" matInput placeholder=\"Nome\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row pet-sub-form\">\r\n        <div class=\"col-4\"><h6>Informações</h6></div>\r\n        <div class=\"col-4\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editPet.idade\" name=\"idade\" matInput placeholder=\"Idade\" pattern=\"[0-9]\" max-length=\"2\" required>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-4\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"editPet.text_idade\" name=\"text_idade\" placeholder=\"Meses\" required>\r\n              <mat-option *ngFor=\"let idades of idade\" [value]=\"idades.value\">\r\n                {{ idades.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"editPet.sexo\" name=\"sexo\" placeholder=\"Sexo\" required>\r\n              <mat-option *ngFor=\"let sexos of sexo\" [value]=\"sexos.value\">\r\n                {{ sexos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"editPet.tamanho\" name=\"tamanho\" placeholder=\"Tamanho\" required>\r\n              <mat-option *ngFor=\"let tamanhos of tamanho\" [value]=\"tamanhos.value\">\r\n                {{ tamanhos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editPet.cor\" name=\"cor\" matInput placeholder=\"Cor\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"editPet.id_especie\" name=\"especie\" placeholder=\"Espécie\" required>\r\n              <mat-option *ngFor=\"let especies of especie\" [value]=\"especies.id\">\r\n                {{ especies.value }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"editPet.id_raca\" name=\"raca\" placeholder=\"Raça\" required>\r\n              <mat-option *ngFor=\"let racas of raca\" [value]=\"racas.id\">\r\n                {{ racas.value }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <div class=\"checkbox-align\">\r\n            <mat-checkbox [(ngModel)]=\"editPet.deficiencia\" name=\"deficiencia\" color=\"primary\">Há alguma deficiência?</mat-checkbox>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row pet-form\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\" *ngIf=\"!!editPet.deficiencia\">\r\n            <mat-form-field>\r\n              <input [(ngModel)]=\"editPet.ds_deficiencia\" name=\"ds_deficiencia\" matInput placeholder=\"Qual?\">\r\n            </mat-form-field>\r\n          </div>\r\n      </div>\r\n\r\n      <div class=\"col-12\">\r\n        <div class=\"button-submit-row row justify-content-center\">\r\n          <button mat-raised-button form=\"edit-pet\" type=\"submit\" color=\"primary\" class=\"w-50\" (click)=\"updatePet('/update')\">Confirmar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n\r\n  </mat-card>\r\n</div>\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -1084,9 +1083,31 @@ var EditPetComponent = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        document.querySelector('#imgupload').addEventListener('change', function () {
+                            var fotoAnimal;
+                            var filesSelected = document.getElementById('imgupload').files;
+                            if (filesSelected.length > 0) {
+                                var fileToLoad = filesSelected[0];
+                                var fileReader = new FileReader();
+                                fileReader.onload = function (fileLoadEvent) {
+                                    var base64value = event.target;
+                                    document.getElementById('imgupload').setAttribute('base64-value', base64value.result);
+                                };
+                                fileReader.readAsDataURL(fileToLoad);
+                            }
+                        });
                         this.sexo = [
-                            { value: 'M', viewValue: 'Macho' },
-                            { value: 'F', viewValue: 'Femêa' }
+                            { value: 'Macho', viewValue: 'Macho' },
+                            { value: 'Femêa', viewValue: 'Femêa' }
+                        ];
+                        this.idade = [
+                            { value: 'Mese(s)', viewValue: 'Mese(s)' },
+                            { value: 'Ano(s)', viewValue: 'Ano(s)' }
+                        ];
+                        this.tamanho = [
+                            { value: 'Pequeno', viewValue: 'Pequeno' },
+                            { value: 'Médio', viewValue: 'Médio' },
+                            { value: 'Grande', viewValue: 'Grande' }
                         ];
                         return [4 /*yield*/, this.getRacas('/api/racas/all')];
                     case 1:
@@ -1144,15 +1165,19 @@ var EditPetComponent = /** @class */ (function () {
         var _this = this;
         var userToken = localStorage.getItem('token');
         var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', userToken);
+        var fotobase64 = document.getElementById('imgupload').getAttribute('base64-value');
+        if (!fotobase64) {
+            fotobase64 = '../../assets/images/ft-pet.png';
+        }
         this.postData = {
             nm_animal: this.editPet.nm_animal,
-            cd_idade_animal: this.editPet.cd_idade_animal,
+            nm_idade_animal: this.editPet.cd_idade_animal + this.editPet.text_idade,
             nm_cor_animal: this.editPet.nm_cor_animal,
             nm_sexo_animal: this.editPet.nm_sexo_animal,
             nm_tamanho_animal: this.editPet.nm_tamanho_animal,
             ic_deficiencia_animal: this.editPet.ic_deficiencia_animal,
             ds_deficiencia_animal: this.editPet.ds_deficiencia_animal,
-            ds_foto_animal: '../../assets/images/ft-pet.jpg',
+            ds_foto_animal: fotobase64,
             cd_raca_fk: this.editPet.cd_raca_fk,
             cd_usuario_fk: localStorage.getItem('id'),
             cd_especie_fk: this.editPet.cd_especie_fk

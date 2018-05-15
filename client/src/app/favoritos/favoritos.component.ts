@@ -13,6 +13,8 @@ const api_url = environment.apiUrl;
 export class FavoritosComponent implements OnInit {
 
   elementFavorite: any = {};
+  pets: any = {};
+  elementData: any = {};
   listOfFavoritePets: Array<any>;
   listOfFavoritePets2: Array<any>;
 
@@ -29,7 +31,7 @@ export class FavoritosComponent implements OnInit {
   }
 
   getFavoritePets() {
-
+    this.pets = [];
     let id = parseInt(localStorage.getItem('id'));
     const userToken = localStorage.getItem('token');
 
@@ -38,8 +40,14 @@ export class FavoritosComponent implements OnInit {
     this.httpClient.get(api_url + '/api/animal/myfavorites/' + id, { headers }).subscribe(element => {
       //debugger
       this.elementFavorite = element;
-      this.elementFavorite.forEach(element => {
-        console.log(element);
+      this.elementFavorite = this.elementFavorite.payload;
+      this.elementFavorite.forEach(favorite => {
+        this.httpClient.get(api_url + '/api/users/' + favorite.cd_usuario_fk, { headers }).subscribe(elementUser => {
+          this.elementData = elementUser;
+          favorite.address1 = this.elementData.payload.nm_cidade_usuario + ' - ' + this.elementData.payload.nm_estado_usuario;
+          favorite.address2 = this.elementData.payload.nm_endereco_usuario;
+        });
+        this.pets.push(favorite);
       });
     });
 

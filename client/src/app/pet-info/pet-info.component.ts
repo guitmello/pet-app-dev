@@ -40,9 +40,11 @@ export class PetInfoComponent implements OnInit {
   racas: Array<any>;
   especies: Array<any>;
   url: string;
+  fav: boolean;
 
   constructor(private route: ActivatedRoute, private httpClient: HttpClient) {
     this.getPetInfo(this.route.snapshot.queryParams['id']);
+    this.fav = !this.route.snapshot.queryParams['fav'];
     this.url = '/api/favoritos/create';
   }
 

@@ -18,8 +18,8 @@ export class AddPetComponent implements OnInit {
   postData: any = {};
 
   sexo: Array<any>;
-  especie: Array<any>;
-  raca: Array<any>;
+  especie: any = {};
+  raca: any = {};
   idade: Array<any>;
   tamanho: Array<any>;
   private apiUrl = api_url;
@@ -30,13 +30,13 @@ export class AddPetComponent implements OnInit {
 
   ngOnInit() {
 
-    document.querySelector('#imgupload').addEventListener('change', function() {
+    document.querySelector('#imgupload').addEventListener('change', function () {
       let fotoAnimal;
       let filesSelected = (<HTMLInputElement>document.getElementById('imgupload')).files;
       if (filesSelected.length > 0) {
         let fileToLoad = filesSelected[0];
         let fileReader = new FileReader();
-        fileReader.onload = function(fileLoadEvent) {
+        fileReader.onload = function (fileLoadEvent) {
           let base64value = <FileReader>event.target;
           (<HTMLInputElement>document.getElementById('imgupload')).setAttribute('base64-value', base64value.result);
         };
@@ -62,24 +62,43 @@ export class AddPetComponent implements OnInit {
       { value: 'Grande', viewValue: 'Grande' }
     ];
 
-    this.especie = [
-      { id: 1, value: 'Cachorro' },
-      { id: 2, value: 'Gato' },
-      { id: 3, value: 'Coelho' },
-      { id: 4, value: 'Hamster' },
-      { id: 5, value: 'Pássaro' },
-      { id: 5, value: 'Cavalo' }
-    ];
+    // this.especie = [
+    //   { id: 1, value: 'Cachorro' },
+    //   { id: 2, value: 'Gato' },
+    //   { id: 3, value: 'Coelho' },
+    //   { id: 4, value: 'Hamster' },
+    //   { id: 5, value: 'Pássaro' },
+    //   { id: 5, value: 'Cavalo' }
+    // ];
 
-    this.raca = [
-      { id: 1, value: 'Pincher' },
-      { id: 2, value: 'Pastor Alemão' },
-      { id: 3, value: 'Siamês' },
-    ];
+    this.raca = [];
+    this.fillEspecie();
   }
 
   goTo(route: string) {
     this.router.navigate([route]);
+  }
+
+  fillRacas() {
+    const userToken = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', userToken);
+
+    this.httpClient.get(api_url + '/api/racas/getracas/' + this.pet.id_especie, { headers }).subscribe(element => {
+      //debugger
+      this.raca = element;
+      this.raca = this.raca.payload
+    });
+  }
+
+  fillEspecie() {
+    const userToken = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', userToken);
+
+    this.httpClient.get(api_url + '/api/especies/all', { headers }).subscribe(element => {
+      //debugger
+      this.especie = element;
+      this.especie = this.especie.payload
+    });
   }
 
   registerPet() {
@@ -122,8 +141,6 @@ export class AddPetComponent implements OnInit {
           this.goTo('meus-pets');
         }
       );
-
-
   }
 
 

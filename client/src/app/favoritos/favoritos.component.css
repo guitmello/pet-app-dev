@@ -21,7 +21,7 @@
 
 .img-animals{
     width: 50%;
-    height: 100%; 
+    height: 100%;
 }
 
 .content-date{
@@ -30,12 +30,9 @@
     top: 87%;
 }
 
-.heart{
-    position: absolute;
-    left: 94%;
-    top: 87%;
-}
-
-.fa-heart{
-    color:#755DCA;
-}
+.img-square {
+    background-position: center;
+    background-size: cover;
+    width: 50%;
+    height: 150px;
+  }

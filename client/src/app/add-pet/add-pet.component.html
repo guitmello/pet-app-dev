@@ -25,7 +25,9 @@
       </div>
 
       <div class="row pet-sub-form">
-        <div class="col-4"><h6>Informações</h6></div>
+        <div class="col-4">
+          <h6>Informações</h6>
+        </div>
         <div class="col-2">
           <mat-form-field>
             <input [(ngModel)]="pet.idade" name="idade" matInput placeholder="Idade" pattern="[0-9]" max-length="2" required>
@@ -81,9 +83,9 @@
         <div class="col-4"></div>
         <div class="col-8">
           <mat-form-field>
-            <mat-select [(ngModel)]="pet.id_especie" name="especie" placeholder="Espécie" required>
+            <mat-select [(ngModel)]="pet.id_especie" name="especie" placeholder="Espécie" (change)="fillRacas()" required>
               <mat-option *ngFor="let especies of especie" [value]="especies.id">
-                {{ especies.value }}
+                {{ especies.nm_especie }}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -92,11 +94,11 @@
 
       <div class="row">
         <div class="col-4"></div>
-        <div class="col-8">
+        <div class="col-8" *ngIf="!!pet.id_especie">
           <mat-form-field>
             <mat-select [(ngModel)]="pet.id_raca" name="raca" placeholder="Raça" required>
               <mat-option *ngFor="let racas of raca" [value]="racas.id">
-                {{ racas.value }}
+                {{ racas.nm_raca }}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -115,10 +117,10 @@
       <div class="row pet-form">
         <div class="col-4"></div>
         <div class="col-8" *ngIf="!!pet.deficiencia">
-            <mat-form-field>
-              <input [(ngModel)]="pet.ds_deficiencia" name="ds_deficiencia" matInput placeholder="Qual?">
-            </mat-form-field>
-          </div>
+          <mat-form-field>
+            <input [(ngModel)]="pet.ds_deficiencia" name="ds_deficiencia" matInput placeholder="Qual?">
+          </mat-form-field>
+        </div>
       </div>
 
       <div class="col-12">

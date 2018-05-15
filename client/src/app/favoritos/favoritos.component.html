@@ -7,23 +7,25 @@
 
     </div>
   </div>
-  <mat-card *ngFor="let favoritePet of listOfFavoritePets2" routerLink="/pet-info" [queryParams] ="{id: favoritePet.id}">
+  <mat-card *ngFor="let favoritePet of pets" routerLink="/pet-info" [queryParams] ="{id: favoritePet.id, fav: true}">
     <div class="row">
       <div class="col-md-2">
-        <img src="../../assets/images/ft-pet.jpg" alt="" class="img-animals">
+        <div class="img-square" [ngStyle]="{ 'background-image': 'url(' + favoritePet.Animal.ds_foto_animal + ') '}"></div>
       </div>
       <div class="col-md-2 card-content">
         <ul>
-          <li class="font-bold">{{favoritePet.title}}</li>
-          <li>{{favoritePet.breed}}</li>
-          <li>{{favoritePet.city}} - {{favoritePet.state}}</li>
-          <li>{{favoritePet.street}}</li>
+          <li class="font-bold">{{favoritePet.Animal.nm_animal}}</li>
+          <li>{{favoritePet.Animal.nm_raca}}</li>
+          <!-- <li>{{pets.cd_idade_animal}} ano(s)</li> -->
+          <li>{{favoritePet.Animal.nm_cor_animal}}</li>
+          <li>{{favoritePet.address1}}</li>
+          <li>{{favoritePet.address2}}</li>
         </ul>
       </div>
-      <label class="content-date">{{favoritePet.date}}</label>
-      <div class="heart">
+      <!-- <label class="content-date">{{pet.date}}</label> -->
+      <!-- <div class="heart">
         <i class="fas fa-heart"></i>
-      </div>
+      </div> -->
     </div>
   </mat-card>
 </div>

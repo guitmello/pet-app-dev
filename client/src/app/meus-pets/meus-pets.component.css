@@ -3,22 +3,24 @@
   font-size: 14px;
   margin-bottom: 10px;
 }
-
+.meus-pets-img{
+  padding: 0px 10px;
+}
 .meus-pets-list {
-  padding: 0px;
+  padding: 10px 0px 0px 0px;
   margin: 0px;
 }
 .meus-pets-list li {
   list-style: none;
-  padding-right: 5px;
-  display: inline-block;
   vertical-align: middle;
-}
-.meus-pets-list img {
-  width: 40px;
 }
 .meus-pets-text {
   text-align: center;
+  color: #755dca;
+}
+.meus-pets-sub-text {
+  text-align: center;
+  padding: 10px 5px 0px 0px;
 }
 
 .buttons-inline {
@@ -43,7 +45,8 @@
   background-position: center;
   background-size: cover;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  border: 2px solid #755dca;
+  width: 60px;
+  height: 60px;
 }
 

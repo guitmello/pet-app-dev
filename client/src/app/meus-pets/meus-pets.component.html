@@ -12,12 +12,19 @@
 
     <div class="col-md-12">
       <div class="row">
+
+          <div class="col-3 meus-pets-img">
+            <div class="img-circle" [ngStyle]="{ 'background-image': 'url(' + pet.ds_foto_animal + ') '}"></div>
+        </div>
+
         <ul class="meus-pets-list">
           <li>
-            <div class="img-circle" [ngStyle]="{ 'background-image': 'url(' + pet.ds_foto_animal + ') '}"></div>
+            <span class="meus-pets-text font-bold">{{pet.nm_animal}}</span>
           </li>
           <li>
-            <span class="meus-pets-text">{{pet.nm_animal}}</span>
+            <span class="meus-pets-sub-text">{{pet.nm_animal}}</span>
+            <span class="meus-pets-sub-text">{{pet.nm_idade_animal}}</span>
+            <span class="meus-pets-sub-text">{{pet.Raca.nm_raca}}</span>
           </li>
         </ul>
 

@@ -47,6 +47,15 @@ export class AddPfisicaComponent implements OnInit {
   }
 
   registerPf() {
+
+    if (this.pfisica.email === null || this.pfisica.senha === null || this.pfisica.cpf === null || this.pfisica.nome === null ||
+      this.pfisica.sexo === null || this.pfisica.data === null || this.pfisica.telefone === null || this.pfisica.cep === null ||
+      this.pfisica.estado === null || this.pfisica.endereco === null || this.pfisica.numero === null) {
+      this.snackBar.open('Preencha todos os dados obrigatórios', 'OK', {
+        duration: 2000,
+      });
+    } else {
+
     this.removeMasks();
     this.md5.appendStr(this.senha);
     let newSenha = this.md5.end();
@@ -85,6 +94,8 @@ export class AddPfisicaComponent implements OnInit {
           });
         }
       );
+
+    }
   }
 
 

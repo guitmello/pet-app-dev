@@ -28,12 +28,12 @@
         <div class="col-4">
           <h6>Informações</h6>
         </div>
-        <div class="col-2">
+        <div class="col-4">
           <mat-form-field>
             <input [(ngModel)]="pet.idade" name="idade" matInput placeholder="Idade" pattern="[0-9]" max-length="2" required>
           </mat-form-field>
         </div>
-        <div class="col-6">
+        <div class="col-4">
           <mat-form-field>
             <mat-select [(ngModel)]="pet.text_idade" name="text_idade" placeholder="Meses" required>
               <mat-option *ngFor="let idades of idade" [value]="idades.value">

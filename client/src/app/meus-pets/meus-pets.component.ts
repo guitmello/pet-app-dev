@@ -34,9 +34,7 @@ export class MeusPetsComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    //await this.getRacas("/api/racas/all");
-    //await this.getEspecies("/api/especies/all");
-    this.getMeusPets("/api/animals/myanimals/" + localStorage.getItem("id"));
+    this.getMeusPets('/api/animals/myanimals/' + localStorage.getItem('id'));
   }
 
   getRacas(url: string) {
@@ -56,20 +54,21 @@ export class MeusPetsComponent implements OnInit {
   }
 
   getMeusPets(url: string) {
-    const userToken = localStorage.getItem("token");
-    const headers = new HttpHeaders().set("Authorization", userToken);
+    const userToken = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', userToken);
 
     this.httpClient.get(api_url + url, { headers }).subscribe(data => {
       this.dataPets = data;
       this.pets = this.dataPets.payload;
+      console.log(this.pets);
     });
 
   }
 
   openDialog(id: number) {
     const dialogRef = this.dialog.open(ModalDeletePetComponent, {
-      width: "300px",
-      height: "210px",
+      width: '300px',
+      height: '210px',
       data: {
         id: id
       }

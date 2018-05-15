@@ -5,6 +5,7 @@ export class Pet {
   id_especie: number;
   id_raca: number;
   idade: number;
+  text_idade: string;
   tamanho: number;
   cor: string;
   deficiencia: boolean;

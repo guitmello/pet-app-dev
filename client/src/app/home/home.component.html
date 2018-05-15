@@ -9,7 +9,7 @@
   <mat-card *ngFor="let pets of petsHome" routerLink="/pet-info" [queryParams] ="{id: pets.id}">
     <div class="row">
       <div class="col-md-2">
-        <img src="{{pets.ds_foto_animal}}" alt="foto-animal" class="img-animals">
+        <div class="img-square" [ngStyle]="{ 'background-image': 'url(' + pets.ds_foto_animal + ') '}"></div>
       </div>
       <div class="col-md-2 card-content">
         <ul>

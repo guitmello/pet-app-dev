@@ -20,6 +20,7 @@ export class AddPetComponent implements OnInit {
   sexo: Array<any>;
   especie: Array<any>;
   raca: Array<any>;
+  idade: Array<any>;
   tamanho: Array<any>;
   private apiUrl = api_url;
 
@@ -29,7 +30,7 @@ export class AddPetComponent implements OnInit {
 
   ngOnInit() {
 
-    document.querySelector('#imgupload').addEventListener('change',function() {
+    document.querySelector('#imgupload').addEventListener('change', function() {
       let fotoAnimal;
       let filesSelected = (<HTMLInputElement>document.getElementById('imgupload')).files;
       if (filesSelected.length > 0) {
@@ -37,19 +38,22 @@ export class AddPetComponent implements OnInit {
         let fileReader = new FileReader();
         fileReader.onload = function(fileLoadEvent) {
           let base64value = <FileReader>event.target;
-          (<HTMLInputElement>document.getElementById('imgupload')).setAttribute('base64-value',base64value.result);
+          (<HTMLInputElement>document.getElementById('imgupload')).setAttribute('base64-value', base64value.result);
         };
         fileReader.readAsDataURL(fileToLoad);
       }
     });
 
-    
-
     this.pet.deficiencia = false;
 
     this.sexo = [
-      { value: 'M', viewValue: 'Macho' },
-      { value: 'F', viewValue: 'Fêmea' }
+      { value: 'Macho', viewValue: 'Macho' },
+      { value: 'Fêmea', viewValue: 'Fêmea' }
+    ];
+
+    this.idade = [
+      { value: 'Mese(s)', viewValue: 'Mese(s)' },
+      { value: 'Ano(s)', viewValue: 'Ano(s)' }
     ];
 
     this.tamanho = [
@@ -84,16 +88,15 @@ export class AddPetComponent implements OnInit {
     const headers = new HttpHeaders().set('Authorization', userToken);
 
     let fotobase64 = (<HTMLInputElement>document.getElementById('imgupload')).getAttribute('base64-value');
-    console.log(fotobase64);
 
     if (!fotobase64) {
-      fotobase64 = '../../assets/images/ft-pet.jpg';
+      fotobase64 = '../../assets/images/ft-pet.png';
       console.log(fotobase64);
     }
 
     this.postData = {
       nm_animal: this.pet.nome,
-      cd_idade_animal: this.pet.idade,
+      nm_idade_animal: this.pet.idade + this.pet.text_idade,
       nm_cor_animal: this.pet.cor,
       nm_sexo_animal: this.pet.sexo,
       nm_tamanho_animal: this.pet.tamanho,
@@ -121,7 +124,7 @@ export class AddPetComponent implements OnInit {
         }
       );
 
-      
+
   }
 
 

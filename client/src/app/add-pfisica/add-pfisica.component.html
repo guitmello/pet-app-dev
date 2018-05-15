@@ -7,7 +7,7 @@
   </div>
 
   <mat-card>
-    <form>
+    <form id="add-pfisica" name="add-pfisica">
 
       <div class="row justify-content-center">
         <div class="col-12">
@@ -89,7 +89,7 @@
 
       <div class="button-row row justify-content-center">
         <div class="col-6">
-          <button mat-raised-button type="submit" color="primary" class="w-100" (click)="registerPf()">Confirmar</button>
+          <button mat-raised-button type="submit" color="primary" form="add-pfisica" class="w-100" (click)="registerPf()">Confirmar</button>
         </div>
         <div class="col-6">
           <button mat-raised-button color="primary" class="w-100" (click)="goTo('login')">Cancelar</button>

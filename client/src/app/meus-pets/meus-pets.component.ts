@@ -39,12 +39,6 @@ export class MeusPetsComponent implements OnInit {
     this.getMeusPets("/api/animals/myanimals/" + localStorage.getItem("id"));
   }
 
-  imgLoad(id, img) {
-    document.getElementById(id).style.backgroundImage = "url(" + img + ")";
-    console.log(id);
-    console.log(img);
-  }
-
   getRacas(url: string) {
     this.httpClient.get(api_url + url).subscribe(racas => {
       this.dataRacas = racas;

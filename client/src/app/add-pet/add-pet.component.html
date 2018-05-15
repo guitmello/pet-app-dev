@@ -8,7 +8,7 @@
   </div>
   <mat-card>
 
-    <form>
+    <form id="add-pet" name="add-pet">
 
       <div class="row pet-form">
         <div class="col-4">
@@ -26,9 +26,18 @@
 
       <div class="row pet-sub-form">
         <div class="col-4"><h6>Informações</h6></div>
-        <div class="col-8">
+        <div class="col-2">
           <mat-form-field>
-            <input [(ngModel)]="pet.idade" name="idade" matInput placeholder="Idade" required>
+            <input [(ngModel)]="pet.idade" name="idade" matInput placeholder="Idade" pattern="[0-9]" max-length="2" required>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field>
+            <mat-select [(ngModel)]="pet.text_idade" name="text_idade" placeholder="Meses" required>
+              <mat-option *ngFor="let idades of idade" [value]="idades.value">
+                {{ idades.viewValue }}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
       </div>
@@ -114,7 +123,7 @@
 
       <div class="col-12">
         <div class="button-submit-row row justify-content-center">
-          <button mat-raised-button type="submit" color="primary" class="w-50" (click)="registerPet()">Confirmar</button>
+          <button mat-raised-button type="submit" color="primary" form="add-pet" class="w-50" (click)="registerPet()">Confirmar</button>
         </div>
       </div>
 

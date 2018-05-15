@@ -37,8 +37,8 @@ export class AddPfisicaComponent implements OnInit {
 
   ngOnInit() {
     this.sexo = [
-      {value: 'M', viewValue: 'Masculino'},
-      {value: 'F', viewValue: 'Feminino'}
+      {value: 'Masculino', viewValue: 'Masculino'},
+      {value: 'Feminino', viewValue: 'Feminino'}
     ];
   }
 

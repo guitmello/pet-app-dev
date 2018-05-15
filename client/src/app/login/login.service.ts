@@ -24,7 +24,7 @@ export class LoginService {
 
     if (this.authCheck.token) {
       sessionStorage.setItem('id', this.authCheck.id);
-      sessionStorage.setItem('email', this.authCheck.nm_email_usuario);
+      sessionStorage.setItem('email', this.authCheck.email);
 
       localStorage.setItem('id', this.authCheck.id);
       localStorage.setItem('token', 'jwt ' + this.authCheck.token);

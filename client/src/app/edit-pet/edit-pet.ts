@@ -8,6 +8,7 @@ export class EditPet {
   cd_raca_fk: number;
   nm_raca_animal: string;
   cd_idade_animal: number;
+  text_idade: string;
   nm_tamanho_animal: number;
   nm_cor_animal: string;
   ic_deficiencia_animal: boolean;

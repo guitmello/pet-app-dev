@@ -14,8 +14,10 @@ import { EventEmitter } from '@angular/core';
 export class AppComponent {
 
   mostrarMenu: boolean = false;
+  mostrarId: string = null;
 
   mostrarMenuEmitter = new EventEmitter<boolean>();
+  idUsuario = new EventEmitter<string>();
 
   constructor(private loginService: LoginService, public router: Router) { }
 
@@ -60,7 +62,9 @@ export class AppComponent {
       mostrar => this.mostrarMenu = mostrar,
     );
 
-    const userId = localStorage.getItem('id');
+    this.loginService.idUsuario.subscribe(
+      id => this.mostrarId = id,
+    );
 
   }
 

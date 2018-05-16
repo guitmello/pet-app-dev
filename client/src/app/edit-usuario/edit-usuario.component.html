@@ -8,7 +8,7 @@
   </div>
 
   <mat-card>
-    <form *ngIf="usuarioFisico" id="usuarioFisico" name="usuarioFisico">
+    <form *ngIf='tipoUsuario === "Pessoa Física"' id="usuarioFisico" name="usuarioFisico">
 
       <div class="row justify-content-center">
         <div class="col-12">
@@ -101,7 +101,7 @@
 
 
 
-    <form *ngIf="usuarioJuridico" id="usuarioJuridico" name="usuarioJuridico">
+    <form *ngIf='tipoUsuario == "Pessoa Jurídica"' id="usuarioJuridico" name="usuarioJuridico">
 
       <div class="row justify-content-center">
         <div class="col-12">

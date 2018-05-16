@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { EditUsuario } from './edit-usuario';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
@@ -21,6 +21,9 @@ export class EditUsuarioComponent implements OnInit {
   editusuario: EditUsuario = new EditUsuario();
   pets: Array<any>;
   private apiUrl = api_url;
+
+  tipoUsuarioEmitter = new EventEmitter<string>();
+  mostrarTipoUsuario: string = null;
 
   constructor(private httpClient: HttpClient, private editUsuario: EditUsuario, public router: Router,
     private route: ActivatedRoute, public snackBar: MatSnackBar) { }
@@ -47,15 +50,22 @@ export class EditUsuarioComponent implements OnInit {
     this.httpClient.get(this.apiUrl, { headers }).subscribe( pets => {
       this.dataUsuarios = pets;
       this.editUsuario = this.dataUsuarios.payload;
-
       });
 
       if (this.editUsuario.tipoUsuario === 'Pessoa Física') {
-        return 'usuarioFisico';
+        this.tipoUsuarioEmitter.emit('Pessoa Física');
+        console.log('fisica');
       } else {
-        return 'usuarioJuridico';
+        this.tipoUsuarioEmitter.emit('Pessoa Jurídica');
+        console.log('juridica');
       }
+
+      this.tipoUsuarioEmitter.subscribe(
+        tipoUsuario => this.mostrarTipoUsuario = tipoUsuario,
+      );
   }
+
+
 
   goTo(route: string) {
     this.router.navigate([route]);

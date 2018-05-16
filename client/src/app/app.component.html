@@ -2,7 +2,7 @@
     <mat-sidenav #sidenav class="example-sidenav">
         <ul id="sidenav-menu">
           <li> <a href="" (click)="logoff('login')"><i class="fas fa-sign-out-alt icon-menu"></i> Logoff</a></li>
-          <li *ngIf="mostrarMenu"> <a routerLink="/edit-usuario" [queryParams] ="{id: userId}"><i class="fas fa-pencil-alt icon-menu"></i> Editar Perfil</a></li>
+          <li *ngIf="mostrarMenu"> <a routerLink="/edit-usuario" [queryParams]="{id: mostrarId}"><i class="fas fa-pencil-alt icon-menu"></i> Editar Perfil</a></li>
           <!-- <li> <i class="fas fa-trash icon-menu"></i> <a href=""> Excluir Conta</a></li> -->
         </ul>
         </mat-sidenav>

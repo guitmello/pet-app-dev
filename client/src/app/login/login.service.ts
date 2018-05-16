@@ -12,10 +12,9 @@ export class LoginService {
   usuarioAutenticado: boolean = false;
 
   mostrarMenuEmitter = new EventEmitter<boolean>();
+  idUsuario = new EventEmitter<string>();
 
   constructor(private router: Router) { }
-
-
 
   fazerLogin(usuario: Usuario, auth: any) {
 
@@ -30,6 +29,7 @@ export class LoginService {
       localStorage.setItem('token', 'jwt ' + this.authCheck.token);
       this.usuarioAutenticado = true;
       this.mostrarMenuEmitter.emit(true);
+      this.idUsuario.emit(localStorage.getItem('id'));
       this.router.navigate(['/home']);
 
     } else {

@@ -102,19 +102,7 @@ export class EditPetComponent implements OnInit {
     this.httpClient.get(this.apiUrl, { headers }).subscribe( pets => {
       this.dataPets = pets;
       this.editPet = this.dataPets.payload;
-      console.log(this.editPet);
 
-        for (let x = 0; x <= this.racas.length - 1; x++) {
-          if ( this.editPet.cd_raca_fk === this.racas[x].id_raca ) {
-            this.editPet.nm_raca_animal = this.racas[x].nm_raca;
-          }
-        }
-
-        for (let y = 0; y <= this.especies.length - 1; y++) {
-          if (this.editPet.cd_especie_fk === this.especies[y].id_especie) {
-            this.editPet.nm_especie_animal = this.especies[y].nm_especie;
-          }
-        }
       });
   }
 

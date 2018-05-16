@@ -60,6 +60,8 @@ export class AppComponent {
       mostrar => this.mostrarMenu = mostrar,
     );
 
+    const userId = localStorage.getItem('id');
+
   }
 
   logoff(route: string) {

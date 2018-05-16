@@ -13,5 +13,4 @@ export class PFisica {
   complemento: string;
   senha: string;
   data: Date;
-
 }

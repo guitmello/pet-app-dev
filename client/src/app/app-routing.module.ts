@@ -12,6 +12,7 @@ import { AddPfisicaComponent } from './add-pfisica/add-pfisica.component';
 import { AddPetComponent } from './add-pet/add-pet.component';
 import { AppComponent } from './app.component';
 import { EditPetComponent } from './edit-pet/edit-pet.component';
+import { EditUsuarioComponent } from './edit-usuario/edit-usuario.component';
 
 const routes: Routes = [
   {
@@ -72,6 +73,10 @@ const routes: Routes = [
   {
     path: 'edit-pet',
     component: EditPetComponent
+  },
+  {
+    path: 'edit-usuario',
+    component: EditUsuarioComponent
   }
 ];
 

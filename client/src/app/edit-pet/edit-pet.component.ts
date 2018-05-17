@@ -124,7 +124,8 @@ export class EditPetComponent implements OnInit {
 
     this.postData = {
       nm_animal: this.editPet.nm_animal,
-      nm_idade_animal: this.editPet.cd_idade_animal + this.editPet.text_idade,
+      cd_idade_animal: this.editPet.cd_idade_animal,
+      nm_idade_animal: this.editPet.nm_idade_animal,
       nm_cor_animal: this.editPet.nm_cor_animal,
       nm_sexo_animal: this.editPet.nm_sexo_animal,
       nm_tamanho_animal: this.editPet.nm_tamanho_animal,

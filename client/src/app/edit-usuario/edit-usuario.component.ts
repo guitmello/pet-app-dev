@@ -14,19 +14,33 @@ const api_url = environment.apiUrl;
   styleUrls: ['./edit-usuario.component.css']
 })
 export class EditUsuarioComponent implements OnInit {
+  private apiUrl = api_url;
 
   sexo: Array<any>;
   dataUsuarios: any = {};
   postData: any = {};
   editusuario: EditUsuario = new EditUsuario();
   pets: Array<any>;
-  private apiUrl = api_url;
 
-  tipoUsuarioEmitter = new EventEmitter<string>();
-  mostrarTipoUsuario: string = null;
+  public cnpjMask: Array<string | RegExp>;
+  public cpfMask: Array<string | RegExp>;
+  public celMask: Array<string | RegExp>;
+  public cepMask: Array<string | RegExp>;
+  public numMask: Array<string | RegExp>;
+
+  tipoJuridicoEmitter = new EventEmitter<boolean>();
+  tipoFisicoEmitter = new EventEmitter<boolean>();
+  tipoJuridico: boolean = false;
+  tipoFisico: boolean = false;
 
   constructor(private httpClient: HttpClient, private editUsuario: EditUsuario, public router: Router,
-    private route: ActivatedRoute, public snackBar: MatSnackBar) { }
+    private route: ActivatedRoute, public snackBar: MatSnackBar) {
+      this.cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+      this.cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+      this.celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+      this.cepMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
+      this.numMask = [/[1-9]/, /\d/, /\d/, /\d/, /\d/, /\d/];
+    }
 
     id = this.route.snapshot.queryParams['id'];
 
@@ -45,26 +59,22 @@ export class EditUsuarioComponent implements OnInit {
     this.apiUrl = this.apiUrl + '/api/users/' + this.id ;
     const userToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', userToken);
-    let tipoUsuarioForm;
 
     this.httpClient.get(this.apiUrl, { headers }).subscribe( pets => {
       this.dataUsuarios = pets;
       this.editUsuario = this.dataUsuarios.payload;
       });
 
-      if (this.editUsuario.tipoUsuario === 'Pessoa Física') {
-        this.tipoUsuarioEmitter.emit('Pessoa Física');
-        console.log('fisica');
+      if (this.editUsuario.nm_tipo_usuario === 'Pessoa Física') {
+        this.tipoFisicoEmitter.subscribe(
+          tipoUsuario => this.tipoFisico = tipoUsuario,
+        );
       } else {
-        this.tipoUsuarioEmitter.emit('Pessoa Jurídica');
-        console.log('juridica');
+        this.tipoFisicoEmitter.subscribe(
+          tipoUsuario => this.tipoJuridico = tipoUsuario,
+        );
       }
-
-      this.tipoUsuarioEmitter.subscribe(
-        tipoUsuario => this.mostrarTipoUsuario = tipoUsuario,
-      );
   }
-
 
 
   goTo(route: string) {
@@ -73,22 +83,23 @@ export class EditUsuarioComponent implements OnInit {
 
 
   updateUsuarioFisico(URL) {
+    this.removeMasksFisico();
     const userToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', userToken);
 
     this.postData = {
-      nm_usuario: this.editUsuario.nome,
-      nm_email_usuario: this.editUsuario.email,
-      cd_cpf_usuario: this.editUsuario.cpf,
-      nm_sexo_usuario: this.editUsuario.sexo,
-      cd_telefone_usuario: this.editUsuario.telefone,
-      cd_cep_usuario: this.editUsuario.cep,
-      nm_estado_usuario: this.editUsuario.estado,
-      nm_cidade_usuario: this.editUsuario.cidade,
-      nm_endereco_usuario: this.editUsuario.endereco,
-      cd_numero_endereco_usuario: this.editUsuario.numero,
-      ds_complemento_endereco_usuario: this.editUsuario.complemento,
-      dt_nascimento_usuario: this.editUsuario.data,
+      nm_usuario: this.editUsuario.nm_usuario,
+      nm_email_usuario: this.editUsuario.nm_email_usuario,
+      cd_cpf_usuario: this.editUsuario.cd_cpf_usuario,
+      nm_sexo_usuario: this.editUsuario.nm_sexo_usuario,
+      cd_telefone_usuario: this.editUsuario.cd_telefone_usuario,
+      cd_cep_usuario: this.editUsuario.cd_cep_usuario,
+      nm_estado_usuario: this.editUsuario.nm_estado_usuario,
+      nm_cidade_usuario: this.editUsuario.nm_cidade_usuario,
+      nm_endereco_usuario: this.editUsuario.nm_endereco_usuario,
+      cd_numero_endereco_usuario: this.editUsuario.cd_numero_endereco_usuario,
+      ds_complemento_endereco_usuario: this.editUsuario.ds_complemento_endereco_usuario,
+      dt_nascimento_usuario: this.editUsuario.dt_nascimento_usuario,
       cd_senha_usuario: this.editUsuario.senha,
     };
 
@@ -110,20 +121,21 @@ export class EditUsuarioComponent implements OnInit {
   }
 
   updateUsuarioJuridico(URL) {
+    this.removeMasksJuridico();
     const userToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', userToken);
 
     this.postData = {
-      nm_razao_social_usuario: this.editUsuario.razaoSocial,
-      nm_email_usuario: this.editUsuario.email,
-      cd_cnpj_usuario: this.editUsuario.cnpj,
-      cd_telefone_usuario: this.editUsuario.telefone,
-      cd_cep_usuario: this.editUsuario.cep,
-      nm_estado_usuario: this.editUsuario.estado,
-      nm_cidade_usuario: this.editUsuario.cidade,
-      nm_endereco_usuario: this.editUsuario.endereco,
-      cd_numero_endereco_usuario: this.editUsuario.numero,
-      ds_complemento_endereco_usuario: this.editUsuario.complemento,
+      nm_razao_social_usuario: this.editUsuario.nm_razao_social_usuario,
+      nm_email_usuario: this.editUsuario.nm_email_usuario,
+      cd_cnpj_usuario: this.editUsuario.cd_cnpj_usuario,
+      cd_telefone_usuario: this.editUsuario.cd_telefone_usuario,
+      cd_cep_usuario: this.editUsuario.cd_cep_usuario,
+      nm_estado_usuario: this.editUsuario.nm_estado_usuario,
+      nm_cidade_usuario: this.editUsuario.nm_cidade_usuario,
+      nm_endereco_usuario: this.editUsuario.nm_endereco_usuario,
+      cd_numero_endereco_usuario: this.editUsuario.cd_numero_endereco_usuario,
+      ds_complemento_endereco_usuario: this.editUsuario.ds_complemento_endereco_usuario,
       cd_senha_usuario: this.editUsuario.senha
     };
 
@@ -142,6 +154,64 @@ export class EditUsuarioComponent implements OnInit {
           this.goTo('home');
         }
       );
+  }
+
+  removeMasksFisico() {
+    this.removeCpfMask();
+    this.removeCelMask();
+    this.removeCepMask();
+    this.removeNumeroMask();
+  }
+
+  removeMasksJuridico() {
+    this.removeCnpjMask();
+    this.removeCelMask();
+    this.removeCepMask();
+    this.removeNumeroMask();
+  }
+
+  removeNumeroMask() {
+    let numberHome = this.editUsuario.cd_numero_endereco_usuario.toString();
+    let beforeNumberH = numberHome;
+    for(let x = 0 ; x<=beforeNumberH.length; x++){
+      if(!parseInt(numberHome.slice(x,x+1))){
+        numberHome.replace('_', '');
+      }
+    }
+    this.editUsuario.numero = parseInt(numberHome);
+  }
+
+  removeCpfMask() {
+    let cpf = this.editUsuario.cd_cpf_usuario.toString();
+    let beforeCpf = cpf.replace('.', '');
+    beforeCpf = beforeCpf.replace('.', '');
+    beforeCpf = beforeCpf.replace('-', '');
+    this.editUsuario.cpf = parseInt(beforeCpf);
+  }
+
+  removeCelMask() {
+    let cel = this.editUsuario.cd_telefone_usuario.toString();
+    let beforeCel = cel.replace('(', '');
+    beforeCel = beforeCel.replace(')', '');
+    beforeCel = beforeCel.replace(' ', '');
+    beforeCel = beforeCel.replace('-', '');
+    this.editUsuario.telefone = parseInt(beforeCel);
+  }
+
+  removeCepMask() {
+    let cep = this.editUsuario.cd_cep_usuario.toString();
+    let beforeCep = cep.replace('.', '');
+    beforeCep = beforeCep.replace('-', '');
+    this.editUsuario.cep = parseInt(beforeCep);
+  }
+
+  removeCnpjMask() {
+    let cnpj = this.editUsuario.cd_cnpj_usuario.toString();
+    let beforeCnpj = cnpj.replace('.', '');
+    beforeCnpj = beforeCnpj.replace('.', '');
+    beforeCnpj = beforeCnpj.replace('/', '');
+    beforeCnpj = beforeCnpj.replace('-', '');
+    this.editUsuario.cnpj = parseInt(beforeCnpj);
   }
 
 }

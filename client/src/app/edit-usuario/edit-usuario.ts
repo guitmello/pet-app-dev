@@ -1,18 +1,18 @@
 export class EditUsuario {
-  tipoUsuario: string;
-  nome: string;
-  razaoSocial: string;
-  email: string;
-  cpf: number;
-  cnpj: number;
-  sexo: string;
-  telefone: number;
-  cep: number;
-  estado: string;
-  cidade: string;
-  endereco: string;
-  numero: number;
-  complemento: string;
-  senha: string;
-  data: Date;
+  nm_tipo_usuario: string;
+  nm_usuario: string;
+  nm_razao_social_usuario: string;
+  nm_email_usuario: string;
+  cd_cpf_usuario: number;
+  cd_cnpj_usuario: number;
+  nm_sexo_usuario: string;
+  cd_telefone_usuario: number;
+  cd_cep_usuario: number;
+  nm_estado_usuario: string;
+  nm_cidade_usuario: string;
+  nm_endereco_usuario: string;
+  cd_numero_endereco_usuario: number;
+  ds_complemento_endereco_usuario: string;
+  cd_senha_usuario: string;
+  dt_nascimento_usuario: Date;
 }

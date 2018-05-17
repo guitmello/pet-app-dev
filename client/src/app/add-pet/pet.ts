@@ -4,8 +4,8 @@ export class Pet {
   sexo: string;
   id_especie: number;
   id_raca: number;
-  idade: number;
-  text_idade: string;
+  cd_idade_animal: number;
+  nm_idade_animal: string;
   tamanho: number;
   cor: string;
   deficiencia: boolean;

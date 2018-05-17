@@ -2,30 +2,30 @@
 
   <div class="col-md-12">
     <div class="row justify-content-center">
-      <h1 class="title">Editando Usuário - {{editUsuario.nm_usuario}}</h1>
-      <h1 class="title">Editando Usuário - {{editUsuario.nm_razao_social_usuario}}</h1>
+      <h1 *ngIf="tipoFisico" class="title">Editando Usuário - {{editUsuario.nm_usuario}}</h1>
+      <h1 *ngIf="tipoJuridico" class="title">Editando Usuário - {{editUsuario.nm_razao_social_usuario}}</h1>
     </div>
   </div>
 
   <mat-card>
-    <form *ngIf='tipoUsuario === "Pessoa Física"' id="usuarioFisico" name="usuarioFisico">
+    <form *ngIf="tipoFisico" id="usuarioFisico" name="usuarioFisico">
 
       <div class="row justify-content-center">
         <div class="col-12">
           <mat-form-field>
-            <input [(ngModel)]="editUsuario.nome" name="nome" type="text" matInput placeholder="Nome" required>
+            <input [(ngModel)]="editUsuario.nm_usuario" name="nome" type="text" matInput placeholder="Nome" required>
           </mat-form-field>
         </div>
 
         <div class="col-12">
           <mat-form-field>
-            <input [(ngModel)]="editUsuario.email" name="email" type="email" matInput placeholder="Email" required>
+            <input [(ngModel)]="editUsuario.nm_email_usuario" name="email" type="email" matInput placeholder="Email" required>
           </mat-form-field>
         </div>
 
         <div class="col-6">
           <mat-form-field>
-            <input [(ngModel)]="editUsuario.cpf" [textMask]="{mask: cpfMask}" name="cpf" type="text" matInput placeholder="CPF" required>
+            <input [(ngModel)]="editUsuario.cd_cpf_usuario" [textMask]="{mask: cpfMask}" name="cpf" type="text" matInput placeholder="CPF" required>
           </mat-form-field>
         </div>
 
@@ -41,43 +41,43 @@
 
         <div class="col-6">
           <mat-form-field>
-            <input [(ngModel)]="editUsuario.telefone" [textMask]="{mask: celMask}" name="telefone" type="text" matInput placeholder="Celular" required>
+            <input [(ngModel)]="editUsuario.cd_telefone_usuario" [textMask]="{mask: celMask}" name="telefone" type="text" matInput placeholder="Celular" required>
           </mat-form-field>
         </div>
 
         <div class="col-6">
           <mat-form-field>
-            <input [(ngModel)]="editUsuario.cep" [textMask]="{mask: cepMask}" name="cep" type="text" matInput placeholder="CEP" required>
+            <input [(ngModel)]="editUsuario.cd_cep_usuario" [textMask]="{mask: cepMask}" name="cep" type="text" matInput placeholder="CEP" required>
           </mat-form-field>
         </div>
 
         <div class="col-6">
           <mat-form-field>
-            <input [(ngModel)]="editUsuario.estado" name="estado" type="text" matInput placeholder="Estado" required>
+            <input [(ngModel)]="editUsuario.nm_estado_usuario" name="estado" type="text" matInput placeholder="Estado" required>
           </mat-form-field>
         </div>
 
         <div class="col-6">
           <mat-form-field>
-            <input [(ngModel)]="editUsuario.cidade" name="cidade" type="text" matInput placeholder="Cidade" required>
+            <input [(ngModel)]="editUsuario.nm_cidade_usuario" name="cidade" type="text" matInput placeholder="Cidade" required>
           </mat-form-field>
         </div>
 
         <div class="col-12">
           <mat-form-field>
-            <input [(ngModel)]="editUsuario.endereco" name="endereco" type="text" matInput placeholder="Endereço" required>
+            <input [(ngModel)]="editUsuario.nm_endereco_usuario" name="endereco" type="text" matInput placeholder="Endereço" required>
           </mat-form-field>
         </div>
 
         <div class="col-4">
           <mat-form-field>
-            <input [(ngModel)]="editUsuario.numero" [textMask]="{mask: numMask}" name="numero" type="text" matInput placeholder="Número" required>
+            <input [(ngModel)]="editUsuario.cd_numero_endereco_usuario" [textMask]="{mask: numMask}" name="numero" type="text" matInput placeholder="Número" required>
           </mat-form-field>
         </div>
 
         <div class="col-8">
           <mat-form-field>
-            <input [(ngModel)]="editUsuario.complemento" name="complemento" type="text" matInput placeholder="Complemento">
+            <input [(ngModel)]="editUsuario.ds_complemento_endereco_usuario" name="complemento" type="text" matInput placeholder="Complemento">
           </mat-form-field>
         </div>
 
@@ -90,7 +90,7 @@
 
       <div class="button-row row justify-content-center">
         <div class="col-6">
-          <button type="submit" color="primary" form="usuarioFisico" class="w-100" (click)="updateUsuarioFisico()">Confirmar</button>
+          <button mat-raised-button type="submit" color="primary" form="usuarioFisico" class="w-100" (click)="updateUsuarioFisico('/update')">Confirmar</button>
         </div>
         <div class="col-6">
           <button mat-raised-button color="primary" class="w-100" (click)="goTo('home')">Cancelar</button>
@@ -101,68 +101,68 @@
 
 
 
-    <form *ngIf='tipoUsuario == "Pessoa Jurídica"' id="usuarioJuridico" name="usuarioJuridico">
+    <form *ngIf="tipoJuridicoEmitter" id="usuarioJuridico" name="usuarioJuridico">
 
       <div class="row justify-content-center">
         <div class="col-12">
           <mat-form-field>
-            <input [(ngModel)]="editUsuario.razaoSocial" name="razaoSocial" type="text" matInput placeholder="Razão Social" required>
+            <input [(ngModel)]="editUsuario.nm_razao_social_usuario" name="razaoSocial" type="text" matInput placeholder="Razão Social" required>
           </mat-form-field>
         </div>
 
         <div class="col-12">
           <mat-form-field>
-            <input [(ngModel)]="editUsuario.email" name="email" type="email" matInput placeholder="Email" required>
+            <input [(ngModel)]="editUsuario.nm_email_usuario" name="email" type="email" matInput placeholder="Email" required>
           </mat-form-field>
         </div>
 
         <div class="col-6">
           <mat-form-field>
-            <input [(ngModel)]="editUsuario.cnpj" [textMask]="{mask: cnpjMask}" name="cnpj" type="text" matInput placeholder="CNPJ" required>
+            <input [(ngModel)]="editUsuario.cd_cnpj_usuario" [textMask]="{mask: cnpjMask}" name="cnpj" type="text" matInput placeholder="CNPJ" required>
           </mat-form-field>
         </div>
 
         <div class="col-6">
           <mat-form-field>
-            <input [(ngModel)]="editUsuario.telefone" [textMask]="{mask: celMask}" name="telefone" type="text" matInput placeholder="Celular"
+            <input [(ngModel)]="editUsuario.cd_telefone_usuario" [textMask]="{mask: celMask}" name="telefone" type="text" matInput placeholder="Celular"
               required>
           </mat-form-field>
         </div>
 
         <div class="col-6">
           <mat-form-field>
-            <input [(ngModel)]="editUsuario.cep" [textMask]="{mask: cepMask}" name="cep" type="text" matInput placeholder="CEP" required>
+            <input [(ngModel)]="editUsuario.cd_cep_usuario" [textMask]="{mask: cepMask}" name="cep" type="text" matInput placeholder="CEP" required>
           </mat-form-field>
         </div>
 
         <div class="col-6">
           <mat-form-field>
-            <input [(ngModel)]="editUsuario.estado" name="estado" type="text" matInput placeholder="Estado" required>
+            <input [(ngModel)]="editUsuario.nm_estado_usuario" name="estado" type="text" matInput placeholder="Estado" required>
           </mat-form-field>
         </div>
 
         <div class="col-12">
           <mat-form-field>
-            <input [(ngModel)]="editUsuario.cidade" name="cidade" type="text" matInput placeholder="Cidade" required>
+            <input [(ngModel)]="editUsuario.nm_cidade_usuario" name="cidade" type="text" matInput placeholder="Cidade" required>
           </mat-form-field>
         </div>
 
         <div class="col-12">
           <mat-form-field>
-            <input [(ngModel)]="editUsuario.endereco" name="endereco" type="text" matInput placeholder="Endereço" required>
+            <input [(ngModel)]="editUsuario.nm_endereco_usuario" name="endereco" type="text" matInput placeholder="Endereço" required>
           </mat-form-field>
         </div>
 
         <div class="col-4">
           <mat-form-field>
-            <input [(ngModel)]="editUsuario.numero" [textMask]="{mask: numMask}" name="numero" type="text" matInput placeholder="Número"
+            <input [(ngModel)]="editUsuario.cd_numero_endereco_usuario" [textMask]="{mask: numMask}" name="numero" type="text" matInput placeholder="Número"
               required>
           </mat-form-field>
         </div>
 
         <div class="col-8">
           <mat-form-field>
-            <input [(ngModel)]="editUsuario.complemento" name="complemento" type="text" matInput placeholder="Complemento">
+            <input [(ngModel)]="editUsuario.ds_complemento_endereco_usuario" name="complemento" type="text" matInput placeholder="Complemento">
           </mat-form-field>
         </div>
 
@@ -175,7 +175,7 @@
 
       <div class="button-row row justify-content-center">
         <div class="col-6">
-          <button type="submit" color="primary" form="usuarioJuridico" class="w-100" (click)="updateUsuarioJuridico()">Confirmar</button>
+          <button mat-raised-button type="submit" color="primary" form="usuarioJuridico" class="w-100" (click)="updateUsuarioJuridico('/update')">Confirmar</button>
         </div>
         <div class="col-6">
           <button mat-raised-button color="primary" class="w-100" (click)="goTo('home')">Cancelar</button>

@@ -62,15 +62,6 @@ export class AddPetComponent implements OnInit {
       { value: 'Grande', viewValue: 'Grande' }
     ];
 
-    // this.especie = [
-    //   { id: 1, value: 'Cachorro' },
-    //   { id: 2, value: 'Gato' },
-    //   { id: 3, value: 'Coelho' },
-    //   { id: 4, value: 'Hamster' },
-    //   { id: 5, value: 'Pássaro' },
-    //   { id: 5, value: 'Cavalo' }
-    // ];
-
     this.raca = [];
     this.fillEspecie();
   }
@@ -97,7 +88,7 @@ export class AddPetComponent implements OnInit {
     this.httpClient.get(api_url + '/api/especies/all', { headers }).subscribe(element => {
       //debugger
       this.especie = element;
-      this.especie = this.especie.payload
+      this.especie = this.especie.payload;
     });
   }
 
@@ -114,7 +105,8 @@ export class AddPetComponent implements OnInit {
 
     this.postData = {
       nm_animal: this.pet.nome,
-      nm_idade_animal: this.pet.idade + this.pet.text_idade,
+      cd_idade_animal: this.pet.cd_idade_animal,
+      nm_idade_animal: this.pet.nm_idade_animal,
       nm_cor_animal: this.pet.cor,
       nm_sexo_animal: this.pet.sexo,
       nm_tamanho_animal: this.pet.tamanho,

@@ -100,7 +100,7 @@ export class EditUsuarioComponent implements OnInit {
       cd_numero_endereco_usuario: this.editUsuario.cd_numero_endereco_usuario,
       ds_complemento_endereco_usuario: this.editUsuario.ds_complemento_endereco_usuario,
       dt_nascimento_usuario: this.editUsuario.dt_nascimento_usuario,
-      cd_senha_usuario: this.editUsuario.senha,
+      cd_senha_usuario: this.editUsuario.cd_senha_usuario,
     };
 
     this.httpClient.put<EditUsuario>(this.apiUrl + URL, this.postData, { headers })
@@ -136,7 +136,7 @@ export class EditUsuarioComponent implements OnInit {
       nm_endereco_usuario: this.editUsuario.nm_endereco_usuario,
       cd_numero_endereco_usuario: this.editUsuario.cd_numero_endereco_usuario,
       ds_complemento_endereco_usuario: this.editUsuario.ds_complemento_endereco_usuario,
-      cd_senha_usuario: this.editUsuario.senha
+      cd_senha_usuario: this.editUsuario.cd_senha_usuario
     };
 
     this.httpClient.put<EditUsuario>(this.apiUrl + URL, this.postData, { headers })
@@ -178,7 +178,7 @@ export class EditUsuarioComponent implements OnInit {
         numberHome.replace('_', '');
       }
     }
-    this.editUsuario.numero = parseInt(numberHome);
+    this.editUsuario.cd_numero_endereco_usuario = parseInt(numberHome);
   }
 
   removeCpfMask() {
@@ -186,7 +186,7 @@ export class EditUsuarioComponent implements OnInit {
     let beforeCpf = cpf.replace('.', '');
     beforeCpf = beforeCpf.replace('.', '');
     beforeCpf = beforeCpf.replace('-', '');
-    this.editUsuario.cpf = parseInt(beforeCpf);
+    this.editUsuario.cd_cpf_usuario = parseInt(beforeCpf);
   }
 
   removeCelMask() {
@@ -195,14 +195,14 @@ export class EditUsuarioComponent implements OnInit {
     beforeCel = beforeCel.replace(')', '');
     beforeCel = beforeCel.replace(' ', '');
     beforeCel = beforeCel.replace('-', '');
-    this.editUsuario.telefone = parseInt(beforeCel);
+    this.editUsuario.cd_telefone_usuario = parseInt(beforeCel);
   }
 
   removeCepMask() {
     let cep = this.editUsuario.cd_cep_usuario.toString();
     let beforeCep = cep.replace('.', '');
     beforeCep = beforeCep.replace('-', '');
-    this.editUsuario.cep = parseInt(beforeCep);
+    this.editUsuario.cd_cep_usuario = parseInt(beforeCep);
   }
 
   removeCnpjMask() {
@@ -211,7 +211,7 @@ export class EditUsuarioComponent implements OnInit {
     beforeCnpj = beforeCnpj.replace('.', '');
     beforeCnpj = beforeCnpj.replace('/', '');
     beforeCnpj = beforeCnpj.replace('-', '');
-    this.editUsuario.cnpj = parseInt(beforeCnpj);
+    this.editUsuario.cd_cnpj_usuario = parseInt(beforeCnpj);
   }
 
 }

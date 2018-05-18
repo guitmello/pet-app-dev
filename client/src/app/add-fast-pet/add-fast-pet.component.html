@@ -1,0 +1,50 @@
+<div class="container-fluid animated fadeIn">
+  <div class="col-12">
+    <div class="row justify-content-center">
+
+      <h1 class="title">Cadastrar Pet</h1>
+
+    </div>
+  </div>
+  <mat-card>
+
+    <form id="add-pet" name="add-pet">
+
+      <div class="row pet-form">
+        <div class="col-4">
+          <button mat-fab color="primary" (click)='imgFileInput.click()'>
+            <mat-icon aria-label="Tirar Foto">add_a_photo</mat-icon>
+            <input hidden type="file" accept="image/*" id="imgupload" capture="camera" #imgFileInput />
+          </button>
+        </div>
+        <div class="col-8">
+          <mat-form-field>
+            <input [(ngModel)]="addFastPet.nm_animal" name="nome" matInput placeholder="Nome" required>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row pet-sub-form">
+        <div class="col-4">
+          <button (click)="getAdress()" mat-fab color="primary" routerLink="/add-fast-pet">
+            <mat-icon aria-label="Adicionar Pet Rapidamente">location_on</mat-icon>
+          </button>
+        </div>
+        <div class="col-8">
+          <mat-form-field>
+            <input [(ngModel)]="addFastPet.estado" name="estado" matInput placeholder="Estado" required>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="col-12">
+        <div class="button-submit-row row justify-content-center">
+          <button mat-raised-button type="submit" color="primary" form="add-pet" class="w-50" (click)="registerPet()">Confirmar</button>
+        </div>
+      </div>
+
+    </form>
+
+  </mat-card>
+</div>

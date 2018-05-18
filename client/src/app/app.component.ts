@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import 'rxjs/add/operator/map';
 import { LoginService } from './login/login.service';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 import { EventEmitter } from '@angular/core';
 
 @Component({
@@ -14,9 +14,11 @@ import { EventEmitter } from '@angular/core';
 export class AppComponent {
 
   mostrarMenu: boolean = false;
+  mostrarButton: boolean = false;
   mostrarId: string = null;
 
   mostrarMenuEmitter = new EventEmitter<boolean>();
+  mostrarButtonEmmiter = new EventEmitter<boolean>();
   idUsuario = new EventEmitter<string>();
 
   constructor(private loginService: LoginService, public router: Router) { }
@@ -60,6 +62,10 @@ export class AppComponent {
 
     this.loginService.mostrarMenuEmitter.subscribe(
       mostrar => this.mostrarMenu = mostrar,
+    );
+
+    this.loginService.mostrarButtonEmitter.subscribe(
+      mostrarBtn => this.mostrarButton = mostrarBtn,
     );
 
     this.loginService.idUsuario.subscribe(

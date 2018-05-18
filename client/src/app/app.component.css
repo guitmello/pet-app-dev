@@ -88,6 +88,13 @@ ul#sidenav-menu{
   text-decoration: none;
 }
 
+.btn-fast-add{
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 2;
+}
+
 /*
 .example-container {
   display: flex;

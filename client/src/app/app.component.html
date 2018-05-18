@@ -21,6 +21,9 @@
 </mat-toolbar>
 
 
+<button *ngIf="mostrarButton" class="btn-fast-add" mat-mini-fab color="primary" routerLink="/add-fast-pet">
+  <mat-icon aria-label="Adicionar Pet Rapidamente">add</mat-icon>
+</button>
 
 
 <mat-toolbar *ngIf="mostrarMenu" class="subnav">

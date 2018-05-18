@@ -13,6 +13,7 @@ import { AddPetComponent } from './add-pet/add-pet.component';
 import { AppComponent } from './app.component';
 import { EditPetComponent } from './edit-pet/edit-pet.component';
 import { EditUsuarioComponent } from './edit-usuario/edit-usuario.component';
+import { AddFastPetComponent } from './add-fast-pet/add-fast-pet.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'add-pet',
     component: AddPetComponent
+  },
+  {
+    path: 'add-fast-pet',
+    component: AddFastPetComponent
   },
   {
     path: 'add-pfisica',

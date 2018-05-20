@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { AddFastPet } from './add-fast-pet';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-add-fast-pet',
@@ -19,11 +17,8 @@ export class AddFastPetComponent implements OnInit {
 
   addfastpet: AddFastPet = new AddFastPet();
   dataAdress: any = {};
-  pos: any;
-
-  latitude: number = null;
+  
   latitudeEmitter = new EventEmitter<number>();
-  longitude: number = null;
   longitudeEmitter = new EventEmitter<number>();
 
   constructor(private httpClient: HttpClient, private addFastPet: AddFastPet, public router: Router, public snackBar: MatSnackBar) { }
@@ -31,49 +26,27 @@ export class AddFastPetComponent implements OnInit {
   ngOnInit() {
   }
 
+  
   getAdress() {
-    this.getLocation();
-
-    this.latitudeEmitter.subscribe(
-      lat => this.latitude = lat,
-    );
-
-    this.longitudeEmitter.subscribe(
-      lgt => this.longitude = lgt,
-    );
-
-    this.httpClient.get(this.mapsUrl + '-23.954742' + ',' + '-46.4156522' + this.mapsUrlFinal).subscribe( adress => {
+    navigator.geolocation.getCurrentPosition(this.showPosition);
+ 
+    this.httpClient.get(this.mapsUrl + localStorage.getItem('MyLatitude') + ',' + localStorage.getItem('MyLongitude')  + this.mapsUrlFinal).subscribe( adress => {
       this.dataAdress = adress;
       this.addFastPet = this.dataAdress.results;
-      console.log(this.addFastPet[0]);
-      });
-  }
-
-  getLocation() {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.pos = position;
-        const lat = position.coords.latitude;
-        const lgt = position.coords.longitude;
-        this.latitudeEmitter.emit(lat);
-        this.longitudeEmitter.emit(lgt);
-        console.log(lat);
-        console.log(lgt);
-      },
-      err => {
-        this.snackBar.open('Erro ao Editar Pet', 'OK', {
-          duration: 2000,
-        });
+      console.log(this.addFastPet[0].address_components[0]);
       });
 
+      nm_estado_animal: this.addFastPet[0].address_components[5].long_name;
+      nm_cidade_animal: this.addFastPet[0].address_components[3].long_name;
+      nm_endereco_animal: this.addFastPet[0].address_components[2].long_name;
+      nm_numero_endereco_animal: this.addFastPet[0].address_components[0].long_name;
+
   }
+
 
   showPosition(position) {
-    const lat = position.coords.latitude;
-    const lgt = position.coords.longitude;
-    console.log("showPosition");
-
-    this.latitudeEmitter.emit(lat);
-    this.longitudeEmitter.emit(lgt);
-}
+    localStorage.setItem('MyLatitude', position.coords.latitude);
+    localStorage.setItem('MyLongitude', position.coords.longitude);
+  }
 
 }

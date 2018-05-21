@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-add-fast-pet',
@@ -15,15 +16,25 @@ export class AddFastPetComponent implements OnInit {
   private mapsUrl = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=';
   private mapsUrlFinal = '&sensor=true';
 
+  form: FormGroup;
+
   addfastpet: AddFastPet = new AddFastPet();
   dataAdress: any = {};
-  
-  latitudeEmitter = new EventEmitter<number>();
-  longitudeEmitter = new EventEmitter<number>();
+  adress: any = {};
 
-  constructor(private httpClient: HttpClient, private addFastPet: AddFastPet, public router: Router, public snackBar: MatSnackBar) { }
+  constructor(private httpClient: HttpClient, private addFastPet: AddFastPet, public router: Router, public snackBar: MatSnackBar, private formBuilder: FormBuilder) { }
 
-  ngOnInit() {
+  ngOnInit() { 
+
+    this.form = this.formBuilder.group({
+      
+        nm_estado_animal: [null],
+        nm_cidade_animal: [null],
+        nm_endereco_animal: [null],
+        nm_numero_endereco_animal: [null]
+
+    });
+    console.log("init");
   }
 
   
@@ -33,13 +44,23 @@ export class AddFastPetComponent implements OnInit {
     this.httpClient.get(this.mapsUrl + localStorage.getItem('MyLatitude') + ',' + localStorage.getItem('MyLongitude')  + this.mapsUrlFinal).subscribe( adress => {
       this.dataAdress = adress;
       this.addFastPet = this.dataAdress.results;
-      console.log(this.addFastPet[0].address_components[0]);
+      console.log(this.addFastPet[0].address_components[5].long_name);
+      this.setDataForm(this.addFastPet);
       });
 
-      nm_estado_animal: this.addFastPet[0].address_components[5].long_name;
-      nm_cidade_animal: this.addFastPet[0].address_components[3].long_name;
-      nm_endereco_animal: this.addFastPet[0].address_components[2].long_name;
-      nm_numero_endereco_animal: this.addFastPet[0].address_components[0].long_name;
+      
+  }
+
+
+  setDataForm(addFastPet) {
+    this.form.setValue({
+        nm_estado_animal: this.addFastPet[0].address_components[5].long_name,
+        nm_cidade_animal: this.addFastPet[0].address_components[3].long_name,
+        nm_endereco_animal: this.addFastPet[0].address_components[2].long_name,
+        nm_numero_endereco_animal: this.addFastPet[0].address_components[0].long_name
+    });
+
+    console.log(this.form);
 
   }
 

@@ -24,18 +24,49 @@
         </div>
       </div>
 
-      <div class="row pet-sub-form">
-        <div class="col-4">
-          <button (click)="getAdress()" mat-fab color="primary" routerLink="/add-fast-pet">
-            <mat-icon aria-label="Adicionar Pet Rapidamente">location_on</mat-icon>
-          </button>
+      <div class="form-group">
+
+        <div class="row pet-sub-form">
+          <div class="col-4">
+            <button (click)="getAdress()" mat-fab color="primary" routerLink="/add-fast-pet">
+              <mat-icon aria-label="Adicionar Pet Rapidamente">location_on</mat-icon>
+            </button>
+          </div>
+          <div class="col-8">
+            <mat-form-field>
+              <input [(ngModel)]="addFastPet.nm_estado_animal" name="nm_estado_animal" matInput placeholder="Estado" required>
+            </mat-form-field>
+          </div>
         </div>
-        <div class="col-8">
-          <mat-form-field>
-            <input [(ngModel)]="addFastPet.nm_estado_animal" name="nm_estado_animal" matInput placeholder="Estado" required>
-          </mat-form-field>
+
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-8">
+            <mat-form-field>
+              <input [(ngModel)]="addFastPet.nm_cidade_animal" name="nm_cidade_animal" matInput placeholder="Cidade" required>
+            </mat-form-field>
+          </div>
         </div>
-      </div>
+
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-8">
+            <mat-form-field>
+              <input [(ngModel)]="addFastPet.nm_endereco_animal" name="nm_endereco_animal" matInput placeholder="Endereço" required>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row pet-form">
+          <div class="col-4"></div>
+          <div class="col-8">
+            <mat-form-field>
+              <input [(ngModel)]="addFastPet.nm_numero_endereco_animal" name="nm_numero_endereco_animal" matInput placeholder="Número" required>
+            </mat-form-field>
+          </div>
+        </div>
+
+    </div>
 
 
       <div class="col-12">

@@ -46,10 +46,13 @@ export class AddPfisicaComponent implements OnInit {
     this.cityStates.forEach(element => {
       this.filtredStates.push(element.sigla);
     });
+
+
     this.sexo = [
       { value: 'Masculino', viewValue: 'Masculino' },
       { value: 'Feminino', viewValue: 'Feminino' }
     ];
+
   }
 
   goTo(route: string) {

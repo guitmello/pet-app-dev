@@ -51,6 +51,7 @@ import { MeusPets } from './meus-pets/meus-pets';
 import { EditPet } from './edit-pet/edit-pet';
 import { EditUsuario } from './edit-usuario/edit-usuario';
 import { AddFastPet } from './add-fast-pet/add-fast-pet';
+import { MatAutocompleteModule } from '@angular/material';
 
 
 @NgModule({
@@ -93,6 +94,7 @@ import { AddFastPet } from './add-fast-pet/add-fast-pet';
     MatDialogModule,
     MatSnackBarModule,
     TextMaskModule,
+    MatAutocompleteModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AppComponent, LoginService, MeusPetsComponent, MeusPets, EditPet, EditUsuario, AddFastPetComponent, AddFastPet,

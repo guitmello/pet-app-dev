@@ -5,6 +5,7 @@ import { Md5 } from 'ts-md5/dist/md5';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { FormControl } from '@angular/forms';
 
 const api_url = environment.apiUrl;
 
@@ -15,6 +16,11 @@ const api_url = environment.apiUrl;
 })
 export class AddPjuridicaComponent implements OnInit {
 
+  filtredStates: any = {};
+  filtredCities: Array<any>;
+  citiesArrays: any = {};
+  json = require('../city-state.json');
+  cityStates: any = {};
   data: any = {};
   postData: any = {};
   public cnpjMask: Array<string | RegExp>;
@@ -36,9 +42,46 @@ export class AddPjuridicaComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.filtredStates = [];
+    this.cityStates = this.json.estados;
+    this.cityStates.forEach(element => {
+      this.filtredStates.push(element.sigla);
+    });
   }
 
 
+  fillFiltredStates() {
+    this.citiesArrays = [];
+    this.filtredStates = [];
+    this.filtredCities = [];
+    if (!!this.pjuridica.estado) {
+      this.cityStates.forEach(element => {
+        if (this.pjuridica.estado.toLowerCase() == element.sigla.slice(0, this.pjuridica.estado.length).toLowerCase()) {
+          this.filtredStates.push(element.sigla);
+          this.citiesArrays.push(element.cidades);
+        }
+      });
+      this.citiesArrays.forEach(element => {
+        element.forEach(element2 => {
+          this.filtredCities.push(element2);
+        });
+      });
+    }
+  }
+  
+  fillFiltredCities() {
+    this.filtredCities = [];
+    if (!!this.pjuridica.cidade) {
+      this.citiesArrays.forEach(element => {
+        element.forEach(element2 => {
+          if (this.pjuridica.cidade.toLowerCase() == element2.slice(0, this.pjuridica.cidade.length).toLowerCase()) {
+            this.filtredCities.push(element2);
+          }
+        });
+      });
+    }
+  }
+  
 
   registerPj() {
     this.removeMasks();

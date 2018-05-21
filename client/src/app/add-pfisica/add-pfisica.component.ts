@@ -5,6 +5,7 @@ import { Md5 } from 'ts-md5/dist/md5';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { FormControl } from '@angular/forms';
 
 const api_url = environment.apiUrl;
 
@@ -15,6 +16,9 @@ const api_url = environment.apiUrl;
 })
 export class AddPfisicaComponent implements OnInit {
 
+  filtredStates: any = {};
+  filtredCities: Array<any>;
+  citiesArrays: any = {};
   sexo: Array<any>;
   data: any = {};
   postData: any = {};
@@ -22,7 +26,8 @@ export class AddPfisicaComponent implements OnInit {
   public celMask: Array<string | RegExp>;
   public cepMask: Array<string | RegExp>;
   public numMask: Array<string | RegExp>;
-
+  json = require('../city-state.json');
+  cityStates: any = {};
   md5 = new Md5();
   pfisica: PFisica = new PFisica();
   senha: string;
@@ -36,14 +41,51 @@ export class AddPfisicaComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.filtredStates = [];
+    this.cityStates = this.json.estados;
+    this.cityStates.forEach(element => {
+      this.filtredStates.push(element.sigla);
+    });
     this.sexo = [
-      {value: 'Masculino', viewValue: 'Masculino'},
-      {value: 'Feminino', viewValue: 'Feminino'}
+      { value: 'Masculino', viewValue: 'Masculino' },
+      { value: 'Feminino', viewValue: 'Feminino' }
     ];
   }
 
   goTo(route: string) {
     this.router.navigate([route]);
+  }
+
+  fillFiltredStates() {
+    this.citiesArrays = [];
+    this.filtredStates = [];
+    this.filtredCities = [];
+    if (!!this.pfisica.estado) {
+      this.cityStates.forEach(element => {
+        if (this.pfisica.estado.toLowerCase() == element.sigla.slice(0, this.pfisica.estado.length).toLowerCase()) {
+          this.filtredStates.push(element.sigla);
+          this.citiesArrays.push(element.cidades);
+        }
+      });
+      this.citiesArrays.forEach(element => {
+        element.forEach(element2 => {
+          this.filtredCities.push(element2);
+        });
+      });
+    }
+  }
+
+  fillFiltredCities() {
+    this.filtredCities = [];
+    if (!!this.pfisica.cidade) {
+      this.citiesArrays.forEach(element => {
+        element.forEach(element2 => {
+          if (this.pfisica.cidade.toLowerCase() == element2.slice(0, this.pfisica.cidade.length).toLowerCase()) {
+            this.filtredCities.push(element2);
+          }
+        });
+      });
+    }
   }
 
   registerPf() {
@@ -56,44 +98,44 @@ export class AddPfisicaComponent implements OnInit {
       });
     } else {
 
-    this.removeMasks();
-    this.md5.appendStr(this.senha);
-    let newSenha = this.md5.end();
-    this.pfisica.senha = newSenha.toString();
+      this.removeMasks();
+      this.md5.appendStr(this.senha);
+      let newSenha = this.md5.end();
+      this.pfisica.senha = newSenha.toString();
 
-    this.postData = {
-      nm_email_usuario: this.pfisica.email,
-      cd_senha_usuario: this.pfisica.senha,
-      nm_tipo_usuario: 'Pessoa Física',
-      cd_cpf_usuario: this.pfisica.cpf,
-      nm_usuario: this.pfisica.nome,
-      nm_sexo_usuario: this.pfisica.sexo,
-      dt_nascimento_usuario: this.pfisica.data,
-      cd_telefone_usuario: this.pfisica.telefone,
-      cd_cep_usuario: this.pfisica.cep,
-      nm_estado_usuario: this.pfisica.estado,
-      nm_cidade_usuario: this.pfisica.cidade,
-      nm_endereco_usuario: this.pfisica.endereco,
-      cd_ip_usuario: null,
-      cd_numero_endereco_usuario: this.pfisica.numero,
-      ds_complemento_endereco_usuario: this.pfisica.complemento,
-      ds_foto_usuario: null
-    };
+      this.postData = {
+        nm_email_usuario: this.pfisica.email,
+        cd_senha_usuario: this.pfisica.senha,
+        nm_tipo_usuario: 'Pessoa Física',
+        cd_cpf_usuario: this.pfisica.cpf,
+        nm_usuario: this.pfisica.nome,
+        nm_sexo_usuario: this.pfisica.sexo,
+        dt_nascimento_usuario: this.pfisica.data,
+        cd_telefone_usuario: this.pfisica.telefone,
+        cd_cep_usuario: this.pfisica.cep,
+        nm_estado_usuario: this.pfisica.estado,
+        nm_cidade_usuario: this.pfisica.cidade,
+        nm_endereco_usuario: this.pfisica.endereco,
+        cd_ip_usuario: null,
+        cd_numero_endereco_usuario: this.pfisica.numero,
+        ds_complemento_endereco_usuario: this.pfisica.complemento,
+        ds_foto_usuario: null
+      };
 
-    return this.httpClient.post<PFisica>(this.apiUrl, this.postData)
-      .subscribe( res => {
+      return this.httpClient.post<PFisica>(this.apiUrl, this.postData)
+        .subscribe(res => {
           console.log(res);
           this.snackBar.open('Usuário Cadastrado com Sucesso!', 'OK', {
             duration: 2000,
           });
           this.goTo('login');
         },
-        err => {
-          this.snackBar.open('Erro ao Cadastrar Usuário', 'OK', {
-            duration: 2000,
-          });
-        }
-      );
+          err => {
+            this.snackBar.open('Erro ao Cadastrar Usuário', 'OK', {
+              duration: 2000,
+            });
+          }
+        );
 
     }
   }
@@ -109,8 +151,8 @@ export class AddPfisicaComponent implements OnInit {
   removeNumeroMask() {
     let numberHome = this.pfisica.numero.toString();
     let beforeNumberH = numberHome;
-    for(let x = 0 ; x<=beforeNumberH.length; x++){
-      if(!parseInt(numberHome.slice(x,x+1))){
+    for (let x = 0; x <= beforeNumberH.length; x++) {
+      if (!parseInt(numberHome.slice(x, x + 1))) {
         numberHome.replace('_', '');
       }
     }

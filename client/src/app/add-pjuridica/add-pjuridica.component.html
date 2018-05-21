@@ -43,13 +43,23 @@
 
         <div class="col-6">
           <mat-form-field>
-            <input [(ngModel)]="pjuridica.estado" name="estado" type="text" matInput placeholder="Estado" required>
+            <input [(ngModel)]="pjuridica.estado" [matAutocomplete]="autoStates" name="estado" type="text" matInput placeholder="Estado" (keyup)="fillFiltredStates()" required>
+            <mat-autocomplete #autoStates="matAutocomplete">
+              <mat-option *ngFor="let option of filtredStates" [value]="option">
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
           </mat-form-field>
         </div>
 
         <div class="col-12">
           <mat-form-field>
-            <input [(ngModel)]="pjuridica.cidade" name="cidade" type="text" matInput placeholder="Cidade" required>
+            <input [(ngModel)]="pjuridica.cidade" name="cidade" [matAutocomplete]="autoCities" type="text" matInput placeholder="Cidade" (keyup)="fillFiltredCities()" required>
+            <mat-autocomplete #autoCities="matAutocomplete">
+              <mat-option *ngFor="let option of filtredCities" [value]="option">
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
           </mat-form-field>
         </div>
 

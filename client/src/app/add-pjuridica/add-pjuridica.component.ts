@@ -33,6 +33,7 @@ export class AddPjuridicaComponent implements OnInit {
   pjuridica: PJuridica = new PJuridica();
   senha: string;
   private apiUrl = api_url + '/api/users/create';
+  private api_urlCityState = api_url + '/api/citystate';
 
   constructor(private httpClient: HttpClient, public router: Router, public snackBar: MatSnackBar) {
     this.cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/',
@@ -44,10 +45,11 @@ export class AddPjuridicaComponent implements OnInit {
 
 
   getCityState() {
-    this.httpClient.get<CityState>('../city-state.json').subscribe (jsonStates => {
-      this.json = jsonStates;
-    });
-  }
+    this.httpClient.get(this.api_urlCityState).subscribe (jsonStates => {
+    this.json = jsonStates;
+    console.log(this.json);
+  });
+}
 
 
   ngOnInit() {

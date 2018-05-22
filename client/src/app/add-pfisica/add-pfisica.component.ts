@@ -34,6 +34,7 @@ export class AddPfisicaComponent implements OnInit {
   pfisica: PFisica = new PFisica();
   senha: string;
   private apiUrl = api_url + '/api/users/create';
+  private api_urlCityState = api_url + '/api/citystate';
 
   constructor(private httpClient: HttpClient, public router: Router, public snackBar: MatSnackBar) {
     this.cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
@@ -43,11 +44,11 @@ export class AddPfisicaComponent implements OnInit {
   }
 
   getCityState() {
-    this.httpClient.get<CityState[]>('../city-state.json').subscribe (jsonStates => {
-      this.json = jsonStates;
-      console.log(this.json);
-    });
-  }
+    this.httpClient.get(this.api_urlCityState).subscribe (jsonStates => {
+    this.json = jsonStates;
+    console.log(this.json);
+  });
+}
 
   ngOnInit() {
     this.getCityState();

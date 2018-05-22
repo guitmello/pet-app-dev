@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { FormControl } from '@angular/forms';
+import { CityState } from '../city-state';
 
 const api_url = environment.apiUrl;
 
@@ -19,7 +20,7 @@ export class AddPjuridicaComponent implements OnInit {
   filtredStates: any = {};
   filtredCities: Array<any>;
   citiesArrays: any = {};
-  json = require('../city-state.json');
+  json: any = {};
   cityStates: any = {};
   data: any = {};
   postData: any = {};
@@ -41,7 +42,16 @@ export class AddPjuridicaComponent implements OnInit {
     this.numMask = [/[1-9]/, /\d/, /\d/, /\d/, /\d/, /\d/];
   }
 
+
+  getCityState() {
+    this.httpClient.get<CityState>('../city-state.json').subscribe (jsonStates => {
+      this.json = jsonStates;
+    });
+  }
+
+
   ngOnInit() {
+    this.getCityState();
     this.filtredStates = [];
     this.cityStates = this.json.estados;
     this.cityStates.forEach(element => {
@@ -56,7 +66,7 @@ export class AddPjuridicaComponent implements OnInit {
     this.filtredCities = [];
     if (!!this.pjuridica.estado) {
       this.cityStates.forEach(element => {
-        if (this.pjuridica.estado.toLowerCase() == element.sigla.slice(0, this.pjuridica.estado.length).toLowerCase()) {
+        if (this.pjuridica.estado.toLowerCase() === element.sigla.slice(0, this.pjuridica.estado.length).toLowerCase()) {
           this.filtredStates.push(element.sigla);
           this.citiesArrays.push(element.cidades);
         }
@@ -68,20 +78,20 @@ export class AddPjuridicaComponent implements OnInit {
       });
     }
   }
-  
+
   fillFiltredCities() {
     this.filtredCities = [];
     if (!!this.pjuridica.cidade) {
       this.citiesArrays.forEach(element => {
         element.forEach(element2 => {
-          if (this.pjuridica.cidade.toLowerCase() == element2.slice(0, this.pjuridica.cidade.length).toLowerCase()) {
+          if (this.pjuridica.cidade.toLowerCase() === element2.slice(0, this.pjuridica.cidade.length).toLowerCase()) {
             this.filtredCities.push(element2);
           }
         });
       });
     }
   }
-  
+
 
   registerPj() {
     this.removeMasks();

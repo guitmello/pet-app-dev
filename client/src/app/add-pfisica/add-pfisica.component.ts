@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { FormControl } from '@angular/forms';
+import { CityState } from '../city-state';
 
 const api_url = environment.apiUrl;
 
@@ -19,6 +20,7 @@ export class AddPfisicaComponent implements OnInit {
   filtredStates: any = {};
   filtredCities: Array<any>;
   citiesArrays: any = {};
+  json: any = {};
   sexo: Array<any>;
   data: any = {};
   postData: any = {};
@@ -26,7 +28,7 @@ export class AddPfisicaComponent implements OnInit {
   public celMask: Array<string | RegExp>;
   public cepMask: Array<string | RegExp>;
   public numMask: Array<string | RegExp>;
-  json = require('../city-state.json');
+
   cityStates: any = {};
   md5 = new Md5();
   pfisica: PFisica = new PFisica();
@@ -40,7 +42,15 @@ export class AddPfisicaComponent implements OnInit {
     this.numMask = [/[1-9]/, /\d/, /\d/, /\d/, /\d/, /\d/];
   }
 
+  getCityState() {
+    this.httpClient.get<CityState[]>('../city-state.json').subscribe (jsonStates => {
+      this.json = jsonStates;
+      console.log(this.json);
+    });
+  }
+
   ngOnInit() {
+    this.getCityState();
     this.filtredStates = [];
     this.cityStates = this.json.estados;
     this.cityStates.forEach(element => {
@@ -65,7 +75,7 @@ export class AddPfisicaComponent implements OnInit {
     this.filtredCities = [];
     if (!!this.pfisica.estado) {
       this.cityStates.forEach(element => {
-        if (this.pfisica.estado.toLowerCase() == element.sigla.slice(0, this.pfisica.estado.length).toLowerCase()) {
+        if (this.pfisica.estado.toLowerCase() === element.sigla.slice(0, this.pfisica.estado.length).toLowerCase()) {
           this.filtredStates.push(element.sigla);
           this.citiesArrays.push(element.cidades);
         }
@@ -83,7 +93,7 @@ export class AddPfisicaComponent implements OnInit {
     if (!!this.pfisica.cidade) {
       this.citiesArrays.forEach(element => {
         element.forEach(element2 => {
-          if (this.pfisica.cidade.toLowerCase() == element2.slice(0, this.pfisica.cidade.length).toLowerCase()) {
+          if (this.pfisica.cidade.toLowerCase() === element2.slice(0, this.pfisica.cidade.length).toLowerCase()) {
             this.filtredCities.push(element2);
           }
         });
@@ -93,13 +103,7 @@ export class AddPfisicaComponent implements OnInit {
 
   registerPf() {
 
-    if (this.pfisica.email === null || this.pfisica.senha === null || this.pfisica.cpf === null || this.pfisica.nome === null ||
-      this.pfisica.sexo === null || this.pfisica.data === null || this.pfisica.telefone === null || this.pfisica.cep === null ||
-      this.pfisica.estado === null || this.pfisica.endereco === null || this.pfisica.numero === null) {
-      this.snackBar.open('Preencha todos os dados obrigatórios', 'OK', {
-        duration: 2000,
-      });
-    } else {
+
 
       this.removeMasks();
       this.md5.appendStr(this.senha);
@@ -124,6 +128,14 @@ export class AddPfisicaComponent implements OnInit {
         ds_complemento_endereco_usuario: this.pfisica.complemento,
         ds_foto_usuario: null
       };
+
+      if (this.pfisica.email === null || this.pfisica.senha === null || this.pfisica.cpf === null || this.pfisica.nome === null ||
+        this.pfisica.sexo === null || this.pfisica.data === null || this.pfisica.telefone === null || this.pfisica.cep === null ||
+        this.pfisica.estado === null || this.pfisica.endereco === null || this.pfisica.numero === null) {
+        this.snackBar.open('Preencha todos os dados obrigatórios', 'OK', {
+          duration: 2000,
+        });
+      } else {
 
       return this.httpClient.post<PFisica>(this.apiUrl, this.postData)
         .subscribe(res => {

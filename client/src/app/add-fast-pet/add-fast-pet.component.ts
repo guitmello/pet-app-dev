@@ -22,45 +22,31 @@ export class AddFastPetComponent implements OnInit {
   dataAdress: any = {};
   adress: any = {};
 
-  constructor(private httpClient: HttpClient, private addFastPet: AddFastPet, public router: Router, public snackBar: MatSnackBar, private formBuilder: FormBuilder) { }
+  constructor(private httpClient: HttpClient, private addFastPet: AddFastPet, public router: Router,
+    public snackBar: MatSnackBar, private formBuilder: FormBuilder) { }
 
-  ngOnInit() { 
-
+  ngOnInit() {
     this.form = this.formBuilder.group({
-      
+
         nm_estado_animal: [null],
         nm_cidade_animal: [null],
         nm_endereco_animal: [null],
         nm_numero_endereco_animal: [null]
 
     });
-    console.log("init");
+
   }
 
-  
-  getAdress() {
+
+  async getAdress() {
     navigator.geolocation.getCurrentPosition(this.showPosition);
- 
-    this.httpClient.get(this.mapsUrl + localStorage.getItem('MyLatitude') + ',' + localStorage.getItem('MyLongitude')  + this.mapsUrlFinal).subscribe( adress => {
+
+    await this.httpClient.get(this.mapsUrl + localStorage.getItem('MyLatitude') + ',' + localStorage.getItem('MyLongitude')
+    + this.mapsUrlFinal).subscribe( adress => {
       this.dataAdress = adress;
       this.addFastPet = this.dataAdress.results;
-      console.log(this.addFastPet[0].address_components[5].long_name);
-      this.setDataForm(this.addFastPet);
+      console.log(this.addFastPet[0]);
       });
-
-      
-  }
-
-
-  setDataForm(addFastPet) {
-    this.form.setValue({
-        nm_estado_animal: this.addFastPet[0].address_components[5].long_name,
-        nm_cidade_animal: this.addFastPet[0].address_components[3].long_name,
-        nm_endereco_animal: this.addFastPet[0].address_components[2].long_name,
-        nm_numero_endereco_animal: this.addFastPet[0].address_components[0].long_name
-    });
-
-    console.log(this.form);
 
   }
 

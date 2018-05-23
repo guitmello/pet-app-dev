@@ -2092,10 +2092,10 @@ input.mat-input-element {
 }
 
 .mat-snack-bar-container {
-  background: #323232;
-  color: #fff
+  background: #f2f2f2;
+  color: #333333;
 }
 
 .mat-simple-snackbar-action {
-  color: #ffd740
+  color: #755DCA;
 }

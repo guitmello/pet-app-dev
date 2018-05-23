@@ -52,7 +52,7 @@ export class AddPetComponent implements OnInit {
     ];
 
     this.idade = [
-      { value: 'Mese(s)', viewValue: 'Mese(s)' },
+      { value: 'Mes(es)', viewValue: 'Mes(es)' },
       { value: 'Ano(s)', viewValue: 'Ano(s)' }
     ];
 

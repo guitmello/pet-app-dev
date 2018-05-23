@@ -49,12 +49,12 @@ export class PetInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.pet.ic_deficiencia_animal == undefined) {
+    if (this.pet.ic_deficiencia_animal === undefined) {
       this.pet.ic_deficiencia_animal = false;
-      let deficiencia_view = false;
-    } else if (this.pet.ic_deficiencia_animal == true) {
+      const deficiencia_view = false;
+    } else if (this.pet.ic_deficiencia_animal === true) {
       this.pet.ic_deficiencia_animal = true;
-      let deficiencia_view = true;
+      const deficiencia_view = true;
     }
   }
 
@@ -90,7 +90,7 @@ export class PetInfoComponent implements OnInit {
           console.log(res);
         },
         err => {
-          console.log("Error occured");
+          console.log('Error occured');
         }
       );
   }
@@ -131,6 +131,6 @@ export class PetInfoComponent implements OnInit {
 }
 
 export class Pet {
-  cd_animal_fk: number
-  cd_usuario_fk: number
+  cd_animal_fk: number;
+  cd_usuario_fk: number;
 }

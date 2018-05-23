@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import { FormControl, Validators, FormGroupDirective, NgForm } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { CityState } from '../city-state';
 
 const api_url = environment.apiUrl;
@@ -152,7 +152,7 @@ export class AddPfisicaComponent implements OnInit {
 
   registerPf() {
 
-      this.removeMasks();
+    this.removeMasks();
 
     this.postData = {
       nm_email_usuario: this.pfisica.email,
@@ -196,6 +196,7 @@ export class AddPfisicaComponent implements OnInit {
           }
         );
   }
+}
 
 
   removeMasks() {
@@ -217,7 +218,7 @@ export class AddPfisicaComponent implements OnInit {
   }
 
   removeCpfMask() {
-    let cpf = this.pfisica.cpf.toString();
+    const cpf = this.pfisica.cpf.toString();
     let beforeCpf = cpf.replace('.', '');
     beforeCpf = beforeCpf.replace('.', '');
     beforeCpf = beforeCpf.replace('-', '');
@@ -225,7 +226,7 @@ export class AddPfisicaComponent implements OnInit {
   }
 
   removeCelMask() {
-    let cel = this.pfisica.telefone.toString();
+    const cel = this.pfisica.telefone.toString();
     let beforeCel = cel.replace('(', '');
     beforeCel = beforeCel.replace(')', '');
     beforeCel = beforeCel.replace(' ', '');
@@ -234,7 +235,7 @@ export class AddPfisicaComponent implements OnInit {
   }
 
   removeCepMask() {
-    let cep = this.pfisica.cep.toString();
+    const cep = this.pfisica.cep.toString();
     let beforeCep = cep.replace('.', '');
     beforeCep = beforeCep.replace('-', '');
     this.pfisica.cep = parseInt(beforeCep);

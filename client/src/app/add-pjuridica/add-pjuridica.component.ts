@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { CityState } from '../city-state';
 
 const api_url = environment.apiUrl;
@@ -31,6 +31,60 @@ export class AddPjuridicaComponent implements OnInit {
   pjuridica: PJuridica = new PJuridica();
   private apiUrl = api_url + '/api/users/create';
   private api_urlCityState = api_url + '/api/citystate';
+
+  razaoSocial = new FormControl('', [Validators.required]);
+  email = new FormControl('', [Validators.required, Validators.email]);
+  cnpj = new FormControl('', [Validators.required]);
+  telefone = new FormControl('', [Validators.required]);
+  cep = new FormControl('', [Validators.required]);
+  estado = new FormControl('', [Validators.required]);
+  cidade = new FormControl('', [Validators.required]);
+  endereco = new FormControl('', [Validators.required]);
+  numero = new FormControl('', [Validators.required]);
+  completo = new FormControl('', [Validators.required]);
+  senha = new FormControl('', [Validators.required]);
+
+  getRazaoSocialErrorMessage() {
+    return this.razaoSocial.hasError('required') ? 'Você deve preencher sua razão social' : '';
+  }
+
+  getEmailErrorMessage() {
+    return this.email.hasError('required') ? 'Você deve preencher seu email' :
+      this.email.hasError('email') ? 'Email incorreto' :
+        '';
+  }
+
+  getCnpjErrorMessage() {
+    return this.cnpj.hasError('required') ? 'Você deve preencher seu cnpj' : '';
+  }
+
+  getTelefoneErrorMessage() {
+    return this.telefone.hasError('required') ? 'Você deve preencher seu telefone' : '';
+  }
+
+  getCepErrorMessage() {
+    return this.cep.hasError('required') ? 'Você deve preencher seu cep' : '';
+  }
+
+  getEstadoErrorMessage() {
+    return this.estado.hasError('required') ? 'Você deve preencher seu estado' : '';
+  }
+
+  getCidadeErrorMessage() {
+    return this.cidade.hasError('required') ? 'Você deve preencher seu cidade' : '';
+  }
+
+  getEnderecoErrorMessage() {
+    return this.endereco.hasError('required') ? 'Você deve preencher seu endereço' : '';
+  }
+
+  getNumeroErrorMessage() {
+    return this.numero.hasError('required') ? 'Você deve preencher seu numero' : '';
+  }
+
+  getSenhaErrorMessage() {
+    return this.senha.hasError('required') ? 'Você deve preencher sua senha' : '';
+  }
 
   constructor(private httpClient: HttpClient, public router: Router, public snackBar: MatSnackBar) {
     this.cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/',

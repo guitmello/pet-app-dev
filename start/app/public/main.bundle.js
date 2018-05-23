@@ -17,6 +17,157 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/add-fast-pet/add-fast-pet.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ".mat-card{\r\n  padding-top: 0px !important;\r\n}\r\n\r\n.pet-form{\r\n  border-bottom: 1px solid #ccc;\r\n  padding: 20px 0px\r\n}\r\n\r\n.pet-sub-form{\r\n  padding-top: 10px;\r\n}\r\n\r\n.col-3{\r\n  padding-left: 10px;\r\n}\r\n\r\nh6{\r\n  font-size: 14px;\r\n  font-weight: 600;\r\n  padding-top: 17px !important;\r\n  margin: 0px;\r\n  vertical-align: middle;\r\n  color: #755DCA;\r\n}\r\n\r\n.checkbox-align {\r\n  padding: .1375em 0 !important;\r\n  border-top: .84375em solid transparent !important;\r\n}\r\n"
+
+/***/ }),
+
+/***/ "./src/app/add-fast-pet/add-fast-pet.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Cadastrar Pet</h1>\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card>\r\n\r\n    <form id=\"add-pet\" name=\"add-pet\">\r\n\r\n      <div class=\"row pet-form\">\r\n        <div class=\"col-4\">\r\n          <button mat-fab color=\"primary\" (click)='imgFileInput.click()'>\r\n            <mat-icon aria-label=\"Tirar Foto\">add_a_photo</mat-icon>\r\n            <input hidden type=\"file\" accept=\"image/*\" id=\"imgupload\" capture=\"camera\" #imgFileInput />\r\n          </button>\r\n        </div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"addFastPet.nm_animal\" name=\"nome\" matInput placeholder=\"Nome\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"form-group\">\r\n\r\n        <div class=\"row pet-sub-form\">\r\n          <div class=\"col-4\">\r\n            <button (click)=\"getAdress()\" mat-fab color=\"primary\" routerLink=\"/add-fast-pet\">\r\n              <mat-icon aria-label=\"Adicionar Pet Rapidamente\">location_on</mat-icon>\r\n            </button>\r\n          </div>\r\n          <div class=\"col-8\">\r\n            <mat-form-field>\r\n              <input [(ngModel)]=\"addFastPet[0].address_components[7].long_name\" name=\"cd_cep_animal\" matInput placeholder=\"CEP\" required>\r\n            </mat-form-field>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n          <div class=\"col-4\"></div>\r\n          <div class=\"col-8\">\r\n            <mat-form-field>\r\n              <input [(ngModel)]=\"addFastPet[0].address_components[5].short_name\" name=\"nm_estado_animal\" matInput placeholder=\"Estado\" required>\r\n            </mat-form-field>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n          <div class=\"col-4\"></div>\r\n          <div class=\"col-8\">\r\n            <mat-form-field>\r\n              <input [(ngModel)]=\"addFastPet[0].address_components[3].long_name\" name=\"nm_cidade_animal\" matInput placeholder=\"Cidade\" required>\r\n            </mat-form-field>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n          <div class=\"col-4\"></div>\r\n          <div class=\"col-8\">\r\n            <mat-form-field>\r\n              <input [(ngModel)]=\"addFastPet[0].address_components[2].long_name\" name=\"nm_endereco_animal\" matInput placeholder=\"Endereço\" required>\r\n            </mat-form-field>\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n          <div class=\"col-4\"></div>\r\n          <div class=\"col-8\">\r\n            <mat-form-field>\r\n              <input [(ngModel)]=\"addFastPet[0].address_components[0].long_name\" name=\"nm_numero_endereco_animal\" matInput placeholder=\"Número\" required>\r\n            </mat-form-field>\r\n          </div>\r\n        </div>\r\n\r\n    </div>\r\n\r\n\r\n      <div class=\"col-12\">\r\n        <div class=\"button-submit-row row justify-content-center\">\r\n          <button mat-raised-button type=\"submit\" color=\"primary\" form=\"add-pet\" class=\"w-50\" (click)=\"registerPet()\">Confirmar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n\r\n  </mat-card>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/add-fast-pet/add-fast-pet.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddFastPetComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__add_fast_pet__ = __webpack_require__("./src/app/add-fast-pet/add-fast-pet.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+
+var AddFastPetComponent = /** @class */ (function () {
+    function AddFastPetComponent(httpClient, addFastPet, router, snackBar, formBuilder) {
+        this.httpClient = httpClient;
+        this.addFastPet = addFastPet;
+        this.router = router;
+        this.snackBar = snackBar;
+        this.formBuilder = formBuilder;
+        this.mapsUrl = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=';
+        this.mapsUrlFinal = '&sensor=true';
+        this.addfastpet = new __WEBPACK_IMPORTED_MODULE_1__add_fast_pet__["a" /* AddFastPet */]();
+        this.dataAdress = {};
+        this.adress = {};
+    }
+    AddFastPetComponent.prototype.ngOnInit = function () {
+        this.form = this.formBuilder.group({
+            nm_estado_animal: [null],
+            nm_cidade_animal: [null],
+            nm_endereco_animal: [null],
+            nm_numero_endereco_animal: [null]
+        });
+    };
+    AddFastPetComponent.prototype.getAdress = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        navigator.geolocation.getCurrentPosition(this.showPosition);
+                        return [4 /*yield*/, this.httpClient.get(this.mapsUrl + localStorage.getItem('MyLatitude') + ',' + localStorage.getItem('MyLongitude')
+                                + this.mapsUrlFinal).subscribe(function (adress) {
+                                _this.dataAdress = adress;
+                                _this.addFastPet = _this.dataAdress.results;
+                                console.log(_this.addFastPet[0]);
+                            })];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    AddFastPetComponent.prototype.showPosition = function (position) {
+        localStorage.setItem('MyLatitude', position.coords.latitude);
+        localStorage.setItem('MyLongitude', position.coords.longitude);
+    };
+    AddFastPetComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-add-fast-pet',
+            template: __webpack_require__("./src/app/add-fast-pet/add-fast-pet.component.html"),
+            styles: [__webpack_require__("./src/app/add-fast-pet/add-fast-pet.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1__add_fast_pet__["a" /* AddFastPet */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_material__["f" /* MatSnackBar */], __WEBPACK_IMPORTED_MODULE_5__angular_forms__["FormBuilder"]])
+    ], AddFastPetComponent);
+    return AddFastPetComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/add-fast-pet/add-fast-pet.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddFastPet; });
+var AddFastPet = /** @class */ (function () {
+    function AddFastPet() {
+    }
+    return AddFastPet;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/add-pet/add-pet.component.css":
 /***/ (function(module, exports) {
 
@@ -27,7 +178,7 @@ module.exports = ".mat-card{\r\n  padding-top: 0px !important;\r\n}\r\n\r\n.pet-
 /***/ "./src/app/add-pet/add-pet.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Cadastrar Pet</h1>\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card>\r\n\r\n    <form id=\"add-pet\" name=\"add-pet\">\r\n\r\n      <div class=\"row pet-form\">\r\n        <div class=\"col-4\">\r\n          <button mat-fab color=\"primary\" (click)='imgFileInput.click()'>\r\n            <mat-icon aria-label=\"Tirar Foto\">photo_camera</mat-icon>\r\n            <input hidden type=\"file\" accept=\"image/*\" id=\"imgupload\" capture=\"camera\" #imgFileInput />\r\n          </button>\r\n        </div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pet.nome\" name=\"nome\" matInput placeholder=\"Nome\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row pet-sub-form\">\r\n        <div class=\"col-4\"><h6>Informações</h6></div>\r\n        <div class=\"col-2\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pet.idade\" name=\"idade\" matInput placeholder=\"Idade\" pattern=\"[0-9]\" max-length=\"2\" required>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pet.text_idade\" name=\"text_idade\" placeholder=\"Meses\" required>\r\n              <mat-option *ngFor=\"let idades of idade\" [value]=\"idades.value\">\r\n                {{ idades.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pet.sexo\" name=\"sexo\" placeholder=\"Sexo\" required>\r\n              <mat-option *ngFor=\"let sexos of sexo\" [value]=\"sexos.value\">\r\n                {{ sexos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pet.tamanho\" name=\"tamanho\" placeholder=\"Tamanho\" required>\r\n              <mat-option *ngFor=\"let tamanhos of tamanho\" [value]=\"tamanhos.value\">\r\n                {{ tamanhos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pet.cor\" name=\"cor\" matInput placeholder=\"Cor\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pet.id_especie\" name=\"especie\" placeholder=\"Espécie\" required>\r\n              <mat-option *ngFor=\"let especies of especie\" [value]=\"especies.id\">\r\n                {{ especies.value }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pet.id_raca\" name=\"raca\" placeholder=\"Raça\" required>\r\n              <mat-option *ngFor=\"let racas of raca\" [value]=\"racas.id\">\r\n                {{ racas.value }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <div class=\"checkbox-align\">\r\n            <mat-checkbox [(ngModel)]=\"pet.deficiencia\" name=\"deficiencia\" color=\"primary\">Há alguma deficiência?</mat-checkbox>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row pet-form\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\" *ngIf=\"!!pet.deficiencia\">\r\n            <mat-form-field>\r\n              <input [(ngModel)]=\"pet.ds_deficiencia\" name=\"ds_deficiencia\" matInput placeholder=\"Qual?\">\r\n            </mat-form-field>\r\n          </div>\r\n      </div>\r\n\r\n      <div class=\"col-12\">\r\n        <div class=\"button-submit-row row justify-content-center\">\r\n          <button mat-raised-button type=\"submit\" color=\"primary\" form=\"add-pet\" class=\"w-50\" (click)=\"registerPet()\">Confirmar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Cadastrar Pet</h1>\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card>\r\n\r\n    <form id=\"add-pet\" name=\"add-pet\">\r\n\r\n      <div class=\"row pet-form\">\r\n        <div class=\"col-4\">\r\n          <button mat-fab color=\"primary\" (click)='imgFileInput.click()'>\r\n            <mat-icon aria-label=\"Tirar Foto\">add_a_photo</mat-icon>\r\n            <input hidden type=\"file\" accept=\"image/*\" id=\"imgupload\" capture=\"camera\" #imgFileInput />\r\n          </button>\r\n        </div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pet.nome\" name=\"nome\" matInput placeholder=\"Nome\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row pet-sub-form\">\r\n        <div class=\"col-4\">\r\n          <h6>Informações</h6>\r\n        </div>\r\n        <div class=\"col-4\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pet.cd_idade_animal\" name=\"idade\" matInput placeholder=\"Idade\" pattern=\"[0-9]\" max-length=\"2\" required>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-4\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pet.nm_idade_animal\" name=\"text_idade\" placeholder=\"Meses\" required>\r\n              <mat-option *ngFor=\"let idades of idade\" [value]=\"idades.value\">\r\n                {{ idades.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pet.sexo\" name=\"sexo\" placeholder=\"Sexo\" required>\r\n              <mat-option *ngFor=\"let sexos of sexo\" [value]=\"sexos.value\">\r\n                {{ sexos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pet.tamanho\" name=\"tamanho\" placeholder=\"Tamanho\" required>\r\n              <mat-option *ngFor=\"let tamanhos of tamanho\" [value]=\"tamanhos.value\">\r\n                {{ tamanhos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pet.cor\" name=\"cor\" matInput placeholder=\"Cor\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pet.id_especie\" name=\"especie\" placeholder=\"Espécie\" (change)=\"fillRacas()\" required>\r\n              <mat-option *ngFor=\"let especies of especie\" [value]=\"especies.id\">\r\n                {{ especies.nm_especie }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\" *ngIf=\"!!pet.id_especie\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pet.id_raca\" name=\"raca\" placeholder=\"Raça\" required>\r\n              <mat-option *ngFor=\"let racas of raca\" [value]=\"racas.id\">\r\n                {{ racas.nm_raca }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <div class=\"checkbox-align\">\r\n            <mat-checkbox [(ngModel)]=\"pet.deficiencia\" name=\"deficiencia\" color=\"primary\">Há alguma deficiência?</mat-checkbox>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row pet-form\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\" *ngIf=\"!!pet.deficiencia\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pet.ds_deficiencia\" name=\"ds_deficiencia\" matInput placeholder=\"Qual?\">\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"col-12\">\r\n        <div class=\"button-submit-row row justify-content-center\">\r\n          <button mat-raised-button type=\"submit\" color=\"primary\" form=\"add-pet\" class=\"w-50\" (click)=\"registerPet()\">Confirmar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -65,6 +216,8 @@ var AddPetComponent = /** @class */ (function () {
         this.router = router;
         this.snackBar = snackBar;
         this.postData = {};
+        this.especie = {};
+        this.raca = {};
         this.apiUrl = api_url;
         this.pet = new __WEBPACK_IMPORTED_MODULE_1__pet__["a" /* Pet */]();
     }
@@ -88,7 +241,7 @@ var AddPetComponent = /** @class */ (function () {
             { value: 'Fêmea', viewValue: 'Fêmea' }
         ];
         this.idade = [
-            { value: 'Mese(s)', viewValue: 'Mese(s)' },
+            { value: 'Mes(es)', viewValue: 'Mes(es)' },
             { value: 'Ano(s)', viewValue: 'Ano(s)' }
         ];
         this.tamanho = [
@@ -96,22 +249,31 @@ var AddPetComponent = /** @class */ (function () {
             { value: 'Médio', viewValue: 'Médio' },
             { value: 'Grande', viewValue: 'Grande' }
         ];
-        this.especie = [
-            { id: 1, value: 'Cachorro' },
-            { id: 2, value: 'Gato' },
-            { id: 3, value: 'Coelho' },
-            { id: 4, value: 'Hamster' },
-            { id: 5, value: 'Pássaro' },
-            { id: 5, value: 'Cavalo' }
-        ];
-        this.raca = [
-            { id: 1, value: 'Pincher' },
-            { id: 2, value: 'Pastor Alemão' },
-            { id: 3, value: 'Siamês' },
-        ];
+        this.raca = [];
+        this.fillEspecie();
     };
     AddPetComponent.prototype.goTo = function (route) {
         this.router.navigate([route]);
+    };
+    AddPetComponent.prototype.fillRacas = function () {
+        var _this = this;
+        var userToken = localStorage.getItem('token');
+        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', userToken);
+        this.httpClient.get(api_url + '/api/racas/getracas/' + this.pet.id_especie, { headers: headers }).subscribe(function (element) {
+            //debugger
+            _this.raca = element;
+            _this.raca = _this.raca.payload;
+        });
+    };
+    AddPetComponent.prototype.fillEspecie = function () {
+        var _this = this;
+        var userToken = localStorage.getItem('token');
+        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', userToken);
+        this.httpClient.get(api_url + '/api/especies/all', { headers: headers }).subscribe(function (element) {
+            //debugger
+            _this.especie = element;
+            _this.especie = _this.especie.payload;
+        });
     };
     AddPetComponent.prototype.registerPet = function () {
         var _this = this;
@@ -124,7 +286,8 @@ var AddPetComponent = /** @class */ (function () {
         }
         this.postData = {
             nm_animal: this.pet.nome,
-            nm_idade_animal: this.pet.idade + this.pet.text_idade,
+            cd_idade_animal: this.pet.cd_idade_animal,
+            nm_idade_animal: this.pet.nm_idade_animal,
             nm_cor_animal: this.pet.cor,
             nm_sexo_animal: this.pet.sexo,
             nm_tamanho_animal: this.pet.tamanho,
@@ -154,7 +317,7 @@ var AddPetComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/add-pet/add-pet.component.html"),
             styles: [__webpack_require__("./src/app/add-pet/add-pet.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_5__angular_material__["e" /* MatSnackBar */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_5__angular_material__["f" /* MatSnackBar */]])
     ], AddPetComponent);
     return AddPetComponent;
 }());
@@ -188,7 +351,7 @@ module.exports = ""
 /***/ "./src/app/add-pfisica/add-pfisica.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n      <h1 class=\"title\">Cadastrar Usuário Pessoa Física</h1>\r\n    </div>\r\n  </div>\r\n\r\n  <mat-card>\r\n    <form id=\"add-pfisica\" name=\"add-pfisica\">\r\n\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.nome\" name=\"nome\" type=\"text\" matInput placeholder=\"Nome\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.email\" name=\"email\" type=\"email\" matInput placeholder=\"Email\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.cpf\" [textMask]=\"{mask: cpfMask}\" name=\"cpf\" type=\"text\" matInput placeholder=\"CPF\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pfisica.sexo\" name=\"sexo\" placeholder=\"Sexo\" required>\r\n              <mat-option *ngFor=\"let sexos of sexo\" [value]=\"sexos.value\">\r\n                {{ sexos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.telefone\" [textMask]=\"{mask: celMask}\" name=\"telefone\" type=\"text\" matInput placeholder=\"Celular\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.cep\" [textMask]=\"{mask: cepMask}\" name=\"cep\" type=\"text\" matInput placeholder=\"CEP\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.estado\" name=\"estado\" type=\"text\" matInput placeholder=\"Estado\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.cidade\" name=\"cidade\" type=\"text\" matInput placeholder=\"Cidade\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.endereco\" name=\"endereco\" type=\"text\" matInput placeholder=\"Endereço\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-4\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.numero\" [textMask]=\"{mask: numMask}\" name=\"numero\" type=\"text\" matInput placeholder=\"Número\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.complemento\" name=\"complemento\" type=\"text\" matInput placeholder=\"Complemento\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"senha\" name=\"senha\" type=\"password\" matInput placeholder=\"Senha\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"button-row row justify-content-center\">\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button type=\"submit\" color=\"primary\" form=\"add-pfisica\" class=\"w-100\" (click)=\"registerPf()\">Confirmar</button>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button color=\"primary\" class=\"w-100\" (click)=\"goTo('login')\">Cancelar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n      <h1 class=\"title\">Cadastrar Usuário Pessoa Física</h1>\r\n    </div>\r\n  </div>\r\n\r\n  <mat-card>\r\n    <form id=\"add-pfisica\" name=\"add-pfisica\">\r\n\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.nome\" name=\"nome\" type=\"text\" matInput placeholder=\"Nome\" required>\r\n            <mat-error *ngIf=\"nome.invalid\">{{getNomeErrorMessage()}}</mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.email\" name=\"email\" type=\"email\" matInput placeholder=\"Email\" required>\r\n            <mat-error *ngIf=\"email.invalid\">{{getEmailErrorMessage()}}</mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.cpf\" [textMask]=\"{mask: cpfMask}\" name=\"cpf\" type=\"text\" matInput placeholder=\"CPF\" required>\r\n            <mat-error *ngIf=\"cpf.invalid\">{{getCpfErrorMessage()}}</mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"pfisica.sexo\" name=\"sexo\" placeholder=\"Sexo\" required>\r\n              <mat-option *ngFor=\"let sexos of sexo\" [value]=\"sexos.value\">\r\n                {{ sexos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.telefone\" [textMask]=\"{mask: celMask}\" name=\"telefone\" type=\"text\" matInput placeholder=\"Celular\"\r\n              required>\r\n              <mat-error *ngIf=\"telefone.invalid\">{{getTelefoneErrorMessage()}}</mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.cep\" [textMask]=\"{mask: cepMask}\" name=\"cep\" type=\"text\" matInput placeholder=\"CEP\" required>\r\n            <mat-error *ngIf=\"cep.invalid\">{{getCepErrorMessage()}}</mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.estado\" [matAutocomplete]=\"autoStates\" name=\"estado\" type=\"text\" matInput placeholder=\"Estado\" (keyup)=\"fillFiltredStates()\" required>\r\n            <mat-autocomplete #autoStates=\"matAutocomplete\">\r\n              <mat-option *ngFor=\"let option of filtredStates\" [value]=\"option\">\r\n                {{ option }}\r\n              </mat-option>\r\n            </mat-autocomplete>\r\n            <mat-error *ngIf=\"estado.invalid\">{{getEstadoErrorMessage()}}</mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.cidade\" name=\"cidade\" [matAutocomplete]=\"autoCities\" type=\"text\" matInput placeholder=\"Cidade\"  (keyup)=\"fillFiltredCities()\" required>\r\n            <mat-autocomplete #autoCities=\"matAutocomplete\">\r\n              <mat-option *ngFor=\"let option of filtredCities\" [value]=\"option\">\r\n                {{ option }}\r\n              </mat-option>\r\n            </mat-autocomplete>\r\n            <mat-error *ngIf=\"cidade.invalid\">{{getCidadeErrorMessage()}}</mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.endereco\" name=\"endereco\" type=\"text\" matInput placeholder=\"Endereço\" required>\r\n            <mat-error *ngIf=\"endereco.invalid\">{{getEnderecoErrorMessage()}}</mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-4\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.numero\" [textMask]=\"{mask: numMask}\" name=\"numero\" type=\"text\" matInput placeholder=\"Número\"\r\n              required>\r\n              <mat-error *ngIf=\"numero.invalid\">{{getNumeroErrorMessage()}}</mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pfisica.complemento\" name=\"complemento\" type=\"text\" matInput placeholder=\"Complemento\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"senha\" name=\"senha\" type=\"password\" matInput placeholder=\"Senha\" required>\r\n            <mat-error *ngIf=\"senha.invalid\">{{getSenhaErrorMessage()}}</mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"button-row row justify-content-center\">\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button type=\"submit\" color=\"primary\" form=\"add-pfisica\" class=\"w-100\" (click)=\"registerPf()\">Confirmar</button>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button color=\"primary\" class=\"w-100\" (click)=\"goTo('login')\">Cancelar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -200,11 +363,10 @@ module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n\r\n  <div 
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__p_fisica__ = __webpack_require__("./src/app/add-pfisica/p-fisica.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5__ = __webpack_require__("./node_modules/ts-md5/dist/md5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -221,23 +383,82 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var api_url = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].apiUrl;
+var api_url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiUrl;
 var AddPfisicaComponent = /** @class */ (function () {
     function AddPfisicaComponent(httpClient, router, snackBar) {
         this.httpClient = httpClient;
         this.router = router;
         this.snackBar = snackBar;
+        this.filtredStates = {};
+        this.citiesArrays = {};
+        this.json = {};
         this.data = {};
         this.postData = {};
-        this.md5 = new __WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5__["Md5"]();
+        this.cityStates = {};
         this.pfisica = new __WEBPACK_IMPORTED_MODULE_1__p_fisica__["a" /* PFisica */]();
         this.apiUrl = api_url + '/api/users/create';
+        this.api_urlCityState = api_url + '/api/citystate';
+        this.nome = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]);
+        this.email = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].email]);
+        this.cpf = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]);
+        this.telefone = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]);
+        this.cep = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]);
+        this.estado = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]);
+        this.cidade = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]);
+        this.endereco = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]);
+        this.numero = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]);
+        this.completo = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]);
+        this.senha = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]);
         this.cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
         this.celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
         this.cepMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
         this.numMask = [/[1-9]/, /\d/, /\d/, /\d/, /\d/, /\d/];
     }
+    AddPfisicaComponent.prototype.getNomeErrorMessage = function () {
+        return this.nome.hasError('required') ? 'Você deve preencher seu nome' : '';
+    };
+    AddPfisicaComponent.prototype.getEmailErrorMessage = function () {
+        return this.email.hasError('required') ? 'Você deve preencher seu email' :
+            this.email.hasError('email') ? 'Email incorreto' :
+                '';
+    };
+    AddPfisicaComponent.prototype.getCpfErrorMessage = function () {
+        return this.cpf.hasError('required') ? 'Você deve preencher seu cpf' : '';
+    };
+    AddPfisicaComponent.prototype.getTelefoneErrorMessage = function () {
+        return this.telefone.hasError('required') ? 'Você deve preencher seu telefone' : '';
+    };
+    AddPfisicaComponent.prototype.getCepErrorMessage = function () {
+        return this.cep.hasError('required') ? 'Você deve preencher seu cep' : '';
+    };
+    AddPfisicaComponent.prototype.getEstadoErrorMessage = function () {
+        return this.estado.hasError('required') ? 'Você deve preencher seu estado' : '';
+    };
+    AddPfisicaComponent.prototype.getCidadeErrorMessage = function () {
+        return this.cidade.hasError('required') ? 'Você deve preencher seu cidade' : '';
+    };
+    AddPfisicaComponent.prototype.getEnderecoErrorMessage = function () {
+        return this.endereco.hasError('required') ? 'Você deve preencher seu endereço' : '';
+    };
+    AddPfisicaComponent.prototype.getNumeroErrorMessage = function () {
+        return this.numero.hasError('required') ? 'Você deve preencher seu numero' : '';
+    };
+    AddPfisicaComponent.prototype.getSenhaErrorMessage = function () {
+        return this.senha.hasError('required') ? 'Você deve preencher sua senha' : '';
+    };
+    AddPfisicaComponent.prototype.getCityState = function () {
+        var _this = this;
+        this.filtredStates = [];
+        this.httpClient.get(this.api_urlCityState).subscribe(function (jsonStates) {
+            _this.json = jsonStates;
+            _this.cityStates = _this.json.estados;
+            _this.cityStates.forEach(function (element) {
+                _this.filtredStates.push(element.sigla);
+            });
+        });
+    };
     AddPfisicaComponent.prototype.ngOnInit = function () {
+        this.getCityState();
         this.sexo = [
             { value: 'Masculino', viewValue: 'Masculino' },
             { value: 'Feminino', viewValue: 'Feminino' }
@@ -246,12 +467,41 @@ var AddPfisicaComponent = /** @class */ (function () {
     AddPfisicaComponent.prototype.goTo = function (route) {
         this.router.navigate([route]);
     };
+    AddPfisicaComponent.prototype.fillFiltredStates = function () {
+        var _this = this;
+        this.citiesArrays = [];
+        this.filtredStates = [];
+        this.filtredCities = [];
+        if (!!this.pfisica.estado) {
+            this.cityStates.forEach(function (element) {
+                if (_this.pfisica.estado.toLowerCase() === element.sigla.slice(0, _this.pfisica.estado.length).toLowerCase()) {
+                    _this.filtredStates.push(element.sigla);
+                    _this.citiesArrays.push(element.cidades);
+                }
+            });
+            this.citiesArrays.forEach(function (element) {
+                element.forEach(function (element2) {
+                    _this.filtredCities.push(element2);
+                });
+            });
+        }
+    };
+    AddPfisicaComponent.prototype.fillFiltredCities = function () {
+        var _this = this;
+        this.filtredCities = [];
+        if (!!this.pfisica.cidade) {
+            this.citiesArrays.forEach(function (element) {
+                element.forEach(function (element2) {
+                    if (_this.pfisica.cidade.toLowerCase() === element2.slice(0, _this.pfisica.cidade.length).toLowerCase()) {
+                        _this.filtredCities.push(element2);
+                    }
+                });
+            });
+        }
+    };
     AddPfisicaComponent.prototype.registerPf = function () {
         var _this = this;
         this.removeMasks();
-        this.md5.appendStr(this.senha);
-        var newSenha = this.md5.end();
-        this.pfisica.senha = newSenha.toString();
         this.postData = {
             nm_email_usuario: this.pfisica.email,
             cd_senha_usuario: this.pfisica.senha,
@@ -270,18 +520,27 @@ var AddPfisicaComponent = /** @class */ (function () {
             ds_complemento_endereco_usuario: this.pfisica.complemento,
             ds_foto_usuario: null
         };
-        return this.httpClient.post(this.apiUrl, this.postData)
-            .subscribe(function (res) {
-            console.log(res);
-            _this.snackBar.open('Usuário Cadastrado com Sucesso!', 'OK', {
+        if (this.pfisica.email === null || this.pfisica.senha === null || this.pfisica.cpf === null || this.pfisica.nome === null ||
+            this.pfisica.sexo === null || this.pfisica.data === null || this.pfisica.telefone === null || this.pfisica.cep === null ||
+            this.pfisica.estado === null || this.pfisica.endereco === null || this.pfisica.numero === null) {
+            this.snackBar.open('Preencha todos os dados obrigatórios', 'OK', {
                 duration: 2000,
             });
-            _this.goTo('login');
-        }, function (err) {
-            _this.snackBar.open('Erro ao Cadastrar Usuário', 'OK', {
-                duration: 2000,
+        }
+        else {
+            return this.httpClient.post(this.apiUrl, this.postData)
+                .subscribe(function (res) {
+                console.log(res);
+                _this.snackBar.open('Usuário Cadastrado com Sucesso!', 'OK', {
+                    duration: 2000,
+                });
+                _this.goTo('login');
+            }, function (err) {
+                _this.snackBar.open('Erro ao Cadastrar Usuário', 'OK', {
+                    duration: 2000,
+                });
             });
-        });
+        }
     };
     AddPfisicaComponent.prototype.removeMasks = function () {
         this.removeCpfMask();
@@ -326,7 +585,7 @@ var AddPfisicaComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/add-pfisica/add-pfisica.component.html"),
             styles: [__webpack_require__("./src/app/add-pfisica/add-pfisica.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_5__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_6__angular_material__["e" /* MatSnackBar */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_5__angular_material__["f" /* MatSnackBar */]])
     ], AddPfisicaComponent);
     return AddPfisicaComponent;
 }());
@@ -360,7 +619,7 @@ module.exports = ""
 /***/ "./src/app/add-pjuridica/add-pjuridica.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n      <h1 class=\"title\">Cadastrar Usuário Pessoa Jurídica</h1>\r\n    </div>\r\n  </div>\r\n\r\n  <mat-card>\r\n    <form id=\"add-pjuridica\" name=\"add-pjuridica\">\r\n\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.razaoSocial\" name=\"razaoSocial\" type=\"text\" matInput placeholder=\"Razão Social\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.email\" name=\"email\" type=\"email\" matInput placeholder=\"Email\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.cnpj\" [textMask]=\"{mask: cnpjMask}\" name=\"cnpj\" type=\"text\" matInput placeholder=\"CNPJ\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.telefone\" [textMask]=\"{mask: celMask}\" name=\"telefone\" type=\"text\" matInput placeholder=\"Celular\"\r\n              required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.cep\" [textMask]=\"{mask: cepMask}\" name=\"cep\" type=\"text\" matInput placeholder=\"CEP\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.estado\" name=\"estado\" type=\"text\" matInput placeholder=\"Estado\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.cidade\" name=\"cidade\" type=\"text\" matInput placeholder=\"Cidade\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.endereco\" name=\"endereco\" type=\"text\" matInput placeholder=\"Endereço\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-4\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.numero\" [textMask]=\"{mask: numMask}\" name=\"numero\" type=\"text\" matInput placeholder=\"Número\"\r\n              required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.complemento\" name=\"complemento\" type=\"text\" matInput placeholder=\"Complemento\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"senha\" name=\"senha\" type=\"password\" matInput placeholder=\"Senha\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"button-row row justify-content-center\">\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button type=\"submit\" color=\"primary\" form=\"add-pjuridica\" class=\"w-100\" (click)=\"registerPj()\">Confirmar</button>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button color=\"primary\" class=\"w-100\" (click)=\"goTo('login')\">Cancelar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n      <h1 class=\"title\">Cadastrar Usuário Pessoa Jurídica</h1>\r\n    </div>\r\n  </div>\r\n\r\n  <mat-card>\r\n    <form id=\"add-pjuridica\" name=\"add-pjuridica\">\r\n\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.razaoSocial\" name=\"razaoSocial\" type=\"text\" matInput placeholder=\"Razão Social\" required>\r\n            <mat-error *ngIf=\"razaoSocial.invalid\">{{getRazaoSocialErrorMessage()}}</mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.email\" name=\"email\" type=\"email\" matInput placeholder=\"Email\" required>\r\n            <mat-error *ngIf=\"email.invalid\">{{getEmailErrorMessage()}}</mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.cnpj\" [textMask]=\"{mask: cnpjMask}\" name=\"cnpj\" type=\"text\" matInput placeholder=\"CNPJ\" required>\r\n            <mat-error *ngIf=\"cnpj.invalid\">{{getCnpjErrorMessage()}}</mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.telefone\" [textMask]=\"{mask: celMask}\" name=\"telefone\" type=\"text\" matInput placeholder=\"Celular\"\r\n              required>\r\n              <mat-error *ngIf=\"telefone.invalid\">{{getTelefoneErrorMessage()}}</mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.cep\" [textMask]=\"{mask: cepMask}\" name=\"cep\" type=\"text\" matInput placeholder=\"CEP\" required>\r\n            <mat-error *ngIf=\"cep.invalid\">{{getCepErrorMessage()}}</mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.estado\" [matAutocomplete]=\"autoStates\" name=\"estado\" type=\"text\" matInput placeholder=\"Estado\" (keyup)=\"fillFiltredStates()\" required>\r\n            <mat-autocomplete #autoStates=\"matAutocomplete\">\r\n              <mat-option *ngFor=\"let option of filtredStates\" [value]=\"option\">\r\n                {{ option }}\r\n              </mat-option>\r\n            </mat-autocomplete>\r\n            <mat-error *ngIf=\"estado.invalid\">{{getEstadoErrorMessage()}}</mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.cidade\" name=\"cidade\" [matAutocomplete]=\"autoCities\" type=\"text\" matInput placeholder=\"Cidade\" (keyup)=\"fillFiltredCities()\" required>\r\n            <mat-autocomplete #autoCities=\"matAutocomplete\">\r\n              <mat-option *ngFor=\"let option of filtredCities\" [value]=\"option\">\r\n                {{ option }}\r\n              </mat-option>\r\n            </mat-autocomplete>\r\n            <mat-error *ngIf=\"cidade.invalid\">{{getCidadeErrorMessage()}}</mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.endereco\" name=\"endereco\" type=\"text\" matInput placeholder=\"Endereço\" required>\r\n            <mat-error *ngIf=\"endereco.invalid\">{{getEnderecoErrorMessage()}}</mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-4\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.numero\" [textMask]=\"{mask: numMask}\" name=\"numero\" type=\"text\" matInput placeholder=\"Número\"\r\n              required>\r\n              <mat-error *ngIf=\"numero.invalid\">{{getNumeroErrorMessage()}}</mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"pjuridica.complemento\" name=\"complemento\" type=\"text\" matInput placeholder=\"Complemento\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"senha\" name=\"senha\" type=\"password\" matInput placeholder=\"Senha\" required>\r\n            <mat-error *ngIf=\"senha.invalid\">{{getSenhaErrorMessage()}}</mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"button-row row justify-content-center\">\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button type=\"submit\" color=\"primary\" form=\"add-pjuridica\" class=\"w-100\" (click)=\"registerPj()\">Confirmar</button>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button color=\"primary\" class=\"w-100\" (click)=\"goTo('login')\">Cancelar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -372,11 +631,10 @@ module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n\r\n  <div 
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__p_juridica__ = __webpack_require__("./src/app/add-pjuridica/p-juridica.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5__ = __webpack_require__("./node_modules/ts-md5/dist/md5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -393,31 +651,119 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var api_url = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].apiUrl;
+var api_url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiUrl;
 var AddPjuridicaComponent = /** @class */ (function () {
     function AddPjuridicaComponent(httpClient, router, snackBar) {
         this.httpClient = httpClient;
         this.router = router;
         this.snackBar = snackBar;
+        this.filtredStates = {};
+        this.citiesArrays = {};
+        this.json = {};
+        this.cityStates = {};
         this.data = {};
         this.postData = {};
-        this.md5 = new __WEBPACK_IMPORTED_MODULE_3_ts_md5_dist_md5__["Md5"]();
         this.pjuridica = new __WEBPACK_IMPORTED_MODULE_1__p_juridica__["a" /* PJuridica */]();
         this.apiUrl = api_url + '/api/users/create';
+        this.api_urlCityState = api_url + '/api/citystate';
+        this.razaoSocial = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]);
+        this.email = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].email]);
+        this.cnpj = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]);
+        this.telefone = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]);
+        this.cep = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]);
+        this.estado = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]);
+        this.cidade = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]);
+        this.endereco = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]);
+        this.numero = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]);
+        this.completo = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]);
+        this.senha = new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_6__angular_forms__["Validators"].required]);
         this.cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/',
             /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
         this.celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
         this.cepMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
         this.numMask = [/[1-9]/, /\d/, /\d/, /\d/, /\d/, /\d/];
     }
+    AddPjuridicaComponent.prototype.getRazaoSocialErrorMessage = function () {
+        return this.razaoSocial.hasError('required') ? 'Você deve preencher sua razão social' : '';
+    };
+    AddPjuridicaComponent.prototype.getEmailErrorMessage = function () {
+        return this.email.hasError('required') ? 'Você deve preencher seu email' :
+            this.email.hasError('email') ? 'Email incorreto' :
+                '';
+    };
+    AddPjuridicaComponent.prototype.getCnpjErrorMessage = function () {
+        return this.cnpj.hasError('required') ? 'Você deve preencher seu cnpj' : '';
+    };
+    AddPjuridicaComponent.prototype.getTelefoneErrorMessage = function () {
+        return this.telefone.hasError('required') ? 'Você deve preencher seu telefone' : '';
+    };
+    AddPjuridicaComponent.prototype.getCepErrorMessage = function () {
+        return this.cep.hasError('required') ? 'Você deve preencher seu cep' : '';
+    };
+    AddPjuridicaComponent.prototype.getEstadoErrorMessage = function () {
+        return this.estado.hasError('required') ? 'Você deve preencher seu estado' : '';
+    };
+    AddPjuridicaComponent.prototype.getCidadeErrorMessage = function () {
+        return this.cidade.hasError('required') ? 'Você deve preencher seu cidade' : '';
+    };
+    AddPjuridicaComponent.prototype.getEnderecoErrorMessage = function () {
+        return this.endereco.hasError('required') ? 'Você deve preencher seu endereço' : '';
+    };
+    AddPjuridicaComponent.prototype.getNumeroErrorMessage = function () {
+        return this.numero.hasError('required') ? 'Você deve preencher seu numero' : '';
+    };
+    AddPjuridicaComponent.prototype.getSenhaErrorMessage = function () {
+        return this.senha.hasError('required') ? 'Você deve preencher sua senha' : '';
+    };
+    AddPjuridicaComponent.prototype.getCityState = function () {
+        var _this = this;
+        this.filtredStates = [];
+        this.httpClient.get(this.api_urlCityState).subscribe(function (jsonStates) {
+            _this.json = jsonStates;
+            _this.cityStates = _this.json.estados;
+            _this.cityStates.forEach(function (element) {
+                _this.filtredStates.push(element.sigla);
+            });
+        });
+    };
     AddPjuridicaComponent.prototype.ngOnInit = function () {
+        this.getCityState();
+    };
+    AddPjuridicaComponent.prototype.fillFiltredStates = function () {
+        var _this = this;
+        this.citiesArrays = [];
+        this.filtredStates = [];
+        this.filtredCities = [];
+        if (!!this.pjuridica.estado) {
+            this.cityStates.forEach(function (element) {
+                if (_this.pjuridica.estado.toLowerCase() === element.sigla.slice(0, _this.pjuridica.estado.length).toLowerCase()) {
+                    _this.filtredStates.push(element.sigla);
+                    _this.citiesArrays.push(element.cidades);
+                }
+            });
+            this.citiesArrays.forEach(function (element) {
+                element.forEach(function (element2) {
+                    _this.filtredCities.push(element2);
+                });
+            });
+        }
+    };
+    AddPjuridicaComponent.prototype.fillFiltredCities = function () {
+        var _this = this;
+        this.filtredCities = [];
+        if (!!this.pjuridica.cidade) {
+            this.citiesArrays.forEach(function (element) {
+                element.forEach(function (element2) {
+                    if (_this.pjuridica.cidade.toLowerCase() === element2.slice(0, _this.pjuridica.cidade.length).toLowerCase()) {
+                        _this.filtredCities.push(element2);
+                    }
+                });
+            });
+        }
     };
     AddPjuridicaComponent.prototype.registerPj = function () {
         var _this = this;
         this.removeMasks();
-        this.md5.appendStr(this.senha);
-        var newSenha = this.md5.end();
-        this.pjuridica.senha = newSenha.toString();
         this.postData = {
             nm_email_usuario: this.pjuridica.email,
             cd_senha_usuario: this.pjuridica.senha,
@@ -492,7 +838,7 @@ var AddPjuridicaComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/add-pjuridica/add-pjuridica.component.html"),
             styles: [__webpack_require__("./src/app/add-pjuridica/add-pjuridica.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_5__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_6__angular_material__["e" /* MatSnackBar */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_5__angular_material__["f" /* MatSnackBar */]])
     ], AddPjuridicaComponent);
     return AddPjuridicaComponent;
 }());
@@ -535,12 +881,16 @@ var PJuridica = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__add_pet_add_pet_component__ = __webpack_require__("./src/app/add-pet/add-pet.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_component__ = __webpack_require__("./src/app/app.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__edit_pet_edit_pet_component__ = __webpack_require__("./src/app/edit-pet/edit-pet.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__edit_usuario_edit_usuario_component__ = __webpack_require__("./src/app/edit-usuario/edit-usuario.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__add_fast_pet_add_fast_pet_component__ = __webpack_require__("./src/app/add-fast-pet/add-fast-pet.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -584,6 +934,10 @@ var routes = [
         component: __WEBPACK_IMPORTED_MODULE_11__add_pet_add_pet_component__["a" /* AddPetComponent */]
     },
     {
+        path: 'add-fast-pet',
+        component: __WEBPACK_IMPORTED_MODULE_15__add_fast_pet_add_fast_pet_component__["a" /* AddFastPetComponent */]
+    },
+    {
         path: 'add-pfisica',
         component: __WEBPACK_IMPORTED_MODULE_10__add_pfisica_add_pfisica_component__["a" /* AddPfisicaComponent */]
     },
@@ -614,6 +968,10 @@ var routes = [
     {
         path: 'edit-pet',
         component: __WEBPACK_IMPORTED_MODULE_13__edit_pet_edit_pet_component__["a" /* EditPetComponent */]
+    },
+    {
+        path: 'edit-usuario',
+        component: __WEBPACK_IMPORTED_MODULE_14__edit_usuario_edit_usuario_component__["a" /* EditUsuarioComponent */]
     }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -635,14 +993,14 @@ var AppRoutingModule = /** @class */ (function () {
 /***/ "./src/app/app.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".text-center{\r\n  text-align: center;\r\n}\r\n\r\n.navmenu{\r\n  position: fixed;\r\n  z-index: 2;\r\n  -webkit-box-shadow: 0 1px 6px rgba(0,0,0,0.16), 0 1px 6px rgba(0,0,0,0.23);\r\n          box-shadow: 0 1px 6px rgba(0,0,0,0.16), 0 1px 6px rgba(0,0,0,0.23);\r\n  color: #ffffff;\r\n  padding: 0px 10px;\r\n}\r\n\r\n.navmenu .title{\r\n  float: right;\r\n}\r\n\r\n.subnav{\r\n  position: fixed;\r\n  background: #f5f5f5;\r\n  color: #333333;\r\n  bottom: 0;\r\n  z-index: 2;\r\n  padding: 0px;\r\n  text-align: center;\r\n  -webkit-box-shadow: 0 -1px 3px rgba(0,0,0,0.12), 0 -1px 2px rgba(0,0,0,0.24);\r\n          box-shadow: 0 -1px 3px rgba(0,0,0,0.12), 0 -1px 2px rgba(0,0,0,0.24);\r\n  -webkit-transition: all .3s ease-in-out;\r\n  transition: all .3s ease-in-out;\r\n}\r\n\r\n.subnav.scrollUp {\r\n  -webkit-transform: translateY(60px);\r\n          transform: translateY(60px);\r\n  -webkit-transition: all .3s ease-in-out;\r\n  transition: all .3s ease-in-out;\r\n}\r\n\r\n.mat-toolbar-row{\r\n  padding: 0px;\r\n}\r\n\r\n.subnav .mat-toolbar-row .mat-button{\r\n  margin: 0px 0px;\r\n  font-size: 12px;\r\n  font-weight: 600;\r\n  min-width: 72px;\r\n}\r\n\r\n.subnav .mat-toolbar-row .mat-button{\r\n  padding: 8px 0px;\r\n}\r\n\r\n.subnav .mat-toolbar-row a{\r\n  padding: 0px 0px;\r\n}\r\n\r\n.subnav .mat-toolbar-row ul{\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.subnav .mat-toolbar-row li{\r\n  list-style: none;\r\n  max-height: 20px;\r\n}\r\n\r\n.mat-icon{\r\n  font-size: 22px;\r\n}\r\n\r\n.example-container {\r\n  position: absolute;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\r\n}\r\n\r\nul#sidenav-menu{\r\n  padding: 0px 60px 0px 0px;\r\n  margin: 0px;\r\n}\r\n\r\n#sidenav-menu li{\r\n  list-style: none;\r\n  padding: 15px 0px;\r\n  margin: 0px;\r\n}\r\n\r\n#sidenav-menu li .icon-menu{\r\n  color: #f2f2f2;\r\n  font-size: 18px;\r\n  margin-right: 10px;\r\n}\r\n\r\n#sidenav-menu li a{\r\n  margin: 0px;\r\n  color: #f2f2f2;\r\n  font-size: 18px;\r\n  text-decoration: none;\r\n}\r\n\r\n/*\r\n.example-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  position: absolute;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\r\n}*/\r\n\r\n.example-sidenav-content {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  height: 100%;\r\n  -webkit-box-align: center;\r\n      -ms-flex-align: center;\r\n          align-items: center;\r\n  -webkit-box-pack: center;\r\n      -ms-flex-pack: center;\r\n          justify-content: center;\r\n}\r\n\r\n.example-sidenav {\r\n  padding: 20px 10px;\r\n  background: #755DCA !important;\r\n}\r\n\r\n@media only screen and (min-width: 400px){\r\n  .subnav .mat-toolbar-row .mat-button{\r\n    min-width: 83px;\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 340px){\r\n  .subnav .mat-toolbar-row .mat-button{\r\n    min-width: 64px;\r\n    font-size: 10px;\r\n  }\r\n  .mat-icon{\r\n    font-size: 16px;\r\n  }\r\n}\r\n"
+module.exports = ".text-center{\r\n  text-align: center;\r\n}\r\n\r\n.navmenu{\r\n  position: fixed;\r\n  z-index: 2;\r\n  -webkit-box-shadow: 0 1px 6px rgba(0,0,0,0.16), 0 1px 6px rgba(0,0,0,0.23);\r\n          box-shadow: 0 1px 6px rgba(0,0,0,0.16), 0 1px 6px rgba(0,0,0,0.23);\r\n  color: #ffffff;\r\n  padding: 0px 10px;\r\n}\r\n\r\n.navmenu .title{\r\n  float: right;\r\n}\r\n\r\n.subnav{\r\n  position: fixed;\r\n  background: #f5f5f5;\r\n  color: #333333;\r\n  bottom: 0;\r\n  z-index: 2;\r\n  padding: 0px;\r\n  text-align: center;\r\n  -webkit-box-shadow: 0 -1px 3px rgba(0,0,0,0.12), 0 -1px 2px rgba(0,0,0,0.24);\r\n          box-shadow: 0 -1px 3px rgba(0,0,0,0.12), 0 -1px 2px rgba(0,0,0,0.24);\r\n  -webkit-transition: all .3s ease-in-out;\r\n  transition: all .3s ease-in-out;\r\n}\r\n\r\n.subnav.scrollUp {\r\n  -webkit-transform: translateY(60px);\r\n          transform: translateY(60px);\r\n  -webkit-transition: all .3s ease-in-out;\r\n  transition: all .3s ease-in-out;\r\n}\r\n\r\n.mat-toolbar-row{\r\n  padding: 0px;\r\n}\r\n\r\n.subnav .mat-toolbar-row .mat-button{\r\n  margin: 0px 0px;\r\n  font-size: 12px;\r\n  font-weight: 600;\r\n  min-width: 72px;\r\n}\r\n\r\n.subnav .mat-toolbar-row .mat-button{\r\n  padding: 8px 0px;\r\n}\r\n\r\n.subnav .mat-toolbar-row a{\r\n  padding: 0px 0px;\r\n}\r\n\r\n.subnav .mat-toolbar-row ul{\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.subnav .mat-toolbar-row li{\r\n  list-style: none;\r\n  max-height: 20px;\r\n}\r\n\r\n.mat-icon{\r\n  font-size: 22px;\r\n}\r\n\r\n.example-container {\r\n  position: absolute;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\r\n}\r\n\r\nul#sidenav-menu{\r\n  padding: 0px 60px 0px 0px;\r\n  margin: 0px;\r\n}\r\n\r\n#sidenav-menu li{\r\n  list-style: none;\r\n  padding: 15px 0px;\r\n  margin: 0px;\r\n}\r\n\r\n#sidenav-menu li .icon-menu{\r\n  color: #f2f2f2;\r\n  font-size: 18px;\r\n  margin-right: 10px;\r\n}\r\n\r\n#sidenav-menu li a{\r\n  margin: 0px;\r\n  color: #f2f2f2;\r\n  font-size: 18px;\r\n  text-decoration: none;\r\n}\r\n\r\n.btn-fast-add{\r\n  position: fixed;\r\n  bottom: 80px;\r\n  right: 20px;\r\n  z-index: 2;\r\n}\r\n\r\n/*\r\n.example-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  position: absolute;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\r\n}*/\r\n\r\n.example-sidenav-content {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  height: 100%;\r\n  -webkit-box-align: center;\r\n      -ms-flex-align: center;\r\n          align-items: center;\r\n  -webkit-box-pack: center;\r\n      -ms-flex-pack: center;\r\n          justify-content: center;\r\n}\r\n\r\n.example-sidenav {\r\n  padding: 20px 10px;\r\n  background: #755DCA !important;\r\n}\r\n\r\n@media only screen and (min-width: 400px){\r\n  .subnav .mat-toolbar-row .mat-button{\r\n    min-width: 83px;\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 340px){\r\n  .subnav .mat-toolbar-row .mat-button{\r\n    min-width: 64px;\r\n    font-size: 10px;\r\n  }\r\n  .mat-icon{\r\n    font-size: 16px;\r\n  }\r\n}\r\n"
 
 /***/ }),
 
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-sidenav-container class=\"example-container\">\r\n    <mat-sidenav #sidenav class=\"example-sidenav\">\r\n        <ul id=\"sidenav-menu\">\r\n          <li> <i class=\"fas fa-sign-out-alt icon-menu\"></i> <a href=\"\" (click)=\"logoff('login')\"> Logoff</a></li>\r\n          <li> <i class=\"fas fa-pencil-alt icon-menu\"></i> <a href=\"\"> Editar Perfil</a></li>\r\n          <!-- <li> <i class=\"fas fa-trash icon-menu\"></i> <a href=\"\"> Excluir Conta</a></li> -->\r\n        </ul>\r\n        </mat-sidenav>\r\n      <mat-sidenav-content>\r\n<mat-toolbar *ngIf=\"mostrarMenu\" class=\"navmenu\" color=\"primary\">\r\n  <mat-toolbar-row>\r\n    <a mat-icon-button (click)=\"sidenav.toggle()\">\r\n      <mat-icon><i class=\"fas fa-bars\"></i></mat-icon>\r\n    </a>\r\n\r\n    <span class=\"nav-space\"></span>\r\n\r\n    <img class=\"nav-logo\" src=\"../assets/images/idot-logo-branca36.png\" alt=\"idot logo\">\r\n\r\n  </mat-toolbar-row>\r\n</mat-toolbar>\r\n\r\n\r\n  \r\n\r\n<mat-toolbar *ngIf=\"mostrarMenu\" class=\"subnav\">\r\n  <mat-toolbar-row>\r\n    <a mat-button routerLink=\"/home\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-home\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Home</span>\r\n        </li>\r\n      </ul>\r\n    </a>\r\n    <a mat-button routerLink=\"/meus-pets\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-paw\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Meus Pets</span>\r\n        </li>\r\n      </ul>\r\n\r\n    </a>\r\n    <a mat-button routerLink=\"/add-pet\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-plus\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Adicionar</span>\r\n        </li>\r\n      </ul>\r\n\r\n    </a>\r\n    <a mat-button routerLink=\"/favoritos\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-heart\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Favoritos</span>\r\n        </li>\r\n      </ul>\r\n\r\n    </a>\r\n    <a mat-button routerLink=\"/pesquisar\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-search\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Pesquisar</span>\r\n        </li>\r\n      </ul>\r\n    </a>\r\n  </mat-toolbar-row>\r\n</mat-toolbar>\r\n\r\n<router-outlet></router-outlet>\r\n</mat-sidenav-content>\r\n</mat-sidenav-container>\r\n\r\n"
+module.exports = "<mat-sidenav-container class=\"example-container\">\r\n    <mat-sidenav #sidenav class=\"example-sidenav\">\r\n        <ul id=\"sidenav-menu\">\r\n          <li> <a href=\"\" (click)=\"logoff('login')\"><i class=\"fas fa-sign-out-alt icon-menu\"></i> Logoff</a></li>\r\n          <li *ngIf=\"mostrarMenu\"> <a routerLink=\"/edit-usuario\" [queryParams]=\"{id: mostrarId}\" (click)=\"sidenav.toggle()\"><i class=\"fas fa-pencil-alt icon-menu\"></i> Editar Perfil</a></li>\r\n          <!-- <li> <i class=\"fas fa-trash icon-menu\"></i> <a href=\"\"> Excluir Conta</a></li> -->\r\n        </ul>\r\n        </mat-sidenav>\r\n      <mat-sidenav-content>\r\n<mat-toolbar *ngIf=\"mostrarMenu\" class=\"navmenu\" color=\"primary\">\r\n  <mat-toolbar-row>\r\n    <a mat-icon-button (click)=\"sidenav.toggle()\">\r\n      <mat-icon><i class=\"fas fa-bars\"></i></mat-icon>\r\n    </a>\r\n\r\n    <span class=\"nav-space\"></span>\r\n\r\n    <img class=\"nav-logo\" src=\"../assets/images/idot-logo-branca36.png\" alt=\"idot logo\">\r\n\r\n  </mat-toolbar-row>\r\n</mat-toolbar>\r\n\r\n\r\n<button *ngIf=\"mostrarButton\" class=\"btn-fast-add\" mat-mini-fab color=\"primary\" routerLink=\"/add-fast-pet\">\r\n  <mat-icon aria-label=\"Adicionar Pet Rapidamente\">add</mat-icon>\r\n</button>\r\n\r\n\r\n<mat-toolbar *ngIf=\"mostrarMenu\" class=\"subnav\">\r\n  <mat-toolbar-row>\r\n    <a mat-button routerLink=\"/home\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-home\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Home</span>\r\n        </li>\r\n      </ul>\r\n    </a>\r\n    <a mat-button routerLink=\"/meus-pets\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-paw\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Meus Pets</span>\r\n        </li>\r\n      </ul>\r\n\r\n    </a>\r\n    <a mat-button routerLink=\"/add-pet\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-plus\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Adicionar</span>\r\n        </li>\r\n      </ul>\r\n\r\n    </a>\r\n    <a mat-button routerLink=\"/favoritos\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-heart\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Favoritos</span>\r\n        </li>\r\n      </ul>\r\n\r\n    </a>\r\n    <a mat-button routerLink=\"/pesquisar\">\r\n      <ul>\r\n        <li>\r\n          <mat-icon><i class=\"fas fa-search\"></i></mat-icon>\r\n        </li>\r\n        <li>\r\n          <span class=\"text-center\">Pesquisar</span>\r\n        </li>\r\n      </ul>\r\n    </a>\r\n  </mat-toolbar-row>\r\n</mat-toolbar>\r\n\r\n<router-outlet></router-outlet>\r\n</mat-sidenav-content>\r\n</mat-sidenav-container>\r\n\r\n"
 
 /***/ }),
 
@@ -674,7 +1032,11 @@ var AppComponent = /** @class */ (function () {
         this.loginService = loginService;
         this.router = router;
         this.mostrarMenu = false;
+        this.mostrarButton = false;
+        this.mostrarId = null;
         this.mostrarMenuEmitter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.mostrarButtonEmmiter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.idUsuario = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -706,10 +1068,12 @@ var AppComponent = /** @class */ (function () {
                 console.log('Desktop');
             }
         };
-        if ((!localStorage.getItem('token')) || (!sessionStorage.getItem('id')) /*|| (this.mostrarMenu === false)*/) {
+        if ((!localStorage.getItem('token')) || (!sessionStorage.getItem('id')) || (this.mostrarMenu === false)) {
             this.logoff('login');
         }
         this.loginService.mostrarMenuEmitter.subscribe(function (mostrar) { return _this.mostrarMenu = mostrar; });
+        this.loginService.mostrarButtonEmitter.subscribe(function (mostrarBtn) { return _this.mostrarButton = mostrarBtn; });
+        this.loginService.idUsuario.subscribe(function (id) { return _this.mostrarId = id; });
     };
     AppComponent.prototype.logoff = function (route) {
         this.router.navigate([route]);
@@ -759,29 +1123,38 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__login_modal_add_p_modal_add_p_component__ = __webpack_require__("./src/app/login/modal-add-p/modal-add-p.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__meus_pets_modal_delete_pet_modal_delete_pet_component__ = __webpack_require__("./src/app/meus-pets/modal-delete-pet/modal-delete-pet.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__edit_pet_edit_pet_component__ = __webpack_require__("./src/app/edit-pet/edit-pet.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__login_login_service__ = __webpack_require__("./src/app/login/login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__angular_material_sidenav__ = __webpack_require__("./node_modules/@angular/material/esm5/sidenav.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__angular_material_toolbar__ = __webpack_require__("./node_modules/@angular/material/esm5/toolbar.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__angular_material_list__ = __webpack_require__("./node_modules/@angular/material/esm5/list.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__angular_material_button__ = __webpack_require__("./node_modules/@angular/material/esm5/button.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__angular_material_icon__ = __webpack_require__("./node_modules/@angular/material/esm5/icon.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__angular_material_card__ = __webpack_require__("./node_modules/@angular/material/esm5/card.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__angular_material_form_field__ = __webpack_require__("./node_modules/@angular/material/esm5/form-field.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__angular_material_input__ = __webpack_require__("./node_modules/@angular/material/esm5/input.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__angular_material_checkbox__ = __webpack_require__("./node_modules/@angular/material/esm5/checkbox.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__angular_material_select__ = __webpack_require__("./node_modules/@angular/material/esm5/select.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34_angular2_text_mask__ = __webpack_require__("./node_modules/angular2-text-mask/dist/angular2TextMask.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34_angular2_text_mask___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_34_angular2_text_mask__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__auth_auth_component__ = __webpack_require__("./src/app/auth/auth.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__meus_pets_meus_pets__ = __webpack_require__("./src/app/meus-pets/meus-pets.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__edit_pet_edit_pet__ = __webpack_require__("./src/app/edit-pet/edit-pet.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__edit_usuario_edit_usuario_component__ = __webpack_require__("./src/app/edit-usuario/edit-usuario.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__add_fast_pet_add_fast_pet_component__ = __webpack_require__("./src/app/add-fast-pet/add-fast-pet.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__login_login_service__ = __webpack_require__("./src/app/login/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__angular_material_sidenav__ = __webpack_require__("./node_modules/@angular/material/esm5/sidenav.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__angular_material_toolbar__ = __webpack_require__("./node_modules/@angular/material/esm5/toolbar.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__angular_material_list__ = __webpack_require__("./node_modules/@angular/material/esm5/list.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__angular_material_button__ = __webpack_require__("./node_modules/@angular/material/esm5/button.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__angular_material_icon__ = __webpack_require__("./node_modules/@angular/material/esm5/icon.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__angular_material_card__ = __webpack_require__("./node_modules/@angular/material/esm5/card.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__angular_material_form_field__ = __webpack_require__("./node_modules/@angular/material/esm5/form-field.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__angular_material_input__ = __webpack_require__("./node_modules/@angular/material/esm5/input.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__angular_material_checkbox__ = __webpack_require__("./node_modules/@angular/material/esm5/checkbox.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__angular_material_select__ = __webpack_require__("./node_modules/@angular/material/esm5/select.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36_angular2_text_mask__ = __webpack_require__("./node_modules/angular2-text-mask/dist/angular2TextMask.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36_angular2_text_mask___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_36_angular2_text_mask__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__auth_auth_component__ = __webpack_require__("./src/app/auth/auth.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__meus_pets_meus_pets__ = __webpack_require__("./src/app/meus-pets/meus-pets.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__edit_pet_edit_pet__ = __webpack_require__("./src/app/edit-pet/edit-pet.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__edit_usuario_edit_usuario__ = __webpack_require__("./src/app/edit-usuario/edit-usuario.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__add_fast_pet_add_fast_pet__ = __webpack_require__("./src/app/add-fast-pet/add-fast-pet.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
+
 
 
 
@@ -840,32 +1213,36 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_18__pet_info_pet_info_component__["a" /* PetInfoComponent */],
                 __WEBPACK_IMPORTED_MODULE_19__login_modal_add_p_modal_add_p_component__["a" /* ModalAddPComponent */],
                 __WEBPACK_IMPORTED_MODULE_20__meus_pets_modal_delete_pet_modal_delete_pet_component__["a" /* ModalDeletePetComponent */],
-                __WEBPACK_IMPORTED_MODULE_35__auth_auth_component__["a" /* AuthComponent */],
-                __WEBPACK_IMPORTED_MODULE_21__edit_pet_edit_pet_component__["a" /* EditPetComponent */]
+                __WEBPACK_IMPORTED_MODULE_37__auth_auth_component__["a" /* AuthComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__edit_pet_edit_pet_component__["a" /* EditPetComponent */],
+                __WEBPACK_IMPORTED_MODULE_22__edit_usuario_edit_usuario_component__["a" /* EditUsuarioComponent */],
+                __WEBPACK_IMPORTED_MODULE_23__add_fast_pet_add_fast_pet_component__["a" /* AddFastPetComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormsModule"],
+                __WEBPACK_IMPORTED_MODULE_3__angular_forms__["ReactiveFormsModule"],
                 __WEBPACK_IMPORTED_MODULE_5__app_routing_module__["a" /* AppRoutingModule */],
-                __WEBPACK_IMPORTED_MODULE_23__angular_material_sidenav__["a" /* MatSidenavModule */],
-                __WEBPACK_IMPORTED_MODULE_24__angular_material_toolbar__["a" /* MatToolbarModule */],
-                __WEBPACK_IMPORTED_MODULE_27__angular_material_icon__["a" /* MatIconModule */],
-                __WEBPACK_IMPORTED_MODULE_26__angular_material_button__["a" /* MatButtonModule */],
-                __WEBPACK_IMPORTED_MODULE_25__angular_material_list__["a" /* MatListModule */],
-                __WEBPACK_IMPORTED_MODULE_28__angular_material_card__["a" /* MatCardModule */],
-                __WEBPACK_IMPORTED_MODULE_29__angular_material_form_field__["c" /* MatFormFieldModule */],
-                __WEBPACK_IMPORTED_MODULE_30__angular_material_input__["b" /* MatInputModule */],
-                __WEBPACK_IMPORTED_MODULE_32__angular_material_select__["a" /* MatSelectModule */],
-                __WEBPACK_IMPORTED_MODULE_31__angular_material_checkbox__["a" /* MatCheckboxModule */],
+                __WEBPACK_IMPORTED_MODULE_25__angular_material_sidenav__["a" /* MatSidenavModule */],
+                __WEBPACK_IMPORTED_MODULE_26__angular_material_toolbar__["a" /* MatToolbarModule */],
+                __WEBPACK_IMPORTED_MODULE_29__angular_material_icon__["a" /* MatIconModule */],
+                __WEBPACK_IMPORTED_MODULE_28__angular_material_button__["a" /* MatButtonModule */],
+                __WEBPACK_IMPORTED_MODULE_27__angular_material_list__["a" /* MatListModule */],
+                __WEBPACK_IMPORTED_MODULE_30__angular_material_card__["a" /* MatCardModule */],
+                __WEBPACK_IMPORTED_MODULE_31__angular_material_form_field__["c" /* MatFormFieldModule */],
+                __WEBPACK_IMPORTED_MODULE_32__angular_material_input__["b" /* MatInputModule */],
+                __WEBPACK_IMPORTED_MODULE_34__angular_material_select__["a" /* MatSelectModule */],
+                __WEBPACK_IMPORTED_MODULE_33__angular_material_checkbox__["a" /* MatCheckboxModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["b" /* HttpClientModule */],
-                __WEBPACK_IMPORTED_MODULE_33__angular_material__["c" /* MatDialogModule */],
-                __WEBPACK_IMPORTED_MODULE_33__angular_material__["f" /* MatSnackBarModule */],
-                __WEBPACK_IMPORTED_MODULE_34_angular2_text_mask__["TextMaskModule"],
+                __WEBPACK_IMPORTED_MODULE_35__angular_material__["d" /* MatDialogModule */],
+                __WEBPACK_IMPORTED_MODULE_35__angular_material__["g" /* MatSnackBarModule */],
+                __WEBPACK_IMPORTED_MODULE_36_angular2_text_mask__["TextMaskModule"],
+                __WEBPACK_IMPORTED_MODULE_35__angular_material__["b" /* MatAutocompleteModule */],
                 __WEBPACK_IMPORTED_MODULE_6__angular_service_worker__["a" /* ServiceWorkerModule */].register('/ngsw-worker.js', { enabled: __WEBPACK_IMPORTED_MODULE_7__environments_environment__["a" /* environment */].production })
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_22__login_login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_16__meus_pets_meus_pets_component__["a" /* MeusPetsComponent */], __WEBPACK_IMPORTED_MODULE_36__meus_pets_meus_pets__["a" /* MeusPets */], __WEBPACK_IMPORTED_MODULE_37__edit_pet_edit_pet__["a" /* EditPet */],
+            providers: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_24__login_login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_16__meus_pets_meus_pets_component__["a" /* MeusPetsComponent */], __WEBPACK_IMPORTED_MODULE_38__meus_pets_meus_pets__["a" /* MeusPets */], __WEBPACK_IMPORTED_MODULE_39__edit_pet_edit_pet__["a" /* EditPet */], __WEBPACK_IMPORTED_MODULE_40__edit_usuario_edit_usuario__["a" /* EditUsuario */], __WEBPACK_IMPORTED_MODULE_23__add_fast_pet_add_fast_pet_component__["a" /* AddFastPetComponent */], __WEBPACK_IMPORTED_MODULE_41__add_fast_pet_add_fast_pet__["a" /* AddFastPet */],
                 {
                     provide: 'externalUrlRedirectResolver',
                     useValue: function (route, state) {
@@ -994,7 +1371,7 @@ module.exports = ".mat-card{\r\n  padding-top: 0px !important;\r\n}\r\n\r\n.pet-
 /***/ "./src/app/edit-pet/edit-pet.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Editando Pet - {{editPet.nm_animal}} </h1>\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card>\r\n\r\n    <form id=\"edit-pet\" name=\"edit-pet\">\r\n\r\n      <div class=\"row pet-form\">\r\n        <div class=\"col-4\">\r\n          <button mat-fab color=\"primary\" (click)='imgFileInput.click()'>\r\n            <mat-icon aria-label=\"Tirar Foto\">photo_camera</mat-icon>\r\n            <input hidden type=\"file\" accept=\"image/*\" id=\"imgupload\" capture=\"camera\" #imgFileInput />\r\n          </button>\r\n        </div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editPet.nome\" name=\"nome\" matInput placeholder=\"Nome\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row pet-sub-form\">\r\n        <div class=\"col-4\"><h6>Informações</h6></div>\r\n        <div class=\"col-4\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editPet.idade\" name=\"idade\" matInput placeholder=\"Idade\" pattern=\"[0-9]\" max-length=\"2\" required>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-4\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"editPet.text_idade\" name=\"text_idade\" placeholder=\"Meses\" required>\r\n              <mat-option *ngFor=\"let idades of idade\" [value]=\"idades.value\">\r\n                {{ idades.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"editPet.sexo\" name=\"sexo\" placeholder=\"Sexo\" required>\r\n              <mat-option *ngFor=\"let sexos of sexo\" [value]=\"sexos.value\">\r\n                {{ sexos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"editPet.tamanho\" name=\"tamanho\" placeholder=\"Tamanho\" required>\r\n              <mat-option *ngFor=\"let tamanhos of tamanho\" [value]=\"tamanhos.value\">\r\n                {{ tamanhos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editPet.cor\" name=\"cor\" matInput placeholder=\"Cor\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"editPet.id_especie\" name=\"especie\" placeholder=\"Espécie\" required>\r\n              <mat-option *ngFor=\"let especies of especie\" [value]=\"especies.id\">\r\n                {{ especies.value }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"editPet.id_raca\" name=\"raca\" placeholder=\"Raça\" required>\r\n              <mat-option *ngFor=\"let racas of raca\" [value]=\"racas.id\">\r\n                {{ racas.value }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <div class=\"checkbox-align\">\r\n            <mat-checkbox [(ngModel)]=\"editPet.deficiencia\" name=\"deficiencia\" color=\"primary\">Há alguma deficiência?</mat-checkbox>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row pet-form\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\" *ngIf=\"!!editPet.deficiencia\">\r\n            <mat-form-field>\r\n              <input [(ngModel)]=\"editPet.ds_deficiencia\" name=\"ds_deficiencia\" matInput placeholder=\"Qual?\">\r\n            </mat-form-field>\r\n          </div>\r\n      </div>\r\n\r\n      <div class=\"col-12\">\r\n        <div class=\"button-submit-row row justify-content-center\">\r\n          <button mat-raised-button form=\"edit-pet\" type=\"submit\" color=\"primary\" class=\"w-50\" (click)=\"updatePet('/update')\">Confirmar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n\r\n  </mat-card>\r\n</div>\r\n\r\n\r\n\r\n\r\n"
+module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Editando Pet - {{editPet.nm_animal}} </h1>\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card>\r\n\r\n    <form id=\"edit-pet\" name=\"edit-pet\">\r\n\r\n      <div class=\"row pet-form\">\r\n        <div class=\"col-4\">\r\n          <button mat-fab color=\"primary\" (click)='imgFileInput.click()'>\r\n            <mat-icon aria-label=\"Tirar Foto\">add_a_photo</mat-icon>\r\n            <input hidden type=\"file\" accept=\"image/*\" id=\"imgupload\" capture=\"camera\" #imgFileInput />\r\n          </button>\r\n        </div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editPet.nm_animal\" name=\"nome\" matInput placeholder=\"Nome\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row pet-sub-form\">\r\n        <div class=\"col-4\"><h6>Informações</h6></div>\r\n        <div class=\"col-4\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editPet.cd_idade_animal\" name=\"idade\" matInput placeholder=\"Idade\" pattern=\"[0-9]\" max-length=\"2\" required>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-4\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"editPet.nm_idade_animal\" name=\"text_idade\" placeholder=\"Meses\" required>\r\n              <mat-option *ngFor=\"let idades of idade\" [value]=\"idades.value\">\r\n                {{ idades.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"editPet.nm_sexo_animal\" name=\"sexo\" placeholder=\"Sexo\" required>\r\n              <mat-option *ngFor=\"let sexos of sexo\" [value]=\"sexos.value\">\r\n                {{ sexos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"editPet.nm_tamanho_animal\" name=\"tamanho\" placeholder=\"Tamanho\" required>\r\n              <mat-option *ngFor=\"let tamanhos of tamanho\" [value]=\"tamanhos.value\">\r\n                {{ tamanhos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editPet.nm_cor_animal\" name=\"cor\" matInput placeholder=\"Cor\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"editPet.id_especie\" name=\"especie\" placeholder=\"Espécie\" required>\r\n              <mat-option *ngFor=\"let especies of especie\" [value]=\"especies.id\">\r\n                {{ especies.value }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"editPet.nm_raca\" name=\"raca\" placeholder=\"Raça\" required>\r\n              <mat-option *ngFor=\"let racas of raca\" [value]=\"racas.id\">\r\n                {{ racas.value }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\">\r\n          <div class=\"checkbox-align\">\r\n            <mat-checkbox [(ngModel)]=\"editPet.ic_deficiencia_animal\" name=\"deficiencia\" color=\"primary\">Há alguma deficiência?</mat-checkbox>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row pet-form\">\r\n        <div class=\"col-4\"></div>\r\n        <div class=\"col-8\" *ngIf=\"!!editPet.ic_deficiencia_animal\">\r\n            <mat-form-field>\r\n              <input [(ngModel)]=\"editPet.ds_deficiencia_animal\" name=\"ds_deficiencia\" matInput placeholder=\"Qual?\">\r\n            </mat-form-field>\r\n          </div>\r\n      </div>\r\n\r\n      <div class=\"col-12\">\r\n        <div class=\"button-submit-row row justify-content-center\">\r\n          <button mat-raised-button form=\"edit-pet\" type=\"submit\" color=\"primary\" class=\"w-50\" (click)=\"updatePet('/update')\">Confirmar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n\r\n  </mat-card>\r\n</div>\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -1101,7 +1478,7 @@ var EditPetComponent = /** @class */ (function () {
                             { value: 'Femêa', viewValue: 'Femêa' }
                         ];
                         this.idade = [
-                            { value: 'Mese(s)', viewValue: 'Mese(s)' },
+                            { value: 'Mes(es)', viewValue: 'Mes(es)' },
                             { value: 'Ano(s)', viewValue: 'Ano(s)' }
                         ];
                         this.tamanho = [
@@ -1145,17 +1522,6 @@ var EditPetComponent = /** @class */ (function () {
         this.httpClient.get(this.apiUrl, { headers: headers }).subscribe(function (pets) {
             _this.dataPets = pets;
             _this.editPet = _this.dataPets.payload;
-            console.log(_this.editPet);
-            for (var x = 0; x <= _this.racas.length - 1; x++) {
-                if (_this.editPet.cd_raca_fk === _this.racas[x].id_raca) {
-                    _this.editPet.nm_raca_animal = _this.racas[x].nm_raca;
-                }
-            }
-            for (var y = 0; y <= _this.especies.length - 1; y++) {
-                if (_this.editPet.cd_especie_fk === _this.especies[y].id_especie) {
-                    _this.editPet.nm_especie_animal = _this.especies[y].nm_especie;
-                }
-            }
         });
     };
     EditPetComponent.prototype.goTo = function (route) {
@@ -1171,7 +1537,8 @@ var EditPetComponent = /** @class */ (function () {
         }
         this.postData = {
             nm_animal: this.editPet.nm_animal,
-            nm_idade_animal: this.editPet.cd_idade_animal + this.editPet.text_idade,
+            cd_idade_animal: this.editPet.cd_idade_animal,
+            nm_idade_animal: this.editPet.nm_idade_animal,
             nm_cor_animal: this.editPet.nm_cor_animal,
             nm_sexo_animal: this.editPet.nm_sexo_animal,
             nm_tamanho_animal: this.editPet.nm_tamanho_animal,
@@ -1202,7 +1569,7 @@ var EditPetComponent = /** @class */ (function () {
             styles: [__webpack_require__("./src/app/edit-pet/edit-pet.component.css")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1__edit_pet__["a" /* EditPet */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_5__angular_material__["e" /* MatSnackBar */]])
+            __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_5__angular_material__["f" /* MatSnackBar */]])
     ], EditPetComponent);
     return EditPetComponent;
 }());
@@ -1226,17 +1593,253 @@ var EditPet = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/edit-usuario/edit-usuario.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/edit-usuario/edit-usuario.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid animated fadeIn\">\r\n\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n      <h1 *ngIf=\"tipoFisico\" class=\"title\">Editando Usuário - {{editUsuario.nm_usuario}}</h1>\r\n      <h1 *ngIf=\"tipoJuridico\" class=\"title\">Editando Usuário - {{editUsuario.nm_razao_social_usuario}}</h1>\r\n    </div>\r\n  </div>\r\n\r\n  <mat-card>\r\n    <form *ngIf=\"tipoFisico\" id=\"usuarioFisico\" name=\"usuarioFisico\">\r\n\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editUsuario.nm_usuario\" name=\"nome\" type=\"text\" matInput placeholder=\"Nome\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editUsuario.nm_email_usuario\" name=\"email\" type=\"email\" matInput placeholder=\"Email\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editUsuario.cd_cpf_usuario\" [textMask]=\"{mask: cpfMask}\" name=\"cpf\" type=\"text\" matInput placeholder=\"CPF\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <mat-select [(ngModel)]=\"editUsuario.sexo\" name=\"sexo\" placeholder=\"Sexo\" required>\r\n              <mat-option *ngFor=\"let sexos of sexo\" [value]=\"sexos.value\">\r\n                {{ sexos.viewValue }}\r\n              </mat-option>\r\n            </mat-select>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editUsuario.cd_telefone_usuario\" [textMask]=\"{mask: celMask}\" name=\"telefone\" type=\"text\" matInput placeholder=\"Celular\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editUsuario.cd_cep_usuario\" [textMask]=\"{mask: cepMask}\" name=\"cep\" type=\"text\" matInput placeholder=\"CEP\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editUsuario.nm_estado_usuario\" name=\"estado\" type=\"text\" matInput placeholder=\"Estado\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editUsuario.nm_cidade_usuario\" name=\"cidade\" type=\"text\" matInput placeholder=\"Cidade\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editUsuario.nm_endereco_usuario\" name=\"endereco\" type=\"text\" matInput placeholder=\"Endereço\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-4\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editUsuario.cd_numero_endereco_usuario\" [textMask]=\"{mask: numMask}\" name=\"numero\" type=\"text\" matInput placeholder=\"Número\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editUsuario.ds_complemento_endereco_usuario\" name=\"complemento\" type=\"text\" matInput placeholder=\"Complemento\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"senha\" name=\"senha\" type=\"password\" matInput placeholder=\"Senha\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"button-row row justify-content-center\">\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button type=\"submit\" color=\"primary\" form=\"usuarioFisico\" class=\"w-100\" (click)=\"updateUsuarioFisico('/update')\">Confirmar</button>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button color=\"primary\" class=\"w-100\" (click)=\"goTo('home')\">Cancelar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n\r\n\r\n\r\n    <form *ngIf=\"tipoJuridicoEmitter\" id=\"usuarioJuridico\" name=\"usuarioJuridico\">\r\n\r\n      <div class=\"row justify-content-center\">\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editUsuario.nm_razao_social_usuario\" name=\"razaoSocial\" type=\"text\" matInput placeholder=\"Razão Social\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editUsuario.nm_email_usuario\" name=\"email\" type=\"email\" matInput placeholder=\"Email\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editUsuario.cd_cnpj_usuario\" [textMask]=\"{mask: cnpjMask}\" name=\"cnpj\" type=\"text\" matInput placeholder=\"CNPJ\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editUsuario.cd_telefone_usuario\" [textMask]=\"{mask: celMask}\" name=\"telefone\" type=\"text\" matInput placeholder=\"Celular\"\r\n              required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editUsuario.cd_cep_usuario\" [textMask]=\"{mask: cepMask}\" name=\"cep\" type=\"text\" matInput placeholder=\"CEP\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-6\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editUsuario.nm_estado_usuario\" name=\"estado\" type=\"text\" matInput placeholder=\"Estado\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editUsuario.nm_cidade_usuario\" name=\"cidade\" type=\"text\" matInput placeholder=\"Cidade\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editUsuario.nm_endereco_usuario\" name=\"endereco\" type=\"text\" matInput placeholder=\"Endereço\" required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-4\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editUsuario.cd_numero_endereco_usuario\" [textMask]=\"{mask: numMask}\" name=\"numero\" type=\"text\" matInput placeholder=\"Número\"\r\n              required>\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-8\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"editUsuario.ds_complemento_endereco_usuario\" name=\"complemento\" type=\"text\" matInput placeholder=\"Complemento\">\r\n          </mat-form-field>\r\n        </div>\r\n\r\n        <div class=\"col-12\">\r\n          <mat-form-field>\r\n            <input [(ngModel)]=\"senha\" name=\"senha\" type=\"password\" matInput placeholder=\"Senha\" required>\r\n          </mat-form-field>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"button-row row justify-content-center\">\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button type=\"submit\" color=\"primary\" form=\"usuarioJuridico\" class=\"w-100\" (click)=\"updateUsuarioJuridico('/update')\">Confirmar</button>\r\n        </div>\r\n        <div class=\"col-6\">\r\n          <button mat-raised-button color=\"primary\" class=\"w-100\" (click)=\"goTo('home')\">Cancelar</button>\r\n        </div>\r\n      </div>\r\n\r\n    </form>\r\n  </mat-card>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/edit-usuario/edit-usuario.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditUsuarioComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit_usuario__ = __webpack_require__("./src/app/edit-usuario/edit-usuario.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+var api_url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiUrl;
+var EditUsuarioComponent = /** @class */ (function () {
+    function EditUsuarioComponent(httpClient, editUsuario, router, route, snackBar) {
+        this.httpClient = httpClient;
+        this.editUsuario = editUsuario;
+        this.router = router;
+        this.route = route;
+        this.snackBar = snackBar;
+        this.apiUrl = api_url;
+        this.dataUsuarios = {};
+        this.postData = {};
+        this.editusuario = new __WEBPACK_IMPORTED_MODULE_1__edit_usuario__["a" /* EditUsuario */]();
+        this.tipoJuridicoEmitter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.tipoFisicoEmitter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.tipoJuridico = false;
+        this.tipoFisico = false;
+        this.id = this.route.snapshot.queryParams['id'];
+        this.cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+        this.cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+        this.celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+        this.cepMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
+        this.numMask = [/[1-9]/, /\d/, /\d/, /\d/, /\d/, /\d/];
+    }
+    EditUsuarioComponent.prototype.ngOnInit = function () {
+        this.sexo = [
+            { value: 'Masculino', viewValue: 'Masculino' },
+            { value: 'Feminino', viewValue: 'Feminino' }
+        ];
+        this.getDataUsuario();
+    };
+    EditUsuarioComponent.prototype.getDataUsuario = function () {
+        var _this = this;
+        this.apiUrl = this.apiUrl + '/api/users/' + this.id;
+        var userToken = localStorage.getItem('token');
+        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', userToken);
+        this.httpClient.get(this.apiUrl, { headers: headers }).subscribe(function (pets) {
+            _this.dataUsuarios = pets;
+            _this.editUsuario = _this.dataUsuarios.payload;
+        });
+        if (this.editUsuario.nm_tipo_usuario === 'Pessoa Física') {
+            this.tipoFisicoEmitter.subscribe(function (tipoUsuario) { return _this.tipoFisico = tipoUsuario; });
+        }
+        else {
+            this.tipoFisicoEmitter.subscribe(function (tipoUsuario) { return _this.tipoJuridico = tipoUsuario; });
+        }
+    };
+    EditUsuarioComponent.prototype.goTo = function (route) {
+        this.router.navigate([route]);
+    };
+    EditUsuarioComponent.prototype.updateUsuarioFisico = function (URL) {
+        var _this = this;
+        this.removeMasksFisico();
+        var userToken = localStorage.getItem('token');
+        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', userToken);
+        this.postData = {
+            nm_usuario: this.editUsuario.nm_usuario,
+            nm_email_usuario: this.editUsuario.nm_email_usuario,
+            cd_cpf_usuario: this.editUsuario.cd_cpf_usuario,
+            nm_sexo_usuario: this.editUsuario.nm_sexo_usuario,
+            cd_telefone_usuario: this.editUsuario.cd_telefone_usuario,
+            cd_cep_usuario: this.editUsuario.cd_cep_usuario,
+            nm_estado_usuario: this.editUsuario.nm_estado_usuario,
+            nm_cidade_usuario: this.editUsuario.nm_cidade_usuario,
+            nm_endereco_usuario: this.editUsuario.nm_endereco_usuario,
+            cd_numero_endereco_usuario: this.editUsuario.cd_numero_endereco_usuario,
+            ds_complemento_endereco_usuario: this.editUsuario.ds_complemento_endereco_usuario,
+            dt_nascimento_usuario: this.editUsuario.dt_nascimento_usuario,
+            cd_senha_usuario: this.editUsuario.cd_senha_usuario,
+        };
+        this.httpClient.put(this.apiUrl + URL, this.postData, { headers: headers })
+            .subscribe(function (res) {
+            _this.snackBar.open('Usuário Editado com Sucesso!', 'OK', {
+                duration: 2000,
+            });
+            _this.goTo('meus-pets');
+        }, function (err) {
+            _this.snackBar.open('Erro ao Editar o Usuário', 'OK', {
+                duration: 2000,
+            });
+            _this.goTo('home');
+        });
+    };
+    EditUsuarioComponent.prototype.updateUsuarioJuridico = function (URL) {
+        var _this = this;
+        this.removeMasksJuridico();
+        var userToken = localStorage.getItem('token');
+        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', userToken);
+        this.postData = {
+            nm_razao_social_usuario: this.editUsuario.nm_razao_social_usuario,
+            nm_email_usuario: this.editUsuario.nm_email_usuario,
+            cd_cnpj_usuario: this.editUsuario.cd_cnpj_usuario,
+            cd_telefone_usuario: this.editUsuario.cd_telefone_usuario,
+            cd_cep_usuario: this.editUsuario.cd_cep_usuario,
+            nm_estado_usuario: this.editUsuario.nm_estado_usuario,
+            nm_cidade_usuario: this.editUsuario.nm_cidade_usuario,
+            nm_endereco_usuario: this.editUsuario.nm_endereco_usuario,
+            cd_numero_endereco_usuario: this.editUsuario.cd_numero_endereco_usuario,
+            ds_complemento_endereco_usuario: this.editUsuario.ds_complemento_endereco_usuario,
+            cd_senha_usuario: this.editUsuario.cd_senha_usuario
+        };
+        this.httpClient.put(this.apiUrl + URL, this.postData, { headers: headers })
+            .subscribe(function (res) {
+            _this.snackBar.open('Usuário Editado com Sucesso!', 'OK', {
+                duration: 2000,
+            });
+            _this.goTo('meus-pets');
+        }, function (err) {
+            _this.snackBar.open('Erro ao Editar o Usuário', 'OK', {
+                duration: 2000,
+            });
+            _this.goTo('home');
+        });
+    };
+    EditUsuarioComponent.prototype.removeMasksFisico = function () {
+        this.removeCpfMask();
+        this.removeCelMask();
+        this.removeCepMask();
+        this.removeNumeroMask();
+    };
+    EditUsuarioComponent.prototype.removeMasksJuridico = function () {
+        this.removeCnpjMask();
+        this.removeCelMask();
+        this.removeCepMask();
+        this.removeNumeroMask();
+    };
+    EditUsuarioComponent.prototype.removeNumeroMask = function () {
+        var numberHome = this.editUsuario.cd_numero_endereco_usuario.toString();
+        var beforeNumberH = numberHome;
+        for (var x = 0; x <= beforeNumberH.length; x++) {
+            if (!parseInt(numberHome.slice(x, x + 1))) {
+                numberHome.replace('_', '');
+            }
+        }
+        this.editUsuario.cd_numero_endereco_usuario = parseInt(numberHome);
+    };
+    EditUsuarioComponent.prototype.removeCpfMask = function () {
+        var cpf = this.editUsuario.cd_cpf_usuario.toString();
+        var beforeCpf = cpf.replace('.', '');
+        beforeCpf = beforeCpf.replace('.', '');
+        beforeCpf = beforeCpf.replace('-', '');
+        this.editUsuario.cd_cpf_usuario = parseInt(beforeCpf);
+    };
+    EditUsuarioComponent.prototype.removeCelMask = function () {
+        var cel = this.editUsuario.cd_telefone_usuario.toString();
+        var beforeCel = cel.replace('(', '');
+        beforeCel = beforeCel.replace(')', '');
+        beforeCel = beforeCel.replace(' ', '');
+        beforeCel = beforeCel.replace('-', '');
+        this.editUsuario.cd_telefone_usuario = parseInt(beforeCel);
+    };
+    EditUsuarioComponent.prototype.removeCepMask = function () {
+        var cep = this.editUsuario.cd_cep_usuario.toString();
+        var beforeCep = cep.replace('.', '');
+        beforeCep = beforeCep.replace('-', '');
+        this.editUsuario.cd_cep_usuario = parseInt(beforeCep);
+    };
+    EditUsuarioComponent.prototype.removeCnpjMask = function () {
+        var cnpj = this.editUsuario.cd_cnpj_usuario.toString();
+        var beforeCnpj = cnpj.replace('.', '');
+        beforeCnpj = beforeCnpj.replace('.', '');
+        beforeCnpj = beforeCnpj.replace('/', '');
+        beforeCnpj = beforeCnpj.replace('-', '');
+        this.editUsuario.cd_cnpj_usuario = parseInt(beforeCnpj);
+    };
+    EditUsuarioComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-edit-usuario',
+            template: __webpack_require__("./src/app/edit-usuario/edit-usuario.component.html"),
+            styles: [__webpack_require__("./src/app/edit-usuario/edit-usuario.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1__edit_usuario__["a" /* EditUsuario */], __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_5__angular_material__["f" /* MatSnackBar */]])
+    ], EditUsuarioComponent);
+    return EditUsuarioComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/edit-usuario/edit-usuario.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditUsuario; });
+var EditUsuario = /** @class */ (function () {
+    function EditUsuario() {
+    }
+    return EditUsuario;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/favoritos/favoritos.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "#home .mat-card{\r\n    padding: 0px !important;\r\n}\r\n\r\n.card-content{\r\n    position: absolute;\r\n    left: 50%;\r\n    padding: 10px 10px;\r\n    width: 50%;\r\n}\r\n\r\n.card-content  li{\r\n    padding: 5px 0px;\r\n}\r\n\r\n.card-content ul{\r\n    list-style: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n}\r\n\r\n.img-animals{\r\n    width: 50%;\r\n    height: 100%; \r\n}\r\n\r\n.content-date{\r\n    position: absolute;\r\n    left: 53%;\r\n    top: 87%;\r\n}\r\n\r\n.heart{\r\n    position: absolute;\r\n    left: 94%;\r\n    top: 87%;\r\n}\r\n\r\n.fa-heart{\r\n    color:#755DCA;\r\n}"
+module.exports = "#home .mat-card{\r\n    padding: 0px !important;\r\n}\r\n\r\n.card-content{\r\n    position: absolute;\r\n    left: 50%;\r\n    padding: 10px 10px;\r\n    width: 50%;\r\n}\r\n\r\n.card-content  li{\r\n    padding: 5px 0px;\r\n}\r\n\r\n.card-content ul{\r\n    list-style: none;\r\n    margin: 0px;\r\n    padding: 0px;\r\n}\r\n\r\n.img-animals{\r\n    width: 50%;\r\n    height: 100%;\r\n}\r\n\r\n.content-date{\r\n    position: absolute;\r\n    left: 53%;\r\n    top: 87%;\r\n}\r\n\r\n.img-square {\r\n    background-position: center;\r\n    background-size: cover;\r\n    width: 50%;\r\n    height: 150px;\r\n  }\r\n"
 
 /***/ }),
 
 /***/ "./src/app/favoritos/favoritos.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"home\" class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Pets Favoritos</h1>\r\n\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card *ngFor=\"let favoritePet of listOfFavoritePets2\" routerLink=\"/pet-info\" [queryParams] =\"{id: favoritePet.id}\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-2\">\r\n        <img src=\"../../assets/images/ft-pet.jpg\" alt=\"\" class=\"img-animals\">\r\n      </div>\r\n      <div class=\"col-md-2 card-content\">\r\n        <ul>\r\n          <li class=\"font-bold\">{{favoritePet.title}}</li>\r\n          <li>{{favoritePet.breed}}</li>\r\n          <li>{{favoritePet.city}} - {{favoritePet.state}}</li>\r\n          <li>{{favoritePet.street}}</li>\r\n        </ul>\r\n      </div>\r\n      <label class=\"content-date\">{{favoritePet.date}}</label>\r\n      <div class=\"heart\">\r\n        <i class=\"fas fa-heart\"></i>\r\n      </div>\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div id=\"home\" class=\"container-fluid animated fadeIn\">\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Pets Favoritos</h1>\r\n\r\n\r\n    </div>\r\n  </div>\r\n  <mat-card *ngFor=\"let favoritePet of pets\" routerLink=\"/pet-info\" [queryParams] =\"{id: favoritePet.id, fav: true}\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-2\">\r\n        <div class=\"img-square\" [ngStyle]=\"{ 'background-image': 'url(' + favoritePet.Animal.ds_foto_animal + ') '}\"></div>\r\n      </div>\r\n      <div class=\"col-md-2 card-content\">\r\n        <ul>\r\n          <li class=\"font-bold\">{{favoritePet.Animal.nm_animal}}</li>\r\n          <li>{{favoritePet.Animal.nm_raca}}</li>\r\n          <!-- <li>{{pets.cd_idade_animal}} ano(s)</li> -->\r\n          <li>{{favoritePet.Animal.nm_cor_animal}}</li>\r\n          <li>{{favoritePet.address1}}</li>\r\n          <li>{{favoritePet.address2}}</li>\r\n        </ul>\r\n      </div>\r\n      <!-- <label class=\"content-date\">{{pet.date}}</label> -->\r\n      <!-- <div class=\"heart\">\r\n        <i class=\"fas fa-heart\"></i>\r\n      </div> -->\r\n    </div>\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1268,6 +1871,8 @@ var FavoritosComponent = /** @class */ (function () {
         this.router = router;
         this.httpClient = httpClient;
         this.elementFavorite = {};
+        this.pets = {};
+        this.elementData = {};
     }
     FavoritosComponent.prototype.ngOnInit = function () {
         this.getFavoritePets();
@@ -1277,6 +1882,7 @@ var FavoritosComponent = /** @class */ (function () {
     };
     FavoritosComponent.prototype.getFavoritePets = function () {
         var _this = this;
+        this.pets = [];
         var id = parseInt(localStorage.getItem('id'));
         var userToken = localStorage.getItem('token');
         var headers = new __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', userToken);
@@ -1284,8 +1890,14 @@ var FavoritosComponent = /** @class */ (function () {
         this.httpClient.get(api_url + '/api/animal/myfavorites/' + id, { headers: headers }).subscribe(function (element) {
             //debugger
             _this.elementFavorite = element;
-            _this.elementFavorite.forEach(function (element) {
-                console.log(element);
+            _this.elementFavorite = _this.elementFavorite.payload;
+            _this.elementFavorite.forEach(function (favorite) {
+                _this.httpClient.get(api_url + '/api/users/' + favorite.cd_usuario_fk, { headers: headers }).subscribe(function (elementUser) {
+                    _this.elementData = elementUser;
+                    favorite.address1 = _this.elementData.payload.nm_cidade_usuario + ' - ' + _this.elementData.payload.nm_estado_usuario;
+                    favorite.address2 = _this.elementData.payload.nm_endereco_usuario;
+                });
+                _this.pets.push(favorite);
             });
         });
     };
@@ -1487,7 +2099,7 @@ module.exports = ".container-fluid{\r\n  margin-bottom: 0px !important;\r\n}\r\n
 /***/ "./src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid bg-login animated fadeIn\">\r\n\r\n  <mat-card>\r\n    <div class=\"col-md-12\">\r\n      <div class=\"logo\">\r\n        <img src=\"../../assets/images/idot-logo-branca128.png\" alt=\"\" srcset=\"\">\r\n      </div>\r\n    </div>\r\n\r\n      <form>\r\n\r\n        <div class=\"row justify-content-center\">\r\n          <div class=\"col-12\">\r\n            <mat-form-field>\r\n              <input [(ngModel)]=\"usuario.email\" name=\"email\" type=\"email\" matInput placeholder=\"Email\" required>\r\n              <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\r\n            </mat-form-field>\r\n          </div>\r\n\r\n          <div class=\"col-12\">\r\n            <mat-form-field>\r\n              <input [(ngModel)]=\"senha\" name=\"senha\" matInput placeholder=\"Senha\" [type]=\"hide ? 'password' : 'text'\" required>\r\n              <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\r\n            </mat-form-field>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\" *ngIf=\"errorLogin\"><div class=\"col-12\"><a style=\"color:red;font-size: 11px;\">Senha ou Usuário incorretos*</a></div></div>\r\n        <div class=\"col-12\">\r\n          <div class=\"button-row row justify-content-center\">\r\n            <button (click)=\"getAuth()\" mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\">Confirmar</button>\r\n          </div>\r\n          <div class=\"button-row row justify-content-center\">\r\n              <button mat-raised-button color=\"primary\" class=\"w-50\" (click)=\"openDialog()\">Cadastre-se</button>\r\n            </div>\r\n        </div>\r\n\r\n      </form>\r\n\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid bg-login animated fadeIn\">\r\n\r\n  <mat-card>\r\n    <div class=\"col-md-12\">\r\n      <div class=\"logo\">\r\n        <img src=\"../../assets/images/idot-logo-branca128.png\" alt=\"\" srcset=\"\">\r\n      </div>\r\n    </div>\r\n\r\n      <form>\r\n\r\n        <div class=\"row justify-content-center\">\r\n          <div class=\"col-12\">\r\n            <mat-form-field>\r\n              <input [(ngModel)]=\"usuario.email\" name=\"email\" type=\"email\" matInput placeholder=\"Email\" required>\r\n              <mat-error *ngIf=\"email.invalid\">{{getEmailErrorMessage()}}</mat-error>\r\n            </mat-form-field>\r\n          </div>\r\n\r\n          <div class=\"col-12\">\r\n            <mat-form-field>\r\n              <input [(ngModel)]=\"senha\" name=\"senha\" matInput placeholder=\"Senha\" [type]=\"hide ? 'password' : 'text'\" required>\r\n              <mat-icon matSuffix (click)=\"hide = !hide\">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>\r\n            </mat-form-field>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\" *ngIf=\"errorLogin\"><div class=\"col-12\"><a style=\"color:red;font-size: 11px;\">Senha ou Usuário incorretos*</a></div></div>\r\n        <div class=\"col-12\">\r\n          <div class=\"button-row row justify-content-center\">\r\n            <button (click)=\"getAuth()\" mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\">Confirmar</button>\r\n          </div>\r\n          <div class=\"button-row row justify-content-center\">\r\n              <button mat-raised-button color=\"primary\" class=\"w-50\" (click)=\"openDialog()\">Cadastre-se</button>\r\n            </div>\r\n        </div>\r\n\r\n      </form>\r\n\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1500,12 +2112,10 @@ module.exports = "<div class=\"container-fluid bg-login animated fadeIn\">\r\n\r
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ts_md5_dist_md5__ = __webpack_require__("./node_modules/ts-md5/dist/md5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ts_md5_dist_md5___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_ts_md5_dist_md5__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__login_service__ = __webpack_require__("./src/app/login/login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__usuario__ = __webpack_require__("./src/app/login/usuario.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modal_add_p_modal_add_p_component__ = __webpack_require__("./src/app/login/modal-add-p/modal-add-p.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_service__ = __webpack_require__("./src/app/login/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__usuario__ = __webpack_require__("./src/app/login/usuario.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__modal_add_p_modal_add_p_component__ = __webpack_require__("./src/app/login/modal-add-p/modal-add-p.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1515,7 +2125,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -1535,18 +2144,17 @@ var LoginComponent = /** @class */ (function () {
         this.data = {};
         this.dataError = {};
         this.postData = {};
-        this.usuario = new __WEBPACK_IMPORTED_MODULE_6__usuario__["a" /* Usuario */]();
-        this.md5 = new __WEBPACK_IMPORTED_MODULE_4_ts_md5_dist_md5__["Md5"]();
+        this.usuario = new __WEBPACK_IMPORTED_MODULE_5__usuario__["a" /* Usuario */]();
         this.hide = true;
         this.email = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].email]);
     }
-    LoginComponent.prototype.getErrorMessage = function () {
+    LoginComponent.prototype.getEmailErrorMessage = function () {
         return this.email.hasError('required') ? 'Você deve preencher seu email' :
             this.email.hasError('email') ? 'Email incorreto' :
                 '';
     };
     LoginComponent.prototype.openDialog = function () {
-        var dialogRef = this.dialog.open(__WEBPACK_IMPORTED_MODULE_7__modal_add_p_modal_add_p_component__["a" /* ModalAddPComponent */], {
+        var dialogRef = this.dialog.open(__WEBPACK_IMPORTED_MODULE_6__modal_add_p_modal_add_p_component__["a" /* ModalAddPComponent */], {
             width: '300px',
             height: '210px',
             data: {}
@@ -1554,16 +2162,7 @@ var LoginComponent = /** @class */ (function () {
     };
     LoginComponent.prototype.getAuth = function () {
         var _this = this;
-        this.checkPassword = 0;
-        if (this.checkPassword === 0) {
-            console.log(this.checkPassword);
-            this.md5.appendStr(this.senha);
-            var newSenha = this.md5.end();
-            this.usuario.senha = newSenha.toString();
-        }
-        else {
-            this.usuario.senha = this.senha;
-        }
+        this.usuario.senha = this.senha;
         this.postData = {
             nm_email_usuario: this.usuario.email,
             cd_senha_usuario: this.usuario.senha
@@ -1591,9 +2190,9 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/login/login.component.html"),
             styles: [__webpack_require__("./src/app/login/login.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_5__login_service__["a" /* LoginService */],
-            __WEBPACK_IMPORTED_MODULE_8__angular_material__["b" /* MatDialog */],
-            __WEBPACK_IMPORTED_MODULE_8__angular_material__["e" /* MatSnackBar */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_4__login_service__["a" /* LoginService */],
+            __WEBPACK_IMPORTED_MODULE_7__angular_material__["c" /* MatDialog */],
+            __WEBPACK_IMPORTED_MODULE_7__angular_material__["f" /* MatSnackBar */]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -1627,6 +2226,8 @@ var LoginService = /** @class */ (function () {
         this.authCheck = {};
         this.usuarioAutenticado = false;
         this.mostrarMenuEmitter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.mostrarButtonEmitter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.idUsuario = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     LoginService.prototype.fazerLogin = function (usuario, auth) {
         this.authCheck = auth;
@@ -1638,11 +2239,14 @@ var LoginService = /** @class */ (function () {
             localStorage.setItem('token', 'jwt ' + this.authCheck.token);
             this.usuarioAutenticado = true;
             this.mostrarMenuEmitter.emit(true);
+            this.mostrarButtonEmitter.emit(true);
+            this.idUsuario.emit(localStorage.getItem('id'));
             this.router.navigate(['/home']);
         }
         else {
             this.usuarioAutenticado = false;
             this.mostrarMenuEmitter.emit(false);
+            this.mostrarButtonEmitter.emit(false);
         }
     };
     LoginService = __decorate([
@@ -1718,7 +2322,7 @@ var ModalAddPComponent = /** @class */ (function () {
             styles: [__webpack_require__("./src/app/login/modal-add-p/modal-add-p.component.css")]
         }),
         __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MAT_DIALOG_DATA */])),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MatDialogRef */], Object, __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MatDialogRef */], Object, __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]])
     ], ModalAddPComponent);
     return ModalAddPComponent;
 }());
@@ -1745,14 +2349,14 @@ var Usuario = /** @class */ (function () {
 /***/ "./src/app/meus-pets/meus-pets.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "#meus-pets .mat-card {\r\n  padding: 10px 5px !important;\r\n  font-size: 14px;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.meus-pets-list {\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.meus-pets-list li {\r\n  list-style: none;\r\n  padding-right: 5px;\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n}\r\n\r\n.meus-pets-list img {\r\n  width: 40px;\r\n}\r\n\r\n.meus-pets-text {\r\n  text-align: center;\r\n}\r\n\r\n.buttons-inline {\r\n  padding: 0px 0px 0px 5px;\r\n}\r\n\r\n.buttons-inline li {\r\n  display: inline-block;\r\n  list-style: none;\r\n  padding: 0px 0px;\r\n}\r\n\r\n.buttons-inline .mat-mini-fab {\r\n  background: #ffffff;\r\n}\r\n\r\n.buttons-inline .mat-mini-fab .edit {\r\n  color: #755dca;\r\n}\r\n\r\n.buttons-inline .mat-mini-fab .remove {\r\n  color: #ff4d4d;\r\n}\r\n\r\n.img-circle {\r\n  background-position: center;\r\n  background-size: cover;\r\n  border-radius: 50%;\r\n  width: 40px;\r\n  height: 40px;\r\n}\r\n\r\n"
+module.exports = "#meus-pets .mat-card {\r\n  padding: 10px 5px !important;\r\n  font-size: 14px;\r\n  margin-bottom: 10px;\r\n}\r\n.meus-pets-img{\r\n  padding: 0px 10px;\r\n}\r\n.meus-pets-list {\r\n  padding: 10px 0px 0px 0px;\r\n  margin: 0px;\r\n}\r\n.meus-pets-list li {\r\n  list-style: none;\r\n  vertical-align: middle;\r\n}\r\n.meus-pets-text {\r\n  text-align: center;\r\n  color: #755dca;\r\n}\r\n.meus-pets-sub-text {\r\n  text-align: center;\r\n  padding: 10px 5px 0px 0px;\r\n}\r\n.buttons-inline {\r\n  padding: 0px 0px 0px 5px;\r\n}\r\n.buttons-inline li {\r\n  display: inline-block;\r\n  list-style: none;\r\n  padding: 0px 0px;\r\n}\r\n.buttons-inline .mat-mini-fab {\r\n  background: #ffffff;\r\n}\r\n.buttons-inline .mat-mini-fab .edit {\r\n  color: #755dca;\r\n}\r\n.buttons-inline .mat-mini-fab .remove {\r\n  color: #ff4d4d;\r\n}\r\n.img-circle {\r\n  background-position: center;\r\n  background-size: cover;\r\n  border-radius: 50%;\r\n  border: 2px solid #755dca;\r\n  width: 60px;\r\n  height: 60px;\r\n}\r\n\r\n"
 
 /***/ }),
 
 /***/ "./src/app/meus-pets/meus-pets.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"meus-pets\" class=\"container-fluid animated fadeIn\">\r\n\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Meus Pets</h1>\r\n\r\n    </div>\r\n  </div>\r\n\r\n  <mat-card *ngFor=\"let pet of pets\">\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row\">\r\n        <ul class=\"meus-pets-list\">\r\n          <li>\r\n            <div class=\"img-circle\" [ngStyle]=\"{ 'background-image': 'url(' + pet.ds_foto_animal + ') '}\"></div>\r\n          </li>\r\n          <li>\r\n            <span class=\"meus-pets-text\">{{pet.nm_animal}}</span>\r\n          </li>\r\n        </ul>\r\n\r\n        <span class=\"nav-space\"></span>\r\n\r\n        <ul class=\"meus-pets-list buttons-inline \">\r\n          <li>\r\n            <button mat-mini-fab routerLink=\"/edit-pet\" [queryParams] =\"{id: pet.id}\">\r\n              <i class=\"fas fa-pencil-alt edit\"></i>\r\n            </button>\r\n          </li>\r\n          <li>\r\n            <button mat-mini-fab (click)=\"openDialog(pet.id)\">\r\n              <i class=\"fas fa-trash-alt remove\"></i>\r\n            </button>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n\r\n  </mat-card>\r\n</div>\r\n"
+module.exports = "<div id=\"meus-pets\" class=\"container-fluid animated fadeIn\">\r\n\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h1 class=\"title\">Meus Pets</h1>\r\n\r\n    </div>\r\n  </div>\r\n\r\n  <mat-card *ngFor=\"let pet of pets\">\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"row\">\r\n\r\n          <div class=\"col-3 meus-pets-img\">\r\n            <div class=\"img-circle\" [ngStyle]=\"{ 'background-image': 'url(' + pet.ds_foto_animal + ') '}\"></div>\r\n        </div>\r\n\r\n        <ul class=\"meus-pets-list\">\r\n          <li>\r\n            <span class=\"meus-pets-text font-bold\">{{pet.nm_animal}}</span>\r\n          </li>\r\n          <li>\r\n            <span class=\"meus-pets-sub-text\">{{pet.nm_animal}}</span>\r\n            <span class=\"meus-pets-sub-text\">{{pet.nm_idade_animal}}</span>\r\n            <span class=\"meus-pets-sub-text\">{{pet.Raca.nm_raca}}</span>\r\n          </li>\r\n        </ul>\r\n\r\n        <span class=\"nav-space\"></span>\r\n\r\n        <ul class=\"meus-pets-list buttons-inline \">\r\n          <li>\r\n            <button mat-mini-fab routerLink=\"/edit-pet\" [queryParams] =\"{id: pet.id}\">\r\n              <i class=\"fas fa-pencil-alt edit\"></i>\r\n            </button>\r\n          </li>\r\n          <li>\r\n            <button mat-mini-fab (click)=\"openDialog(pet.id)\">\r\n              <i class=\"fas fa-trash-alt remove\"></i>\r\n            </button>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n\r\n  </mat-card>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1835,9 +2439,7 @@ var MeusPetsComponent = /** @class */ (function () {
     MeusPetsComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                //await this.getRacas("/api/racas/all");
-                //await this.getEspecies("/api/especies/all");
-                this.getMeusPets("/api/animals/myanimals/" + localStorage.getItem("id"));
+                this.getMeusPets('/api/animals/myanimals/' + localStorage.getItem('id'));
                 return [2 /*return*/];
             });
         });
@@ -1860,17 +2462,18 @@ var MeusPetsComponent = /** @class */ (function () {
     };
     MeusPetsComponent.prototype.getMeusPets = function (url) {
         var _this = this;
-        var userToken = localStorage.getItem("token");
-        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]().set("Authorization", userToken);
+        var userToken = localStorage.getItem('token');
+        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]().set('Authorization', userToken);
         this.httpClient.get(api_url + url, { headers: headers }).subscribe(function (data) {
             _this.dataPets = data;
             _this.pets = _this.dataPets.payload;
+            console.log(_this.pets);
         });
     };
     MeusPetsComponent.prototype.openDialog = function (id) {
         var dialogRef = this.dialog.open(__WEBPACK_IMPORTED_MODULE_5__modal_delete_pet_modal_delete_pet_component__["a" /* ModalDeletePetComponent */], {
-            width: "300px",
-            height: "210px",
+            width: '300px',
+            height: '210px',
             data: {
                 id: id
             }
@@ -1883,7 +2486,7 @@ var MeusPetsComponent = /** @class */ (function () {
             styles: [__webpack_require__("./src/app/meus-pets/meus-pets.component.css")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_6__angular_material__["b" /* MatDialog */],
+            __WEBPACK_IMPORTED_MODULE_6__angular_material__["c" /* MatDialog */],
             __WEBPACK_IMPORTED_MODULE_4__meus_pets__["a" /* MeusPets */],
             __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
     ], MeusPetsComponent);
@@ -1919,7 +2522,7 @@ module.exports = ""
 /***/ "./src/app/meus-pets/modal-delete-pet/modal-delete-pet.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div class=\"col-md-12\">\n    <div class=\"row justify-content-center\">\n\n      <h3 class=\"title\">Deseja realmente deletar?</h3>\n\n    </div>\n  </div>\n  <div class=\"col-12\">\n    <div class=\"button-row row justify-content-center\">\n      <button mat-raised-button color=\"primary\" class=\"w-50\" (click)=\"deletePet()\">Deletar</button>\n    </div>\n    <div class=\"button-row row justify-content-center\">\n      <button (click)=\"cancel()\" mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\">Cancelar</button>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div>\r\n  <div class=\"col-md-12\">\r\n    <div class=\"row justify-content-center\">\r\n\r\n      <h3 class=\"title\">Deseja realmente deletar?</h3>\r\n\r\n    </div>\r\n  </div>\r\n  <div class=\"col-12\">\r\n    <div class=\"button-row row justify-content-center\">\r\n      <button mat-raised-button color=\"primary\" class=\"w-50\" (click)=\"deletePet()\">Deletar</button>\r\n    </div>\r\n    <div class=\"button-row row justify-content-center\">\r\n      <button (click)=\"cancel()\" mat-raised-button type=\"submit\" color=\"primary\" class=\"w-50\">Cancelar</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1991,8 +2594,8 @@ var ModalDeletePetComponent = /** @class */ (function () {
             styles: [__webpack_require__("./src/app/meus-pets/modal-delete-pet/modal-delete-pet.component.css")]
         }),
         __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MAT_DIALOG_DATA */])),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MatDialogRef */], Object, __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MatSnackBar */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MatDialogRef */], Object, __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_material__["f" /* MatSnackBar */],
             __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]])
     ], ModalDeletePetComponent);
     return ModalDeletePetComponent;
@@ -2101,14 +2704,15 @@ var PetInfoComponent = /** @class */ (function () {
         this.elementDataUser = {};
         this.postData = {};
         this.getPetInfo(this.route.snapshot.queryParams['id']);
+        this.fav = !this.route.snapshot.queryParams['fav'];
         this.url = '/api/favoritos/create';
     }
     PetInfoComponent.prototype.ngOnInit = function () {
-        if (this.pet.ic_deficiencia_animal == undefined) {
+        if (this.pet.ic_deficiencia_animal === undefined) {
             this.pet.ic_deficiencia_animal = false;
             var deficiencia_view = false;
         }
-        else if (this.pet.ic_deficiencia_animal == true) {
+        else if (this.pet.ic_deficiencia_animal === true) {
             this.pet.ic_deficiencia_animal = true;
             var deficiencia_view = true;
         }
@@ -2140,7 +2744,7 @@ var PetInfoComponent = /** @class */ (function () {
             .subscribe(function (res) {
             console.log(res);
         }, function (err) {
-            console.log("Error occured");
+            console.log('Error occured');
         });
     };
     PetInfoComponent.prototype.getPetInfo = function (id) {

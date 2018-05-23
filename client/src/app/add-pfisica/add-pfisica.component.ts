@@ -95,21 +95,18 @@ export class AddPfisicaComponent implements OnInit {
   }
 
   getCityState() {
-    this.httpClient.get(this.api_urlCityState).subscribe (jsonStates => {
-    this.json = jsonStates;
-    console.log(this.json);
-  });
-}
+    this.filtredStates = [];
+    this.httpClient.get(this.api_urlCityState).subscribe(jsonStates => {
+      this.json = jsonStates;
+      this.cityStates = this.json.estados;
+      this.cityStates.forEach(element => {
+        this.filtredStates.push(element.sigla);
+      });
+    });
+  }
 
   ngOnInit() {
     this.getCityState();
-    this.filtredStates = [];
-    this.cityStates = this.json.estados;
-    this.cityStates.forEach(element => {
-      this.filtredStates.push(element.sigla);
-    });
-
-
     this.sexo = [
       { value: 'Masculino', viewValue: 'Masculino' },
       { value: 'Feminino', viewValue: 'Feminino' }
@@ -157,24 +154,32 @@ export class AddPfisicaComponent implements OnInit {
 
       this.removeMasks();
 
-      this.postData = {
-        nm_email_usuario: this.pfisica.email,
-        cd_senha_usuario: this.pfisica.senha,
-        nm_tipo_usuario: 'Pessoa Física',
-        cd_cpf_usuario: this.pfisica.cpf,
-        nm_usuario: this.pfisica.nome,
-        nm_sexo_usuario: this.pfisica.sexo,
-        dt_nascimento_usuario: this.pfisica.data,
-        cd_telefone_usuario: this.pfisica.telefone,
-        cd_cep_usuario: this.pfisica.cep,
-        nm_estado_usuario: this.pfisica.estado,
-        nm_cidade_usuario: this.pfisica.cidade,
-        nm_endereco_usuario: this.pfisica.endereco,
-        cd_ip_usuario: null,
-        cd_numero_endereco_usuario: this.pfisica.numero,
-        ds_complemento_endereco_usuario: this.pfisica.complemento,
-        ds_foto_usuario: null
-      };
+    this.postData = {
+      nm_email_usuario: this.pfisica.email,
+      cd_senha_usuario: this.pfisica.senha,
+      nm_tipo_usuario: 'Pessoa Física',
+      cd_cpf_usuario: this.pfisica.cpf,
+      nm_usuario: this.pfisica.nome,
+      nm_sexo_usuario: this.pfisica.sexo,
+      dt_nascimento_usuario: this.pfisica.data,
+      cd_telefone_usuario: this.pfisica.telefone,
+      cd_cep_usuario: this.pfisica.cep,
+      nm_estado_usuario: this.pfisica.estado,
+      nm_cidade_usuario: this.pfisica.cidade,
+      nm_endereco_usuario: this.pfisica.endereco,
+      cd_ip_usuario: null,
+      cd_numero_endereco_usuario: this.pfisica.numero,
+      ds_complemento_endereco_usuario: this.pfisica.complemento,
+      ds_foto_usuario: null
+    };
+
+    if (this.pfisica.email === null || this.pfisica.senha === null || this.pfisica.cpf === null || this.pfisica.nome === null ||
+      this.pfisica.sexo === null || this.pfisica.data === null || this.pfisica.telefone === null || this.pfisica.cep === null ||
+      this.pfisica.estado === null || this.pfisica.endereco === null || this.pfisica.numero === null) {
+      this.snackBar.open('Preencha todos os dados obrigatórios', 'OK', {
+        duration: 2000,
+      });
+    } else {
 
       return this.httpClient.post<PFisica>(this.apiUrl, this.postData)
         .subscribe(res => {

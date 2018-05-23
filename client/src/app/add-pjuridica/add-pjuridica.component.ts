@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PJuridica } from './p-juridica';
 import { HttpClient } from '@angular/common/http';
-import { Md5 } from 'ts-md5/dist/md5';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
@@ -29,9 +28,7 @@ export class AddPjuridicaComponent implements OnInit {
   public cepMask: Array<string | RegExp>;
   public numMask: Array<string | RegExp>;
 
-  md5 = new Md5();
   pjuridica: PJuridica = new PJuridica();
-  senha: string;
   private apiUrl = api_url + '/api/users/create';
   private api_urlCityState = api_url + '/api/citystate';
 
@@ -97,9 +94,6 @@ export class AddPjuridicaComponent implements OnInit {
 
   registerPj() {
     this.removeMasks();
-    this.md5.appendStr(this.senha);
-    let newSenha = this.md5.end();
-    this.pjuridica.senha = newSenha.toString();
 
     this.postData = {
       nm_email_usuario: this.pjuridica.email,

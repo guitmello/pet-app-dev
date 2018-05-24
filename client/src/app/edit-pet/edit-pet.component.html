@@ -20,6 +20,7 @@
         <div class="col-8">
           <mat-form-field>
             <input [(ngModel)]="editPet.nm_animal" name="nome" matInput placeholder="Nome" required>
+            <mat-error *ngIf="nome.invalid">{{getNomeErrorMessage()}}</mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -29,15 +30,17 @@
         <div class="col-4">
           <mat-form-field>
             <input [(ngModel)]="editPet.cd_idade_animal" name="idade" matInput placeholder="Idade" pattern="[0-9]" max-length="2" required>
+            <mat-error *ngIf="idade.invalid">{{getIdadeErrorMessage()}}</mat-error>
           </mat-form-field>
         </div>
         <div class="col-4">
           <mat-form-field>
             <mat-select [(ngModel)]="editPet.nm_idade_animal" name="text_idade" placeholder="Meses" required>
-              <mat-option *ngFor="let idades of idade" [value]="idades.value">
+              <mat-option *ngFor="let idades of idadeArray" [value]="idades.value">
                 {{ idades.viewValue }}
               </mat-option>
             </mat-select>
+            <mat-error *ngIf="text_idade.invalid">{{getTextIdadeErrorMessage()}}</mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -47,10 +50,11 @@
         <div class="col-8">
           <mat-form-field>
             <mat-select [(ngModel)]="editPet.nm_sexo_animal" name="sexo" placeholder="Sexo" required>
-              <mat-option *ngFor="let sexos of sexo" [value]="sexos.value">
+              <mat-option *ngFor="let sexos of sexoArray" [value]="sexos.value">
                 {{ sexos.viewValue }}
               </mat-option>
             </mat-select>
+            <mat-error *ngIf="sexo.invalid">{{getSexoErrorMessage()}}</mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -60,10 +64,11 @@
         <div class="col-8">
           <mat-form-field>
             <mat-select [(ngModel)]="editPet.nm_tamanho_animal" name="tamanho" placeholder="Tamanho" required>
-              <mat-option *ngFor="let tamanhos of tamanho" [value]="tamanhos.value">
+              <mat-option *ngFor="let tamanhos of tamanhoArray" [value]="tamanhos.value">
                 {{ tamanhos.viewValue }}
               </mat-option>
             </mat-select>
+            <mat-error *ngIf="tamanho.invalid">{{getTamanhoErrorMessage()}}</mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -73,6 +78,7 @@
         <div class="col-8">
           <mat-form-field>
             <input [(ngModel)]="editPet.nm_cor_animal" name="cor" matInput placeholder="Cor" required>
+            <mat-error *ngIf="cor.invalid">{{getCorErrorMessage()}}</mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -86,6 +92,7 @@
                 {{ especies.value }}
               </mat-option>
             </mat-select>
+            <mat-error *ngIf="especie.invalid">{{getEspecieErrorMessage()}}</mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -99,6 +106,7 @@
                 {{ racas.value }}
               </mat-option>
             </mat-select>
+            <mat-error *ngIf="raca.invalid">{{getRacaErrorMessage()}}</mat-error>
           </mat-form-field>
         </div>
       </div>

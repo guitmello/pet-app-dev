@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { FormControl, Validators } from '@angular/forms';
 
 const api_url = environment.apiUrl;
 
@@ -16,7 +17,7 @@ const api_url = environment.apiUrl;
 export class EditUsuarioComponent implements OnInit {
   private apiUrl = api_url;
 
-  sexo: Array<any>;
+  sexoArray: Array<any>;
   dataUsuarios: any = {};
   postData: any = {};
   editusuario: EditUsuario = new EditUsuario();
@@ -33,6 +34,81 @@ export class EditUsuarioComponent implements OnInit {
   tipoJuridico: boolean = false;
   tipoFisico: boolean = false;
 
+  nome = new FormControl('', [Validators.required]);
+  razaoSocial = new FormControl('', [Validators.required]);
+  email = new FormControl('', [Validators.required, Validators.email]);
+  cpf = new FormControl('', [Validators.required, Validators.minLength(11)]);
+  cnpj = new FormControl('', [Validators.required, Validators.minLength(13)]);
+  telefone = new FormControl('', [Validators.required]);
+  sexo = new FormControl('', [Validators.required]);
+  cep = new FormControl('', [Validators.required, Validators.minLength(8)]);
+  estado = new FormControl('', [Validators.required]);
+  cidade = new FormControl('', [Validators.required]);
+  endereco = new FormControl('', [Validators.required]);
+  numero = new FormControl('', [Validators.required]);
+  completo = new FormControl('', [Validators.required]);
+  senha = new FormControl('', [Validators.required]);
+
+  getNomeErrorMessage() {
+    return this.nome.hasError('required') ? 'Você deve preencher seu nome' : '';
+  }
+
+  getRazaoSocialErrorMessage() {
+    return this.razaoSocial.hasError('required') ? 'Você deve preencher sua razão social' : '';
+  }
+
+  getEmailErrorMessage() {
+    return this.email.hasError('required') ? 'Preencha seu email' :
+      this.email.hasError('email') ? 'Email incorreto' :
+        '';
+  }
+
+  getCpfErrorMessage() {
+    return this.cpf.hasError('required') ? 'Preencha seu cpf' :
+      this.cpf.hasError('minlength') ? 'Preencha o cpf corretamente' :
+        '';
+  }
+
+  getCnpjErrorMessage() {
+    return this.cnpj.hasError('required') ? 'Preencha seu cnpj' :
+      this.cnpj.hasError('minlength') ? 'Preencha o cnpj corretamente' :
+        '';
+  }
+
+  getTelefoneErrorMessage() {
+    return this.telefone.hasError('required') ? 'Preencha seu telefone' : '';
+  }
+
+  getSexoErrorMessage() {
+    return this.sexo.hasError('required') ? 'Preencha seu sexo' : '';
+  }
+
+  getCepErrorMessage() {
+    return this.cep.hasError('required') ? 'Preencha seu cep' :
+      this.cep.hasError('minlength') ? 'Preencha o cep corretamente' :
+        '';
+  }
+
+  getEstadoErrorMessage() {
+    return this.estado.hasError('required') ? 'Preencha seu estado' : '';
+  }
+
+  getCidadeErrorMessage() {
+    return this.cidade.hasError('required') ? 'Preencha seu cidade' : '';
+  }
+
+  getEnderecoErrorMessage() {
+    return this.endereco.hasError('required') ? 'Preencha seu endereço' : '';
+  }
+
+  getNumeroErrorMessage() {
+    return this.numero.hasError('required') ? 'Preencha seu numero' : '';
+  }
+
+  getSenhaErrorMessage() {
+    return this.senha.hasError('required') ? 'Preencha sua senha' : '';
+  }
+
   constructor(private httpClient: HttpClient, private editUsuario: EditUsuario, public router: Router,
     private route: ActivatedRoute, public snackBar: MatSnackBar) {
       this.cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
@@ -46,7 +122,7 @@ export class EditUsuarioComponent implements OnInit {
 
   ngOnInit() {
 
-    this.sexo = [
+    this.sexoArray = [
       {value: 'Masculino', viewValue: 'Masculino'},
       {value: 'Feminino', viewValue: 'Feminino'}
     ];
@@ -182,7 +258,7 @@ export class EditUsuarioComponent implements OnInit {
   }
 
   removeCpfMask() {
-    let cpf = this.editUsuario.cd_cpf_usuario.toString();
+    const cpf = this.editUsuario.cd_cpf_usuario.toString();
     let beforeCpf = cpf.replace('.', '');
     beforeCpf = beforeCpf.replace('.', '');
     beforeCpf = beforeCpf.replace('-', '');
@@ -190,7 +266,7 @@ export class EditUsuarioComponent implements OnInit {
   }
 
   removeCelMask() {
-    let cel = this.editUsuario.cd_telefone_usuario.toString();
+    const cel = this.editUsuario.cd_telefone_usuario.toString();
     let beforeCel = cel.replace('(', '');
     beforeCel = beforeCel.replace(')', '');
     beforeCel = beforeCel.replace(' ', '');
@@ -199,14 +275,14 @@ export class EditUsuarioComponent implements OnInit {
   }
 
   removeCepMask() {
-    let cep = this.editUsuario.cd_cep_usuario.toString();
+    const cep = this.editUsuario.cd_cep_usuario.toString();
     let beforeCep = cep.replace('.', '');
     beforeCep = beforeCep.replace('-', '');
     this.editUsuario.cd_cep_usuario = parseInt(beforeCep);
   }
 
   removeCnpjMask() {
-    let cnpj = this.editUsuario.cd_cnpj_usuario.toString();
+    const cnpj = this.editUsuario.cd_cnpj_usuario.toString();
     let beforeCnpj = cnpj.replace('.', '');
     beforeCnpj = beforeCnpj.replace('.', '');
     beforeCnpj = beforeCnpj.replace('/', '');

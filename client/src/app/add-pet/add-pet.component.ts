@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { FormControl, Validators} from '@angular/forms';
 
 const api_url = environment.apiUrl;
 
@@ -17,14 +18,56 @@ export class AddPetComponent implements OnInit {
 
   postData: any = {};
 
-  sexo: Array<any>;
-  especie: any = {};
-  raca: any = {};
-  idade: Array<any>;
-  tamanho: Array<any>;
+  sexoArray: Array<any>;
+  especieArray: any = {};
+  racaArray: any = {};
+  idadeArray: Array<any>;
+  tamanhoArray: Array<any>;
   private apiUrl = api_url;
 
   pet: Pet = new Pet();
+
+  nome = new FormControl('', [Validators.required]);
+  idade = new FormControl('', [Validators.required]);
+  text_idade = new FormControl('', [Validators.required]);
+  sexo = new FormControl('', [Validators.required]);
+  tamanho = new FormControl('', [Validators.required]);
+  cor = new FormControl('', [Validators.required]);
+  raca = new FormControl('', [Validators.required]);
+  especie = new FormControl('', [Validators.required]);
+
+
+  getNomeErrorMessage() {
+    return this.nome.hasError('required') ? 'Preencha o nome do pet' : '';
+  }
+
+  getIdadeErrorMessage() {
+    return this.idade.hasError('required') ? 'Preencha a idade do pet' : '';
+  }
+
+  getTextIdadeErrorMessage() {
+    return this.text_idade.hasError('required') ? 'Preencha o complemento da idade do pet' : '';
+  }
+
+  getSexoErrorMessage() {
+    return this.sexo.hasError('required') ? 'Preencha o sexo do pet' : '';
+  }
+
+  getTamanhoErrorMessage() {
+    return this.tamanho.hasError('required') ? 'Preencha o tamanho do pet' : '';
+  }
+
+  getCorErrorMessage() {
+    return this.cor.hasError('required') ? 'Preencha a cor do pet' : '';
+  }
+
+  getRacaErrorMessage() {
+    return this.raca.hasError('required') ? 'Preencha a raça do pet' : '';
+  }
+
+  getEspecieErrorMessage() {
+    return this.especie.hasError('required') ? 'Preencha a espécie do pet' : '';
+  }
 
   constructor(private httpClient: HttpClient, public router: Router, public snackBar: MatSnackBar) { }
 
@@ -46,23 +89,23 @@ export class AddPetComponent implements OnInit {
 
     this.pet.deficiencia = false;
 
-    this.sexo = [
+    this.sexoArray = [
       { value: 'Macho', viewValue: 'Macho' },
       { value: 'Fêmea', viewValue: 'Fêmea' }
     ];
 
-    this.idade = [
+    this.idadeArray = [
       { value: 'Mes(es)', viewValue: 'Mes(es)' },
       { value: 'Ano(s)', viewValue: 'Ano(s)' }
     ];
 
-    this.tamanho = [
+    this.tamanhoArray = [
       { value: 'Pequeno', viewValue: 'Pequeno' },
       { value: 'Médio', viewValue: 'Médio' },
       { value: 'Grande', viewValue: 'Grande' }
     ];
 
-    this.raca = [];
+    this.racaArray = [];
     this.fillEspecie();
   }
 
@@ -75,9 +118,8 @@ export class AddPetComponent implements OnInit {
     const headers = new HttpHeaders().set('Authorization', userToken);
 
     this.httpClient.get(api_url + '/api/racas/getracas/' + this.pet.id_especie, { headers }).subscribe(element => {
-      //debugger
-      this.raca = element;
-      this.raca = this.raca.payload
+      this.racaArray = element;
+      this.racaArray = this.raca.payload;
     });
   }
 
@@ -86,9 +128,8 @@ export class AddPetComponent implements OnInit {
     const headers = new HttpHeaders().set('Authorization', userToken);
 
     this.httpClient.get(api_url + '/api/especies/all', { headers }).subscribe(element => {
-      //debugger
-      this.especie = element;
-      this.especie = this.especie.payload;
+      this.especieArray = element;
+      this.especieArray = this.especie.payload;
     });
   }
 

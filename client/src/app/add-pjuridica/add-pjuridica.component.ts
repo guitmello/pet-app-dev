@@ -5,7 +5,6 @@ import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { FormControl, Validators } from '@angular/forms';
-import { CityState } from '../city-state';
 
 const api_url = environment.apiUrl;
 
@@ -34,9 +33,9 @@ export class AddPjuridicaComponent implements OnInit {
 
   razaoSocial = new FormControl('', [Validators.required]);
   email = new FormControl('', [Validators.required, Validators.email]);
-  cnpj = new FormControl('', [Validators.required]);
+  cnpj = new FormControl('', [Validators.required, Validators.minLength(14)]);
   telefone = new FormControl('', [Validators.required]);
-  cep = new FormControl('', [Validators.required]);
+  cep = new FormControl('', [Validators.required, Validators.minLength(8)]);
   estado = new FormControl('', [Validators.required]);
   cidade = new FormControl('', [Validators.required]);
   endereco = new FormControl('', [Validators.required]);
@@ -45,45 +44,49 @@ export class AddPjuridicaComponent implements OnInit {
   senha = new FormControl('', [Validators.required]);
 
   getRazaoSocialErrorMessage() {
-    return this.razaoSocial.hasError('required') ? 'Você deve preencher sua razão social' : '';
+    return this.razaoSocial.hasError('required') ? 'Preencha sua razão social' : '';
   }
 
   getEmailErrorMessage() {
-    return this.email.hasError('required') ? 'Você deve preencher seu email' :
+    return this.email.hasError('required') ? 'Preencha seu email' :
       this.email.hasError('email') ? 'Email incorreto' :
         '';
   }
 
   getCnpjErrorMessage() {
-    return this.cnpj.hasError('required') ? 'Você deve preencher seu cnpj' : '';
+    return this.cnpj.hasError('required') ? 'Preencha seu cnpj' :
+      this.cnpj.hasError('minlength') ? 'Preencha corretamente o cnpj' :
+        '';
   }
 
   getTelefoneErrorMessage() {
-    return this.telefone.hasError('required') ? 'Você deve preencher seu telefone' : '';
+    return this.telefone.hasError('required') ? 'Preencha seu telefone' : '';
   }
 
   getCepErrorMessage() {
-    return this.cep.hasError('required') ? 'Você deve preencher seu cep' : '';
+    return this.cep.hasError('required') ? 'Preencha seu cep' :
+      this.cep.hasError('minlength') ? 'Preencha corretamente o cep' :
+        '';
   }
 
   getEstadoErrorMessage() {
-    return this.estado.hasError('required') ? 'Você deve preencher seu estado' : '';
+    return this.estado.hasError('required') ? 'Preencha seu estado' : '';
   }
 
   getCidadeErrorMessage() {
-    return this.cidade.hasError('required') ? 'Você deve preencher seu cidade' : '';
+    return this.cidade.hasError('required') ? 'Preencha seu cidade' : '';
   }
 
   getEnderecoErrorMessage() {
-    return this.endereco.hasError('required') ? 'Você deve preencher seu endereço' : '';
+    return this.endereco.hasError('required') ? 'Preencha seu endereço' : '';
   }
 
   getNumeroErrorMessage() {
-    return this.numero.hasError('required') ? 'Você deve preencher seu numero' : '';
+    return this.numero.hasError('required') ? 'Preencha seu numero' : '';
   }
 
   getSenhaErrorMessage() {
-    return this.senha.hasError('required') ? 'Você deve preencher sua senha' : '';
+    return this.senha.hasError('required') ? 'Preencha sua senha' : '';
   }
 
   constructor(private httpClient: HttpClient, public router: Router, public snackBar: MatSnackBar) {
@@ -192,8 +195,8 @@ export class AddPjuridicaComponent implements OnInit {
   }
 
   removeNumeroMask() {
-    let numberHome = this.pjuridica.numero.toString();
-    let beforeNumberH = numberHome;
+    const numberHome = this.pjuridica.numero.toString();
+    const beforeNumberH = numberHome;
     for (let x = 0; x <= beforeNumberH.length; x++) {
       if (!parseInt(numberHome.slice(x, x + 1))) {
         numberHome.replace('_', '');
@@ -203,7 +206,7 @@ export class AddPjuridicaComponent implements OnInit {
   }
 
   removeCnpjMask() {
-    let cnpj = this.pjuridica.cnpj.toString();
+    const cnpj = this.pjuridica.cnpj.toString();
     let beforeCnpj = cnpj.replace('.', '');
     beforeCnpj = beforeCnpj.replace('.', '');
     beforeCnpj = beforeCnpj.replace('/', '');
@@ -212,7 +215,7 @@ export class AddPjuridicaComponent implements OnInit {
   }
 
   removeCelMask() {
-    let cel = this.pjuridica.telefone.toString();
+    const cel = this.pjuridica.telefone.toString();
     let beforeCel = cel.replace('(', '');
     beforeCel = beforeCel.replace(')', '');
     beforeCel = beforeCel.replace(' ', '');
@@ -221,7 +224,7 @@ export class AddPjuridicaComponent implements OnInit {
   }
 
   removeCepMask() {
-    let cep = this.pjuridica.cep.toString();
+    const cep = this.pjuridica.cep.toString();
     let beforeCep = cep.replace('.', '');
     beforeCep = beforeCep.replace('-', '');
     this.pjuridica.cep = parseInt(beforeCep);

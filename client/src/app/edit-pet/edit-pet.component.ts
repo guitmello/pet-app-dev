@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { FormControl, Validators} from '@angular/forms';
 
 const api_url = environment.apiUrl;
 
@@ -15,7 +16,7 @@ const api_url = environment.apiUrl;
 })
 export class EditPetComponent implements OnInit {
 
-  sexo: Array<any>;
+  sexoArray: Array<any>;
   postData: any = {};
   editpet: EditPet = new EditPet();
   pets: Array<any>;
@@ -29,8 +30,50 @@ export class EditPetComponent implements OnInit {
   petsEdit: Array<any>;
   racas: Array<any>;
   especies: Array<any>;
-  tamanho: Array<any>;
-  idade: Array<any>;
+  tamanhoArray: Array<any>;
+  idadeArray: Array<any>;
+
+  nome = new FormControl('', [Validators.required]);
+  idade = new FormControl('', [Validators.required]);
+  text_idade = new FormControl('', [Validators.required]);
+  sexo = new FormControl('', [Validators.required]);
+  tamanho = new FormControl('', [Validators.required]);
+  cor = new FormControl('', [Validators.required]);
+  raca = new FormControl('', [Validators.required]);
+  especie = new FormControl('', [Validators.required]);
+
+
+  getNomeErrorMessage() {
+    return this.nome.hasError('required') ? 'Preencha o nome do pet' : '';
+  }
+
+  getIdadeErrorMessage() {
+    return this.idade.hasError('required') ? 'Preencha a idade do pet' : '';
+  }
+
+  getTextIdadeErrorMessage() {
+    return this.text_idade.hasError('required') ? 'Preencha o complemento da idade do pet' : '';
+  }
+
+  getSexoErrorMessage() {
+    return this.sexo.hasError('required') ? 'Preencha o sexo do pet' : '';
+  }
+
+  getTamanhoErrorMessage() {
+    return this.tamanho.hasError('required') ? 'Preencha o tamanho do pet' : '';
+  }
+
+  getCorErrorMessage() {
+    return this.cor.hasError('required') ? 'Preencha a cor do pet' : '';
+  }
+
+  getRacaErrorMessage() {
+    return this.raca.hasError('required') ? 'Preencha a raça do pet' : '';
+  }
+
+  getEspecieErrorMessage() {
+    return this.especie.hasError('required') ? 'Preencha a espécie do pet' : '';
+  }
 
   constructor(private httpClient: HttpClient, private editPet: EditPet, public router: Router,
     private route: ActivatedRoute, public snackBar: MatSnackBar) { }
@@ -53,17 +96,17 @@ export class EditPetComponent implements OnInit {
       }
     });
 
-    this.sexo = [
+    this.sexoArray = [
       {value: 'Macho', viewValue: 'Macho'},
       {value: 'Femêa', viewValue: 'Femêa'}
     ];
 
-    this.idade = [
+    this.idadeArray = [
       { value: 'Mes(es)', viewValue: 'Mes(es)' },
       { value: 'Ano(s)', viewValue: 'Ano(s)' }
     ];
 
-    this.tamanho = [
+    this.tamanhoArray = [
       { value: 'Pequeno', viewValue: 'Pequeno' },
       { value: 'Médio', viewValue: 'Médio' },
       { value: 'Grande', viewValue: 'Grande' }

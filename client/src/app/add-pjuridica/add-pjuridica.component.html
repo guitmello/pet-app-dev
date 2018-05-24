@@ -26,7 +26,7 @@
 
         <div class="col-6">
           <mat-form-field>
-            <input [(ngModel)]="pjuridica.cnpj" [textMask]="{mask: cnpjMask}" name="cnpj" type="text" matInput placeholder="CNPJ" required>
+            <input [(ngModel)]="pjuridica.cnpj" [textMask]="{mask: cnpjMask}" name="cnpj" minlength="14" type="text" matInput placeholder="CNPJ" required>
             <mat-error *ngIf="cnpj.invalid">{{getCnpjErrorMessage()}}</mat-error>
           </mat-form-field>
         </div>
@@ -41,7 +41,7 @@
 
         <div class="col-6">
           <mat-form-field>
-            <input [(ngModel)]="pjuridica.cep" [textMask]="{mask: cepMask}" name="cep" type="text" matInput placeholder="CEP" required>
+            <input [(ngModel)]="pjuridica.cep" [textMask]="{mask: cepMask}" name="cep" minlength="8" type="text" matInput placeholder="CEP" required>
             <mat-error *ngIf="cep.invalid">{{getCepErrorMessage()}}</mat-error>
           </mat-form-field>
         </div>

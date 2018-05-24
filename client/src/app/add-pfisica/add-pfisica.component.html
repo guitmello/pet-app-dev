@@ -26,7 +26,7 @@
 
         <div class="col-6">
           <mat-form-field>
-            <input [(ngModel)]="pfisica.cpf" [textMask]="{mask: cpfMask}" name="cpf" type="text" matInput placeholder="CPF" required>
+            <input [(ngModel)]="pfisica.cpf" [textMask]="{mask: cpfMask}" name="cpf" minlength="11" type="text" matInput placeholder="CPF" required>
             <mat-error *ngIf="cpf.invalid">{{getCpfErrorMessage()}}</mat-error>
           </mat-form-field>
         </div>
@@ -34,10 +34,11 @@
         <div class="col-6">
           <mat-form-field>
             <mat-select [(ngModel)]="pfisica.sexo" name="sexo" placeholder="Sexo" required>
-              <mat-option *ngFor="let sexos of sexo" [value]="sexos.value">
+              <mat-option *ngFor="let sexos of sexoArray" [value]="sexos.value">
                 {{ sexos.viewValue }}
               </mat-option>
             </mat-select>
+            <mat-error *ngIf="sexo.invalid">{{getSexoErrorMessage()}}</mat-error>
           </mat-form-field>
         </div>
 
@@ -51,7 +52,7 @@
 
         <div class="col-6">
           <mat-form-field>
-            <input [(ngModel)]="pfisica.cep" [textMask]="{mask: cepMask}" name="cep" type="text" matInput placeholder="CEP" required>
+            <input [(ngModel)]="pfisica.cep" [textMask]="{mask: cepMask}" name="cep" minlength="8" type="text" matInput placeholder="CEP" required>
             <mat-error *ngIf="cep.invalid">{{getCepErrorMessage()}}</mat-error>
           </mat-form-field>
         </div>

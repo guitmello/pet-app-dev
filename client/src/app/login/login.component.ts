@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Md5 } from 'ts-md5/dist/md5';
 
 import { LoginService } from './login.service';
 import { Usuario } from './usuario';

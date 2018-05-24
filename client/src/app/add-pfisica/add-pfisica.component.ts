@@ -5,7 +5,6 @@ import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { FormControl, Validators } from '@angular/forms';
-import { CityState } from '../city-state';
 
 const api_url = environment.apiUrl;
 
@@ -20,7 +19,7 @@ export class AddPfisicaComponent implements OnInit {
   filtredCities: Array<any>;
   citiesArrays: any = {};
   json: any = {};
-  sexo: Array<any>;
+  sexoArray: Array<any>;
   data: any = {};
   postData: any = {};
   public cpfMask: Array<string | RegExp>;
@@ -35,9 +34,10 @@ export class AddPfisicaComponent implements OnInit {
 
   nome = new FormControl('', [Validators.required]);
   email = new FormControl('', [Validators.required, Validators.email]);
-  cpf = new FormControl('', [Validators.required]);
+  cpf = new FormControl('', [Validators.required, Validators.minLength(11)]);
   telefone = new FormControl('', [Validators.required]);
-  cep = new FormControl('', [Validators.required]);
+  sexo = new FormControl('', [Validators.required]);
+  cep = new FormControl('', [Validators.required, Validators.minLength(8)]);
   estado = new FormControl('', [Validators.required]);
   cidade = new FormControl('', [Validators.required]);
   endereco = new FormControl('', [Validators.required]);
@@ -50,41 +50,49 @@ export class AddPfisicaComponent implements OnInit {
   }
 
   getEmailErrorMessage() {
-    return this.email.hasError('required') ? 'Você deve preencher seu email' :
+    return this.email.hasError('required') ? 'Preencha seu email' :
       this.email.hasError('email') ? 'Email incorreto' :
         '';
   }
 
   getCpfErrorMessage() {
-    return this.cpf.hasError('required') ? 'Você deve preencher seu cpf' : '';
+    return this.cpf.hasError('required') ? 'Preencha seu cpf' :
+      this.cpf.hasError('minlength') ? 'Preencha o cpf corretamente' :
+        '';
   }
 
   getTelefoneErrorMessage() {
-    return this.telefone.hasError('required') ? 'Você deve preencher seu telefone' : '';
+    return this.telefone.hasError('required') ? 'Preencha seu telefone' : '';
+  }
+
+  getSexoErrorMessage() {
+    return this.sexo.hasError('required') ? 'Preencha seu sexo' : '';
   }
 
   getCepErrorMessage() {
-    return this.cep.hasError('required') ? 'Você deve preencher seu cep' : '';
+    return this.cep.hasError('required') ? 'Preencha seu cep' :
+    this.cep.hasError('minlength') ? 'Preencha o cep corretamente' :
+        '';
   }
 
   getEstadoErrorMessage() {
-    return this.estado.hasError('required') ? 'Você deve preencher seu estado' : '';
+    return this.estado.hasError('required') ? 'Preencha seu estado' : '';
   }
 
   getCidadeErrorMessage() {
-    return this.cidade.hasError('required') ? 'Você deve preencher seu cidade' : '';
+    return this.cidade.hasError('required') ? 'Preencha seu cidade' : '';
   }
 
   getEnderecoErrorMessage() {
-    return this.endereco.hasError('required') ? 'Você deve preencher seu endereço' : '';
+    return this.endereco.hasError('required') ? 'Preencha seu endereço' : '';
   }
 
   getNumeroErrorMessage() {
-    return this.numero.hasError('required') ? 'Você deve preencher seu numero' : '';
+    return this.numero.hasError('required') ? 'Preencha seu numero' : '';
   }
 
   getSenhaErrorMessage() {
-    return this.senha.hasError('required') ? 'Você deve preencher sua senha' : '';
+    return this.senha.hasError('required') ? 'Preencha sua senha' : '';
   }
 
   constructor(private httpClient: HttpClient, public router: Router, public snackBar: MatSnackBar) {
@@ -107,7 +115,8 @@ export class AddPfisicaComponent implements OnInit {
 
   ngOnInit() {
     this.getCityState();
-    this.sexo = [
+
+    this.sexoArray = [
       { value: 'Masculino', viewValue: 'Masculino' },
       { value: 'Feminino', viewValue: 'Feminino' }
     ];
@@ -173,14 +182,6 @@ export class AddPfisicaComponent implements OnInit {
       ds_foto_usuario: null
     };
 
-    if (this.pfisica.email === null || this.pfisica.senha === null || this.pfisica.cpf === null || this.pfisica.nome === null ||
-      this.pfisica.sexo === null || this.pfisica.data === null || this.pfisica.telefone === null || this.pfisica.cep === null ||
-      this.pfisica.estado === null || this.pfisica.endereco === null || this.pfisica.numero === null) {
-      this.snackBar.open('Preencha todos os dados obrigatórios', 'OK', {
-        duration: 2000,
-      });
-    } else {
-
       return this.httpClient.post<PFisica>(this.apiUrl, this.postData)
         .subscribe(res => {
           console.log(res);
@@ -195,7 +196,6 @@ export class AddPfisicaComponent implements OnInit {
             });
           }
         );
-  }
 }
 
 

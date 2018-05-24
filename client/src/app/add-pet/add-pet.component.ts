@@ -119,7 +119,7 @@ export class AddPetComponent implements OnInit {
 
     this.httpClient.get(api_url + '/api/racas/getracas/' + this.pet.id_especie, { headers }).subscribe(element => {
       this.racaArray = element;
-      this.racaArray = this.raca.payload;
+      this.racaArray = this.racaArray.payload;
     });
   }
 
@@ -129,7 +129,7 @@ export class AddPetComponent implements OnInit {
 
     this.httpClient.get(api_url + '/api/especies/all', { headers }).subscribe(element => {
       this.especieArray = element;
-      this.especieArray = this.especie.payload;
+      this.especieArray = this.especieArray.payload;
     });
   }
 

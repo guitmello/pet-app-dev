@@ -2,13 +2,13 @@
 
   <div class="col-md-12">
     <div class="row justify-content-center">
-      <h1 *ngIf="tipoFisico" class="title">Editando Usuário - {{editUsuario.nm_usuario}}</h1>
-      <h1 *ngIf="tipoJuridico" class="title">Editando Usuário - {{editUsuario.nm_razao_social_usuario}}</h1>
+      <h1 *ngIf="tipoFisicoEmitter" class="title">Editando Usuário - {{editUsuario.nm_usuario}}</h1>
+      <h1 *ngIf="tipoJuridicoEmitter" class="title">Editando Usuário - {{editUsuario.nm_razao_social_usuario}}</h1>
     </div>
   </div>
 
   <mat-card>
-    <form *ngIf="tipoFisico" id="usuarioFisico" name="usuarioFisico">
+    <form *ngIf="tipoFisicoEmitter" id="usuarioFisico" name="usuarioFisico">
 
       <div class="row justify-content-center">
         <div class="col-12">
@@ -113,7 +113,7 @@
 
 
 
-    <form *ngIf="tipoJuridico" id="usuarioJuridico" name="usuarioJuridico">
+    <form *ngIf="tipoJuridicoEmitter" id="usuarioJuridico" name="usuarioJuridico">
 
       <div class="row justify-content-center">
         <div class="col-12">

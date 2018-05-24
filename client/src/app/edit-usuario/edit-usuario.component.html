@@ -94,7 +94,7 @@
 
         <div class="col-12">
           <mat-form-field>
-            <input [(ngModel)]="senha" name="senha" type="password" matInput placeholder="Senha" required>
+            <input [(ngModel)]="editUsuario.cd_senha_usuario" name="senha" type="password" matInput placeholder="Senha" required>
             <mat-error *ngIf="senha.invalid">{{getSenhaErrorMessage()}}</mat-error>
           </mat-form-field>
         </div>
@@ -189,7 +189,7 @@
 
         <div class="col-12">
           <mat-form-field>
-            <input [(ngModel)]="senha" name="senha" type="password" matInput placeholder="Senha" required>
+            <input [(ngModel)]="editUsuario.cd_senha_usuario" name="senha" type="password" matInput placeholder="Senha" required>
             <mat-error *ngIf="senha.invalid">{{getSenhaErrorMessage()}}</mat-error>
           </mat-form-field>
         </div>

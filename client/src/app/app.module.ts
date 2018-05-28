@@ -52,6 +52,7 @@ import { EditPet } from './edit-pet/edit-pet';
 import { EditUsuario } from './edit-usuario/edit-usuario';
 import { AddFastPet } from './add-fast-pet/add-fast-pet';
 import { MatAutocompleteModule } from '@angular/material';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @NgModule({
@@ -86,6 +87,7 @@ import { MatAutocompleteModule } from '@angular/material';
     MatIconModule,
     MatButtonModule,
     MatListModule,
+    MatExpansionModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,

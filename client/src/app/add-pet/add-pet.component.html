@@ -31,7 +31,7 @@
         </div>
         <div class="col-4">
           <mat-form-field>
-            <input [(ngModel)]="pet.cd_idade_animal" name="idade" matInput placeholder="Idade" pattern="[0-9]" max-length="2" required>
+            <input [(ngModel)]="pet.cd_idade_animal" name="idade" matInput placeholder="Idade" max-length="2" required>
             <mat-error *ngIf="cor.invalid">{{getIdadeErrorMessage()}}</mat-error>
           </mat-form-field>
         </div>

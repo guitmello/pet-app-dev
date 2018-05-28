@@ -13,26 +13,40 @@
     <div class="col-md-12">
       <div class="row">
 
-          <div class="col-3 meus-pets-img">
-            <div class="img-circle" [ngStyle]="{ 'background-image': 'url(' + pet.ds_foto_animal + ') '}"></div>
-        </div>
+        
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <div class="col-3 meus-pets-img">
+                  <div class="img-circle" [ngStyle]="{ 'background-image': 'url(' + pet.ds_foto_animal + ') '}"></div>
+                </div>
+                <ul class="meus-pets-list">
+                  <li>
+                    <span class="meus-pets-text font-bold">{{pet.nm_animal}}</span>
+                  </li>
+                  <li>
+                    <span class="meus-pets-sub-text">{{pet.cd_idade_animal}} {{pet.nm_idade_animal}}</span>
+                    <span class="meus-pets-sub-text">{{pet.Especie.nm_especie}}</span>
+                    <span class="meus-pets-sub-text">{{pet.Raca.nm_raca}}</span>
+                  </li>
+                </ul>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
 
-        <ul class="meus-pets-list">
-          <li>
-            <span class="meus-pets-text font-bold">{{pet.nm_animal}}</span>
-          </li>
-          <li>
-            <span class="meus-pets-sub-text">{{pet.nm_animal}}</span>
-            <span class="meus-pets-sub-text">{{pet.nm_idade_animal}}</span>
-            <span class="meus-pets-sub-text">{{pet.Raca.nm_raca}}</span>
-          </li>
-        </ul>
+            alo brasil
 
+          </mat-expansion-panel>
+        
+
+
+        
+
+        <!--
         <span class="nav-space"></span>
 
         <ul class="meus-pets-list buttons-inline ">
           <li>
-            <button mat-mini-fab routerLink="/edit-pet" [queryParams] ="{id: pet.id}">
+            <button mat-mini-fab routerLink="/edit-pet" [queryParams]="{id: pet.id}">
               <i class="fas fa-pencil-alt edit"></i>
             </button>
           </li>
@@ -41,7 +55,7 @@
               <i class="fas fa-trash-alt remove"></i>
             </button>
           </li>
-        </ul>
+        </ul>-->
       </div>
     </div>
 

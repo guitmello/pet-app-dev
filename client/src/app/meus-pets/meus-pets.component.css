@@ -3,6 +3,35 @@
   font-size: 14px;
   margin-bottom: 10px;
 }
+.col-md-12{
+  padding-right: 20px;
+}
+.mat-expansion-panel:not([class*=mat-elevation-z]){
+  box-shadow: none;
+}
+.mat-expansion-panel{
+  min-width: 100%;
+  box-sizing: inherit !important;
+  background: transparent;
+}
+.mat-expansion-panel-header{
+  padding: 0px;
+  min-width: 100%;
+  background: transparent;
+}
+.mat-expansion-panel-header-title{
+  margin-right: 0px;
+}
+.mat-expansion-indicator{
+  margin-left: -5px;
+}
+.mat-expansion-panel:not(.mat-expanded) 
+.mat-expansion-panel-header:not([aria-disabled=true]).cdk-keyboard-focused, 
+.mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-program-focused, 
+.mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover{
+  background: transparent;
+}
+
 .meus-pets-img{
   padding: 0px 10px;
 }

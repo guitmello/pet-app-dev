@@ -24,16 +24,19 @@ export class PetInfoComponent implements OnInit {
   racas: Array<any>;
   especies: Array<any>;
   url: string;
+  urlRemove: string;
   fav: boolean;
+  favd: string;
 
-  constructor(private route: ActivatedRoute, private httpClient: HttpClient) {
+  constructor(private route: ActivatedRoute, private httpClient: HttpClient,public router: Router) {
     this.getPetInfo(this.route.snapshot.queryParams['id']);
     this.fav = !this.route.snapshot.queryParams['fav'];
+    this.favd = this.route.snapshot.queryParams['favd'];
     this.url = '/api/favoritos/create';
+    this.urlRemove = '/api/favoritos/';
   }
 
   ngOnInit() {
-
     /*if (this.pet.ic_deficiencia_animal === undefined) {
       this.pet.ic_deficiencia_animal = false;
       const deficiencia_view = false;
@@ -63,6 +66,26 @@ export class PetInfoComponent implements OnInit {
       );
   }
 
+  removerFavPet(id: number) {
+    const userToken = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', userToken);
+
+    this.postData = {
+      cd_animal_fk: id,
+      cd_usuario_fk: localStorage.getItem('id')
+    };
+
+    return this.httpClient.delete(api_url + this.urlRemove + this.favd + '/destroy', { headers })
+      .subscribe(
+        res => {
+          this.router.navigate(['/favoritos']);
+        },
+        err => {
+          console.log('Error occured');
+        }
+      );
+  }
+
 
   getPetInfo(id) {
 
@@ -80,7 +103,6 @@ export class PetInfoComponent implements OnInit {
           this.pet.address1 = this.elementDataUser.payload.nm_cidade_usuario + ' - ' + this.elementDataUser.payload.nm_estado_usuario;
           this.pet.address2 = this.elementDataUser.payload.nm_endereco_usuario;;
         });
-      console.log('this.pet', this.pet);
     });
   }
 

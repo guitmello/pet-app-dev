@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { HttpHeaders, HttpParams, HttpClient } from '@angular/common/http';
+import { Pet } from '../pet-info/pet-info.component';
 
 const api_url = environment.apiUrl;
 
@@ -15,12 +16,13 @@ export class FavoritosComponent implements OnInit {
   elementFavorite: any = {};
   pets: any = {};
   elementData: any = {};
+  postData: any = {};
   listOfFavoritePets: Array<any>;
   listOfFavoritePets2: Array<any>;
-
   constructor(
     public router: Router, private httpClient: HttpClient
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.getFavoritePets();
@@ -36,9 +38,7 @@ export class FavoritosComponent implements OnInit {
     const userToken = localStorage.getItem('token');
 
     const headers = new HttpHeaders().set('Authorization', userToken);
-    //debugger
     this.httpClient.get(api_url + '/api/animal/myfavorites/' + id, { headers }).subscribe(element => {
-      //debugger
       this.elementFavorite = element;
       this.elementFavorite = this.elementFavorite.payload;
       this.elementFavorite.forEach(favorite => {
@@ -50,7 +50,8 @@ export class FavoritosComponent implements OnInit {
         this.pets.push(favorite);
       });
     });
-
   }
+
+  
 
 }

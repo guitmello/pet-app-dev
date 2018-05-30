@@ -41,7 +41,6 @@ export class MeusPetsComponent implements OnInit {
     this.httpClient.get(api_url + url).subscribe(racas => {
       this.dataRacas = racas;
       this.racas = this.dataRacas.payload;
-      console.log(this.racas);
     });
   }
 
@@ -49,7 +48,6 @@ export class MeusPetsComponent implements OnInit {
     this.httpClient.get(api_url + url).subscribe(especies => {
       this.dataEspecies = especies;
       this.especies = this.dataEspecies.payload;
-      console.log(this.especies);
     });
   }
 
@@ -60,7 +58,6 @@ export class MeusPetsComponent implements OnInit {
     this.httpClient.get(api_url + url, { headers }).subscribe(data => {
       this.dataPets = data;
       this.pets = this.dataPets.payload;
-      console.log(this.pets);
     });
 
   }

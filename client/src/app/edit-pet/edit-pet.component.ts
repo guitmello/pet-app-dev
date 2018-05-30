@@ -123,7 +123,6 @@ export class EditPetComponent implements OnInit {
     this.httpClient.get(api_url + url).subscribe(racas => {
       this.dataRacas = racas;
       this.racas = this.dataRacas.payload;
-      console.log(this.racas);
     });
   }
 
@@ -132,7 +131,6 @@ export class EditPetComponent implements OnInit {
     this.httpClient.get(api_url + url).subscribe(especies => {
       this.dataEspecies = especies;
       this.especies = this.dataEspecies.payload;
-      console.log(this.especies);
     });
   }
 

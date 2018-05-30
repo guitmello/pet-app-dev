@@ -36,7 +36,6 @@ export class HomeComponent implements OnInit {
     this.httpClient.get(api_url + url).subscribe(racas => {
       this.dataRacas = racas;
       this.racas = this.dataRacas.payload;
-      console.log(this.racas);
     });
   }
 
@@ -44,7 +43,6 @@ export class HomeComponent implements OnInit {
   //   this.httpClient.get(api_url + url).subscribe(usuarios => {
   //     this.dataUsuarios = usuarios;
   //     this.usuarios = this.dataUsuarios.payload;
-  //     console.log(this.usuarios);
   //   });
   // }
 
@@ -52,7 +50,6 @@ export class HomeComponent implements OnInit {
     this.httpClient.get(api_url + url).subscribe(especies => {
       this.dataEspecies = especies;
       this.especies = this.dataEspecies.payload;
-      console.log(this.especies);
     });
   }
 
@@ -77,12 +74,10 @@ export class HomeComponent implements OnInit {
         }
         this.httpClient.get(api_url + '/api/users/' + element.cd_usuario_fk, { headers }).subscribe(elementUser => {
           this.elementData = elementUser;
-          console.log(this.elementData);
           element.address1 = this.elementData.payload.nm_cidade_usuario + ' - ' + this.elementData.payload.nm_estado_usuario;
           element.address2 = this.elementData.payload.nm_endereco_usuario;
         });
       });
-      console.log(this.petsHome);
     });
   }
 

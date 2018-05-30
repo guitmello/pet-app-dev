@@ -15,10 +15,18 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" *ngIf="fav">
       <div class="col-1 offset-9 btn-favorite-area">
         <button mat-mini-fab color="primary" (click)='favoritarPet(pet.id)'>
           <mat-icon aria-label="Favoritar">favorite</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="!fav">
+      <div class="col-1 offset-9 btn-favorite-area">
+        <button mat-mini-fab color="primary" (click)='removerFavPet(pet.id)'>
+          <mat-icon aria-label="Remover">remove</mat-icon>
         </button>
       </div>
     </div>

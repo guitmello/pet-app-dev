@@ -45,7 +45,6 @@ export class AddFastPetComponent implements OnInit {
     + this.mapsUrlFinal).subscribe( adress => {
       this.dataAdress = adress;
       this.addFastPet = this.dataAdress.results;
-      console.log(this.addFastPet[0]);
       });
 
   }

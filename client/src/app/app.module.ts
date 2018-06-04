@@ -53,6 +53,7 @@ import { EditUsuario } from './edit-usuario/edit-usuario';
 import { AddFastPet } from './add-fast-pet/add-fast-pet';
 import { MatAutocompleteModule } from '@angular/material';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -98,6 +99,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatSnackBarModule,
     TextMaskModule,
     MatAutocompleteModule,
+    MatProgressSpinnerModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AppComponent, LoginService, MeusPetsComponent, MeusPets, EditPet, EditUsuario, AddFastPetComponent, AddFastPet,

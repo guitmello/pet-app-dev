@@ -20,6 +20,9 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
+<div *ngIf="mostrarLoading" class="loading-area">
+  <mat-progress-spinner class="spinner" strokeWidth="3" diameter="30" color="primary" mode="indeterminate"></mat-progress-spinner>
+</div>
 
 <button *ngIf="mostrarButton" class="btn-fast-add" mat-mini-fab color="primary" routerLink="/add-fast-pet">
   <mat-icon aria-label="Adicionar Pet Rapidamente">add</mat-icon>

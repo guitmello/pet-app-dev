@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import { LoginService } from './login/login.service';
 import { Router } from '@angular/router';
 import { EventEmitter } from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +17,11 @@ export class AppComponent {
   mostrarMenu: boolean = false;
   mostrarButton: boolean = false;
   mostrarId: string = null;
+  mostrarLoading: boolean = true;
 
   mostrarMenuEmitter = new EventEmitter<boolean>();
   mostrarButtonEmmiter = new EventEmitter<boolean>();
+  mostrarLoadingEmmiter = new EventEmitter<boolean>();
   idUsuario = new EventEmitter<string>();
 
   constructor(private loginService: LoginService, public router: Router) { }
@@ -70,6 +73,10 @@ export class AppComponent {
 
     this.loginService.idUsuario.subscribe(
       id => this.mostrarId = id,
+    );
+
+    this.mostrarLoadingEmmiter.subscribe(
+      mostrarSpinner => this.mostrarLoading = mostrarSpinner,
     );
 
   }

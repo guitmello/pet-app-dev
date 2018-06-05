@@ -13,33 +13,50 @@
     <div class="col-md-12">
       <div class="row">
 
-        
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <div class="col-3 meus-pets-img">
-                  <div class="img-circle" [ngStyle]="{ 'background-image': 'url(' + pet.ds_foto_animal + ') '}"></div>
-                </div>
-                <ul class="meus-pets-list">
-                  <li>
-                    <span class="meus-pets-text font-bold">{{pet.nm_animal}}</span>
-                  </li>
-                  <li>
-                    <span class="meus-pets-sub-text">{{pet.cd_idade_animal}} {{pet.nm_idade_animal}}</span>
-                    <span class="meus-pets-sub-text">{{pet.Especie.nm_especie}}</span>
-                    <span class="meus-pets-sub-text">{{pet.Raca.nm_raca}}</span>
-                  </li>
-                </ul>
-              </mat-panel-title>
-            </mat-expansion-panel-header>
 
-            alo brasil
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="col-3 meus-pets-img">
+                <div class="img-circle" [ngStyle]="{ 'background-image': 'url(' + pet.ds_foto_animal + ') '}"></div>
+              </div>
+              <ul class="meus-pets-list">
+                <li>
+                  <span class="meus-pets-text font-bold">{{pet.nm_animal}}</span>
+                </li>
+                <li>
+                  <span class="meus-pets-sub-text">{{pet.cd_idade_animal}} {{pet.nm_idade_animal}}</span>
+                  <span class="meus-pets-sub-text">{{pet.Especie.nm_especie}}</span>
+                  <span class="meus-pets-sub-text">{{pet.Raca.nm_raca}}</span>
+                </li>
+              </ul>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
 
-          </mat-expansion-panel>
-        
+          <ul class="meus-pets-desc">
+            <li>{{pet.nm_cor_animal}}</li>
+            <li>{{pet.nm_tamanho_animal}}</li>
+            <li>{{pet.nm_sexo_animal}}</li>
+          </ul>
+          
+            <ul class="meus-pets-list buttons-inline">
+              <li>
+                <button mat-icon-button routerLink="/edit-pet" [queryParams]="{id: pet.id}">
+                  <i class="fas fa-pencil-alt edit"></i>
+                </button>
+              </li>
+              <li>
+                <button mat-icon-button (click)="openDialog(pet.id)">
+                  <i class="fas fa-trash-alt remove"></i>
+                </button>
+              </li>
+            </ul>
+
+        </mat-expansion-panel>
 
 
-        
+
+
 
         <!--
         <span class="nav-space"></span>

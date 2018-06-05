@@ -5,6 +5,8 @@ import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { FormControl, Validators } from '@angular/forms';
+import { EventEmitter } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 const api_url = environment.apiUrl;
 
@@ -34,6 +36,9 @@ export class AddPfisicaComponent implements OnInit {
   pfisica: PFisica = new PFisica();
   private apiUrl = api_url + '/api/users/create';
   private api_urlCityState = api_url + '/api/citystate';
+
+  mostrarLoading: boolean = false;
+  mostrarLoadingEmmiter = new EventEmitter<boolean>();
 
   nome = new FormControl('', [Validators.required]);
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -98,7 +103,7 @@ export class AddPfisicaComponent implements OnInit {
     return this.senha.hasError('required') ? 'Preencha sua senha' : '';
   }
 
-  constructor(private httpClient: HttpClient, public router: Router, public snackBar: MatSnackBar) {
+  constructor(private httpClient: HttpClient, public router: Router, public snackBar: MatSnackBar, private appComponent: AppComponent) {
     this.cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
     this.celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
     this.cepMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
@@ -106,6 +111,8 @@ export class AddPfisicaComponent implements OnInit {
   }
 
   getCityState() {
+    this.appComponent.mostrarLoadingEmmiter.emit(true);
+
     this.filtredStates = [];
     this.httpClient.get(this.api_urlCityState).subscribe(jsonStates => {
       this.json = jsonStates;
@@ -113,10 +120,16 @@ export class AddPfisicaComponent implements OnInit {
       this.cityStates.forEach(state => {
         this.filtredStates.push(state.sigla);
       });
+
+      this.appComponent.mostrarLoadingEmmiter.emit(false);
     });
   }
 
   ngOnInit() {
+    this.appComponent.mostrarLoadingEmmiter.subscribe(
+      mostrarSpinner => this.mostrarLoading = mostrarSpinner,
+    );
+
     this.getCityState();
     this.sexoArray = [
       { value: 'Masculino', viewValue: 'Masculino' },
@@ -148,6 +161,8 @@ export class AddPfisicaComponent implements OnInit {
   }
 
   fillCitiesFromStates() {
+    this.appComponent.mostrarLoadingEmmiter.emit(true);
+
     this.filtredStates = [];
     this.citiesArrays = [];
     this.filtredCities = [];
@@ -161,10 +176,14 @@ export class AddPfisicaComponent implements OnInit {
       element.forEach(element2 => {
         this.filtredCities.push(element2);
       });
+
+      this.appComponent.mostrarLoadingEmmiter.emit(false);
     });
   }
 
   fillFiltredCities() {
+    this.appComponent.mostrarLoadingEmmiter.emit(true);
+
     this.filtredCities = [];
     if (!!this.pfisica.cidade) {
       this.citiesArrays.forEach(cities => {
@@ -173,11 +192,15 @@ export class AddPfisicaComponent implements OnInit {
             this.filtredCities.push(city);
           }
         });
+
+        this.appComponent.mostrarLoadingEmmiter.emit(false);
       });
     }
   }
 
   registerPf() {
+    this.appComponent.mostrarLoadingEmmiter.emit(true);
+
     this.auxState = false;
     this.auxCity = false;
     if (!!this.cityStates) {
@@ -192,6 +215,8 @@ export class AddPfisicaComponent implements OnInit {
         this.snackBar.open('Cidade não encontrada', 'OK', {
           duration: 2000,
         });
+
+        this.appComponent.mostrarLoadingEmmiter.emit(false);
       } else if (this.auxState && this.auxCity) {
         this.submit()
       }
@@ -199,6 +224,8 @@ export class AddPfisicaComponent implements OnInit {
   }
 
   searchStateAndCity() {
+    this.appComponent.mostrarLoadingEmmiter.emit(true);
+
     this.cityStates.forEach(state => {
       if (this.pfisica.estado.toLowerCase() === state.sigla.toLowerCase() && this.auxState == false) {
         this.auxState = true;
@@ -209,6 +236,8 @@ export class AddPfisicaComponent implements OnInit {
                 this.auxCity = true;
               }
             });
+
+            this.appComponent.mostrarLoadingEmmiter.emit(false);
           });
         }
       }
@@ -216,6 +245,8 @@ export class AddPfisicaComponent implements OnInit {
   }
 
   submit() {
+    this.appComponent.mostrarLoadingEmmiter.emit(true);
+
     this.removeMasks();
     this.postData = {
       nm_email_usuario: this.pfisica.email,
@@ -241,12 +272,14 @@ export class AddPfisicaComponent implements OnInit {
         this.snackBar.open('Usuário Cadastrado com Sucesso!', 'OK', {
           duration: 2000,
         });
+        this.appComponent.mostrarLoadingEmmiter.emit(false);
         this.goTo('login');
       },
         err => {
           this.snackBar.open('Erro ao Cadastrar Usuário', 'OK', {
             duration: 2000,
           });
+          this.appComponent.mostrarLoadingEmmiter.emit(false);
         }
       );
   }

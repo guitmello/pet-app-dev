@@ -6,6 +6,8 @@ import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { FormControl, Validators} from '@angular/forms';
+import { EventEmitter } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 const api_url = environment.apiUrl;
 
@@ -21,6 +23,9 @@ export class EditPetComponent implements OnInit {
   editpet: EditPet = new EditPet();
   pets: Array<any>;
   private apiUrl = api_url;
+
+  mostrarLoading: boolean = false;
+  mostrarLoadingEmmiter = new EventEmitter<boolean>();
 
   dataPets: any = {};
   dataRacas: any = {};
@@ -76,13 +81,18 @@ export class EditPetComponent implements OnInit {
   }
 
   constructor(private httpClient: HttpClient, private editPet: EditPet, public router: Router,
-    private route: ActivatedRoute, public snackBar: MatSnackBar) { }
+    private route: ActivatedRoute, public snackBar: MatSnackBar, private appComponent: AppComponent) { }
 
   id = this.route.snapshot.queryParams['id'];
 
   async ngOnInit() {
+    this.appComponent.mostrarLoadingEmmiter.subscribe(
+      mostrarSpinner => this.mostrarLoading = mostrarSpinner,
+    );
 
     document.querySelector('#imgupload').addEventListener('change', function() {
+      this.appComponent.mostrarLoadingEmmiter.emit(true);
+      
       let fotoAnimal;
       let filesSelected = (<HTMLInputElement>document.getElementById('imgupload')).files;
       if (filesSelected.length > 0) {
@@ -93,6 +103,8 @@ export class EditPetComponent implements OnInit {
           (<HTMLInputElement>document.getElementById('imgupload')).setAttribute('base64-value', base64value.result);
         };
         fileReader.readAsDataURL(fileToLoad);
+
+        this.appComponent.mostrarLoadingEmmiter.emit(false);
       }
     });
 
@@ -136,6 +148,8 @@ export class EditPetComponent implements OnInit {
 
 
   getDataPet() {
+    this.appComponent.mostrarLoadingEmmiter.emit(true);
+
     this.apiUrl = this.apiUrl + '/api/animals/' + this.id ;
     const userToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', userToken);
@@ -143,8 +157,9 @@ export class EditPetComponent implements OnInit {
     this.httpClient.get(this.apiUrl, { headers }).subscribe( pets => {
       this.dataPets = pets;
       this.editPet = this.dataPets.payload;
-
       });
+
+      this.appComponent.mostrarLoadingEmmiter.emit(false);
   }
 
 
@@ -154,6 +169,8 @@ export class EditPetComponent implements OnInit {
 
 
   updatePet(URL) {
+    this.appComponent.mostrarLoadingEmmiter.emit(true);
+
     const userToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', userToken);
 
@@ -184,12 +201,14 @@ export class EditPetComponent implements OnInit {
           this.snackBar.open('Pet Editado com Sucesso!', 'OK', {
             duration: 2000,
           });
+          this.appComponent.mostrarLoadingEmmiter.emit(false);
           this.goTo('meus-pets');
         },
         err => {
           this.snackBar.open('Erro ao Editar Pet', 'OK', {
             duration: 2000,
           });
+          this.appComponent.mostrarLoadingEmmiter.emit(false);
           this.goTo('meus-pets');
         }
       );

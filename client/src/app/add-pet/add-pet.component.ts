@@ -6,6 +6,8 @@ import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { FormControl, Validators} from '@angular/forms';
+import { EventEmitter } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 const api_url = environment.apiUrl;
 
@@ -26,6 +28,9 @@ export class AddPetComponent implements OnInit {
   private apiUrl = api_url;
 
   pet: Pet = new Pet();
+
+  mostrarLoading: boolean = false;
+  mostrarLoadingEmmiter = new EventEmitter<boolean>();
 
   nome = new FormControl('', [Validators.required]);
   idade = new FormControl('', [Validators.required]);
@@ -69,11 +74,16 @@ export class AddPetComponent implements OnInit {
     return this.especie.hasError('required') ? 'Preencha a espécie do pet' : '';
   }
 
-  constructor(private httpClient: HttpClient, public router: Router, public snackBar: MatSnackBar) { }
+  constructor(private httpClient: HttpClient, public router: Router, public snackBar: MatSnackBar, private appComponent: AppComponent) { }
 
   ngOnInit() {
+    this.appComponent.mostrarLoadingEmmiter.subscribe(
+      mostrarSpinner => this.mostrarLoading = mostrarSpinner,
+    );
 
     document.querySelector('#imgupload').addEventListener('change', function () {
+      this.appComponent.mostrarLoadingEmmiter.emit(true);
+
       let fotoAnimal;
       let filesSelected = (<HTMLInputElement>document.getElementById('imgupload')).files;
       if (filesSelected.length > 0) {
@@ -84,6 +94,8 @@ export class AddPetComponent implements OnInit {
           (<HTMLInputElement>document.getElementById('imgupload')).setAttribute('base64-value', base64value.result);
         };
         fileReader.readAsDataURL(fileToLoad);
+
+        this.appComponent.mostrarLoadingEmmiter.emit(false);
       }
     });
 
@@ -134,6 +146,8 @@ export class AddPetComponent implements OnInit {
   }
 
   registerPet() {
+    this.appComponent.mostrarLoadingEmmiter.emit(true);
+
     this.apiUrl = this.apiUrl + '/api/animals/create';
     const userToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', userToken);
@@ -165,12 +179,14 @@ export class AddPetComponent implements OnInit {
           this.snackBar.open('Pet Cadastrado com Sucesso!', 'OK', {
             duration: 2000,
           });
+          this.appComponent.mostrarLoadingEmmiter.emit(false);
           this.goTo('meus-pets');
         },
         err => {
           this.snackBar.open('Erro ao Cadastrar Pet', 'OK', {
             duration: 2000,
           });
+          this.appComponent.mostrarLoadingEmmiter.emit(false);
           this.goTo('meus-pets');
         }
       );

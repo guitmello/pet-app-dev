@@ -52,21 +52,32 @@
   padding: 10px 5px 0px 0px;
 }
 
+.meus-pets-desc{
+  margin-top: 5px;
+  margin-bottom: 0px;
+  padding: 0px !important;
+}
+
+.meus-pets-desc li{
+  padding: 5px 0px;
+  list-style: none;
+}
+
 .buttons-inline {
-  padding: 0px 0px 0px 5px;
+
 }
 .buttons-inline li {
   display: inline-block;
   list-style: none;
   padding: 0px 0px;
 }
-.buttons-inline .mat-mini-fab {
-  background: #ffffff;
+.buttons-inline {
+  margin-left: 68%;
 }
-.buttons-inline .mat-mini-fab .edit {
+.buttons-inline .edit {
   color: #755dca;
 }
-.buttons-inline .mat-mini-fab .remove {
+.buttons-inline .remove {
   color: #ff4d4d;
 }
 

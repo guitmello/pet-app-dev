@@ -1,0 +1,32 @@
+.mat-button-toggle-group{
+    box-shadow: none;
+}
+.mat-button-toggle{
+    color: #333333;
+    border: 1px solid #FFFFFF;
+    height: 100%;
+    width: 100%;
+}
+
+.mat-button-toggle-checked{
+    border: 1px solid #755DCA;
+    color: #FFFFFF;
+    background: #755DCA;
+}
+
+.row-filter{
+    padding-top: 10px;
+}
+
+.col-md-12{
+    padding: 0px;
+}
+
+h6{
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0px;
+    vertical-align: middle;
+    color: #755DCA;
+    padding: 0px 0px 15px 0px !important;
+  }

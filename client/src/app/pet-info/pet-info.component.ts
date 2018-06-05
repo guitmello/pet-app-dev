@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { MatButtonModule, MatIconModule } from '@angular/material';
+import { EventEmitter } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 const api_url = environment.apiUrl;
 
@@ -28,7 +30,10 @@ export class PetInfoComponent implements OnInit {
   fav: boolean;
   favd: string;
 
-  constructor(private route: ActivatedRoute, private httpClient: HttpClient,public router: Router) {
+  mostrarLoading: boolean = false;
+  mostrarLoadingEmmiter = new EventEmitter<boolean>();
+
+  constructor(private route: ActivatedRoute, private httpClient: HttpClient,public router: Router, private appComponent: AppComponent) {
     this.getPetInfo(this.route.snapshot.queryParams['id']);
     this.fav = !this.route.snapshot.queryParams['fav'];
     this.favd = this.route.snapshot.queryParams['favd'];
@@ -37,6 +42,10 @@ export class PetInfoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.appComponent.mostrarLoadingEmmiter.subscribe(
+      mostrarSpinner => this.mostrarLoading = mostrarSpinner,
+    );
+
     /*if (this.pet.ic_deficiencia_animal === undefined) {
       this.pet.ic_deficiencia_animal = false;
       const deficiencia_view = false;
@@ -88,6 +97,7 @@ export class PetInfoComponent implements OnInit {
 
 
   getPetInfo(id) {
+    this.appComponent.mostrarLoadingEmmiter.emit(true);
 
     const userToken = localStorage.getItem('token');
 
@@ -103,6 +113,8 @@ export class PetInfoComponent implements OnInit {
           this.pet.address1 = this.elementDataUser.payload.nm_cidade_usuario + ' - ' + this.elementDataUser.payload.nm_estado_usuario;
           this.pet.address2 = this.elementDataUser.payload.nm_endereco_usuario;;
         });
+
+        this.appComponent.mostrarLoadingEmmiter.emit(false);
     });
   }
 

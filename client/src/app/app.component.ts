@@ -17,7 +17,7 @@ export class AppComponent {
   mostrarMenu: boolean = false;
   mostrarButton: boolean = false;
   mostrarId: string = null;
-  mostrarLoading: boolean = true;
+  mostrarLoading: boolean = false;
 
   mostrarMenuEmitter = new EventEmitter<boolean>();
   mostrarButtonEmmiter = new EventEmitter<boolean>();

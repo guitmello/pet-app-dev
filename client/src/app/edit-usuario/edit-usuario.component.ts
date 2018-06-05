@@ -6,6 +6,7 @@ import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { FormControl, Validators } from '@angular/forms';
+import { AppComponent } from "../app.component";
 
 const api_url = environment.apiUrl;
 
@@ -33,6 +34,9 @@ export class EditUsuarioComponent implements OnInit {
   tipoFisicoEmitter = new EventEmitter<boolean>();
   tipoJuridico: boolean = false;
   tipoFisico: boolean = false;
+
+  mostrarLoading: boolean = false;
+  mostrarLoadingEmmiter = new EventEmitter<boolean>();
 
   nome = new FormControl('', [Validators.required]);
   razaoSocial = new FormControl('', [Validators.required]);
@@ -110,7 +114,7 @@ export class EditUsuarioComponent implements OnInit {
   }
 
   constructor(private httpClient: HttpClient, private editUsuario: EditUsuario, public router: Router,
-    private route: ActivatedRoute, public snackBar: MatSnackBar) {
+    private route: ActivatedRoute, public snackBar: MatSnackBar, private appComponent: AppComponent) {
       this.cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
       this.cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
       this.celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
@@ -122,6 +126,10 @@ export class EditUsuarioComponent implements OnInit {
 
   ngOnInit() {
 
+    this.appComponent.mostrarLoadingEmmiter.subscribe(
+      mostrarSpinner => this.mostrarLoading = mostrarSpinner,
+    );
+
     this.sexoArray = [
       {value: 'Masculino', viewValue: 'Masculino'},
       {value: 'Feminino', viewValue: 'Feminino'}
@@ -132,6 +140,8 @@ export class EditUsuarioComponent implements OnInit {
   }
 
   getDataUsuario() {
+    this.appComponent.mostrarLoadingEmmiter.emit(true);
+
     this.apiUrl = this.apiUrl + '/api/users/' + this.id ;
     const userToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', userToken);
@@ -150,6 +160,9 @@ export class EditUsuarioComponent implements OnInit {
           tipoUsuario => this.tipoJuridico = tipoUsuario,
         );
       }
+
+      this.appComponent.mostrarLoadingEmmiter.emit(false);
+      
   }
 
 
@@ -159,6 +172,8 @@ export class EditUsuarioComponent implements OnInit {
 
 
   updateUsuarioFisico(URL) {
+    this.appComponent.mostrarLoadingEmmiter.emit(true);
+
     this.removeMasksFisico();
     const userToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', userToken);
@@ -185,12 +200,14 @@ export class EditUsuarioComponent implements OnInit {
           this.snackBar.open('Usuário Editado com Sucesso!', 'OK', {
             duration: 2000,
           });
+          this.appComponent.mostrarLoadingEmmiter.emit(false);
           this.goTo('meus-pets');
         },
         err => {
           this.snackBar.open('Erro ao Editar o Usuário', 'OK', {
             duration: 2000,
           });
+          this.appComponent.mostrarLoadingEmmiter.emit(false);
           this.goTo('home');
         }
       );

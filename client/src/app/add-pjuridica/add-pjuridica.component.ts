@@ -5,6 +5,8 @@ import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { FormControl, Validators } from '@angular/forms';
+import { EventEmitter } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 const api_url = environment.apiUrl;
 
@@ -30,6 +32,9 @@ export class AddPjuridicaComponent implements OnInit {
   pjuridica: PJuridica = new PJuridica();
   private apiUrl = api_url + '/api/users/create';
   private api_urlCityState = api_url + '/api/citystate';
+
+  mostrarLoading: boolean = false;
+  mostrarLoadingEmmiter = new EventEmitter<boolean>();
 
   razaoSocial = new FormControl('', [Validators.required]);
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -89,7 +94,7 @@ export class AddPjuridicaComponent implements OnInit {
     return this.senha.hasError('required') ? 'Preencha sua senha' : '';
   }
 
-  constructor(private httpClient: HttpClient, public router: Router, public snackBar: MatSnackBar) {
+  constructor(private httpClient: HttpClient, public router: Router, public snackBar: MatSnackBar,  private appComponent: AppComponent) {
     this.cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/',
       /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
     this.celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
@@ -99,6 +104,8 @@ export class AddPjuridicaComponent implements OnInit {
 
 
   getCityState() {
+    this.appComponent.mostrarLoadingEmmiter.emit(true);
+
     this.filtredStates = [];
     this.httpClient.get(this.api_urlCityState).subscribe(jsonStates => {
       this.json = jsonStates;
@@ -106,17 +113,24 @@ export class AddPjuridicaComponent implements OnInit {
       this.cityStates.forEach(element => {
         this.filtredStates.push(element.sigla);
       });
+
+      this.appComponent.mostrarLoadingEmmiter.emit(false);
     });
   }
 
 
   ngOnInit() {
-    this.getCityState();
+    this.appComponent.mostrarLoadingEmmiter.subscribe(
+      mostrarSpinner => this.mostrarLoading = mostrarSpinner,
+    );
 
+    this.getCityState();
   }
 
 
   fillFiltredStates() {
+    this.appComponent.mostrarLoadingEmmiter.emit(true);
+
     this.citiesArrays = [];
     this.filtredStates = [];
     this.filtredCities = [];
@@ -132,10 +146,14 @@ export class AddPjuridicaComponent implements OnInit {
           this.filtredCities.push(element2);
         });
       });
+
+      this.appComponent.mostrarLoadingEmmiter.emit(false);
     }
   }
 
   fillFiltredCities() {
+    this.appComponent.mostrarLoadingEmmiter.emit(true);
+
     this.filtredCities = [];
     if (!!this.pjuridica.cidade) {
       this.citiesArrays.forEach(element => {
@@ -145,11 +163,15 @@ export class AddPjuridicaComponent implements OnInit {
           }
         });
       });
+      
+      this.appComponent.mostrarLoadingEmmiter.emit(false);
     }
   }
 
 
   registerPj() {
+    this.appComponent.mostrarLoadingEmmiter.emit(true);
+
     this.removeMasks();
 
     this.postData = {
@@ -173,12 +195,14 @@ export class AddPjuridicaComponent implements OnInit {
         this.snackBar.open('Usuário Cadastrado com Sucesso!', 'OK', {
           duration: 2000,
         });
+        this.appComponent.mostrarLoadingEmmiter.emit(false);
         this.goTo('login');
       },
         err => {
           this.snackBar.open('Erro ao Cadastrar Usuário', 'OK', {
             duration: 2000,
           });
+          this.appComponent.mostrarLoadingEmmiter.emit(false);
         }
       );
   }

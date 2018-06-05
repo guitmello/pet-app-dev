@@ -1,13 +1,69 @@
 <div class="container-fluid">
+
+  <div class="col-12">
+    <div class="row justify-content-center">
+      <h1 class="title">Pesquisar</h1>
+    </div>
+  </div>
+
   <mat-card>
 
-    <div class="col-md-12">
+    <div class="col-12">
+
+      <div class="row">
+        <div class="col-12">
+          <h6>O que deseja pesquisar?</h6>
+        </div>
+      </div>
       <div class="row justify-content-center">
+        <mat-button-toggle-group [(ngModel)]="filter.tipoPesquisa" #group="matButtonToggleGroup">
 
+          <mat-button-toggle ngDefaultControl value="Pessoa Jurídica" (click)="fillFilter()">ONG</mat-button-toggle>
+          <mat-button-toggle ngDefaultControl value="Animal" (click)="fillFilter()">Animais</mat-button-toggle>
 
-      <h1 class="title">Pesquisar</h1>
+        </mat-button-toggle-group>
+      </div>
+
+      <div *ngIf="filter.tipoPesquisa" class="row row-filter">
+        <div class="col-12">
+          <h6>Filtro</h6>
+        </div>
+      </div>
+
+      <div *ngIf="filter.tipoPesquisa === 'Pessoa Jurídica'" class="row">
+        <div class="col-12">
+          <mat-form-field>
+            <input [(ngModel)]="filter.ong" type="text" matInput placeholder="Digite o nome da ONG">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div *ngIf="filter.tipoPesquisa === 'Animal'" class="row">
+        <div class="col-6">
+          <mat-form-field>
+            <mat-select [(ngModel)]="filter.id_especie" name="especie" placeholder="Espécie" (change)="fillRacas()" required>
+              <mat-option *ngFor="let especies of especieArray" [value]="especies.id">
+                {{ especies.nm_especie }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="especie.invalid">{{getEspecieErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-6" *ngIf="!!filter.id_especie">
+          <mat-form-field>
+            <mat-select [(ngModel)]="filter.id_raca" name="raca" placeholder="Raça" required>
+              <mat-option *ngFor="let racas of racaArray" [value]="racas.id">
+                {{ racas.nm_raca }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="raca.invalid">{{getRacaErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
 
     </div>
-    </div>
+
   </mat-card>
 </div>

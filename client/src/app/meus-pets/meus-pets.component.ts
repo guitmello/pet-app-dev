@@ -6,6 +6,7 @@ import { environment } from "../../environments/environment";
 import { MeusPets } from "./meus-pets";
 import { ModalDeletePetComponent } from "./modal-delete-pet/modal-delete-pet.component";
 import { MatDialog, MatDialogRef } from "@angular/material";
+import { AppComponent } from '../app.component';
 
 const api_url = environment.apiUrl;
 
@@ -24,16 +25,24 @@ export class MeusPetsComponent implements OnInit {
   racas: Array<any>;
   especies: Array<any>;
 
+  mostrarLoading: boolean = false;
+  mostrarLoadingEmmiter = new EventEmitter<boolean>();
+
   deleteId: number;
 
   constructor(
     private httpClient: HttpClient,
     public dialog: MatDialog,
     private meusPets: MeusPets,
-    public router: Router
+    public router: Router,
+    private appComponent: AppComponent
   ) {}
 
   async ngOnInit() {
+    this.appComponent.mostrarLoadingEmmiter.subscribe(
+      mostrarSpinner => this.mostrarLoading = mostrarSpinner,
+    );
+
     this.getMeusPets('/api/animals/myanimals/' + localStorage.getItem('id'));
   }
 
@@ -52,6 +61,8 @@ export class MeusPetsComponent implements OnInit {
   }
 
   getMeusPets(url: string) {
+    this.appComponent.mostrarLoadingEmmiter.emit(true);
+
     const userToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', userToken);
 
@@ -59,6 +70,8 @@ export class MeusPetsComponent implements OnInit {
       this.dataPets = data;
       this.pets = this.dataPets.payload;
     });
+
+    this.appComponent.mostrarLoadingEmmiter.emit(false);
 
   }
 

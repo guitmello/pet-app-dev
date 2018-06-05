@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
+import { EventEmitter } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 const api_url = environment.apiUrl;
 
@@ -23,9 +25,17 @@ export class HomeComponent implements OnInit {
   especies: Array<any>;
   usuarios: Array<any>;
 
-  constructor(public router: Router, private httpClient: HttpClient) { }
+  mostrarLoading: boolean = false;
+  mostrarLoadingEmmiter = new EventEmitter<boolean>();
+
+  constructor(public router: Router, private httpClient: HttpClient, private appComponent: AppComponent) { }
 
   async ngOnInit() {
+    this.appComponent.mostrarLoadingEmmiter.subscribe(
+      mostrarSpinner => this.mostrarLoading = mostrarSpinner,
+    );
+    this.appComponent.mostrarLoadingEmmiter.emit(true);
+
     await this.getRacas('/api/racas/all');
     await this.getEspecies('/api/especies/all');
     // await this.getUsers('/api/users/all');
@@ -78,11 +88,12 @@ export class HomeComponent implements OnInit {
           element.address2 = this.elementData.payload.nm_endereco_usuario;
         });
       });
-    });
-  }
 
-  // moreInfo(id: string) {
-  //   this.router.navigate([`pet-info?` + id]);
-  // }
+      this.appComponent.mostrarLoadingEmmiter.emit(false);
+      
+    });
+
+    
+  }
 
 }

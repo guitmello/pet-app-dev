@@ -27,6 +27,9 @@ export class AddPfisicaComponent implements OnInit {
   public cepMask: Array<string | RegExp>;
   public numMask: Array<string | RegExp>;
 
+  auxState: boolean
+  auxCity: boolean
+
   cityStates: any = {};
   pfisica: PFisica = new PFisica();
   private apiUrl = api_url + '/api/users/create';
@@ -175,35 +178,35 @@ export class AddPfisicaComponent implements OnInit {
   }
 
   registerPf() {
-    let auxState = 0
-    let auxCity = 0
+    this.auxState = false;
+    this.auxCity = false;
     if (!!this.cityStates) {
-      this.searchStateAndCity(auxState, auxCity);
-      if (auxState == 0) {
+      this.searchStateAndCity();
+      if (!this.auxState) {
         document.getElementById("estado").focus();
         this.snackBar.open('Estado não encontrado', 'OK', {
           duration: 2000,
         });
-      } else if (auxState != 0 && auxCity == 0) {
+      } else if (this.auxState && !this.auxCity) {
         document.getElementById("cidade").focus();
         this.snackBar.open('Cidade não encontrada', 'OK', {
           duration: 2000,
         });
-      } else if (auxState != 0 && auxCity != 0) {
+      } else if (this.auxState && this.auxCity) {
         this.submit()
       }
     }
   }
 
-  searchStateAndCity(auxState, auxCity) {
+  searchStateAndCity() {
     this.cityStates.forEach(state => {
-      if (this.pfisica.estado.toLowerCase() === state.sigla.toLowerCase() && auxState == 0) {
-        auxState++;
+      if (this.pfisica.estado.toLowerCase() === state.sigla.toLowerCase() && this.auxState == false) {
+        this.auxState = true;
         if (!!this.citiesArrays) {
           this.citiesArrays.forEach(cities => {
             cities.forEach(city => {
-              if (this.pfisica.cidade.toLowerCase() === city.toLowerCase() && auxCity == 0) {
-                auxCity++
+              if (this.pfisica.cidade.toLowerCase() === city.toLowerCase() && this.auxCity == false) {
+                this.auxCity = true;
               }
             });
           });

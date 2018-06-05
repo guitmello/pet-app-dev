@@ -71,7 +71,7 @@ export class AddPfisicaComponent implements OnInit {
 
   getCepErrorMessage() {
     return this.cep.hasError('required') ? 'Preencha seu cep' :
-    this.cep.hasError('minlength') ? 'Preencha o cep corretamente' :
+      this.cep.hasError('minlength') ? 'Preencha o cep corretamente' :
         '';
   }
 
@@ -107,52 +107,67 @@ export class AddPfisicaComponent implements OnInit {
     this.httpClient.get(this.api_urlCityState).subscribe(jsonStates => {
       this.json = jsonStates;
       this.cityStates = this.json.estados;
-      this.cityStates.forEach(element => {
-        this.filtredStates.push(element.sigla);
+      this.cityStates.forEach(state => {
+        this.filtredStates.push(state.sigla);
       });
     });
   }
 
   ngOnInit() {
     this.getCityState();
-
     this.sexoArray = [
       { value: 'Masculino', viewValue: 'Masculino' },
       { value: 'Feminino', viewValue: 'Feminino' }
     ];
-
   }
 
   goTo(route: string) {
     this.router.navigate([route]);
   }
 
-  fillFiltredStates() {
-    this.citiesArrays = [];
-    this.filtredStates = [];
-    this.filtredCities = [];
+  blurInStates() {
     if (!!this.pfisica.estado) {
-      this.cityStates.forEach(element => {
-        if (this.pfisica.estado.toLowerCase() === element.sigla.slice(0, this.pfisica.estado.length).toLowerCase()) {
-          this.filtredStates.push(element.sigla);
-          this.citiesArrays.push(element.cidades);
-        }
-      });
-      this.citiesArrays.forEach(element => {
-        element.forEach(element2 => {
-          this.filtredCities.push(element2);
-        });
-      });
+      console.log(this.pfisica.estado);
+      this.fillCitiesFromStates();
     }
+  }
+
+  emptyInput() {
+    if (this.pfisica.estado == '') {
+      this.getCityState();
+    }
+  }
+
+  fillFiltredStates() {
+    if (!!this.pfisica.estado) {
+      this.fillCitiesFromStates();
+    }
+  }
+
+  fillCitiesFromStates() {
+    this.filtredStates = [];
+    this.citiesArrays = [];
+    this.filtredCities = [];
+    this.cityStates.forEach(state => {
+      if (this.pfisica.estado.toLowerCase() === state.sigla.slice(0, this.pfisica.estado.length).toLowerCase()) {
+        this.filtredStates.push(state.sigla);
+        this.citiesArrays.push(state.cidades);
+      }
+    });
+    this.citiesArrays.forEach(element => {
+      element.forEach(element2 => {
+        this.filtredCities.push(element2);
+      });
+    });
   }
 
   fillFiltredCities() {
     this.filtredCities = [];
     if (!!this.pfisica.cidade) {
-      this.citiesArrays.forEach(element => {
-        element.forEach(element2 => {
-          if (this.pfisica.cidade.toLowerCase() === element2.slice(0, this.pfisica.cidade.length).toLowerCase()) {
-            this.filtredCities.push(element2);
+      this.citiesArrays.forEach(cities => {
+        cities.forEach(city => {
+          if (this.pfisica.cidade.toLowerCase() === city.slice(0, this.pfisica.cidade.length).toLowerCase()) {
+            this.filtredCities.push(city);
           }
         });
       });
@@ -160,9 +175,45 @@ export class AddPfisicaComponent implements OnInit {
   }
 
   registerPf() {
+    let auxState = 0
+    let auxCity = 0
+    if (!!this.cityStates) {
+      this.searchStateAndCity(auxState, auxCity);
+      if (auxState == 0) {
+        document.getElementById("estado").focus();
+        this.snackBar.open('Estado não encontrado', 'OK', {
+          duration: 2000,
+        });
+      } else if (auxState != 0 && auxCity == 0) {
+        document.getElementById("cidade").focus();
+        this.snackBar.open('Cidade não encontrada', 'OK', {
+          duration: 2000,
+        });
+      } else if (auxState != 0 && auxCity != 0) {
+        this.submit()
+      }
+    }
+  }
 
+  searchStateAndCity(auxState, auxCity) {
+    this.cityStates.forEach(state => {
+      if (this.pfisica.estado.toLowerCase() === state.sigla.toLowerCase() && auxState == 0) {
+        auxState++;
+        if (!!this.citiesArrays) {
+          this.citiesArrays.forEach(cities => {
+            cities.forEach(city => {
+              if (this.pfisica.cidade.toLowerCase() === city.toLowerCase() && auxCity == 0) {
+                auxCity++
+              }
+            });
+          });
+        }
+      }
+    });
+  }
+
+  submit() {
     this.removeMasks();
-
     this.postData = {
       nm_email_usuario: this.pfisica.email,
       cd_senha_usuario: this.pfisica.senha,
@@ -181,23 +232,21 @@ export class AddPfisicaComponent implements OnInit {
       ds_complemento_endereco_usuario: this.pfisica.complemento,
       ds_foto_usuario: null
     };
-
-      return this.httpClient.post<PFisica>(this.apiUrl, this.postData)
-        .subscribe(res => {
-          console.log(res);
-          this.snackBar.open('Usuário Cadastrado com Sucesso!', 'OK', {
+    return this.httpClient.post<PFisica>(this.apiUrl, this.postData)
+      .subscribe(res => {
+        console.log(res);
+        this.snackBar.open('Usuário Cadastrado com Sucesso!', 'OK', {
+          duration: 2000,
+        });
+        this.goTo('login');
+      },
+        err => {
+          this.snackBar.open('Erro ao Cadastrar Usuário', 'OK', {
             duration: 2000,
           });
-          this.goTo('login');
-        },
-          err => {
-            this.snackBar.open('Erro ao Cadastrar Usuário', 'OK', {
-              duration: 2000,
-            });
-          }
-        );
-}
-
+        }
+      );
+  }
 
   removeMasks() {
     this.removeCpfMask();

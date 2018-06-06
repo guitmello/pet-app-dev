@@ -28,6 +28,8 @@ export class AddPjuridicaComponent implements OnInit {
   public celMask: Array<string | RegExp>;
   public cepMask: Array<string | RegExp>;
   public numMask: Array<string | RegExp>;
+  auxState: boolean
+  auxCity: boolean
 
   pjuridica: PJuridica = new PJuridica();
   private apiUrl = api_url + '/api/users/create';
@@ -94,7 +96,7 @@ export class AddPjuridicaComponent implements OnInit {
     return this.senha.hasError('required') ? 'Preencha sua senha' : '';
   }
 
-  constructor(private httpClient: HttpClient, public router: Router, public snackBar: MatSnackBar,  private appComponent: AppComponent) {
+  constructor(private httpClient: HttpClient, public router: Router, public snackBar: MatSnackBar, private appComponent: AppComponent) {
     this.cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/',
       /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
     this.celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
@@ -110,8 +112,8 @@ export class AddPjuridicaComponent implements OnInit {
     this.httpClient.get(this.api_urlCityState).subscribe(jsonStates => {
       this.json = jsonStates;
       this.cityStates = this.json.estados;
-      this.cityStates.forEach(element => {
-        this.filtredStates.push(element.sigla);
+      this.cityStates.forEach(state => {
+        this.filtredStates.push(state.sigla);
       });
 
       this.appComponent.mostrarLoadingEmmiter.emit(false);
@@ -127,28 +129,43 @@ export class AddPjuridicaComponent implements OnInit {
     this.getCityState();
   }
 
+  blurInStates() {
+    if (!!this.pjuridica.estado) {
+      this.fillCitiesFromStates();
+    }
+  }
+
+  emptyInput() {
+    if (this.pjuridica.estado == '') {
+      this.getCityState();
+    }
+  }
 
   fillFiltredStates() {
+    if (!!this.pjuridica.estado) {
+      this.fillCitiesFromStates();
+    }
+  }
+
+  fillCitiesFromStates() {
     this.appComponent.mostrarLoadingEmmiter.emit(true);
 
-    this.citiesArrays = [];
     this.filtredStates = [];
+    this.citiesArrays = [];
     this.filtredCities = [];
-    if (!!this.pjuridica.estado) {
-      this.cityStates.forEach(element => {
-        if (this.pjuridica.estado.toLowerCase() === element.sigla.slice(0, this.pjuridica.estado.length).toLowerCase()) {
-          this.filtredStates.push(element.sigla);
-          this.citiesArrays.push(element.cidades);
-        }
-      });
-      this.citiesArrays.forEach(element => {
-        element.forEach(element2 => {
-          this.filtredCities.push(element2);
-        });
+    this.cityStates.forEach(state => {
+      if (this.pjuridica.estado.toLowerCase() === state.sigla.slice(0, this.pjuridica.estado.length).toLowerCase()) {
+        this.filtredStates.push(state.sigla);
+        this.citiesArrays.push(state.cidades);
+      }
+    });
+    this.citiesArrays.forEach(cities => {
+      cities.forEach(city => {
+        this.filtredCities.push(city);
       });
 
       this.appComponent.mostrarLoadingEmmiter.emit(false);
-    }
+    });
   }
 
   fillFiltredCities() {
@@ -163,13 +180,35 @@ export class AddPjuridicaComponent implements OnInit {
           }
         });
       });
-      
+
       this.appComponent.mostrarLoadingEmmiter.emit(false);
     }
   }
 
 
   registerPj() {
+    this.appComponent.mostrarLoadingEmmiter.emit(true);
+    this.auxState = false;
+    this.auxCity = false;
+    if (!!this.cityStates) {
+      this.searchStateAndCity();
+      if (!this.auxState) {
+        document.getElementById("estado").focus();
+        this.snackBar.open('Estado não encontrado', 'OK', {
+          duration: 2000,
+        });
+      } else if (this.auxState && !this.auxCity) {
+        document.getElementById("cidade").focus();
+        this.snackBar.open('Cidade não encontrada', 'OK', {
+          duration: 2000,
+        });
+        this.appComponent.mostrarLoadingEmmiter.emit(false);
+      } else if (this.auxState && this.auxCity) {
+        this.submit()
+      }
+    }
+  }
+  submit() {
     this.appComponent.mostrarLoadingEmmiter.emit(true);
 
     this.removeMasks();
@@ -205,6 +244,26 @@ export class AddPjuridicaComponent implements OnInit {
           this.appComponent.mostrarLoadingEmmiter.emit(false);
         }
       );
+
+  }
+
+  searchStateAndCity() {
+    this.appComponent.mostrarLoadingEmmiter.emit(true);
+    this.cityStates.forEach(state => {
+      if (this.pjuridica.estado.toLowerCase() === state.sigla.toLowerCase() && this.auxState == false) {
+        this.auxState = true;
+        if (!!this.citiesArrays) {
+          this.citiesArrays.forEach(cities => {
+            cities.forEach(city => {
+              if (this.pjuridica.cidade.toLowerCase() === city.toLowerCase() && this.auxCity == false) {
+                this.auxCity = true;
+              }
+            });
+            this.appComponent.mostrarLoadingEmmiter.emit(false);
+          });
+        }
+      }
+    });
   }
 
   goTo(route: string) {

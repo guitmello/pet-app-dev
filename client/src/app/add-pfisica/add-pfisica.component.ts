@@ -143,7 +143,6 @@ export class AddPfisicaComponent implements OnInit {
 
   blurInStates() {
     if (!!this.pfisica.estado) {
-      console.log(this.pfisica.estado);
       this.fillCitiesFromStates();
     }
   }
@@ -172,9 +171,9 @@ export class AddPfisicaComponent implements OnInit {
         this.citiesArrays.push(state.cidades);
       }
     });
-    this.citiesArrays.forEach(element => {
-      element.forEach(element2 => {
-        this.filtredCities.push(element2);
+    this.citiesArrays.forEach(cities => {
+      cities.forEach(city => {
+        this.filtredCities.push(city);
       });
 
       this.appComponent.mostrarLoadingEmmiter.emit(false);
@@ -200,7 +199,6 @@ export class AddPfisicaComponent implements OnInit {
 
   registerPf() {
     this.appComponent.mostrarLoadingEmmiter.emit(true);
-
     this.auxState = false;
     this.auxCity = false;
     if (!!this.cityStates) {
@@ -215,7 +213,6 @@ export class AddPfisicaComponent implements OnInit {
         this.snackBar.open('Cidade não encontrada', 'OK', {
           duration: 2000,
         });
-
         this.appComponent.mostrarLoadingEmmiter.emit(false);
       } else if (this.auxState && this.auxCity) {
         this.submit()
@@ -225,7 +222,6 @@ export class AddPfisicaComponent implements OnInit {
 
   searchStateAndCity() {
     this.appComponent.mostrarLoadingEmmiter.emit(true);
-
     this.cityStates.forEach(state => {
       if (this.pfisica.estado.toLowerCase() === state.sigla.toLowerCase() && this.auxState == false) {
         this.auxState = true;
@@ -236,7 +232,6 @@ export class AddPfisicaComponent implements OnInit {
                 this.auxCity = true;
               }
             });
-
             this.appComponent.mostrarLoadingEmmiter.emit(false);
           });
         }
@@ -245,8 +240,8 @@ export class AddPfisicaComponent implements OnInit {
   }
 
   submit() {
+    console.log(this.pfisica.sexo, 'this.pfisica.sexo');
     this.appComponent.mostrarLoadingEmmiter.emit(true);
-
     this.removeMasks();
     this.postData = {
       nm_email_usuario: this.pfisica.email,
@@ -254,7 +249,7 @@ export class AddPfisicaComponent implements OnInit {
       nm_tipo_usuario: 'Pessoa Física',
       cd_cpf_usuario: this.pfisica.cpf,
       nm_usuario: this.pfisica.nome,
-      nm_sexo_usuario: this.pfisica.sexo,
+      nm_sexo_usuario: this.pfisica.sexo.trim(),
       dt_nascimento_usuario: this.pfisica.data,
       cd_telefone_usuario: this.pfisica.telefone,
       cd_cep_usuario: this.pfisica.cep,
@@ -266,9 +261,11 @@ export class AddPfisicaComponent implements OnInit {
       ds_complemento_endereco_usuario: this.pfisica.complemento,
       ds_foto_usuario: null
     };
+    this.postData.nm_sexo_usuario = this.postData.nm_sexo_usuario.trim();
+    console.log('this.postDatathis.postData', this.postData);
     return this.httpClient.post<PFisica>(this.apiUrl, this.postData)
       .subscribe(res => {
-        console.log(res);
+        console.log('resres', res);
         this.snackBar.open('Usuário Cadastrado com Sucesso!', 'OK', {
           duration: 2000,
         });

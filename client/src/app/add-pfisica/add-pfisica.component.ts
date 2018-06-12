@@ -215,13 +215,14 @@ export class AddPfisicaComponent implements OnInit {
         });
         this.appComponent.mostrarLoadingEmmiter.emit(false);
       } else if (this.auxState && this.auxCity) {
-        this.submit()
+        this.submit();
       }
     }
   }
 
   searchStateAndCity() {
     this.appComponent.mostrarLoadingEmmiter.emit(true);
+
     this.cityStates.forEach(state => {
       if (this.pfisica.estado.toLowerCase() === state.sigla.toLowerCase() && this.auxState == false) {
         this.auxState = true;

@@ -155,14 +155,16 @@ export class EditUsuarioComponent implements OnInit {
         this.tipoFisicoEmitter.subscribe(
           tipoUsuario => this.tipoFisico = tipoUsuario,
         );
+        this.tipoFisico = true;
       } else {
         this.tipoFisicoEmitter.subscribe(
           tipoUsuario => this.tipoJuridico = tipoUsuario,
         );
+        this.tipoJuridico = true;
       }
 
       this.appComponent.mostrarLoadingEmmiter.emit(false);
-      
+
   }
 
 
@@ -201,7 +203,7 @@ export class EditUsuarioComponent implements OnInit {
             duration: 2000,
           });
           this.appComponent.mostrarLoadingEmmiter.emit(false);
-          this.goTo('meus-pets');
+          this.goTo('home');
         },
         err => {
           this.snackBar.open('Erro ao Editar o Usuário', 'OK', {

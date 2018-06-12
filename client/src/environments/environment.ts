@@ -5,6 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://idot-api.appspot.com'
-  //apiUrl: 'http://localhost:3000'
+  apiUrl: 'http://ec2-18-231-49-205.sa-east-1.compute.amazonaws.com:8080'
 };

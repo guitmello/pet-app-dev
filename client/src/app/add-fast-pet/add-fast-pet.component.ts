@@ -37,13 +37,13 @@ export class AddFastPetComponent implements OnInit {
     document.querySelector('#imgupload').addEventListener('change', function () {
       this.appComponent.mostrarLoadingEmmiter.emit(true);
 
-      let fotoAnimal;
-      let filesSelected = (<HTMLInputElement>document.getElementById('imgupload')).files;
+      const fotoAnimal;
+      const filesSelected = (<HTMLInputElement>document.getElementById('imgupload')).files;
       if (filesSelected.length > 0) {
-        let fileToLoad = filesSelected[0];
-        let fileReader = new FileReader();
+        const fileToLoad = filesSelected[0];
+        const fileReader = new FileReader();
         fileReader.onload = function (fileLoadEvent) {
-          let base64value = <FileReader>event.target;
+          const base64value = <FileReader>event.target;
           (<HTMLInputElement>document.getElementById('imgupload')).setAttribute('base64-value', base64value.result);
         };
         fileReader.readAsDataURL(fileToLoad);
@@ -64,7 +64,6 @@ export class AddFastPetComponent implements OnInit {
 
   async getAdress() {
     this.appComponent.mostrarLoadingEmmiter.emit(true);
-    
     navigator.geolocation.getCurrentPosition(this.showPosition);
 
     await this.httpClient.get(this.mapsUrl + localStorage.getItem('MyLatitude') + ',' + localStorage.getItem('MyLongitude')

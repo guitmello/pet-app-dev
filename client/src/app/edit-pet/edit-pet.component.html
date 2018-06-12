@@ -87,9 +87,9 @@
         <div class="col-4"></div>
         <div class="col-8">
           <mat-form-field>
-            <mat-select [(ngModel)]="editPet.id_especie" name="especie" placeholder="Espécie" required>
-              <mat-option *ngFor="let especies of especie" [value]="especies.id">
-                {{ especies.value }}
+            <mat-select [(ngModel)]="editPet.cd_especie_fk" name="especie" placeholder="Espécie" required>
+              <mat-option *ngFor="let especie of especies" [value]="especie.id">
+                {{ especie.nm_especie }}
               </mat-option>
             </mat-select>
             <mat-error *ngIf="especie.invalid">{{getEspecieErrorMessage()}}</mat-error>
@@ -101,9 +101,9 @@
         <div class="col-4"></div>
         <div class="col-8">
           <mat-form-field>
-            <mat-select [(ngModel)]="editPet.nm_raca" name="raca" placeholder="Raça" required>
-              <mat-option *ngFor="let racas of raca" [value]="racas.id">
-                {{ racas.value }}
+            <mat-select [(ngModel)]="editPet.cd_raca_fk" name="raca" placeholder="Raça" required>
+              <mat-option *ngFor="let raca of racas" [value]="raca.id">
+                {{ raca.nm_raca }}
               </mat-option>
             </mat-select>
             <mat-error *ngIf="raca.invalid">{{getRacaErrorMessage()}}</mat-error>

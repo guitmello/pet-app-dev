@@ -5,7 +5,7 @@ import { environment } from '../../environments/environment';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import { FormControl, Validators} from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
 import { AppComponent } from '../app.component';
 
@@ -85,20 +85,21 @@ export class EditPetComponent implements OnInit {
 
   id = this.route.snapshot.queryParams['id'];
 
-  async ngOnInit() {
+  ngOnInit() {
+    this.editPet.cd_raca_fk = 1;
     this.appComponent.mostrarLoadingEmmiter.subscribe(
       mostrarSpinner => this.mostrarLoading = mostrarSpinner,
     );
 
-    document.querySelector('#imgupload').addEventListener('change', function() {
+    document.querySelector('#imgupload').addEventListener('change', function () {
       this.appComponent.mostrarLoadingEmmiter.emit(true);
-      
+
       let fotoAnimal;
       let filesSelected = (<HTMLInputElement>document.getElementById('imgupload')).files;
       if (filesSelected.length > 0) {
         let fileToLoad = filesSelected[0];
         let fileReader = new FileReader();
-        fileReader.onload = function(fileLoadEvent) {
+        fileReader.onload = function (fileLoadEvent) {
           let base64value = <FileReader>event.target;
           (<HTMLInputElement>document.getElementById('imgupload')).setAttribute('base64-value', base64value.result);
         };
@@ -109,8 +110,8 @@ export class EditPetComponent implements OnInit {
     });
 
     this.sexoArray = [
-      {value: 'Macho', viewValue: 'Macho'},
-      {value: 'Femêa', viewValue: 'Femêa'}
+      { value: 'Macho', viewValue: 'Macho' },
+      { value: 'Femêa', viewValue: 'Femêa' }
     ];
 
     this.idadeArray = [
@@ -124,8 +125,6 @@ export class EditPetComponent implements OnInit {
       { value: 'Grande', viewValue: 'Grande' }
     ];
 
-    await this.getRacas('/api/racas/all');
-    await this.getEspecies('/api/especies/all');
     this.getDataPet();
 
   }
@@ -143,6 +142,7 @@ export class EditPetComponent implements OnInit {
     this.httpClient.get(api_url + url).subscribe(especies => {
       this.dataEspecies = especies;
       this.especies = this.dataEspecies.payload;
+      this.getRacas('/api/racas/all');
     });
   }
 
@@ -150,18 +150,21 @@ export class EditPetComponent implements OnInit {
   getDataPet() {
     this.appComponent.mostrarLoadingEmmiter.emit(true);
 
-    this.apiUrl = this.apiUrl + '/api/animals/' + this.id ;
+    this.apiUrl = this.apiUrl + '/api/animals/' + this.id;
     const userToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', userToken);
 
-    this.httpClient.get(this.apiUrl, { headers }).subscribe( pets => {
+    this.httpClient.get(this.apiUrl, { headers }).subscribe(pets => {
+      this.getEspecies('/api/especies/all');
       this.dataPets = pets;
       this.editPet = this.dataPets.payload;
-      });
+      this.editPet.cd_especie_fk = this.editPet.Especie.id;
+      this.editPet.cd_raca_fk = this.editPet.Raca.id;
+      console.log('this.editPet -->', this.editPet)
+    });
 
-      this.appComponent.mostrarLoadingEmmiter.emit(false);
+    this.appComponent.mostrarLoadingEmmiter.emit(false);
   }
-
 
   goTo(route: string) {
     this.router.navigate([route]);

@@ -37,7 +37,7 @@ export class AddFastPetComponent implements OnInit {
     document.querySelector('#imgupload').addEventListener('change', function () {
       this.appComponent.mostrarLoadingEmmiter.emit(true);
 
-      const fotoAnimal;
+      const fotoAnimal = '';
       const filesSelected = (<HTMLInputElement>document.getElementById('imgupload')).files;
       if (filesSelected.length > 0) {
         const fileToLoad = filesSelected[0];

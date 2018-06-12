@@ -27,16 +27,16 @@
                 <li>
                   <span class="meus-pets-sub-text">{{pet.cd_idade_animal}} {{pet.nm_idade_animal}}</span>
                   <span class="meus-pets-sub-text">{{pet.Especie.nm_especie}}</span>
-                  <span class="meus-pets-sub-text">{{pet.Raca.nm_raca}}</span>
+                  <span class="meus-pets-sub-text text-end">{{pet.Raca.nm_raca}}</span>
                 </li>
               </ul>
             </mat-panel-title>
           </mat-expansion-panel-header>
 
           <ul class="meus-pets-desc">
-            <li>{{pet.nm_cor_animal}}</li>
-            <li>{{pet.nm_tamanho_animal}}</li>
-            <li>{{pet.nm_sexo_animal}}</li>
+            <li><i class="fas fa-tint"></i> {{pet.nm_cor_animal}}</li>
+            <li><i class="fas fa-ruler"></i> {{pet.nm_tamanho_animal}}</li>
+            <li><i class="fas fa-venus-mars"></i> {{pet.nm_sexo_animal}}</li>
           </ul>
           
             <ul class="meus-pets-list buttons-inline">

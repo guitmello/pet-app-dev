@@ -155,12 +155,12 @@ export class EditUsuarioComponent implements OnInit {
         this.tipoFisicoEmitter.subscribe(
           tipoUsuario => this.tipoFisico = tipoUsuario,
         );
-        this.tipoFisico = true;
+        this.tipoFisicoEmitter.emit(true);
       } else {
-        this.tipoFisicoEmitter.subscribe(
+        this.tipoJuridicoEmitter.subscribe(
           tipoUsuario => this.tipoJuridico = tipoUsuario,
         );
-        this.tipoJuridico = true;
+        this.tipoJuridicoEmitter.emit(true);
       }
 
       this.appComponent.mostrarLoadingEmmiter.emit(false);

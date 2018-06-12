@@ -158,8 +158,9 @@ export class EditPetComponent implements OnInit {
       this.getEspecies('/api/especies/all');
       this.dataPets = pets;
       this.editPet = this.dataPets.payload;
-      this.editPet.cd_especie_fk = this.editPet.Especie.id;
-      this.editPet.cd_raca_fk = this.editPet.Raca.id;
+      console.log(this.editPet);
+      this.editPet.cd_especie_fk = this.dataPets.payload.Especie.id;
+      this.editPet.cd_raca_fk = this.dataPets.payload.Raca.id;
       console.log('this.editPet -->', this.editPet)
     });
 

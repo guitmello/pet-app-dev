@@ -14,6 +14,9 @@
   box-sizing: inherit !important;
   background: transparent;
 }
+.mat-expansion-panel-body{
+  padding: 0px 0px 0px 15px !important;
+}
 .mat-expansion-panel-header{
   padding: 0px;
   min-width: 100%;
@@ -38,6 +41,11 @@
 .meus-pets-list {
   padding: 10px 0px 0px 0px;
   margin: 0px;
+  max-width: 250px;
+  display: block;
+  white-space: nowrap;                  
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .meus-pets-list li {
   list-style: none;
@@ -53,14 +61,19 @@
 }
 
 .meus-pets-desc{
-  margin-top: 5px;
+  margin-top:10px;
   margin-bottom: 0px;
   padding: 0px !important;
+  font-size: 14px;
 }
 
 .meus-pets-desc li{
   padding: 5px 0px;
   list-style: none;
+}
+.meus-pets-desc li .svg-inline--fa{
+  color: #755dca;
+  margin-right: 5px;
 }
 
 .buttons-inline {

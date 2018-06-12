@@ -34,7 +34,7 @@
 
         <div class="col-6">
           <mat-form-field>
-            <mat-select [(ngModel)]="editUsuario.sexo" name="sexo" placeholder="Sexo" required>
+            <mat-select [(ngModel)]="editUsuario.nm_sexo_usuario" name="sexo" placeholder="Sexo" required>
               <mat-option *ngFor="let sexos of sexoArray" [value]="sexos.value">
                 {{ sexos.viewValue }}
               </mat-option>

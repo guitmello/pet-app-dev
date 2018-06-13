@@ -106,7 +106,6 @@ export class AddPjuridicaComponent implements OnInit {
 
 
   getCityState() {
-    this.appComponent.mostrarLoadingEmmiter.emit(true);
 
     this.filtredStates = [];
     this.httpClient.get(this.api_urlCityState).subscribe(jsonStates => {
@@ -116,7 +115,6 @@ export class AddPjuridicaComponent implements OnInit {
         this.filtredStates.push(state.sigla);
       });
 
-      this.appComponent.mostrarLoadingEmmiter.emit(false);
     });
   }
 
@@ -148,7 +146,6 @@ export class AddPjuridicaComponent implements OnInit {
   }
 
   fillCitiesFromStates() {
-    this.appComponent.mostrarLoadingEmmiter.emit(true);
 
     this.filtredStates = [];
     this.citiesArrays = [];
@@ -164,12 +161,10 @@ export class AddPjuridicaComponent implements OnInit {
         this.filtredCities.push(city);
       });
 
-      this.appComponent.mostrarLoadingEmmiter.emit(false);
     });
   }
 
   fillFiltredCities() {
-    this.appComponent.mostrarLoadingEmmiter.emit(true);
 
     this.filtredCities = [];
     if (!!this.pjuridica.cidade) {
@@ -181,13 +176,11 @@ export class AddPjuridicaComponent implements OnInit {
         });
       });
 
-      this.appComponent.mostrarLoadingEmmiter.emit(false);
     }
   }
 
 
   registerPj() {
-    this.appComponent.mostrarLoadingEmmiter.emit(true);
     this.auxState = false;
     this.auxCity = false;
     if (!!this.cityStates) {
@@ -202,14 +195,12 @@ export class AddPjuridicaComponent implements OnInit {
         this.snackBar.open('Cidade não encontrada', 'OK', {
           duration: 2000,
         });
-        this.appComponent.mostrarLoadingEmmiter.emit(false);
       } else if (this.auxState && this.auxCity) {
         this.submit()
       }
     }
   }
   submit() {
-    this.appComponent.mostrarLoadingEmmiter.emit(true);
 
     this.removeMasks();
 
@@ -218,7 +209,7 @@ export class AddPjuridicaComponent implements OnInit {
       cd_senha_usuario: this.pjuridica.senha,
       nm_tipo_usuario: 'Pessoa Jurídica',
       cd_cnpj_usuario: this.pjuridica.cnpj,
-      nm_usuario: this.pjuridica.razaoSocial,
+      nm_razao_social_usuario: this.pjuridica.razaoSocial,
       cd_telefone_usuario: this.pjuridica.telefone,
       cd_cep_usuario: this.pjuridica.cep,
       nm_estado_usuario: this.pjuridica.estado,
@@ -234,21 +225,18 @@ export class AddPjuridicaComponent implements OnInit {
         this.snackBar.open('Usuário Cadastrado com Sucesso!', 'OK', {
           duration: 2000,
         });
-        this.appComponent.mostrarLoadingEmmiter.emit(false);
         this.goTo('login');
       },
         err => {
           this.snackBar.open('Erro ao Cadastrar Usuário', 'OK', {
             duration: 2000,
           });
-          this.appComponent.mostrarLoadingEmmiter.emit(false);
         }
       );
 
   }
 
   searchStateAndCity() {
-    this.appComponent.mostrarLoadingEmmiter.emit(true);
     this.cityStates.forEach(state => {
       if (this.pjuridica.estado.toLowerCase() === state.sigla.toLowerCase() && this.auxState == false) {
         this.auxState = true;
@@ -259,7 +247,6 @@ export class AddPjuridicaComponent implements OnInit {
                 this.auxCity = true;
               }
             });
-            this.appComponent.mostrarLoadingEmmiter.emit(false);
           });
         }
       }

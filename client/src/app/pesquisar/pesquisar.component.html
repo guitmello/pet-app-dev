@@ -37,6 +37,11 @@
             <mat-icon matSuffix>search</mat-icon>
           </mat-form-field>
         </div>
+        <div class="col-12">
+          <div class="button-submit-row row justify-content-center">
+            <button mat-raised-button type="submit" color="primary" class="w-50" (click)="getOngFilter()">Confirmar</button>
+          </div>
+        </div>
       </div>
 
       <div *ngIf="filter.tipoPesquisa === 'Animal'" class="row">
@@ -61,9 +66,50 @@
             <mat-error *ngIf="raca.invalid">{{getRacaErrorMessage()}}</mat-error>
           </mat-form-field>
         </div>
+        <div class="col-12">
+          <div class="button-submit-row row justify-content-center">
+            <button mat-raised-button type="submit" color="primary" class="w-50" (click)="getAnimalFilter()">Confirmar</button>
+          </div>
+        </div>
       </div>
 
     </div>
 
+  </mat-card>
+
+
+  <mat-card class="no-padding" *ngFor="let pet of pets" routerLink="/pet-info" [queryParams] ="{id: pet.id}">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="img-square" [ngStyle]="{ 'background-image': 'url(' + pet.ds_foto_animal + ') '}"></div>
+      </div>
+      <div class="col-md-2 card-content">
+        <ul>
+          <li class="font-bold">{{pet.nm_animal}}</li>
+          <li>{{pet.Raca.nm_raca}}</li>
+          <li>{{pet.cd_idade_animal}} {{pet.nm_idade_animal}}</li>
+          <li>{{pet.nm_cor_animal}}</li>
+          <li>{{pet.Usuario.nm_cidade_usuario}} - {{pet.Usuario.nm_estado_usuario}}</li>
+          <li>{{pet.Usuario.nm_endereco_usuario}}</li>
+        </ul>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card class="no-padding" *ngFor="let ong of ongs">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="img-square" [ngStyle]="{ 'background-image': 'url(' + ong.ds_foto_usuario + ') '}"></div>
+      </div>
+      <div class="col-md-2 card-content">
+        <ul>
+          <li class="font-bold">{{ong.nm_razao_social_usuario}}</li>
+          <li>{{ong.cd_cep_usuario}}</li>
+          <li>{{ong.nm_cidade_usuario}} - {{ong.nm_estado_usuario}}</li>
+          <li>{{ong.nm_endereco_usuario}}</li>
+          <li>{{ong.cd_numero_endereco_usuario}}</li>
+        </ul>
+      </div>
+    </div>
   </mat-card>
 </div>

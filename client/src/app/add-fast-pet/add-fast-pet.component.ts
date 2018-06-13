@@ -35,7 +35,6 @@ export class AddFastPetComponent implements OnInit {
     );
 
     document.querySelector('#imgupload').addEventListener('change', function () {
-      this.appComponent.mostrarLoadingEmmiter.emit(true);
 
       const fotoAnimal = '';
       const filesSelected = (<HTMLInputElement>document.getElementById('imgupload')).files;
@@ -48,7 +47,7 @@ export class AddFastPetComponent implements OnInit {
         };
         fileReader.readAsDataURL(fileToLoad);
 
-        this.appComponent.mostrarLoadingEmmiter.emit(false);
+
       }
     });
 
@@ -63,7 +62,6 @@ export class AddFastPetComponent implements OnInit {
 
 
   async getAdress() {
-    this.appComponent.mostrarLoadingEmmiter.emit(true);
     navigator.geolocation.getCurrentPosition(this.showPosition);
 
     await this.httpClient.get(this.mapsUrl + localStorage.getItem('MyLatitude') + ',' + localStorage.getItem('MyLongitude')
@@ -72,7 +70,6 @@ export class AddFastPetComponent implements OnInit {
       this.addFastPet = this.dataAdress.results;
       });
 
-      this.appComponent.mostrarLoadingEmmiter.emit(false);
 
   }
 

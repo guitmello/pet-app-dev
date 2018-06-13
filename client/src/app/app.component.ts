@@ -58,7 +58,7 @@ export class AppComponent {
     };
 
 
-  if ((!localStorage.getItem('token')) || (!sessionStorage.getItem('id')) /*|| (this.mostrarMenu === false) */) {
+  if ((!localStorage.getItem('token')) || (!sessionStorage.getItem('id')) || (this.mostrarMenu === false) ) {
       this.logoff('login');
     }
 

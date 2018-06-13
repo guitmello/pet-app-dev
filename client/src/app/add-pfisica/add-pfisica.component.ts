@@ -191,6 +191,22 @@ export class AddPfisicaComponent implements OnInit {
     }
   }
 
+  formIsValid() {
+    return !!this.pfisica.email &&
+      !!this.pfisica.senha &&
+      !!this.pfisica.cpf &&
+      !!this.pfisica.nome &&
+      !!this.pfisica.sexo &&
+      !!this.pfisica.data &&
+      !!this.pfisica.telefone &&
+      !!this.pfisica.cep &&
+      !!this.pfisica.estado &&
+      !!this.pfisica.cidade &&
+      !!this.pfisica.endereco &&
+      !!this.pfisica.numero &&
+      !!this.pfisica.complemento
+  }
+
   registerPf() {
 
     this.auxState = false;
@@ -232,7 +248,8 @@ export class AddPfisicaComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.pfisica.sexo, 'this.pfisica.sexo');
+    if (this.formIsValid()) {
+    
     this.removeMasks();
     this.postData = {
       nm_email_usuario: this.pfisica.email,
@@ -241,7 +258,6 @@ export class AddPfisicaComponent implements OnInit {
       cd_cpf_usuario: this.pfisica.cpf,
       nm_usuario: this.pfisica.nome,
       nm_sexo_usuario: this.pfisica.sexo.trim(),
-      dt_nascimento_usuario: this.pfisica.data,
       cd_telefone_usuario: this.pfisica.telefone,
       cd_cep_usuario: this.pfisica.cep,
       nm_estado_usuario: this.pfisica.estado,
@@ -268,6 +284,11 @@ export class AddPfisicaComponent implements OnInit {
           });
         }
       );
+    } else {
+      this.snackBar.open('Formulário preenchido incorretamente', 'OK', {
+        duration: 2000,
+      });
+    }
   }
 
   removeMasks() {

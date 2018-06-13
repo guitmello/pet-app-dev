@@ -101,7 +101,6 @@ export class AddFastPetComponent implements OnInit {
   }
 
   getCityState() {
-    this.appComponent.mostrarLoadingEmmiter.emit(true);
 
     this.filtredStates = [];
     this.httpClient.get(this.api_urlCityState).subscribe(jsonStates => {
@@ -113,7 +112,6 @@ export class AddFastPetComponent implements OnInit {
         });
       }
 
-      this.appComponent.mostrarLoadingEmmiter.emit(false);
     });
   }
 
@@ -132,13 +130,22 @@ export class AddFastPetComponent implements OnInit {
         this.addFastPet.cd_numero_endereco_animal = this.addressfastpet[0].address_components[0].long_name;
       });
 
-    this.appComponent.mostrarLoadingEmmiter.emit(false);
 
   }
 
-  registerPet() {
-    this.appComponent.mostrarLoadingEmmiter.emit(true);
+  formIsValid() {
+    return !!this.addFastPet.nm_animal &&
+    !!this.addFastPet.cd_cep_animal &&
+    !!this.addFastPet.nm_estado_animal &&
+    !!this.addFastPet.nm_cidade_animal &&
+    !!this.addFastPet.nm_endereco_animal &&
+    !!this.addFastPet.cd_numero_endereco_animal
+  }
 
+  registerPet() {
+
+    if (this.formIsValid()) {
+    
     this.apiUrl = this.apiUrl + '/api/animals/create';
     const userToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', userToken);
@@ -169,7 +176,6 @@ export class AddFastPetComponent implements OnInit {
             duration: 2000,
           });
           this.addFastPet = new AddFastPet();
-          this.appComponent.mostrarLoadingEmmiter.emit(false);
           this.goTo('meus-pets');
         },
         err => {
@@ -177,10 +183,15 @@ export class AddFastPetComponent implements OnInit {
             duration: 2000,
           });
           this.addFastPet = new AddFastPet();
-          this.appComponent.mostrarLoadingEmmiter.emit(false);
           // this.goTo('meus-pets');
         }
       );
+      
+    } else {
+      this.snackBar.open('Formulário preenchido incorretamente', 'OK', {
+        duration: 2000,
+      });
+    }
 
   }
 
@@ -207,7 +218,6 @@ export class AddFastPetComponent implements OnInit {
   }
 
   fillCitiesFromStates() {
-    this.appComponent.mostrarLoadingEmmiter.emit(true);
 
     this.filtredStates = [];
     this.citiesArrays = [];
@@ -225,12 +235,10 @@ export class AddFastPetComponent implements OnInit {
         this.filtredCities.push(city);
       });
 
-      this.appComponent.mostrarLoadingEmmiter.emit(false);
     });
   }
 
   fillFiltredCities() {
-    this.appComponent.mostrarLoadingEmmiter.emit(true);
 
     this.filtredCities = [];
     if (!!this.addFastPet.nm_cidade_animal) {
@@ -241,7 +249,6 @@ export class AddFastPetComponent implements OnInit {
           }
         });
 
-        this.appComponent.mostrarLoadingEmmiter.emit(false);
       });
     }
   }

@@ -105,13 +105,6 @@ export class PetInfoComponent implements OnInit {
       this.elementDataPet = element;
       this.pet = this.elementDataPet.payload;
       this.pet.title = '';
-      this.httpClient.get(api_url + '/api/users/' + this.elementDataPet.payload.cd_usuario_fk, { headers })
-        .subscribe(elementUser => {
-          this.elementDataUser = elementUser;
-          this.pet.address1 = this.elementDataUser.payload.nm_cidade_usuario + ' - ' + this.elementDataUser.payload.nm_estado_usuario;
-          this.pet.address2 = this.elementDataUser.payload.nm_endereco_usuario;
-          this.pet.Usuario.cd_telefone_usuario = this.formatNumberPhone(this.pet.Usuario.cd_telefone_usuario);
-        });
 
     });
   }

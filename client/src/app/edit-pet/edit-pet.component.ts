@@ -167,9 +167,22 @@ export class EditPetComponent implements OnInit {
     this.router.navigate([route]);
   }
 
+  formIsValid() {
+    return !!this.editPet.cd_idade_animal &&
+      !!this.editPet.nm_animal &&
+      !!this.editPet.nm_idade_animal &&
+      !!this.editPet.nm_sexo_animal &&
+      !!this.editPet.nm_tamanho_animal &&
+      !!this.editPet.nm_cor_animal &&
+      !!this.editPet.cd_especie_fk &&
+      !!this.editPet.cd_raca_fk
+  }
 
   updatePet(URL) {
 
+    if (this.formIsValid()) {
+
+    
     const userToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', userToken);
 
@@ -209,6 +222,11 @@ export class EditPetComponent implements OnInit {
           this.goTo('meus-pets');
         }
       );
+    } else {
+      this.snackBar.open('Formulário preenchido incorretamente', 'OK', {
+        duration: 2000,
+      });
+    }
   }
 
 }

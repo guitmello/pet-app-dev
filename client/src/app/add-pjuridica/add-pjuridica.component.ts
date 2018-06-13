@@ -179,6 +179,19 @@ export class AddPjuridicaComponent implements OnInit {
     }
   }
 
+  formIsValid() {
+    return !!this.pjuridica.email &&
+      !!this.pjuridica.senha &&
+      !!this.pjuridica.cnpj &&
+      !!this.pjuridica.razaoSocial &&
+      !!this.pjuridica.telefone &&
+      !!this.pjuridica.cep &&
+      !!this.pjuridica.estado &&
+      !!this.pjuridica.cidade &&
+      !!this.pjuridica.endereco &&
+      !!this.pjuridica.numero &&
+      !!this.pjuridica.complemento
+  }
 
   registerPj() {
     this.auxState = false;
@@ -201,6 +214,7 @@ export class AddPjuridicaComponent implements OnInit {
     }
   }
   submit() {
+    if (this.formIsValid()) {
 
     this.removeMasks();
 
@@ -233,6 +247,11 @@ export class AddPjuridicaComponent implements OnInit {
           });
         }
       );
+    } else {
+      this.snackBar.open('Formulário preenchido incorretamente', 'OK', {
+        duration: 2000,
+      });
+    }
 
   }
 

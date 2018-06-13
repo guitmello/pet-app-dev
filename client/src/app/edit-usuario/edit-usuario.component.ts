@@ -18,6 +18,17 @@ const api_url = environment.apiUrl;
 export class EditUsuarioComponent implements OnInit {
   private apiUrl = api_url;
 
+  filtredStates: any = {};
+  filtredCities: Array<any>;
+  citiesArrays: any = {};
+  json: any = {};
+
+  auxState: boolean
+  auxCity: boolean
+
+  cityStates: any = [];
+  private api_urlCityState = api_url + '/api/citystate';
+
   sexoArray: Array<any>;
   dataUsuarios: any = {};
   postData: any = {};
@@ -124,6 +135,19 @@ export class EditUsuarioComponent implements OnInit {
 
     id = this.route.snapshot.queryParams['id'];
 
+    getCityState() {
+
+      this.filtredStates = [];
+      this.httpClient.get(this.api_urlCityState).subscribe(jsonStates => {
+        this.json = jsonStates;
+        this.cityStates = this.json.estados;
+        this.cityStates.forEach(state => {
+          this.filtredStates.push(state.sigla);
+        });
+  
+      });
+    }
+
   ngOnInit() {
 
     this.appComponent.mostrarLoadingEmmiter.subscribe(
@@ -169,8 +193,138 @@ export class EditUsuarioComponent implements OnInit {
     this.router.navigate([route]);
   }
 
+  blurInStates() {
+    if (!!this.editUsuario.nm_estado_usuario) {
+      this.fillCitiesFromStates();
+    }
+  }
+
+  emptyInput() {
+    if (this.editUsuario.nm_estado_usuario == '') {
+      this.getCityState();
+    }
+  }
+
+  fillFiltredStates() {
+    if (!!this.editUsuario.nm_estado_usuario) {
+      this.fillCitiesFromStates();
+    }
+  }
+
+  fillCitiesFromStates() {
+    console.log(this);
+    this.filtredStates = [];
+    this.citiesArrays = [];
+    this.filtredCities = [];
+    this.cityStates.forEach(state => {
+      if (this.editUsuario.nm_estado_usuario.toLowerCase() === state.sigla.slice(0, this.editUsuario.nm_estado_usuario.length).toLowerCase()) {
+        this.filtredStates.push(state.sigla);
+        this.citiesArrays.push(state.cidades);
+      }
+    });
+    this.citiesArrays.forEach(cities => {
+      cities.forEach(city => {
+        this.filtredCities.push(city);
+      });
+
+    });
+  }
+
+  fillFiltredCities() {
+
+    this.filtredCities = [];
+    if (!!this.editUsuario.nm_cidade_usuario) {
+      this.citiesArrays.forEach(cities => {
+        cities.forEach(city => {
+          if (this.editUsuario.nm_cidade_usuario.toLowerCase() === city.slice(0, this.editUsuario.nm_cidade_usuario.length).toLowerCase()) {
+            this.filtredCities.push(city);
+          }
+        });
+
+      });
+    }
+  }
+
+  registerPf() {
+
+    this.auxState = false;
+    this.auxCity = false;
+    if (!!this.cityStates) {
+      this.searchStateAndCity();
+      if (!this.auxState) {
+        document.getElementById("estado").focus();
+        this.snackBar.open('Estado não encontrado', 'OK', {
+          duration: 2000,
+        });
+      } else if (this.auxState && !this.auxCity) {
+        document.getElementById("cidade").focus();
+        this.snackBar.open('Cidade não encontrada', 'OK', {
+          duration: 2000,
+        });
+      } else if (this.auxState && this.auxCity) {
+        this.updateUsuarioFisico('/update');
+      }
+    }
+  }
+
+  registerJr() {
+
+    this.auxState = false;
+    this.auxCity = false;
+    if (!!this.cityStates) {
+      this.searchStateAndCity();
+      if (!this.auxState) {
+        document.getElementById("estado").focus();
+        this.snackBar.open('Estado não encontrado', 'OK', {
+          duration: 2000,
+        });
+      } else if (this.auxState && !this.auxCity) {
+        document.getElementById("cidade").focus();
+        this.snackBar.open('Cidade não encontrada', 'OK', {
+          duration: 2000,
+        });
+      } else if (this.auxState && this.auxCity) {
+        this.updateUsuarioJuridico('/update');
+      }
+    }
+  }
+
+  searchStateAndCity() {
+
+    this.cityStates.forEach(state => {
+      if (this.editUsuario.nm_estado_usuario.toLowerCase() === state.sigla.toLowerCase() && this.auxState == false) {
+        this.auxState = true;
+        if (!!this.citiesArrays) {
+          this.citiesArrays.forEach(cities => {
+            cities.forEach(city => {
+              if (this.editUsuario.nm_cidade_usuario.toLowerCase() === city.toLowerCase() && this.auxCity == false) {
+                this.auxCity = true;
+              }
+            });
+          });
+        }
+      }
+    });
+  }
+
+  formIsValidFisico() {
+    return !!this.editUsuario.nm_email_usuario &&
+      !!this.editUsuario.cd_senha_usuario &&
+      !!this.editUsuario.cd_cpf_usuario &&
+      !!this.editUsuario.nm_usuario &&
+      !!this.editUsuario.nm_sexo_usuario &&
+      !!this.editUsuario.cd_telefone_usuario &&
+      !!this.editUsuario.cd_cep_usuario &&
+      !!this.editUsuario.nm_estado_usuario &&
+      !!this.editUsuario.nm_cidade_usuario &&
+      !!this.editUsuario.nm_endereco_usuario &&
+      !!this.editUsuario.cd_numero_endereco_usuario &&
+      !!this.editUsuario.ds_complemento_endereco_usuario
+  }
 
   updateUsuarioFisico(URL) {
+
+    //if (this.formIsValidFisico()) {
 
     this.removeMasksFisico();
     const userToken = localStorage.getItem('token');
@@ -188,7 +342,6 @@ export class EditUsuarioComponent implements OnInit {
       nm_endereco_usuario: this.editUsuario.nm_endereco_usuario,
       cd_numero_endereco_usuario: this.editUsuario.cd_numero_endereco_usuario,
       ds_complemento_endereco_usuario: this.editUsuario.ds_complemento_endereco_usuario,
-      dt_nascimento_usuario: this.editUsuario.dt_nascimento_usuario,
       cd_senha_usuario: this.editUsuario.cd_senha_usuario,
     };
 
@@ -207,9 +360,31 @@ export class EditUsuarioComponent implements OnInit {
           this.goTo('home');
         }
       );
+    /*} else {
+      this.snackBar.open('Formulário preenchido incorretamente', 'OK', {
+        duration: 2000,
+      });
+    }*/
+  }
+
+  formIsValidJuridico() {
+    return !!this.editUsuario.nm_email_usuario &&
+      !!this.editUsuario.cd_senha_usuario &&
+      !!this.editUsuario.cd_cnpj_usuario &&
+      !!this.editUsuario.nm_razao_social_usuario &&
+      !!this.editUsuario.cd_telefone_usuario &&
+      !!this.editUsuario.cd_cep_usuario &&
+      !!this.editUsuario.nm_estado_usuario &&
+      !!this.editUsuario.nm_cidade_usuario &&
+      !!this.editUsuario.nm_endereco_usuario &&
+      !!this.editUsuario.cd_numero_endereco_usuario &&
+      !!this.editUsuario.ds_complemento_endereco_usuario
   }
 
   updateUsuarioJuridico(URL) {
+
+    //if (this.formIsValidJuridico()) {
+
     this.removeMasksJuridico();
     const userToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', userToken);
@@ -243,6 +418,11 @@ export class EditUsuarioComponent implements OnInit {
           this.goTo('home');
         }
       );
+    /*} else {
+      this.snackBar.open('Formulário preenchido incorretamente', 'OK', {
+        duration: 2000,
+      });
+    }*/
   }
 
   removeMasksFisico() {

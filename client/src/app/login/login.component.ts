@@ -59,7 +59,6 @@ export class LoginComponent implements OnInit {
 
     this.httpClient.post<Usuario>(this.apiUrl, this.postData).subscribe(auth => {
       this.data = auth;
-      console.log(auth);
       this.fazerLogin();
     }, error => {
       this.dataError = error;

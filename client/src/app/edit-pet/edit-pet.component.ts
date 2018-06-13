@@ -92,7 +92,6 @@ export class EditPetComponent implements OnInit {
     );
 
     document.querySelector('#imgupload').addEventListener('change', function () {
-      this.appComponent.mostrarLoadingEmmiter.emit(true);
 
       let fotoAnimal;
       let filesSelected = (<HTMLInputElement>document.getElementById('imgupload')).files;
@@ -105,7 +104,6 @@ export class EditPetComponent implements OnInit {
         };
         fileReader.readAsDataURL(fileToLoad);
 
-        this.appComponent.mostrarLoadingEmmiter.emit(false);
       }
     });
 
@@ -148,7 +146,6 @@ export class EditPetComponent implements OnInit {
 
 
   getDataPet() {
-    this.appComponent.mostrarLoadingEmmiter.emit(true);
 
     this.apiUrl = this.apiUrl + '/api/animals/' + this.id;
     const userToken = localStorage.getItem('token');
@@ -164,7 +161,6 @@ export class EditPetComponent implements OnInit {
       console.log('this.editPet -->', this.editPet)
     });
 
-    this.appComponent.mostrarLoadingEmmiter.emit(false);
   }
 
   goTo(route: string) {
@@ -173,7 +169,6 @@ export class EditPetComponent implements OnInit {
 
 
   updatePet(URL) {
-    this.appComponent.mostrarLoadingEmmiter.emit(true);
 
     const userToken = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', userToken);
@@ -205,14 +200,12 @@ export class EditPetComponent implements OnInit {
           this.snackBar.open('Pet Editado com Sucesso!', 'OK', {
             duration: 2000,
           });
-          this.appComponent.mostrarLoadingEmmiter.emit(false);
           this.goTo('meus-pets');
         },
         err => {
           this.snackBar.open('Erro ao Editar Pet', 'OK', {
             duration: 2000,
           });
-          this.appComponent.mostrarLoadingEmmiter.emit(false);
           this.goTo('meus-pets');
         }
       );

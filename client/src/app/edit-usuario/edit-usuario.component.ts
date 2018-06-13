@@ -140,7 +140,6 @@ export class EditUsuarioComponent implements OnInit {
   }
 
   getDataUsuario() {
-    this.appComponent.mostrarLoadingEmmiter.emit(true);
 
     this.apiUrl = this.apiUrl + '/api/users/' + this.id ;
     const userToken = localStorage.getItem('token');
@@ -163,8 +162,6 @@ export class EditUsuarioComponent implements OnInit {
         this.tipoJuridicoEmitter.emit(true);
       }
 
-      this.appComponent.mostrarLoadingEmmiter.emit(false);
-
   }
 
 
@@ -174,7 +171,6 @@ export class EditUsuarioComponent implements OnInit {
 
 
   updateUsuarioFisico(URL) {
-    this.appComponent.mostrarLoadingEmmiter.emit(true);
 
     this.removeMasksFisico();
     const userToken = localStorage.getItem('token');
@@ -202,14 +198,12 @@ export class EditUsuarioComponent implements OnInit {
           this.snackBar.open('Usuário Editado com Sucesso!', 'OK', {
             duration: 2000,
           });
-          this.appComponent.mostrarLoadingEmmiter.emit(false);
           this.goTo('home');
         },
         err => {
           this.snackBar.open('Erro ao Editar o Usuário', 'OK', {
             duration: 2000,
           });
-          this.appComponent.mostrarLoadingEmmiter.emit(false);
           this.goTo('home');
         }
       );

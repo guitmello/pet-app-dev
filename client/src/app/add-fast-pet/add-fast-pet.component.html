@@ -43,7 +43,8 @@
           <div class="col-4"></div>
           <div class="col-8">
             <mat-form-field>
-              <input [(ngModel)]="addFastPet.nm_estado_animal" [matAutocomplete]="autoStates" name="nm_estado_animal" matInput placeholder="Estado"  (click)="emptyInput()" (blur)="blurInStates()" (keyup)="fillFiltredStates()"  required>
+              <input [(ngModel)]="addFastPet.nm_estado_animal" [matAutocomplete]="autoStates" name="nm_estado_animal" matInput placeholder="Estado"
+                (click)="emptyInput()" (blur)="blurInStates()" (keyup)="fillFiltredStates()" required>
               <mat-autocomplete #autoStates="matAutocomplete">
                 <mat-option *ngFor="let option of filtredStates" [value]="option">
                   {{ option }}
@@ -57,7 +58,8 @@
           <div class="col-4"></div>
           <div class="col-8">
             <mat-form-field>
-              <input [(ngModel)]="addFastPet.nm_cidade_animal" name="nm_cidade_animal" [matAutocomplete]="autoCities" matInput placeholder="Cidade" (click)="blurInStates()" (keyup)="fillFiltredCities()" required>
+              <input [(ngModel)]="addFastPet.nm_cidade_animal" name="nm_cidade_animal" [matAutocomplete]="autoCities" matInput placeholder="Cidade"
+                (click)="blurInStates()" (keyup)="fillFiltredCities()" required>
               <mat-autocomplete #autoCities="matAutocomplete">
                 <mat-option *ngFor="let option of filtredCities" [value]="option">
                   {{ option }}
@@ -80,12 +82,39 @@
           <div class="col-4"></div>
           <div class="col-8">
             <mat-form-field>
-              <input [(ngModel)]="addFastPet.nm_numero_endereco_animal" name="nm_numero_endereco_animal" matInput placeholder="Número" required>
+              <input [(ngModel)]="addFastPet.cd_numero_endereco_animal" name="cd_numero_endereco_animal" matInput placeholder="Número"
+                required>
             </mat-form-field>
           </div>
         </div>
 
-    </div>
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-8">
+            <mat-form-field>
+              <mat-select [(ngModel)]="addFastPet.cd_especie_fk" name="especie" placeholder="Espécie" (change)="fillRacas()" required>
+                <mat-option *ngFor="let especies of especieArray" [value]="especies.id">
+                  {{ especies.nm_especie }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-8" *ngIf="!!addFastPet.cd_especie_fk">
+            <mat-form-field>
+              <mat-select [(ngModel)]="addFastPet.cd_raca_fk" name="raca" placeholder="Raça" required>
+                <mat-option *ngFor="let racas of racaArray" [value]="racas.id">
+                  {{ racas.nm_raca }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+      </div>
 
 
       <div class="col-12">

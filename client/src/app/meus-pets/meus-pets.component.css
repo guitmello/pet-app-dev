@@ -15,7 +15,7 @@
   background: transparent;
 }
 .mat-expansion-panel-body{
-  padding: 0px 0px 0px 15px !important;
+  padding: 0 15px !important;
 }
 .mat-expansion-panel-header{
   padding: 0px;

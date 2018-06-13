@@ -30,6 +30,9 @@ export class AddFastPetComponent implements OnInit {
 
   postData: any = {};
 
+  especieArray: any = {};
+  racaArray: any = {};
+
   mostrarLoading: boolean = false;
   mostrarLoadingEmmiter = new EventEmitter<boolean>();
 
@@ -44,12 +47,15 @@ export class AddFastPetComponent implements OnInit {
     public snackBar: MatSnackBar, private formBuilder: FormBuilder, private appComponent: AppComponent) { }
 
   ngOnInit() {
+
+    this.racaArray = []
+    this.fillEspecie();
+
     this.appComponent.mostrarLoadingEmmiter.subscribe(
       mostrarSpinner => this.mostrarLoading = mostrarSpinner,
     );
 
     document.querySelector('#imgupload').addEventListener('change', function () {
-      this.appComponent.mostrarLoadingEmmiter.emit(true);
 
       const fotoAnimal = '';
       const filesSelected = (<HTMLInputElement>document.getElementById('imgupload')).files;
@@ -62,17 +68,36 @@ export class AddFastPetComponent implements OnInit {
         };
         fileReader.readAsDataURL(fileToLoad);
 
-        this.appComponent.mostrarLoadingEmmiter.emit(false);
+
       }
     });
-
     this.form = this.formBuilder.group({
       nm_estado_animal: [null],
       nm_cidade_animal: [null],
       nm_endereco_animal: [null],
       nm_numero_endereco_animal: [null]
     });
+  }
 
+
+  fillRacas() {
+    const userToken = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', userToken);
+
+    this.httpClient.get(api_url + '/api/racas/getracas/' + this.addFastPet.cd_especie_fk, { headers }).subscribe(element => {
+      this.racaArray = element;
+      this.racaArray = this.racaArray.payload;
+    });
+  }
+
+  fillEspecie() {
+    const userToken = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', userToken);
+
+    this.httpClient.get(api_url + '/api/especies/all', { headers }).subscribe(element => {
+      this.especieArray = element;
+      this.especieArray = this.especieArray.payload;
+    });
   }
 
   getCityState() {
@@ -93,7 +118,6 @@ export class AddFastPetComponent implements OnInit {
   }
 
   async getAdress() {
-    this.appComponent.mostrarLoadingEmmiter.emit(true);
     navigator.geolocation.getCurrentPosition(this.showPosition);
 
     await this.httpClient.get(this.mapsUrl + localStorage.getItem('MyLatitude') + ',' + localStorage.getItem('MyLongitude')
@@ -105,7 +129,7 @@ export class AddFastPetComponent implements OnInit {
         this.addFastPet.nm_estado_animal = this.addressfastpet[0].address_components[5].short_name;
         this.addFastPet.nm_cidade_animal = this.addressfastpet[0].address_components[4].short_name;
         this.addFastPet.nm_endereco_animal = this.addressfastpet[0].address_components[1].long_name;
-        this.addFastPet.nm_numero_endereco_animal = this.addressfastpet[0].address_components[0].long_name;
+        this.addFastPet.cd_numero_endereco_animal = this.addressfastpet[0].address_components[0].long_name;
       });
 
     this.appComponent.mostrarLoadingEmmiter.emit(false);
@@ -126,7 +150,6 @@ export class AddFastPetComponent implements OnInit {
     }
 
     this.postData = {
-
       ds_foto_animal: fotobase64,
       cd_usuario_fk: localStorage.getItem('id'),
       nm_animal: this.addFastPet.nm_animal,
@@ -134,28 +157,30 @@ export class AddFastPetComponent implements OnInit {
       nm_estado_animal: this.addFastPet.nm_estado_animal,
       nm_cidade_animal: this.addFastPet.nm_cidade_animal,
       nm_endereco_animal: this.addFastPet.nm_endereco_animal,
-      nm_numero_endereco_animal: parseInt(this.addFastPet.nm_numero_endereco_animal)
+      cd_numero_endereco_animal: parseInt(this.addFastPet.cd_numero_endereco_animal),
+      cd_raca_fk: this.addFastPet.cd_raca_fk,
+      cd_especie_fk: this.addFastPet.cd_especie_fk
     };
 
-    console.log(this.postData);
-
-    // return this.httpClient.post<AddFastPet>(this.apiUrl, this.postData, { headers })
-    //   .subscribe(
-    //     res => {
-    //       this.snackBar.open('Pet Cadastrado com Sucesso!', 'OK', {
-    //         duration: 2000,
-    //       });
-    //       this.appComponent.mostrarLoadingEmmiter.emit(false);
-    //       this.goTo('meus-pets');
-    //     },
-    //     err => {
-    //       this.snackBar.open('Erro ao Cadastrar Pet', 'OK', {
-    //         duration: 2000,
-    //       });
-    //       this.appComponent.mostrarLoadingEmmiter.emit(false);
-    //       this.goTo('meus-pets');
-    //     }
-    //   );
+    return this.httpClient.post<AddFastPet>(this.apiUrl, this.postData, { headers })
+      .subscribe(
+        res => {
+          this.snackBar.open('Pet Cadastrado com Sucesso!', 'OK', {
+            duration: 2000,
+          });
+          this.addFastPet = new AddFastPet();
+          this.appComponent.mostrarLoadingEmmiter.emit(false);
+          this.goTo('meus-pets');
+        },
+        err => {
+          this.snackBar.open('Erro ao Cadastrar Pet', 'OK', {
+            duration: 2000,
+          });
+          this.addFastPet = new AddFastPet();
+          this.appComponent.mostrarLoadingEmmiter.emit(false);
+          // this.goTo('meus-pets');
+        }
+      );
 
   }
 

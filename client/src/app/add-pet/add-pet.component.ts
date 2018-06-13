@@ -82,7 +82,6 @@ export class AddPetComponent implements OnInit {
     );
 
     document.querySelector('#imgupload').addEventListener('change', function () {
-      this.appComponent.mostrarLoadingEmmiter.emit(true);
 
       let fotoAnimal;
       let filesSelected = (<HTMLInputElement>document.getElementById('imgupload')).files;
@@ -95,7 +94,6 @@ export class AddPetComponent implements OnInit {
         };
         fileReader.readAsDataURL(fileToLoad);
 
-        this.appComponent.mostrarLoadingEmmiter.emit(false);
       }
     });
 
@@ -146,7 +144,6 @@ export class AddPetComponent implements OnInit {
   }
 
   registerPet() {
-    this.appComponent.mostrarLoadingEmmiter.emit(true);
 
     this.apiUrl = this.apiUrl + '/api/animals/create';
     const userToken = localStorage.getItem('token');
@@ -179,14 +176,12 @@ export class AddPetComponent implements OnInit {
           this.snackBar.open('Pet Cadastrado com Sucesso!', 'OK', {
             duration: 2000,
           });
-          this.appComponent.mostrarLoadingEmmiter.emit(false);
           this.goTo('meus-pets');
         },
         err => {
           this.snackBar.open('Erro ao Cadastrar Pet', 'OK', {
             duration: 2000,
           });
-          this.appComponent.mostrarLoadingEmmiter.emit(false);
           this.goTo('meus-pets');
         }
       );

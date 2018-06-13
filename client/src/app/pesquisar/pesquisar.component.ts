@@ -20,6 +20,9 @@ export class PesquisarComponent implements OnInit {
   especieArray: any = {};
   racaArray: any = [];
 
+  pets: any = {};
+  ongs: any = {};
+
   filter: Filter = new Filter();
 
   private apiUrl = api_url;
@@ -66,9 +69,34 @@ export class PesquisarComponent implements OnInit {
     this.filterData = {
       tipoPesquisa: this.filter.tipoPesquisa
     }
+   
+  }
 
-    console.log(this.filter.tipoPesquisa);
-    
+  getAnimalFilter(){
+    delete this.ongs;
+    delete this.pets;
+    const userToken = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', userToken);
+    const especie = this.filter.id_especie;
+    const raca = this.filter.id_raca;
+
+    this.httpClient.get(api_url + '/api/animals/getByFilter/' + especie + '&' + raca, { headers }).subscribe(element => {
+      this.pets = element;
+      this.pets = this.pets.payload;
+    });
+  }
+
+  getOngFilter(){
+    delete this.pets;
+    delete this.ongs;
+    const userToken = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', userToken);
+    const ong = this.filter.ong;
+
+    this.httpClient.get(api_url + '/api/users/getByFilter/' + ong, { headers }).subscribe(element => {
+      this.ongs = element;
+      this.ongs = this.ongs.payload;
+    });
   }
 
 }

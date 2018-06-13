@@ -72,6 +72,18 @@
             <li> {{pet.nm_tamanho_animal}} </li>
           </div>
           <div class="col-6">
+            <li class="font-bold space-top">Telefone</li>
+            <li>{{pet.Usuario.cd_telefone_usuario}}</li>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <li class="font-bold space-top">Endereço</li>
+            <li>{{pet.Usuario.nm_cidade_usuario}} - {{pet.Usuario.nm_estado_usuario}}</li>
+            <li>{{pet.Usuario.nm_endereco_usuario}}</li>
+          </div>
+          <div class="col-6">
             <span *ngIf='deficiencia_view'>
               <li class="font-bold space-top">Deficiência</li>
               <li> {{pet.ds_deficiencia_animal}} </li>
@@ -80,18 +92,11 @@
         </div>
 
         <div class="row">
-          <div class="col-6">
-            <li class="font-bold space-top">Endereço</li>
-            <li> {{pet.address1}} </li>
-            <li> {{pet.address2}}</li>
-          </div>
-        </div>
-
-        <div class="row">
           <div class="col-12">
             <li class="font-bold space-top">Cadastrado por:</li>
             <li>
-              <a href="#">ONG MyPet</a>
+              <span>{{pet.Usuario.nm_razao_social_usuario}}</span>
+              <span>{{pet.Usuario.nm_usuario}}</span>
             </li>
           </div>
         </div>

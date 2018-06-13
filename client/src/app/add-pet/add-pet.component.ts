@@ -5,7 +5,7 @@ import { environment } from '../../environments/environment';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import { FormControl, Validators} from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
 import { AppComponent } from '../app.component';
 
@@ -143,49 +143,64 @@ export class AddPetComponent implements OnInit {
     });
   }
 
-  registerPet() {
-
-    this.apiUrl = this.apiUrl + '/api/animals/create';
-    const userToken = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', userToken);
-
-    let fotobase64 = (<HTMLInputElement>document.getElementById('imgupload')).getAttribute('base64-value');
-
-    if (!fotobase64) {
-      fotobase64 = '../../assets/images/ft-pet.png';
-    }
-
-    this.postData = {
-      nm_animal: this.pet.nome,
-      cd_idade_animal: this.pet.cd_idade_animal,
-      nm_idade_animal: this.pet.nm_idade_animal,
-      nm_cor_animal: this.pet.cor,
-      nm_sexo_animal: this.pet.sexo,
-      nm_tamanho_animal: this.pet.tamanho,
-      ic_deficiencia_animal: this.pet.deficiencia,
-      ds_deficiencia_animal: this.pet.ds_deficiencia,
-      ds_foto_animal: fotobase64,
-      cd_raca_fk: this.pet.id_raca,
-      cd_usuario_fk: localStorage.getItem('id'),
-      cd_especie_fk: this.pet.id_especie
-    };
-
-    return this.httpClient.post<Pet>(this.apiUrl, this.postData, { headers })
-      .subscribe(
-        res => {
-          this.snackBar.open('Pet Cadastrado com Sucesso!', 'OK', {
-            duration: 2000,
-          });
-          this.goTo('meus-pets');
-        },
-        err => {
-          this.snackBar.open('Erro ao Cadastrar Pet', 'OK', {
-            duration: 2000,
-          });
-          this.goTo('meus-pets');
-        }
-      );
+  formIsValid() {
+    return !!this.pet.cd_idade_animal &&
+      !!this.pet.nome &&
+      !!this.pet.nm_idade_animal &&
+      !!this.pet.sexo &&
+      !!this.pet.tamanho &&
+      !!this.pet.cor &&
+      !!this.pet.id_especie &&
+      !!this.pet.id_raca
   }
 
+  registerPet() {
+    if (this.formIsValid()) {
+      this.apiUrl = this.apiUrl + '/api/animals/create';
+      const userToken = localStorage.getItem('token');
+      const headers = new HttpHeaders().set('Authorization', userToken);
+
+      let fotobase64 = (<HTMLInputElement>document.getElementById('imgupload')).getAttribute('base64-value');
+
+      if (!fotobase64) {
+        fotobase64 = '../../assets/images/ft-pet.png';
+      }
+
+      this.postData = {
+        nm_animal: this.pet.nome,
+        cd_idade_animal: this.pet.cd_idade_animal,
+        nm_idade_animal: this.pet.nm_idade_animal,
+        nm_cor_animal: this.pet.cor,
+        nm_sexo_animal: this.pet.sexo,
+        nm_tamanho_animal: this.pet.tamanho,
+        ic_deficiencia_animal: this.pet.deficiencia,
+        ds_deficiencia_animal: this.pet.ds_deficiencia,
+        ds_foto_animal: fotobase64,
+        cd_raca_fk: this.pet.id_raca,
+        cd_usuario_fk: localStorage.getItem('id'),
+        cd_especie_fk: this.pet.id_especie
+      };
+
+      return this.httpClient.post<Pet>(this.apiUrl, this.postData, { headers })
+        .subscribe(
+          res => {
+            this.snackBar.open('Pet Cadastrado com Sucesso!', 'OK', {
+              duration: 2000,
+            });
+            this.goTo('meus-pets');
+          },
+          err => {
+            this.snackBar.open('Erro ao Cadastrar Pet', 'OK', {
+              duration: 2000,
+            });
+            this.goTo('meus-pets');
+          }
+        );
+    } else {
+      this.snackBar.open('Formulário preenchido incorretamente', 'OK', {
+        duration: 2000,
+      });
+    }
+  }
 
 }

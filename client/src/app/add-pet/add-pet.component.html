@@ -37,7 +37,7 @@
         </div>
         <div class="col-4">
           <mat-form-field>
-            <mat-select [(ngModel)]="pet.nm_idade_animal" name="text_idade" placeholder="Meses" required>
+            <mat-select [(ngModel)]="pet.nm_idade_animal" name="text_idade" placeholder="Período" required>
               <mat-option *ngFor="let idades of idadeArray" [value]="idades.value">
                 {{ idades.viewValue }}
               </mat-option>

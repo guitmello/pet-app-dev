@@ -33,7 +33,7 @@ export class PetInfoComponent implements OnInit {
   mostrarLoading: boolean = false;
   mostrarLoadingEmmiter = new EventEmitter<boolean>();
 
-  constructor(private route: ActivatedRoute, private httpClient: HttpClient,public router: Router, private appComponent: AppComponent) {
+  constructor(private route: ActivatedRoute, private httpClient: HttpClient, public router: Router, private appComponent: AppComponent) {
     this.getPetInfo(this.route.snapshot.queryParams['id']);
     this.fav = !this.route.snapshot.queryParams['fav'];
     this.favd = this.route.snapshot.queryParams['favd'];
@@ -109,10 +109,22 @@ export class PetInfoComponent implements OnInit {
         .subscribe(elementUser => {
           this.elementDataUser = elementUser;
           this.pet.address1 = this.elementDataUser.payload.nm_cidade_usuario + ' - ' + this.elementDataUser.payload.nm_estado_usuario;
-          this.pet.address2 = this.elementDataUser.payload.nm_endereco_usuario;;
+          this.pet.address2 = this.elementDataUser.payload.nm_endereco_usuario;
+          this.pet.Usuario.cd_telefone_usuario = this.formatNumberPhone(this.pet.Usuario.cd_telefone_usuario);
         });
 
     });
+  }
+
+  formatNumberPhone(number) {
+    var length = number.length;
+    var phoneFormated;
+    if (length === 10) {
+      phoneFormated = '(' + number.substring(0, 2) + ') ' + number.substring(2, 6) + '-' + number.substring(6, 10);
+    } else if (length === 11) {
+      phoneFormated = '(' + number.substring(0, 2) + ') ' + number.substring(2, 7) + '-' + number.substring(7, 11);
+    }
+    return phoneFormated;
   }
 
 }

@@ -97,8 +97,6 @@ export class PetInfoComponent implements OnInit {
 
 
   getPetInfo(id) {
-    this.appComponent.mostrarLoadingEmmiter.emit(true);
-
     const userToken = localStorage.getItem('token');
 
     const headers = new HttpHeaders().set('Authorization', userToken);
@@ -114,7 +112,6 @@ export class PetInfoComponent implements OnInit {
           this.pet.address2 = this.elementDataUser.payload.nm_endereco_usuario;;
         });
 
-        this.appComponent.mostrarLoadingEmmiter.emit(false);
     });
   }
 

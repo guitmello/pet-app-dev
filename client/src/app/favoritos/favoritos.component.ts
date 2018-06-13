@@ -30,7 +30,6 @@ export class FavoritosComponent implements OnInit {
     this.appComponent.mostrarLoadingEmmiter.subscribe(
       mostrarSpinner => this.mostrarLoading = mostrarSpinner,
     );
-    this.appComponent.mostrarLoadingEmmiter.emit(true);
 
     this.getFavoritePets();
   }
@@ -65,6 +64,5 @@ export class FavoritosComponent implements OnInit {
         });
       });
       
-      this.appComponent.mostrarLoadingEmmiter.emit(false);
   }
 }

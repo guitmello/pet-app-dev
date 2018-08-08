@@ -71,9 +71,8 @@
   padding: 5px 0px;
   list-style: none;
 }
-.meus-pets-desc li .svg-inline--fa{
+.svg-inline--fa.mat-list-icon{
   color: #755dca;
-  margin-right: 5px;
 }
 
 .buttons-inline {
@@ -99,7 +98,7 @@
   background-size: cover;
   border-radius: 50%;
   border: 2px solid #755dca;
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
 }
 

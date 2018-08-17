@@ -20,9 +20,10 @@
               <mat-list>
                 <mat-list-item>
                   <mat-icon mat-list-icon class="img-circle" [ngStyle]="{ 'background-image': 'url(' + pet.ds_foto_animal + ') '}"></mat-icon>
-                  <h4 mat-line>{{pet.nm_animal}}</h4>
+                  <h4 mat-line class="font-bold">{{pet.nm_animal}}</h4>
                   <p mat-line> {{pet.cd_idade_animal}} {{pet.nm_idade_animal}} </p>
                 </mat-list-item>
+                <mat-divider></mat-divider>
               </mat-list>
 
             </mat-panel-title>
@@ -30,44 +31,45 @@
 
           <mat-list>
             <mat-list-item>
-              <i class="fas fa-tint" mat-list-icon></i>
-              <h4 mat-line>Espécie</h4>
+              <i class="fas fa-paw" mat-list-icon></i>
+              <h4 mat-line class="font-bold">Espécie</h4>
               <p mat-line>{{pet.Especie.nm_especie}}</p>
             </mat-list-item>
             <mat-list-item>
-              <i class="fas fa-tint" mat-list-icon></i>
-              <h4 mat-line>Raça</h4>
+              <i class="fas fa-paw" mat-list-icon></i>
+              <h4 mat-line class="font-bold">Raça</h4>
               <p mat-line>{{pet.Raca.nm_raca}}</p>
             </mat-list-item>
             <mat-list-item>
               <i class="fas fa-tint" mat-list-icon></i>
-              <h4 mat-line>Cor</h4>
+              <h4 mat-line class="font-bold">Cor</h4>
               <p mat-line>{{pet.nm_cor_animal}}</p>
             </mat-list-item>
             <mat-list-item>
               <i class="fas fa-ruler-vertical" mat-list-icon></i>
-              <h4 mat-line>Tamanho</h4>
+              <h4 mat-line class="font-bold">Tamanho</h4>
               <p mat-line>{{pet.nm_tamanho_animal}}</p>
             </mat-list-item>
             <mat-list-item>
               <i class="fas fa-venus-mars" mat-list-icon></i>
-              <h4 mat-line>Sexo</h4>
+              <h4 mat-line class="font-bold">Sexo</h4>
               <p mat-line>{{pet.nm_sexo_animal}}</p>
             </mat-list-item>
+            <mat-list-item>
+              <ul class="buttons-inline">
+                <li>
+                  <button mat-mini-fab routerLink="/edit-pet" [queryParams]="{id: pet.id}" class="edit">
+                    <mat-icon class="fas fa-pencil-alt"></mat-icon>
+                  </button>
+                </li>
+                <li>
+                  <button mat-mini-fab (click)="openDialog(pet.id)" class="remove">
+                    <mat-icon class="fas fa-trash-alt"></mat-icon>
+                  </button>
+                </li>
+              </ul>
+            </mat-list-item>
           </mat-list>
-
-          <ul class="meus-pets-list buttons-inline">
-            <li>
-              <button mat-icon-button routerLink="/edit-pet" [queryParams]="{id: pet.id}">
-                <i class="fas fa-pencil-alt edit"></i>
-              </button>
-            </li>
-            <li>
-              <button mat-icon-button (click)="openDialog(pet.id)">
-                <i class="fas fa-trash-alt remove"></i>
-              </button>
-            </li>
-          </ul>
 
         </mat-expansion-panel>
 

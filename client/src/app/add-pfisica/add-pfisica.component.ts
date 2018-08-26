@@ -197,7 +197,6 @@ export class AddPfisicaComponent implements OnInit {
       !!this.pfisica.cpf &&
       !!this.pfisica.nome &&
       !!this.pfisica.sexo &&
-      !!this.pfisica.data &&
       !!this.pfisica.telefone &&
       !!this.pfisica.cep &&
       !!this.pfisica.estado &&

@@ -1,0 +1,30 @@
+@import 'custom-theme.scss';
+
+html, body { 
+    height: 100%; 
+}
+body { 
+    margin: 0; font-family: 'Roboto', sans-serif; 
+}
+.container {
+    padding: 75px 5px 57px 5px;
+}
+.w-50 {
+    width: 50%;
+}
+
+mat-form-field {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+  }
+
+mat-card {
+    box-shadow: 0 1px 1px rgba(0,0,0,0.08), 0 1px 1px rgba(0,0,0,0.08) !important;
+    border-radius: 5px !important;
+}
+
+.mat-raised-button {
+    border-radius: 20px !important;
+    background: linear-gradient(60deg, #6B52C7, #8C78D3)
+}

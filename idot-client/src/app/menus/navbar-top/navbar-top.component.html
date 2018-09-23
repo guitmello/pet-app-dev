@@ -1,0 +1,47 @@
+<mat-sidenav-container class="example-container">
+
+  <!-- Inside sidenav -->
+  <mat-sidenav #sidenav class="example-sidenav">
+    <mat-list id="sidenav-menu">
+
+      <mat-list-item>
+        <mat-icon mat-list-icon>arrow_back</mat-icon>
+        <h4 mat-line class="font-bold">Logoff</h4>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item routerLink="">
+        <mat-icon mat-list-icon>create</mat-icon>
+        <h4 mat-line class="font-bold">Editar Perfil</h4>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+    </mat-list>
+  </mat-sidenav>
+
+  <!-- Content around of sidenav -->
+  <mat-sidenav-content>
+    
+  <!-- Navbar top -->
+    <mat-toolbar id="navbar-top" color="primary">
+      <mat-toolbar-row>
+        <a (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </a>
+
+        <span class="nav-space"></span>
+
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <!-- Pages content -->
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+
+    <!-- Navbar bottom component -->
+    <app-navbar-bottom></app-navbar-bottom>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

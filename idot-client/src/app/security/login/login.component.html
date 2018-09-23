@@ -1,0 +1,31 @@
+<form>
+  <mat-card>
+
+    <mat-grid-list cols="1" rowHeight="50">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input name="email" type="email" matInput placeholder="Email" required>
+
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <input name="senha" matInput placeholder="Senha" [type]="hide ? 'password' : 'text'" required>
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile *ngIf="errorLogin">
+        <a style="color:red;font-size: 11px;">Senha ou Usuário incorretos*</a>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <button (click)="getAuth()" mat-raised-button type="submit" color="primary" class="w-50">Confirmar</button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-raised-button color="primary" class="w-50" (click)="openDialog()">Cadastre-se</button>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+
+  </mat-card>
+</form>

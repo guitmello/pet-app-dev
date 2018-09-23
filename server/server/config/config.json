@@ -1,9 +1,0 @@
-{
-    "test": {
-      "username": "felipereis",
-      "password": "pgroot",
-      "database": "idot-api-test",
-      "host": "localhost",
-      "dialect": "postgres"
-    }
-  }

@@ -1,4 +1,5 @@
 export interface User {
+    id: string;
     nm_tipo_usuario: string;
     nm_usuario?: string;
     nm_razao_social_usuario?: string;
@@ -16,4 +17,5 @@ export interface User {
     ds_complemento_endereco_usuario?: string;
     ds_foto_usuario: string;
     cd_senha_usuario: string;
+    token: string;
 }

@@ -45,6 +45,7 @@ import {
 
 import { AuthInterceptor } from './security/auth.interceptor';
 import { LoginService } from './security/login/login.service';
+import { LoggedInGuard } from './security/loggedin.guard';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,7 @@ import { LoginService } from './security/login/login.service';
     MatDialogModule,
     MatSnackBarModule
   ],
-  providers: [LoginService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [LoginService, LoggedInGuard, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

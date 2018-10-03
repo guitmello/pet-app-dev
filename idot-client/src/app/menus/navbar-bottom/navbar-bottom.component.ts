@@ -11,7 +11,10 @@ export class NavbarBottomComponent implements OnInit {
   constructor(private loginService: LoginService) { }
 
   ngOnInit() {
-    this.loginService.isLoggedIn();
+  }
+
+  isLoggedIn(): boolean {
+    return this.loginService.isLoggedIn();
   }
 
 }

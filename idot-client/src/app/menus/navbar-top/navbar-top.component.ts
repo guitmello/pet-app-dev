@@ -8,10 +8,16 @@ import { LoginService } from '../../security/login/login.service';
 })
 export class NavbarTopComponent implements OnInit {
 
+  logged: any = false;
+
   constructor(private loginService: LoginService) { }
 
   ngOnInit() {
-    console.log(this.loginService.isLoggedIn());
+
+  }
+
+  isLoggedIn(): boolean {
+    return this.loginService.isLoggedIn();
   }
 
 }

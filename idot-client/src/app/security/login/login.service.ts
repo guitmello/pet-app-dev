@@ -12,23 +12,29 @@ export class LoginService {
   user: User;
   lastUrl: string;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+    this.router.events.pipe(filter(e => e instanceof NavigationEnd))
+    .subscribe((e: NavigationEnd) => this.lastUrl = e.url);
+  }
 
   isLoggedIn(): boolean {
+    if (this.user) {
+      localStorage.setItem('id', this.user.id);
+      localStorage.setItem('token', 'jwt ' + this.user.token);
+    }
     return this.user !== undefined;
   }
 
   login(nm_email_usuario: string, cd_senha_usuario: string): Observable<User> {
-    return this.http.post<User>(`${API_URL}/token`,
-      {nm_email_usuario: nm_email_usuario, cd_senha_usuario: cd_senha_usuario})
+    return this.http.post<User>(`${API_URL}/token`, {nm_email_usuario: nm_email_usuario, cd_senha_usuario: cd_senha_usuario})
       .pipe(
         tap(user => this.user = user)
       );
-      localStorage.setItem('id', this.user.id);
-      localStorage.setItem('token', 'jwt ' + this.user.token);
   }
 
   logout() {
+    localStorage.removeItem('id');
+    localStorage.removeItem('token');
     this.user = undefined;
   }
 

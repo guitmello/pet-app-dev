@@ -26,17 +26,15 @@ export class LoginComponent implements OnInit {
       nm_email_usuario: this.fb.control('', [Validators.required, Validators.email]),
       cd_senha_usuario: this.fb.control('', [Validators.required])
     });
-    console.log(this.loginService.isLoggedIn());
   }
 
   login() {
     this.loginService
       .login(this.loginForm.value.nm_email_usuario, this.loginForm.value.cd_senha_usuario)
       .subscribe(user => {
-        console.log(this.loginService.isLoggedIn());
         this.router.navigate(['/home']);
       }, error => {
-
+        // SNACKBAR
       });
     }
 

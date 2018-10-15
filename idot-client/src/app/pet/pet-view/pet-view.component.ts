@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PetService } from '../pet.service';
+import { Pet } from '../pet.model';
 
 @Component({
   selector: 'app-pet-view',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PetViewComponent implements OnInit {
 
-  constructor() { }
+  pets: Pet[] = [];
+
+  constructor(private petService: PetService) { }
 
   ngOnInit() {
+    this.petService.getAllPets()
+      .subscribe(response => this.pets = response);
+
   }
 
 }

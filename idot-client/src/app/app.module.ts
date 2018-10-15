@@ -23,6 +23,7 @@ import { PetFavoritesComponent } from './pet/pet-favorites/pet-favorites.compone
 import { PetMyListComponent } from './pet/pet-my-list/pet-my-list.component';
 import { UserAddEditComponent } from './user/user-add-edit/user-add-edit.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { NotificationComponent } from './notification/notification.component';
 
 import {
   MatSidenavModule,
@@ -46,6 +47,10 @@ import {
 import { AuthInterceptor } from './security/auth.interceptor';
 import { LoginService } from './security/login/login.service';
 import { LoggedInGuard } from './security/loggedin.guard';
+import { PetService } from './pet/pet.service';
+import { UserService } from './user/user.service';
+import { NotificationService } from './notification/notification.service';
+
 
 @NgModule({
   declarations: [
@@ -63,7 +68,8 @@ import { LoggedInGuard } from './security/loggedin.guard';
     PetFavoritesComponent,
     PetMyListComponent,
     UserAddEditComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +97,14 @@ import { LoggedInGuard } from './security/loggedin.guard';
     MatDialogModule,
     MatSnackBarModule
   ],
-  providers: [LoginService, LoggedInGuard, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [
+    LoginService,
+    LoggedInGuard,
+    UserService,
+    PetService,
+    NotificationService,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

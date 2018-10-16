@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PetService } from '../pet.service';
+import { Pet } from '../pet.model';
 
 @Component({
   selector: 'app-pet-my-list',
@@ -7,9 +9,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PetMyListComponent implements OnInit {
 
-  constructor() { }
+  pets: Pet[] = [];
+  races: Pet[] = [];
+  species: Pet[] = [];
+
+  constructor(private petService: PetService) { }
 
   ngOnInit() {
+    const userId = parseInt(localStorage.getItem('id'), 0);
+    this.getMyPets(userId);
+    // this.getRaces();
+    // this.getSpecies();
   }
 
+  getMyPets(id: number) {
+    this.petService.getMyPets(id)
+      .subscribe(response => {
+        this.pets = response;
+      });
+  }
+
+  // getRaces() {
+  //   this.petService.getRaces()
+  //     .subscribe(response => {
+  //       this.races = response;
+  //     });
+  // }
+
+  // getSpecies() {
+  //   this.petService.getSpecies()
+  //     .subscribe(response => {
+  //       this.species = response;
+  //     });
+  // }
 }

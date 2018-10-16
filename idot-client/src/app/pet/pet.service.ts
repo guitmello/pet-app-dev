@@ -9,7 +9,7 @@ export class PetService {
 
   response: any = [];
   urlGetAllPets = '/api/animals/getAllAnimals';
-  urlGetMyPets = '/api/animals/myanimals';
+  urlGetMyPets = '/api/animals/myanimals/';
   urlGetMyFavorites = '/api/animals/myfavorites/';
   urlGetPetByFilter = '/api/animals/getByFilter/';
   urlGetPet = '/api/animals/';
@@ -20,14 +20,14 @@ export class PetService {
   urlGetFavorite = '/api/favoritos/';
   urlPostFavorite = '/api/favoritos/create';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAllPets(): Observable<Pet[]> {
     return this.http.get<Pet[]>(API_URL + this.urlGetAllPets);
   }
 
-  getMyPets(): Observable<Pet[]> {
-    return this.http.get<Pet[]>(API_URL + this.urlGetMyPets);
+  getMyPets(id: number): Observable<Pet[]> {
+    return this.http.get<Pet[]>(API_URL + this.urlGetMyPets + id);
   }
 
   getMyFavorites(id: number): Observable<Pet[]> {
@@ -36,7 +36,7 @@ export class PetService {
 
   getPet(id: number): Observable<Pet> {
     return this.http.get<Pet>(API_URL + this.urlGetPet + id);
-    }
+  }
 
   getPetByFilter(specie: string, race: string): Observable<Pet> {
     return this.http.get<Pet>(API_URL + this.urlGetPetByFilter + specie + '&' + race);

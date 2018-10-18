@@ -18,8 +18,8 @@ export class PetMyListComponent implements OnInit {
   ngOnInit() {
     const userId = parseInt(localStorage.getItem('id'), 0);
     this.getMyPets(userId);
-    // this.getRaces();
-    // this.getSpecies();
+    this.getRaces();
+    this.getSpecies();
   }
 
   getMyPets(id: number) {
@@ -29,17 +29,17 @@ export class PetMyListComponent implements OnInit {
       });
   }
 
-  // getRaces() {
-  //   this.petService.getRaces()
-  //     .subscribe(response => {
-  //       this.races = response;
-  //     });
-  // }
+  getRaces() {
+    this.petService.getRaces()
+      .subscribe(response => {
+        this.races = response;
+      });
+  }
 
-  // getSpecies() {
-  //   this.petService.getSpecies()
-  //     .subscribe(response => {
-  //       this.species = response;
-  //     });
-  // }
+  getSpecies() {
+    this.petService.getSpecies()
+      .subscribe(response => {
+        this.species = response;
+      });
+  }
 }

@@ -15,8 +15,8 @@ export class PetService {
   urlGetPet = '/api/animals/';
   urlPostPet = '/api/animals/create';
   urlPutPet = '/api/animals/update/';
-  urlGetSpecies = 'api/especies/all';
-  urlGetRaces = 'api/racas/all';
+  urlGetSpecies = '/api/especies/all';
+  urlGetRaces = '/api/racas/all';
   urlGetFavorite = '/api/favoritos/';
   urlPostFavorite = '/api/favoritos/create';
 

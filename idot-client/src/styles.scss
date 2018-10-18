@@ -11,6 +11,11 @@ body {
 .container {
   padding: 55px 5px 55px 5px;
 }
+.row-center {
+  display: flex !important;
+  justify-content: center !important;
+  padding: 5px 0px;
+}
 .w-50 {
   width: 50%;
 }
@@ -37,6 +42,9 @@ mat-card {
   padding: 10px !important;
 }
 
+mat-list{
+  padding: 0px !important;
+}
 mat-list-item {
   
 } 

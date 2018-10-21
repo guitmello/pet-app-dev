@@ -20,7 +20,7 @@ body {
   width: 50%;
 }
 .font-bold {
-  font-weight: bold;
+  font-weight: bold !important;
 }
 .title {
   text-align: center;
@@ -45,11 +45,16 @@ mat-card {
 mat-list{
   padding: 0px !important;
 }
-mat-list-item {
-  
-} 
 
 .mat-raised-button {
   border-radius: 20px !important;
   background: linear-gradient(60deg, #6b52c7, #8c78d3);
+}
+
+.mat-list .mat-list-item .mat-list-item-content {
+  padding: 0px !important;
+}
+
+.mat-expansion-panel-body {
+  padding: 0px !important;
 }

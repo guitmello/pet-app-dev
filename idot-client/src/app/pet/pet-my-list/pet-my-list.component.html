@@ -1,3 +1,67 @@
-<p>
-  pet-my-list works!
-</p>
+<mat-card *ngFor="let pet of pets.payload">
+
+  <div class="pure-g">
+    <div class="pure-u-1">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+
+          <mat-list>
+            <mat-list-item>
+              <img matListAvatar [src]="pet.ds_foto_animal" alt="...">
+              <h4 mat-line class="font-bold">{{pet.nm_animal}}</h4>
+              <p mat-line> {{pet.cd_idade_animal}} {{pet.nm_idade_animal}} </p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-list>
+        <mat-list-item>
+          <mat-icon matListIcon>pets</mat-icon>
+          <h4 mat-line class="font-bold">Espécie</h4>
+          <p mat-line>{{pet.Especie.nm_especie}}</p>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon matListIcon>pets</mat-icon>
+          <h4 mat-line class="font-bold">Raça</h4>
+          <p mat-line>{{pet.Raca.nm_raca}}</p>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon matListIcon>color_lens</mat-icon>
+          <h4 mat-line class="font-bold">Cor</h4>
+          <p mat-line>{{pet.nm_cor_animal}}</p>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon matListIcon>pets</mat-icon>
+          <h4 mat-line class="font-bold">Tamanho</h4>
+          <p mat-line>{{pet.nm_tamanho_animal}}</p>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon matListIcon>pets</mat-icon>
+          <h4 mat-line class="font-bold">Sexo</h4>
+          <p mat-line>{{pet.nm_sexo_animal}}</p>
+        </mat-list-item>
+        <mat-list-item>
+          <ul class="buttons-inline">
+            <li>
+              <button mat-mini-fab routerLink="/edit-pet" [queryParams]="{id: pet.id}" class="edit">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </li>
+            <li>
+              <button mat-mini-fab (click)="openDialog(pet.id)" class="remove">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </li>
+          </ul>
+        </mat-list-item>
+      </mat-list>
+
+    </mat-expansion-panel>
+  </div>
+  </div>
+
+</mat-card>

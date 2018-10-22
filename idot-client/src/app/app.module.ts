@@ -49,6 +49,7 @@ import { LoggedInGuard } from './security/loggedin.guard';
 import { PetService } from './pet/pet.service';
 import { UserService } from './user/user.service';
 import { NotificationService } from './notification/notification.service';
+import { ModalDeleteComponent } from './modal-delete/modal-delete.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { NotificationService } from './notification/notification.service';
     PetMyListComponent,
     UserAddEditComponent,
     NotFoundComponent,
-    NotificationComponent
+    NotificationComponent,
+    ModalDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -103,6 +105,7 @@ import { NotificationService } from './notification/notification.service';
     NotificationService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalUserOptionComponent, ModalDeleteComponent]
 })
 export class AppModule {}

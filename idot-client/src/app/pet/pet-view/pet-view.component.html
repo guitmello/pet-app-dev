@@ -1,4 +1,4 @@
-<mat-card *ngFor="let pet of pets.payload">
+<mat-card *ngFor="let pet of pets.payload" routerLink="/pet-info" [queryParams]="{id: pet.id}">
 
   <div class="pure-g">
     <div class="pure-u-1-4">

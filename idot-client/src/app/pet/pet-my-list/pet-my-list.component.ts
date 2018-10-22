@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PetService } from '../pet.service';
 import { Pet } from '../pet.model';
+import { ModalDeleteComponent } from '../../modal-delete/modal-delete.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-pet-my-list',
@@ -13,7 +15,7 @@ export class PetMyListComponent implements OnInit {
   races: Pet[] = [];
   species: Pet[] = [];
 
-  constructor(private petService: PetService) { }
+  constructor(private petService: PetService, public dialog: MatDialog) { }
 
   ngOnInit() {
     const userId = parseInt(localStorage.getItem('id'), 0);
@@ -26,4 +28,15 @@ export class PetMyListComponent implements OnInit {
         this.pets = response;
       });
   }
+
+  openDeleteDialog(id: number) {
+    const dialogRef = this.dialog.open(ModalDeleteComponent, {
+      width: '300px',
+      height: '210px',
+      data: {
+        id: id
+      }
+    });
+  }
+
 }

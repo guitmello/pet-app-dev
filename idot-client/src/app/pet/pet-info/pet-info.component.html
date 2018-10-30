@@ -1,6 +1,17 @@
-<p>
-  {{pet?.payload.nm_animal}} - {{pet?.payload.Raca.nm_raca}} - {{pet?.payload.nm_sexo_animal}} - {{pet?.payload.nm_cor_animal}}
-  - {{pet?.payload.nm_tamanho_animal}} - {{pet?.payload.Usuario.nm_endereco_usuario}} - {{pet?.payload.Usuario.cd_numero_endereco_usuario}}
-  - {{pet?.payload.Usuario.nm_cidade_usuario}} - {{pet?.payload.Usuario.nm_estado_usuario}} - {{pet?.payload.Usuario.nm_cidade_usuario}}
+<!--<p>
+  {{pet?.payload.nm_animal}} - {{pet?.payload.Raca.nm_raca}} - {{pet?.payload.nm_sexo_animal}} -
+  {{pet?.payload.nm_cor_animal}}
+  - {{pet?.payload.nm_tamanho_animal}} - {{pet?.payload.Usuario.nm_endereco_usuario}} -
+  {{pet?.payload.Usuario.cd_numero_endereco_usuario}}
+  - {{pet?.payload.Usuario.nm_cidade_usuario}} - {{pet?.payload.Usuario.nm_estado_usuario}} -
+  {{pet?.payload.Usuario.nm_cidade_usuario}}
   - {{pet?.payload.createdAt}} -
-</p>
+</p> -->
+
+<mat-card>
+  <div class="pure-g">
+    <div class="pet-img-area">
+      <img class="pet-img" [src]="pet?.payload.ds_foto_animal" alt="Foto do Pet">
+    </div>
+  </div>
+</mat-card>

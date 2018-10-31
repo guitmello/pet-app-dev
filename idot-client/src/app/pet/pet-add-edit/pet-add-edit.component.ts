@@ -8,7 +8,6 @@ import { PetService } from '../pet.service';
   styleUrls: ['./pet-add-edit.component.scss']
 })
 export class PetAddEditComponent implements OnInit {
-
   petForm: FormGroup;
 
   genderArray: Array<Object> = [
@@ -30,7 +29,7 @@ export class PetAddEditComponent implements OnInit {
   specieArray: Array<Object> = [];
   raceArray: Array<Object> = [];
 
-  constructor(private petService: PetService) { }
+  constructor(private petService: PetService) {}
 
   ngOnInit() {
     this.petForm = new FormGroup({
@@ -60,15 +59,36 @@ export class PetAddEditComponent implements OnInit {
       })
     });
 
+    this.changePhoto();
     this.fillEspecie();
   }
 
   fillEspecie() {
-    this.petService.getSpecies().subscribe(species => this.specieArray = species);
+    this.petService
+      .getSpecies()
+      .subscribe(species => (this.specieArray = species));
   }
 
   fillRacas() {
-    this.petService.getRaces().subscribe(races => this.raceArray = races);
+    this.petService.getRaces().subscribe(races => (this.raceArray = races));
   }
 
+  changePhoto() {
+    document.querySelector('#imgupload').addEventListener('change', function() {
+      const filesSelected = (<HTMLInputElement>(
+        document.getElementById('imgupload')
+      )).files;
+      if (filesSelected.length > 0) {
+        const fileToLoad = filesSelected[0];
+        const fileReader = new FileReader();
+        fileReader.onload = function(fileLoadEvent) {
+          const base64value = <FileReader>event.target;
+          (<HTMLInputElement>document.getElementById('imgupload')).setAttribute(
+            'base64-value', base64value.result
+          );
+        };
+        fileReader.readAsDataURL(fileToLoad);
+      }
+    });
+  }
 }

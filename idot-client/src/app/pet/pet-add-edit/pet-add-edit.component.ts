@@ -60,16 +60,16 @@ export class PetAddEditComponent implements OnInit {
     });
 
     this.changePhoto();
-    this.fillEspecie();
+    this.fillSpecie();
   }
 
-  fillEspecie() {
+  fillSpecie() {
     this.petService
       .getSpecies()
       .subscribe(species => (this.specieArray = species));
   }
 
-  fillRacas() {
+  fillRaces() {
     this.petService.getRaces().subscribe(races => (this.raceArray = races));
   }
 
@@ -91,4 +91,14 @@ export class PetAddEditComponent implements OnInit {
       }
     });
   }
+
+  petRegister() {
+    let fotobase64 = (<HTMLInputElement>document.getElementById('imgupload')).getAttribute('base64-value');
+
+    if (!fotobase64) {
+      fotobase64 = '../../assets/images/ft-pet.png';
+    }
+  }
+
+  
 }

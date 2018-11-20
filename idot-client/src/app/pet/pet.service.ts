@@ -16,7 +16,7 @@ export class PetService {
   urlPostPet = '/api/animals/create';
   urlPutPet = '/api/animals/update/';
   urlGetSpecies = '/api/especies/all';
-  urlGetRaces = '/api/racas/all';
+  urlGetRaces = '/api/racas/getracas/';
   urlGetFavorite = '/api/favoritos/';
   urlPostFavorite = '/api/favoritos/create';
 
@@ -46,16 +46,16 @@ export class PetService {
     return this.http.get<Pet[]>(API_URL + this.urlGetSpecies);
   }
 
-  getRaces(): Observable<Pet[]> {
-    return this.http.get<Pet[]>(API_URL + this.urlGetRaces);
+  getRaces(id): Observable<Pet[]> {
+    return this.http.get<Pet[]>(API_URL + this.urlGetRaces + id);
   }
 
   createPet(pet: Pet): Observable<Pet> {
     return this.http.post<Pet>(API_URL + this.urlPostPet, pet);
   }
 
-  editPet(id: number, pet: Pet): Observable<Pet> {
-    return this.http.post<Pet>(API_URL + this.urlPutPet + id + '/update', pet);
+  editPet(pet: Pet): Observable<Pet> {
+    return this.http.post<Pet>(API_URL + this.urlPutPet + pet.cd_animal + '/update', pet);
   }
 
   deletePet(id: number): Observable<Pet> {

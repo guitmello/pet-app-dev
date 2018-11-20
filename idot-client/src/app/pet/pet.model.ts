@@ -1,4 +1,5 @@
 export interface Pet {
+    cd_animal?: number;
     nm_animal?: string;
     cd_idade_animal?: number;
     nm_cor_animal?: string;

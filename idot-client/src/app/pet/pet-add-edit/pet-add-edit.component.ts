@@ -1,13 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PetService } from '../pet.service';
+import { ActivatedRoute } from '@angular/router';
+import { Pet } from '../pet.model';
 
 @Component({
   selector: 'app-pet-add-edit',
   templateUrl: './pet-add-edit.component.html',
   styleUrls: ['./pet-add-edit.component.scss']
 })
-export class PetAddEditComponent implements OnInit {
+export class PetAddEditComponent implements OnInit, OnChanges {
+
+  isAdding = true;
+
+  pet: Pet;
+
   petForm: FormGroup;
 
   genderArray: Array<Object> = [
@@ -29,9 +36,16 @@ export class PetAddEditComponent implements OnInit {
   specieArray: Array<Object> = [];
   raceArray: Array<Object> = [];
 
-  constructor(private petService: PetService) {}
+  constructor(private petService: PetService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe(params => {
+      if (params.id) {
+        this.petService.getPet(params.id);
+        this.isAdding = false;
+      }
+    });
+
     this.petForm = new FormGroup({
       nm_animal: new FormControl('', {
         validators: [Validators.required, Validators.minLength(10)]
@@ -59,18 +73,25 @@ export class PetAddEditComponent implements OnInit {
       })
     });
 
-    this.changePhoto();
-    this.fillSpecie();
+    this.fillSpecies();
   }
 
-  fillSpecie() {
+  ngOnChanges() {
+    this.changePhoto();
+  }
+
+  fillSpecies() {
     this.petService
       .getSpecies()
-      .subscribe(species => (this.specieArray = species));
+      .subscribe(species => this.specieArray = species);
   }
 
-  fillRaces() {
-    this.petService.getRaces().subscribe(races => (this.raceArray = races));
+  fillRaces(id) {
+    console.log('races');
+    this.petService.getRaces(id).subscribe(races => {
+      this.raceArray = races;
+      console.log(this.raceArray);
+    });
   }
 
   changePhoto() {
@@ -84,7 +105,7 @@ export class PetAddEditComponent implements OnInit {
         fileReader.onload = function(fileLoadEvent) {
           const base64value = <FileReader>event.target;
           (<HTMLInputElement>document.getElementById('imgupload')).setAttribute(
-            'base64-value', base64value.result
+            'base64-value', base64value.result.toString()
           );
         };
         fileReader.readAsDataURL(fileToLoad);
@@ -92,11 +113,25 @@ export class PetAddEditComponent implements OnInit {
     });
   }
 
+  addPet(pet: Pet) {
+
+  }
+
   petRegister() {
     let fotobase64 = (<HTMLInputElement>document.getElementById('imgupload')).getAttribute('base64-value');
 
     if (!fotobase64) {
       fotobase64 = '../../assets/images/ft-pet.png';
+    }
+
+    if (this.isAdding) {
+      this.petService.createPet(this.pet).subscribe(response => {
+        console.log(response);
+      });
+    } else {
+      this.petService.editPet(this.pet).subscribe(response => {
+        console.log(response);
+      });
     }
   }
 

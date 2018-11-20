@@ -76,6 +76,7 @@ import { ModalDeleteComponent } from './modal-delete/modal-delete.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {

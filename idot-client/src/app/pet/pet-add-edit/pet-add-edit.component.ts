@@ -113,10 +113,6 @@ export class PetAddEditComponent implements OnInit, OnChanges {
     });
   }
 
-  addPet(pet: Pet) {
-
-  }
-
   petRegister() {
     let fotobase64 = (<HTMLInputElement>document.getElementById('imgupload')).getAttribute('base64-value');
 

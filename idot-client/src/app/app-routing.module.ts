@@ -10,6 +10,7 @@ import { PetMyListComponent } from './pet/pet-my-list/pet-my-list.component';
 import { PetAddEditComponent } from './pet/pet-add-edit/pet-add-edit.component';
 import { PetInfoComponent } from './pet/pet-info/pet-info.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { UserAddEditComponent } from './user/user-add-edit/user-add-edit.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,11 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'login/:to', component: LoginComponent },
+
+  { path: 'usuario-fisico', component: UserAddEditComponent },
+  { path: 'usuario-fisico/:id', component: UserAddEditComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
+  { path: 'usuario-juridico', component: UserAddEditComponent },
+  { path: 'usuario-juridico/:id', component: UserAddEditComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
 
   { path: 'meus-pets', component: PetMyListComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
   { path: 'pet-novo-edicao', component: PetAddEditComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },

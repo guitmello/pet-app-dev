@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from './login.service';
+import { ModalUserOptionComponent } from 'src/app/user/modal-user-option/modal-user-option.component';
+import { MatDialog } from '@angular/material';
 
 
 @Component({
@@ -18,7 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private loginService: LoginService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -35,6 +38,14 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/home']);
       }, error => {
         // SNACKBAR
+      });
+    }
+
+    openDialog() {
+      this.dialog.open(ModalUserOptionComponent, {
+        width: '300px',
+        height: '210px',
+        data: {}
       });
     }
 

@@ -40,7 +40,7 @@ import {
   MatCardModule,
   MatDialogModule,
   MatSlideToggleModule,
-  MatSnackBarModule
+  MatSnackBarModule,
 } from '@angular/material';
 
 import { AuthInterceptor } from './security/auth.interceptor';
@@ -96,7 +96,7 @@ import { ModalDeleteComponent } from './modal-delete/modal-delete.component';
     MatExpansionModule,
     MatCardModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   providers: [
     LoginService,

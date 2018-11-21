@@ -1,35 +1,61 @@
-<form [formGroup]="loginForm">
-  <mat-card>
-
-    <div class="pure-g">
-
-      <div class="pure-u-1">
-        <mat-form-field>
-          <input matInput type="email" formControlName="nm_email_usuario" placeholder="Email" required>
-        </mat-form-field>
-      </div>
-      <div class="pure-u-1">
-        <mat-form-field>
-          <input matInput formControlName="cd_senha_usuario" [type]="hide ? 'password' : 'text'" placeholder="Senha"
-            required>
-          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-        </mat-form-field>
-      </div>
-      <div class="pure-u-1" *ngIf="errorLogin">
-        <a style="color:red;font-size: 11px;">Senha ou Usuário incorretos*</a>
-      </div>
-      <div class="pure-u-1">
-        <div class="row-center">
-          <button (click)="login()" mat-raised-button type="submit" color="primary" class="w-50">Confirmar</button>
+<div class="login-background">
+  <form [formGroup]="loginForm">
+    <mat-card>
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <mat-form-field>
+            <input
+              matInput
+              type="email"
+              formControlName="nm_email_usuario"
+              placeholder="Email"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="pure-u-1">
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="cd_senha_usuario"
+              [type]="hide ? 'password' : 'text'"
+              placeholder="Senha"
+              required
+            />
+            <mat-icon matSuffix (click)="hide = !hide">{{
+              hide ? "visibility" : "visibility_off"
+            }}</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="pure-u-1" *ngIf="errorLogin">
+          <a style="color:red;font-size: 11px;">Senha ou Usuário incorretos*</a>
+        </div>
+        <div class="pure-u-1">
+          <div class="row-center">
+            <button
+              (click)="login()"
+              mat-raised-button
+              type="submit"
+              color="primary"
+              class="w-50"
+            >
+              Confirmar
+            </button>
+          </div>
+        </div>
+        <div class="pure-u-1">
+          <div class="row-center">
+            <button
+              (click)="openDialog()"
+              mat-raised-button
+              color="primary"
+              class="w-50"
+            >
+              Cadastre-se
+            </button>
+          </div>
         </div>
       </div>
-      <div class="pure-u-1">
-        <div class="row-center">
-          <button mat-raised-button color="primary" class="w-50" (click)="openDialog()">Cadastre-se</button>
-        </div>
-      </div>
-
-    </div>
-
-  </mat-card>
-</form>
+    </mat-card>
+  </form>
+</div>

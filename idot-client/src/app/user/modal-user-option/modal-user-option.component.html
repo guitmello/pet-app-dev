@@ -1,3 +1,19 @@
-<p>
-  modal-user-option works!
-</p>
+<div class="pure-g">
+  <div class="pure-u-1">
+    <div class="row justify-content-center">
+
+      <h3 class="title">Escolha o Tipo de Cadastro</h3>
+
+    </div>
+  </div>
+  <div class="pure-u-1">
+    <div class="row-center">
+      <button (click)="goTo('fisico')" mat-raised-button color="primary" class="w-50">Pessoa Física</button>
+    </div>
+  </div>
+  <div class="pure-u-1">
+    <div class="row-center">
+      <button (click)="goTo('juridico')" mat-raised-button color="primary" class="w-50">Pessoa Jurídica</button>
+    </div>
+  </div>
+</div>

@@ -28,8 +28,8 @@ export class UserService {
     return this.http.post<User>(API_URL + this.urlPostUser, user);
   }
 
-  editUser(id: number, user: User): Observable<User> {
-    return this.http.put<User>(API_URL + this.urlGetUser + id + '/update', user);
+  editUser(user: User): Observable<User> {
+    return this.http.put<User>(API_URL + this.urlGetUser + user.id + '/update', user);
   }
 
 }

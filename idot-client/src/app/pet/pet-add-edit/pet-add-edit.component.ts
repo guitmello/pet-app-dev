@@ -36,7 +36,10 @@ export class PetAddEditComponent implements OnInit, OnChanges {
   specieArray: Array<Object> = [];
   raceArray: Array<Object> = [];
 
-  constructor(private petService: PetService, private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private petService: PetService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
@@ -48,7 +51,7 @@ export class PetAddEditComponent implements OnInit, OnChanges {
 
     this.petForm = new FormGroup({
       nm_animal: new FormControl('', {
-        validators: [Validators.required, Validators.minLength(10)]
+        validators: [Validators.required]
       }),
       cd_idade_animal: new FormControl('', {
         validators: [Validators.required, Validators.maxLength(2)]

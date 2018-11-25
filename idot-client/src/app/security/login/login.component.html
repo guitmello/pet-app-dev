@@ -34,6 +34,7 @@
           <div class="row-center">
             <button
               (click)="login()"
+              [disabled]="loginForm.invalid"
               mat-raised-button
               type="submit"
               color="primary"

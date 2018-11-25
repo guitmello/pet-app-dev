@@ -41,7 +41,12 @@ import {
   MatDialogModule,
   MatSlideToggleModule,
   MatSnackBarModule,
+  MatDatepickerModule,
+  MAT_DATE_LOCALE,
+  MatNativeDateModule,
 } from '@angular/material';
+
+
 
 import { AuthInterceptor } from './security/auth.interceptor';
 import { LoginService } from './security/login/login.service';
@@ -70,7 +75,7 @@ import { ModalDeleteComponent } from './modal-delete/modal-delete.component';
     UserAddEditComponent,
     NotFoundComponent,
     NotificationComponent,
-    ModalDeleteComponent
+    ModalDeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,6 +102,8 @@ import { ModalDeleteComponent } from './modal-delete/modal-delete.component';
     MatCardModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     LoginService,
@@ -104,7 +111,8 @@ import { ModalDeleteComponent } from './modal-delete/modal-delete.component';
     UserService,
     PetService,
     NotificationService,
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
   ],
   bootstrap: [AppComponent],
   entryComponents: [ModalUserOptionComponent, ModalDeleteComponent]

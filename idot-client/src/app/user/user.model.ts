@@ -1,4 +1,4 @@
-export interface User {
+export class User {
     id: string;
     nm_tipo_usuario: string;
     nm_usuario?: string;

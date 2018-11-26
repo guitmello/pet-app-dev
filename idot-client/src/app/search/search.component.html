@@ -63,7 +63,7 @@
                 name="especie"
                 placeholder="Espécie"
                 [(ngModel)]="specieId"
-                (selectionChange)="fillRaces(specie)"
+                (selectionChange)="fillRaces(specieId)"
                 required
               >
                 <mat-option
@@ -116,3 +116,7 @@
     </section>
   </div>
 </mat-card>
+
+<section *ngIf="pets">
+    <app-pet-view [pets]="pets"></app-pet-view>
+</section>

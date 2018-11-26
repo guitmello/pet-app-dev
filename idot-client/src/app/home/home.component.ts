@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { PetService } from '../pet/pet.service';
+import { Pet } from '../pet/pet.model';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  @Output() pets: Pet[] = [new Pet()];
+
+  constructor(
+    private petService: PetService
+  ) { }
 
   ngOnInit() {
+    this.getAll();
+  }
+
+  getAll() {
+    this.petService.getAllPets()
+      .subscribe(response => this.pets = response);
   }
 
 }

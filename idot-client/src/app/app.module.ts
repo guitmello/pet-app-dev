@@ -55,6 +55,7 @@ import { PetService } from './pet/pet.service';
 import { UserService } from './user/user.service';
 import { NotificationService } from './notification/notification.service';
 import { ModalDeleteComponent } from './modal-delete/modal-delete.component';
+import { SearchService } from './search/search.service';
 
 
 @NgModule({
@@ -110,6 +111,7 @@ import { ModalDeleteComponent } from './modal-delete/modal-delete.component';
     LoggedInGuard,
     UserService,
     PetService,
+    SearchService,
     NotificationService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},

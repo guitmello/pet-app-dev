@@ -10,7 +10,7 @@ export class PetService {
   response: any = [];
   urlGetAllPets = '/api/animals/getAllAnimals';
   urlGetMyPets = '/api/animals/myanimals/';
-  urlGetMyFavorites = '/api/animals/myfavorites/';
+  urlGetMyFavorites = '/api/animal/myfavorites/';
   urlGetPetByFilter = '/api/animals/getByFilter/';
   urlGetPet = '/api/animals/';
   urlPostPet = '/api/animals/create';

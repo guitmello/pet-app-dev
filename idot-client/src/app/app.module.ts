@@ -24,6 +24,9 @@ import { PetMyListComponent } from './pet/pet-my-list/pet-my-list.component';
 import { UserAddEditComponent } from './user/user-add-edit/user-add-edit.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NotificationComponent } from './notification/notification.component';
+import { UserViewComponent } from './user/user-view/user-view.component';
+import { UserInfoComponent } from './user/user-info/user-info.component';
+import { ModalDeleteComponent } from './modal-delete/modal-delete.component';
 
 import {
   MatSidenavModule,
@@ -54,7 +57,6 @@ import { LoggedInGuard } from './security/loggedin.guard';
 import { PetService } from './pet/pet.service';
 import { UserService } from './user/user.service';
 import { NotificationService } from './notification/notification.service';
-import { ModalDeleteComponent } from './modal-delete/modal-delete.component';
 import { SearchService } from './search/search.service';
 
 
@@ -77,6 +79,8 @@ import { SearchService } from './search/search.service';
     NotFoundComponent,
     NotificationComponent,
     ModalDeleteComponent,
+    UserViewComponent,
+    UserInfoComponent,
   ],
   imports: [
     BrowserModule,

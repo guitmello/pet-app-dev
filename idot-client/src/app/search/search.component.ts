@@ -12,7 +12,7 @@ import { Pet } from '../pet/pet.model';
 })
 export class SearchComponent implements OnInit {
 
-  users: User[] = [new User()];
+  @Output() users: User[] = [new User()];
   @Output() pets: Pet[] = [new Pet()];
 
   searchFormOng: FormGroup;

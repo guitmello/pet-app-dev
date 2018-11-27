@@ -20,7 +20,7 @@ export class UserAddEditComponent implements OnInit {
   filtredCities: Array<any>;
   citiesArrays: any = {};
 
-  user: User;
+  user: User = new User();
   userType: string;
 
   userFormPhysical: FormGroup;
@@ -29,7 +29,7 @@ export class UserAddEditComponent implements OnInit {
   hide = true;
   hideConfirm = true;
 
-  minDate = new Date(1900, 1, 1); 
+  minDate = new Date(1900, 1, 1);
   maxDate = new Date(2000, new Date().getUTCMonth(), new Date().getUTCDate());
 
   genderArray: Array<Object> = [

@@ -3,6 +3,8 @@ import { User } from '../user.model';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { UserService } from '../user.service';
 import { ActivatedRoute } from '@angular/router';
+import { CityState } from '../cityState.model';
+import { State } from '../state.model';
 
 @Component({
   selector: 'app-user-add-edit',
@@ -13,6 +15,11 @@ export class UserAddEditComponent implements OnInit {
 
   isAdding = true;
 
+  filtredStates: any = {};
+  states: [State];
+  filtredCities: Array<any>;
+  citiesArrays: any = {};
+
   user: User;
   userType: string;
 
@@ -22,7 +29,7 @@ export class UserAddEditComponent implements OnInit {
   hide = true;
   hideConfirm = true;
 
-  minDate = new Date(1900, 1, 1);
+  minDate = new Date(1900, 1, 1); 
   maxDate = new Date(2000, new Date().getUTCMonth(), new Date().getUTCDate());
 
   genderArray: Array<Object> = [
@@ -94,7 +101,7 @@ export class UserAddEditComponent implements OnInit {
       cd_senha_confirmacao_usuario: new FormControl('', {
         validators: [Validators.required]
       })
-    }, {validators: [this.equalsTo], updateOn: 'change'});
+    }, { validators: [this.equalsTo], updateOn: 'change' });
 
     // Juridica
     this.userFormLegal = new FormGroup({
@@ -134,20 +141,21 @@ export class UserAddEditComponent implements OnInit {
       cd_senha_confirmacao_usuario: new FormControl('', {
         validators: [Validators.required]
       })
-    }, {validators: [this.equalsTo], updateOn: 'change'});
+    }, { validators: [this.equalsTo], updateOn: 'change' });
 
     // this.changePhoto();
+    this.getCityState();
   }
 
   changePhoto() {
-    document.querySelector('#imgupload').addEventListener('change', function() {
+    document.querySelector('#imgupload').addEventListener('change', function () {
       const filesSelected = (<HTMLInputElement>(
         document.getElementById('imgupload')
       )).files;
       if (filesSelected.length > 0) {
         const fileToLoad = filesSelected[0];
         const fileReader = new FileReader();
-        fileReader.onload = function(fileLoadEvent) {
+        fileReader.onload = function (fileLoadEvent) {
           const base64value = <FileReader>event.target;
           (<HTMLInputElement>document.getElementById('imgupload')).setAttribute(
             'base64-value', base64value.result.toString()
@@ -176,7 +184,7 @@ export class UserAddEditComponent implements OnInit {
     }
   }
 
-  equalsTo(group: AbstractControl): {[key: string]: boolean} {
+  equalsTo(group: AbstractControl): { [key: string]: boolean } {
     const password = group.get('cd_senha_usuario');
     const passwordConfirm = group.get('passwordConfirm');
 
@@ -191,4 +199,51 @@ export class UserAddEditComponent implements OnInit {
     }
   }
 
+  getCityState() {
+    this.filtredStates = [];
+    this.userService.getCitiesStates().subscribe(response => {
+      const citiesStates = response;
+      this.states = citiesStates.estados;
+      this.states.forEach(state => {
+        this.filtredStates.push(state.sigla);
+      });
+    });
+  }
+
+  blurInStates() {
+    if (!!this.user.nm_estado_usuario) {
+      this.fillCitiesFromStates();
+    }
+  }
+
+  fillFiltredStates() {
+    if (!!this.user.nm_estado_usuario) {
+      this.fillCitiesFromStates();
+    }
+  }
+
+  fillCitiesFromStates() {
+
+    this.filtredStates = [];
+    this.citiesArrays = [];
+    this.filtredCities = [];
+    this.states.forEach(state => {
+      if (this.user.nm_estado_usuario.toLowerCase() === state.sigla.slice(0, this.user.nm_estado_usuario.length).toLowerCase()) {
+        this.filtredStates.push(state.sigla);
+        this.citiesArrays.push(state.cidades);
+      }
+    });
+    this.citiesArrays.forEach(cities => {
+      cities.forEach(city => {
+        this.filtredCities.push(city);
+      });
+
+    });
+  }
+
+  emptyInput() {
+    console.log(this.userType);
+    if (this.userType === 'pf') {
+    }
+  }
 }

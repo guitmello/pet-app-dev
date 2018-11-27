@@ -1,4 +1,4 @@
-<mat-card *ngFor="let user of users.payload" routerLink="/user-info" [queryParams]="{id: user.id}">
+<mat-card *ngFor="let user of users.payload" (click)="goInfo(user.id)">
 
   <div class="pure-g">
     <div class="pure-u-1-4">

@@ -14,6 +14,8 @@ import { State } from '../state.model';
 export class UserAddEditComponent implements OnInit {
 
   isAdding = true;
+  pPhysical: User;
+  pLegal: User;
 
   filtredStates: any = {};
   states: [State];
@@ -29,7 +31,7 @@ export class UserAddEditComponent implements OnInit {
   hide = true;
   hideConfirm = true;
 
-  minDate = new Date(1900, 1, 1); 
+  minDate = new Date(1900, 1, 1);
   maxDate = new Date(2000, new Date().getUTCMonth(), new Date().getUTCDate());
 
   genderArray: Array<Object> = [
@@ -43,6 +45,8 @@ export class UserAddEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.pPhysical = new User;
+    this.pLegal = new User;
 
     if (this.activatedRoute.snapshot.routeConfig.path === 'usuario-fisico') {
       this.userType = 'pf';
@@ -243,7 +247,12 @@ export class UserAddEditComponent implements OnInit {
 
   emptyInput() {
     console.log(this.userType);
-    if (this.userType === 'pf') {
+    if (this.pPhysical.nm_estado_usuario || this.pLegal.nm_estado_usuario) {
+      this.getCityState();
     }
+
+    // if (this.userType === 'pf') {
+
+    // }
   }
 }

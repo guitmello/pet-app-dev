@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PetService } from '../pet.service';
 import { Pet } from '../pet.model';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { NumberFormatStyle } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pet-info',
@@ -11,7 +10,6 @@ import { NumberFormatStyle } from '@angular/common';
 })
 export class PetInfoComponent implements OnInit {
 
-  idPet: number;
   pet: Pet;
   races: Pet[] = [];
   species: Pet[] = [];
@@ -19,16 +17,15 @@ export class PetInfoComponent implements OnInit {
   constructor(
     private petService: PetService,
     private activatedRoute: ActivatedRoute
-  ) {
-    this.activatedRoute.queryParams.subscribe(params => {
-      this.idPet = params['id'];
-    });
-  }
+  ) { }
 
   ngOnInit() {
-    this.getPet(this.idPet);
+    this.activatedRoute.params.subscribe(params => {
+      if (params.id) {
+        this.getPet(params.id);
+      }
+    });
   }
-
 
   getPet(id: number) {
     this.petService.getPet(id)

@@ -11,6 +11,7 @@ import { PetAddEditComponent } from './pet/pet-add-edit/pet-add-edit.component';
 import { PetInfoComponent } from './pet/pet-info/pet-info.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UserAddEditComponent } from './user/user-add-edit/user-add-edit.component';
+import { UserViewComponent } from './user/user-view/user-view.component';
 
 
 const routes: Routes = [
@@ -23,11 +24,12 @@ const routes: Routes = [
   { path: 'usuario-fisico/:id', component: UserAddEditComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
   { path: 'usuario-juridico', component: UserAddEditComponent },
   { path: 'usuario-juridico/:id', component: UserAddEditComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
+  { path: 'usuario-info/:id', component: UserViewComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
 
   { path: 'meus-pets', component: PetMyListComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
   { path: 'pet-novo-edicao', component: PetAddEditComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
   { path: 'pet-novo-edicao/:id', component: PetAddEditComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
-  { path: 'pet-info', component: PetInfoComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
+  { path: 'pet-info/:id', component: PetInfoComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
   { path: 'favoritos', component: PetFavoritesComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
 
   { path: 'pesquisar', component: SearchComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },

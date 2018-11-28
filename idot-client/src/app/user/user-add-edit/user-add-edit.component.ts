@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user.model';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { UserService } from '../user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CityState } from '../cityState.model';
 import { State } from '../state.model';
 
@@ -22,7 +22,7 @@ export class UserAddEditComponent implements OnInit {
   filtredCities: Array<any>;
   citiesArrays: any = {};
 
-  user: User;
+  user: User = new User();
   userType: string;
 
   userFormPhysical: FormGroup;
@@ -41,7 +41,8 @@ export class UserAddEditComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -56,8 +57,17 @@ export class UserAddEditComponent implements OnInit {
 
     this.activatedRoute.params.subscribe(params => {
       if (params.id) {
-        this.userService.getUser(params.id);
-        this.isAdding = false;
+        this.userService.getUserId().subscribe(userId => {
+          if (params.id === userId) {
+            console.log('Param ', params.id);
+            console.log('UserId ', userId);
+            this.userService.getUser(params.id);
+            this.isAdding = false;
+          } else {
+            console.log('saiu');
+            this.router.navigateByUrl('home');
+          }
+        });
       }
     });
 

@@ -30,6 +30,7 @@
               <input
                 [(ngModel)]="pPhysical.nm_usuario"
                 matInput
+                [(ngModel)]="user.nm_usuario"
                 formControlName="nm_usuario"
                 type="text"
                 name="nome"
@@ -46,6 +47,7 @@
               <input
                 [(ngModel)]="pPhysical.nm_email_usuario"
                 matInput
+                [(ngModel)]="user.nm_email_usuario"
                 formControlName="nm_email_usuario"
                 type="email"
                 name="email"
@@ -62,6 +64,7 @@
               <input
                 [(ngModel)]="pPhysical.cd_cpf_usuario"
                 matInput
+                [(ngModel)]="user.cd_cpf_usuario"
                 formControlName="cd_cpf_usuario"
                 type="text"
                 name="cpf"
@@ -78,6 +81,7 @@
                 <mat-select
                   [(ngModel)]="pPhysical.nm_sexo_usuario"
                   name="sexo"
+                  [(ngModel)]="user.nm_sexo_usuario"
                   formControlName="nm_sexo_usuario"
                   placeholder="Sexo"
                   required
@@ -99,6 +103,7 @@
               <input
                 [(ngModel)]="pPhysical.dt_nascimento_usuario"
                 matInput
+                [(ngModel)]="user.dt_nascimento_usuario"
                 formControlName="dt_nascimento_usuario"
                 name="dtNascimento"
                 [min]="minDate"
@@ -121,6 +126,7 @@
               <input
                 [(ngModel)]="pPhysical.cd_telefone_usuario"
                 matInput
+                [(ngModel)]="user.cd_telefone_usuario"
                 formControlName="cd_telefone_usuario"
                 type="text"
                 name="telefone"
@@ -137,6 +143,7 @@
               <input
                 [(ngModel)]="pPhysical.cd_cep_usuario"
                 matInput
+                [(ngModel)]="user.cd_cep_usuario"
                 formControlName="cd_cep_usuario"
                 type="text"
                 name="cep"
@@ -153,6 +160,7 @@
               <input
                 [(ngModel)]="pPhysical.nm_estado_usuario"
                 matInput
+                [(ngModel)]="user.nm_estado_usuario"
                 formControlName="nm_estado_usuario"
                 id="estado"
                 [matAutocomplete]="autoStates"
@@ -182,6 +190,7 @@
               <input
                 [(ngModel)]="pPhysical.nm_cidade_usuario"
                 matInput
+                [(ngModel)]="user.nm_cidade_usuario"
                 formControlName="nm_cidade_usuario"
                 id="cidade"
                 name="cidade"
@@ -210,6 +219,7 @@
               <input
                 [(ngModel)]="pPhysical.nm_endereco_usuario"
                 matInput
+                [(ngModel)]="user.nm_endereco_usuario"
                 formControlName="nm_endereco_usuario"
                 name="endereco"
                 type="text"
@@ -226,6 +236,7 @@
               <input
                 [(ngModel)]="pPhysical.cd_numero_endereco_usuario"
                 matInput
+                [(ngModel)]="user.cd_numero_endereco_usuario"
                 formControlName="cd_numero_endereco_usuario"
                 name="numero"
                 type="text"
@@ -242,6 +253,7 @@
               <input
                 [(ngModel)]="pPhysical.ds_complemento_endereco_usuario"
                 matInput
+                [(ngModel)]="user.ds_complemento_endereco_usuario"
                 formControlName="ds_complemento_endereco_usuario"
                 name="complemento"
                 type="text"
@@ -257,6 +269,7 @@
               <input
                 [(ngModel)]="pPhysical.cd_senha_usuario"
                 matInput
+                [(ngModel)]="user.cd_senha_usuario"
                 formControlName="cd_senha_usuario"
                 [type]="hide ? 'password' : 'text'"
                 name="senha"
@@ -352,6 +365,7 @@
             <mat-form-field>
               <input
                 matInput
+                [(ngModel)]="user.nm_razao_social_usuario"
                 formControlName="nm_razao_social_usuario"
                 type="text"
                 name="razaoSocial"
@@ -367,6 +381,7 @@
             <mat-form-field>
               <input
                 matInput
+                [(ngModel)]="user.nm_email_usuario"
                 formControlName="nm_email_usuario"
                 type="email"
                 name="email"
@@ -382,6 +397,7 @@
             <mat-form-field>
               <input
                 matInput
+                [(ngModel)]="user.cd_cnpj_usuario"
                 formControlName="cd_cnpj_usuario"
                 type="text"
                 name="cnpj"
@@ -397,6 +413,7 @@
             <mat-form-field>
               <input
                 matInput
+                [(ngModel)]="user.cd_telefone_usuario"
                 formControlName="cd_telefone_usuario"
                 type="text"
                 name="telefone"
@@ -412,6 +429,7 @@
             <mat-form-field>
               <input
                 matInput
+                [(ngModel)]="user.cd_cep_usuario"
                 formControlName="cd_cep_usuario"
                 type="text"
                 name="cep"
@@ -427,6 +445,7 @@
             <mat-form-field>
               <input
                 matInput
+                [(ngModel)]="user.nm_estado_usuario"
                 formControlName="nm_estado_usuario"
                 id="estado"
                 [matAutocomplete]="autoStates"
@@ -455,6 +474,7 @@
             <mat-form-field>
               <input
                 matInput
+                [(ngModel)]="user.nm_cidade_usuario"
                 formControlName="nm_cidade_usuario"
                 id="cidade"
                 name="cidade"
@@ -482,6 +502,7 @@
             <mat-form-field>
               <input
                 matInput
+                [(ngModel)]="user.nm_endereco_usuario"
                 formControlName="nm_endereco_usuario"
                 name="endereco"
                 type="text"
@@ -497,6 +518,7 @@
             <mat-form-field>
               <input
                 matInput
+                [(ngModel)]="user.cd_numero_endereco_usuario"
                 formControlName="cd_numero_endereco_usuario"
                 name="numero"
                 type="text"
@@ -512,6 +534,7 @@
             <mat-form-field>
               <input
                 matInput
+                [(ngModel)]="user.ds_complemento_endereco_usuario"
                 formControlName="ds_complemento_endereco_usuario"
                 name="complemento"
                 type="text"
@@ -526,6 +549,7 @@
             <mat-form-field>
               <input
                 matInput
+                [(ngModel)]="user.cd_senha_usuario"
                 formControlName="cd_senha_usuario"
                 [type]="hide ? 'password' : 'text'"
                 name="senha"

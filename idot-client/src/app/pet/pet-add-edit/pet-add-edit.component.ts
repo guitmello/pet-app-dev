@@ -13,7 +13,7 @@ export class PetAddEditComponent implements OnInit, OnChanges {
 
   isAdding = true;
 
-  pet: Pet;
+  pet: Pet = new Pet();
 
   petForm: FormGroup;
 
@@ -73,7 +73,9 @@ export class PetAddEditComponent implements OnInit, OnChanges {
       }),
       nm_raca_animal: new FormControl('', {
         validators: [Validators.required]
-      })
+      }),
+      ic_deficiencia_animal: new FormControl('', { }),
+      ds_deficiencia_animal: new FormControl('', { })
     });
 
     this.fillSpecies();

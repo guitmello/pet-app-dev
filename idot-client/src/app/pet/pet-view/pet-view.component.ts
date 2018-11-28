@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Pet } from '../pet.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pet-view',
@@ -10,8 +11,14 @@ export class PetViewComponent implements OnInit {
 
   @Input() pets: Pet[] = [new Pet()];
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() { }
+
+  goInfo(id: number) {
+    this.router.navigateByUrl('pet-info/' + id);
+  }
 
 }

@@ -30,6 +30,7 @@
               type="text"
               name="nome"
               formControlName="nm_animal"
+              [(ngModel)]="pet.nm_animal"
               placeholder="Nome"
               required
             />
@@ -45,6 +46,7 @@
               type="number"
               name="idade"
               formControlName="cd_idade_animal"
+              [(ngModel)]="pet.cd_idade_animal"
               placeholder="Idade"
               maxlength="2"
               required
@@ -58,7 +60,7 @@
           <mat-form-field>
             <mat-select
               name="text_idade"
-              formControlName="cd_idade_animal"
+              formControlName="nm_idade_animal"
               placeholder="Período"
               required
             >
@@ -76,6 +78,7 @@
             <mat-select
               name="sexo"
               formControlName="nm_sexo_animal"
+              [(ngModel)]="pet.nm_sexo_animal"
               placeholder="Sexo"
               required
             >
@@ -95,6 +98,7 @@
           <mat-select
             name="tamanho"
             formControlName="nm_tamanho_animal"
+            [(ngModel)]="pet.nm_tamanho_animal"
             placeholder="Tamanho"
             required
           >
@@ -113,21 +117,23 @@
               type="text"
               name="cor"
               formControlName="nm_cor_animal"
+              [(ngModel)]="pet.nm_cor_animal"
               placeholder="Cor"
               required
             />
           </mat-form-field>
         </div>
       </div>
-      <!-- TODO fix ngModel -->
+      
       <div class="pure-u-1-2">
           <div class="form-control">
         <mat-form-field>
           <mat-select
             name="especie"
             placeholder="Espécie"
-            [(ngModel)]="batata"
-            (selectionChange)="fillRaces(batata)"
+            [(ngModel)]="pet.cd_especie_fk"
+            formControlName="nm_especie_animal"
+            (selectionChange)="fillRaces(pet.cd_especie_fk)"
             required
           >
             <mat-option
@@ -144,7 +150,7 @@
       <div class="pure-u-1-2">
           <div class="form-control">
         <mat-form-field>
-          <mat-select name="raca" placeholder="Raça" required>
+          <mat-select name="raca" [(ngModel)]="pet.cd_raca_fk" formControlName="nm_raca_animal" placeholder="Raça" required>
             <mat-option
               *ngFor="let race of raceArray.payload"
               [value]="race.id"
@@ -159,17 +165,17 @@
       <div class="pure-u-1">
           <div class="form-control">
         <div class="checkbox-align">
-          <mat-checkbox name="deficiencia" color="primary"
+          <mat-checkbox name="deficiencia" [(ngModel)]="pet.ic_deficiencia_animal" formControlName="ic_deficiencia_animal" color="primary"
             >Há alguma deficiência?</mat-checkbox
           >
         </div>
         </div>
       </div>
 
-      <div class="pure-u-1">
+      <div *ngIf="pet.ic_deficiencia_animal" class="pure-u-1">
           <div class="form-control">
         <mat-form-field>
-          <textarea matInput name="ds_deficiencia" placeholder="Qual?"></textarea>
+          <textarea matInput name="ds_deficiencia" [(ngModel)]="pet.ds_deficiencia_animal" formControlName="ds_deficiencia_animal" placeholder="Qual?"></textarea>
         </mat-form-field>
         </div>
       </div>

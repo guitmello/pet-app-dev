@@ -233,6 +233,8 @@ export class UserAddEditComponent implements OnInit {
   fillFiltredStates() {
     if (!!this.user.nm_estado_usuario) {
       this.fillCitiesFromStates();
+    } else {
+      this.getCityState();
     }
   }
 
@@ -256,8 +258,7 @@ export class UserAddEditComponent implements OnInit {
   }
 
   emptyInput() {
-    console.log(this.userType);
-    if (this.pPhysical.nm_estado_usuario || this.pLegal.nm_estado_usuario) {
+    if (this.user.nm_estado_usuario) {
       this.getCityState();
     }
 

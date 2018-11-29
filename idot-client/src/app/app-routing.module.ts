@@ -27,8 +27,8 @@ const routes: Routes = [
   { path: 'usuario-info/:id', component: UserViewComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
 
   { path: 'meus-pets', component: PetMyListComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
-  { path: 'pet-novo-edicao', component: PetAddEditComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
-  { path: 'pet-novo-edicao/:id', component: PetAddEditComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
+  { path: 'pet', component: PetAddEditComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
+  { path: 'pet/:id', component: PetAddEditComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
   { path: 'pet-info/:id', component: PetInfoComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
   { path: 'favoritos', component: PetFavoritesComponent, canLoad: [LoggedInGuard], canActivate: [LoggedInGuard] },
 

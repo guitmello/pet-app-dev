@@ -8,6 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+import { TextMaskModule } from 'angular2-text-mask';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './security/login/login.component';
 import { NavbarTopComponent } from './menus/navbar-top/navbar-top.component';
@@ -58,6 +60,7 @@ import { PetService } from './pet/pet.service';
 import { UserService } from './user/user.service';
 import { NotificationService } from './notification/notification.service';
 import { SearchService } from './search/search.service';
+import { CepPipe } from './pipes/cep.pipe';
 
 
 @NgModule({
@@ -81,6 +84,7 @@ import { SearchService } from './search/search.service';
     ModalDeleteComponent,
     UserViewComponent,
     UserInfoComponent,
+    CepPipe,
   ],
   imports: [
     BrowserModule,
@@ -108,7 +112,8 @@ import { SearchService } from './search/search.service';
     MatDialogModule,
     MatSnackBarModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    TextMaskModule
   ],
   providers: [
     LoginService,

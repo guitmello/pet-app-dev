@@ -61,6 +61,7 @@
             <mat-form-field>
               <input
                 matInput
+                [textMask]="{mask: cpfMask}"
                 [(ngModel)]="user.cd_cpf_usuario"
                 formControlName="cd_cpf_usuario"
                 type="text"
@@ -119,8 +120,8 @@
           <div class="form-control">
             <mat-form-field>
               <input
-                [(ngModel)]="pPhysical.cd_telefone_usuario"
                 matInput
+                [textMask]="{mask: celMask}"
                 [(ngModel)]="user.cd_telefone_usuario"
                 formControlName="cd_telefone_usuario"
                 type="text"
@@ -137,6 +138,7 @@
             <mat-form-field>
               <input
                 matInput
+                [textMask]="{mask: cepMask}"
                 [(ngModel)]="user.cd_cep_usuario"
                 formControlName="cd_cep_usuario"
                 type="text"
@@ -226,6 +228,7 @@
             <mat-form-field>
               <input
                 matInput
+                [textMask]="{mask: numMask}"
                 [(ngModel)]="user.cd_numero_endereco_usuario"
                 formControlName="cd_numero_endereco_usuario"
                 name="numero"
@@ -416,6 +419,7 @@
             <mat-form-field>
               <input
                 matInput
+                [textMask]="{mask: cepMask}"
                 [(ngModel)]="user.cd_cep_usuario"
                 formControlName="cd_cep_usuario"
                 type="text"

@@ -31,6 +31,11 @@ export class UserAddEditComponent implements OnInit {
   hide = true;
   hideConfirm = true;
 
+  cpfMask: Array<string | RegExp>;
+  celMask: Array<string | RegExp>;
+  cepMask: Array<string | RegExp>;
+  numMask: Array<string | RegExp>;
+
   minDate = new Date(1900, 1, 1);
   maxDate = new Date(2000, new Date().getUTCMonth(), new Date().getUTCDate());
 
@@ -43,7 +48,12 @@ export class UserAddEditComponent implements OnInit {
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {
+    this.cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+    this.celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+    this.cepMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
+    this.numMask = [/[1-9]/, /\d/, /\d/, /\d/, /\d/, /\d/];
+  }
 
   ngOnInit() {
     this.pPhysical = new User;
@@ -181,21 +191,23 @@ export class UserAddEditComponent implements OnInit {
   }
 
   userRegister() {
-    let fotobase64 = (<HTMLInputElement>document.getElementById('imgupload')).getAttribute('base64-value');
+    this.removeMasks();
+    console.log(this.user);
+    // let fotobase64 = (<HTMLInputElement>document.getElementById('imgupload')).getAttribute('base64-value');
 
-    if (!fotobase64) {
-      fotobase64 = '../../../assets/images/ft-user.png';
-    }
+    // if (!fotobase64) {
+    //   fotobase64 = '../../../assets/images/ft-user.png';
+    // }
 
-    if (this.isAdding) {
-      this.userService.createUser(this.user).subscribe(response => {
-        console.log(response);
-      });
-    } else {
-      this.userService.editUser(this.user).subscribe(response => {
-        console.log(response);
-      });
-    }
+    // if (this.isAdding) {
+    //   this.userService.createUser(this.user).subscribe(response => {
+    //     console.log(response);
+    //   });
+    // } else {
+    //   this.userService.editUser(this.user).subscribe(response => {
+    //     console.log(response);
+    //   });
+    // }
   }
 
   equalsTo(group: AbstractControl): { [key: string]: boolean } {
@@ -230,6 +242,20 @@ export class UserAddEditComponent implements OnInit {
     }
   }
 
+  fillFiltredCities() {
+    this.filtredCities = [];
+    if (!!this.user.nm_cidade_usuario) {
+      this.citiesArrays.forEach(cities => {
+        cities.forEach(city => {
+          if (this.user.nm_cidade_usuario.toLowerCase() === city.slice(0, this.user.nm_cidade_usuario.length).toLowerCase()) {
+            this.filtredCities.push(city);
+          }
+        });
+
+      });
+    }
+  }
+
   fillFiltredStates() {
     if (!!this.user.nm_estado_usuario) {
       this.fillCitiesFromStates();
@@ -258,12 +284,52 @@ export class UserAddEditComponent implements OnInit {
   }
 
   emptyInput() {
-    if (this.user.nm_estado_usuario) {
+    if (!this.user.nm_estado_usuario) {
       this.getCityState();
     }
+  }
 
-    // if (this.userType === 'pf') {
 
-    // }
+  removeMasks() {
+    this.removeCpfMask();
+    this.removeCelMask();
+    this.removeCepMask();
+    this.removeNumeroMask();
+  }
+
+
+  removeNumeroMask() {
+    const numberHome = this.user.cd_numero_endereco_usuario.toString();
+    const beforeNumberH = numberHome;
+    for (let x = 0; x <= beforeNumberH.length; x++) {
+      if (!parseInt(numberHome.slice(x, x + 1))) {
+        numberHome.replace('_', '');
+      }
+    }
+    this.user.cd_numero_endereco_usuario = parseInt(numberHome);
+  }
+
+  removeCpfMask() {
+    const cpf = this.user.cd_cpf_usuario.toString();
+    let beforeCpf = cpf.replace('.', '');
+    beforeCpf = beforeCpf.replace('.', '');
+    beforeCpf = beforeCpf.replace('-', '');
+    this.user.cd_cpf_usuario = parseInt(beforeCpf);
+  }
+
+  removeCelMask() {
+    const cel = this.user.cd_telefone_usuario.toString();
+    let beforeCel = cel.replace('(', '');
+    beforeCel = beforeCel.replace(')', '');
+    beforeCel = beforeCel.replace(' ', '');
+    beforeCel = beforeCel.replace('-', '');
+    this.user.cd_telefone_usuario = parseInt(beforeCel);
+  }
+
+  removeCepMask() {
+    const cep = this.user.cd_cep_usuario.toString();
+    let beforeCep = cep.replace('.', '');
+    beforeCep = beforeCep.replace('-', '');
+    this.user.cd_cep_usuario = parseInt(beforeCep);
   }
 }

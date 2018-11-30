@@ -32,10 +32,11 @@ export class NavbarTopComponent implements OnInit {
     this.userId = this.userService.getUserId();
       this.userService.getUser(this.userId).subscribe(response => {
         this.user = response;
-        if (this.user.nm_tipo_usuario === 'Pessoa Física') {
-          this.router.navigateByUrl('usuario-fisico/' + this.user.id);
-        } else if (this.user.nm_tipo_usuario === 'Pessoa Jurídica') {
-          this.router.navigateByUrl('usuario-juridico/' + this.user.id);
+        console.log(this.user);
+        if (this.user.payload.nm_tipo_usuario === 'Pessoa Física') {
+          this.router.navigateByUrl('usuario-fisico/' + this.user.payload.id);
+        } else if (this.user.payload.nm_tipo_usuario === 'Pessoa Jurídica') {
+          this.router.navigateByUrl('usuario-juridico/' + this.user.payload.id);
         }
       });
   }

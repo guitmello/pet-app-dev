@@ -1,8 +1,9 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PetService } from '../pet.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Pet } from '../pet.model';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-pet-add-edit',
@@ -14,6 +15,8 @@ export class PetAddEditComponent implements OnInit, OnChanges {
   isAdding = true;
 
   pet: Pet = new Pet();
+
+  userId: number;
 
   petForm: FormGroup;
 
@@ -38,13 +41,22 @@ export class PetAddEditComponent implements OnInit, OnChanges {
 
   constructor(
     private petService: PetService,
-    private activatedRoute: ActivatedRoute
+    private userService: UserService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
       if (params.id) {
-        this.petService.getPet(params.id);
+        this.petService.getPet(params.id).subscribe(response => {
+          this.userId = this.userService.getUserId();
+          if (Number(response.payload.cd_usuario_fk) === this.userId) {
+            this.petTransform(response);
+          } else {
+            this.router.navigateByUrl('/');
+          }
+        });
         this.isAdding = false;
       }
     });
@@ -134,6 +146,21 @@ export class PetAddEditComponent implements OnInit, OnChanges {
         console.log(response);
       });
     }
+  }
+
+  petTransform(petPayload: Pet) {
+    this.pet.cd_especie_fk = petPayload.payload.cd_especie_fk;
+    this.pet.cd_idade_animal = petPayload.payload.cd_idade_animal;
+    this.pet.cd_raca_fk = petPayload.payload.cd_raca_fk;
+    this.pet.ds_deficiencia_animal = petPayload.payload.ds_deficiencia_animal;
+    this.pet.ds_foto_animal = petPayload.payload.ds_foto_animal;
+    this.pet.ic_deficiencia_animal = petPayload.payload.ic_deficiencia_animal;
+    this.pet.nm_animal = petPayload.payload.nm_animal;
+    this.pet.nm_cor_animal = petPayload.payload.nm_cor_animal;
+    this.pet.nm_especie_animal = petPayload.payload.nm_especie_animal;
+    this.pet.nm_raca_animal = petPayload.payload.nm_raca_animal;
+    this.pet.nm_sexo_animal = petPayload.payload.nm_sexo_animal;
+    this.pet.nm_tamanho_animal = petPayload.payload.nm_tamanho_animal;
   }
 
 }

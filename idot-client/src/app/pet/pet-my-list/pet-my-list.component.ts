@@ -3,6 +3,7 @@ import { PetService } from '../pet.service';
 import { Pet } from '../pet.model';
 import { ModalDeleteComponent } from '../../modal-delete/modal-delete.component';
 import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pet-my-list',
@@ -15,7 +16,11 @@ export class PetMyListComponent implements OnInit {
   races: Pet[] = [];
   species: Pet[] = [];
 
-  constructor(private petService: PetService, public dialog: MatDialog) { }
+  constructor(
+    private petService: PetService,
+    private router: Router,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     const userId = parseInt(localStorage.getItem('id'), 0);
@@ -37,6 +42,10 @@ export class PetMyListComponent implements OnInit {
         id: id
       }
     });
+  }
+
+  goEditPet(id: number) {
+    this.router.navigateByUrl('pet/' + id);
   }
 
 }

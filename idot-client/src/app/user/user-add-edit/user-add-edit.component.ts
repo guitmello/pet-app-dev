@@ -14,8 +14,6 @@ import { State } from '../state.model';
 export class UserAddEditComponent implements OnInit {
 
   isAdding = true;
-  pPhysical: User;
-  pLegal: User;
 
   filtredStates: any = {};
   states: [State];
@@ -24,6 +22,7 @@ export class UserAddEditComponent implements OnInit {
 
   user: User = new User();
   userType: string;
+  userId: number;
 
   userFormPhysical: FormGroup;
   userFormLegal: FormGroup;
@@ -56,28 +55,32 @@ export class UserAddEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pPhysical = new User;
-    this.pLegal = new User;
-
-    if (this.activatedRoute.snapshot.routeConfig.path === 'usuario-fisico') {
+    console.log(this.activatedRoute.snapshot.routeConfig.path);
+    if (
+      this.activatedRoute.snapshot.routeConfig.path === 'usuario-fisico' ||
+      this.activatedRoute.snapshot.routeConfig.path === 'usuario-fisico/:id'
+    ) {
       this.userType = 'pf';
-    } else {
+    } else if (
+      this.activatedRoute.snapshot.routeConfig.path === 'usuario-juridico' ||
+      this.activatedRoute.snapshot.routeConfig.path === 'usuario-juridico/:id'
+    ) {
       this.userType = 'pj';
+    } else {
+      this.router.navigateByUrl('/');
     }
 
     this.activatedRoute.params.subscribe(params => {
       if (params.id) {
-        this.userService.getUserId().subscribe(userId => {
-          if (params.id === userId) {
-            console.log('Param ', params.id);
-            console.log('UserId ', userId);
-            this.userService.getUser(params.id);
-            this.isAdding = false;
-          } else {
-            console.log('saiu');
-            this.router.navigateByUrl('home');
-          }
-        });
+        this.userId = this.userService.getUserId();
+        if (Number(params.id) === this.userId) {
+          this.userService.getUser(params.id).subscribe(response => {
+            this.userTransform(response);
+          });
+          this.isAdding = false;
+        } else {
+          this.router.navigateByUrl('/');
+        }
       }
     });
 
@@ -332,4 +335,26 @@ export class UserAddEditComponent implements OnInit {
     beforeCep = beforeCep.replace('-', '');
     this.user.cd_cep_usuario = parseInt(beforeCep);
   }
+
+  userTransform(userPayload: User) {
+    this.user.cd_cep_usuario = userPayload.payload.cd_cep_usuario;
+    this.user.cd_cnpj_usuario = userPayload.payload.cd_cnpj_usuario;
+    this.user.cd_cpf_usuario = userPayload.payload.cd_cpf_usuario;
+    this.user.cd_numero_endereco_usuario = userPayload.payload.cd_numero_endereco_usuario;
+    this.user.cd_senha_usuario = userPayload.payload.cd_senha_usuario;
+    this.user.cd_telefone_usuario = userPayload.payload.cd_telefone_usuario;
+    this.user.ds_complemento_endereco_usuario = userPayload.payload.ds_complemento_endereco_usuario;
+    this.user.ds_foto_usuario = userPayload.payload.ds_foto_usuario;
+    this.user.dt_nascimento_usuario = userPayload.payload.dt_nascimento_usuario;
+    this.user.id = userPayload.payload.id;
+    this.user.nm_cidade_usuario = userPayload.payload.nm_cidade_usuario;
+    this.user.nm_email_usuario = userPayload.payload.nm_email_usuario;
+    this.user.nm_endereco_usuario = userPayload.payload.nm_endereco_usuario;
+    this.user.nm_estado_usuario = userPayload.payload.nm_estado_usuario;
+    this.user.nm_razao_social_usuario = userPayload.payload.nm_razao_social_usuario;
+    this.user.nm_sexo_usuario = userPayload.payload.nm_sexo_usuario;
+    this.user.nm_tipo_usuario = userPayload.payload.nm_tipo_usuario;
+    this.user.nm_usuario = userPayload.payload.nm_usuario;
+  }
+
 }

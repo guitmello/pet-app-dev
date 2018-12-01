@@ -34,6 +34,7 @@ export class UserAddEditComponent implements OnInit {
   celMask: Array<string | RegExp>;
   cepMask: Array<string | RegExp>;
   numMask: Array<string | RegExp>;
+  cnpjMask: Array<string | RegExp>;
 
   minDate = new Date(1900, 1, 1);
   maxDate = new Date(2000, new Date().getUTCMonth(), new Date().getUTCDate());
@@ -49,6 +50,7 @@ export class UserAddEditComponent implements OnInit {
     private router: Router
   ) {
     this.cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+    this.cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
     this.celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
     this.cepMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
     this.numMask = [/[1-9]/, /\d/, /\d/, /\d/, /\d/, /\d/];
@@ -170,7 +172,6 @@ export class UserAddEditComponent implements OnInit {
       })
     }, { validators: [this.equalsTo], updateOn: 'change' });
 
-    // this.changePhoto();
     this.getCityState();
   }
 
@@ -195,22 +196,24 @@ export class UserAddEditComponent implements OnInit {
 
   userRegister() {
     this.removeMasks();
-    console.log(this.user);
-    // let fotobase64 = (<HTMLInputElement>document.getElementById('imgupload')).getAttribute('base64-value');
+    let fotobase64 = (<HTMLInputElement>document.getElementById('imgupload')).getAttribute('base64-value');
 
-    // if (!fotobase64) {
-    //   fotobase64 = '../../../assets/images/ft-user.png';
-    // }
+    if (!fotobase64) {
+      fotobase64 = '../../../assets/images/ft-user.png';
+    }
 
-    // if (this.isAdding) {
-    //   this.userService.createUser(this.user).subscribe(response => {
-    //     console.log(response);
-    //   });
-    // } else {
-    //   this.userService.editUser(this.user).subscribe(response => {
-    //     console.log(response);
-    //   });
-    // }
+    this.user.ds_foto_usuario = fotobase64;
+
+    if (this.isAdding) {
+      this.userService.createUser(this.user).subscribe(response => {
+        console.log(response);
+        this.router.navigateByUrl('/');
+      });
+    } else {
+      this.userService.editUser(this.user).subscribe(response => {
+        console.log(response);
+      });
+    }
   }
 
   equalsTo(group: AbstractControl): { [key: string]: boolean } {
@@ -240,31 +243,36 @@ export class UserAddEditComponent implements OnInit {
   }
 
   blurInStates() {
-    if (!!this.user.nm_estado_usuario) {
+    if (this.user.nm_estado_usuario && !this.user.nm_cidade_usuario) {
       this.fillCitiesFromStates();
+    } else {
+      this.fillFiltredCities();
     }
   }
 
   fillFiltredCities() {
     this.filtredCities = [];
-    if (!!this.user.nm_cidade_usuario) {
+    if (this.user.nm_cidade_usuario) {
       this.citiesArrays.forEach(cities => {
         cities.forEach(city => {
           if (this.user.nm_cidade_usuario.toLowerCase() === city.slice(0, this.user.nm_cidade_usuario.length).toLowerCase()) {
             this.filtredCities.push(city);
           }
         });
-
       });
     }
   }
 
   fillFiltredStates() {
-    if (!!this.user.nm_estado_usuario) {
+    if (this.user.nm_estado_usuario) {
       this.fillCitiesFromStates();
     } else {
       this.getCityState();
     }
+  }
+
+  cancelar() {
+    this.router.navigateByUrl('/');
   }
 
   fillCitiesFromStates() {
@@ -292,23 +300,33 @@ export class UserAddEditComponent implements OnInit {
     }
   }
 
-
   removeMasks() {
-    this.removeCpfMask();
-    this.removeCelMask();
-    this.removeCepMask();
-    this.removeNumeroMask();
+    if (this.user.cd_cpf_usuario) {
+      this.removeCpfMask();
+    } if (this.user.cd_telefone_usuario) {
+      this.removeCelMask();
+    } if (this.user.cd_cep_usuario) {
+      this.removeCepMask();
+    } if (this.user.cd_cnpj_usuario) {
+      this.removeCnpjMask();
+    } if (this.user.cd_numero_endereco_usuario) {
+      this.removeNumeroMask();
+    }
+  }
+
+  removeCnpjMask() {
+    const cnpj = this.user.cd_cnpj_usuario.toString();
+    let beforeCnpj = cnpj.replace('.', '');
+    beforeCnpj = beforeCnpj.replace('.', '');
+    beforeCnpj = beforeCnpj.replace('/', '');
+    beforeCnpj = beforeCnpj.replace('-', '');
+    this.user.cd_cnpj_usuario = Number(beforeCnpj);
   }
 
 
   removeNumeroMask() {
     const numberHome = this.user.cd_numero_endereco_usuario.toString();
-    const beforeNumberH = numberHome;
-    for (let x = 0; x <= beforeNumberH.length; x++) {
-      if (!parseInt(numberHome.slice(x, x + 1))) {
-        numberHome.replace('_', '');
-      }
-    }
+    // tslint:disable-next-line:radix
     this.user.cd_numero_endereco_usuario = parseInt(numberHome);
   }
 
@@ -317,7 +335,7 @@ export class UserAddEditComponent implements OnInit {
     let beforeCpf = cpf.replace('.', '');
     beforeCpf = beforeCpf.replace('.', '');
     beforeCpf = beforeCpf.replace('-', '');
-    this.user.cd_cpf_usuario = parseInt(beforeCpf);
+    this.user.cd_cpf_usuario = Number(beforeCpf);
   }
 
   removeCelMask() {
@@ -326,14 +344,14 @@ export class UserAddEditComponent implements OnInit {
     beforeCel = beforeCel.replace(')', '');
     beforeCel = beforeCel.replace(' ', '');
     beforeCel = beforeCel.replace('-', '');
-    this.user.cd_telefone_usuario = parseInt(beforeCel);
+    this.user.cd_telefone_usuario = Number(beforeCel);
   }
 
   removeCepMask() {
     const cep = this.user.cd_cep_usuario.toString();
     let beforeCep = cep.replace('.', '');
     beforeCep = beforeCep.replace('-', '');
-    this.user.cd_cep_usuario = parseInt(beforeCep);
+    this.user.cd_cep_usuario = Number(beforeCep);
   }
 
   userTransform(userPayload: User) {

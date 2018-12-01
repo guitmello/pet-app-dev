@@ -13,46 +13,41 @@ import { State } from '../state.model';
 })
 export class UserAddEditComponent implements OnInit {
 
-  isAdding = true;
-
-  filtredStates: any = {};
   states: [State];
-  filtredCities: Array<any>;
+
   citiesArrays: any = {};
-
-  user: User = new User();
-  userType: string;
-  userId: number;
-
-  userFormPhysical: FormGroup;
-  userFormLegal: FormGroup;
-
-  hide = true;
-  hideConfirm = true;
-
-  cpfMask: Array<string | RegExp>;
-  celMask: Array<string | RegExp>;
-  cepMask: Array<string | RegExp>;
-  numMask: Array<string | RegExp>;
-  cnpjMask: Array<string | RegExp>;
-
-  minDate = new Date(1900, 1, 1);
-  maxDate = new Date(2000, new Date().getUTCMonth(), new Date().getUTCDate());
-
+  filtredStates: any = {};
+  filtredCities: Array<any>;
   genderArray: Array<Object> = [
     { value: 'Masculino', viewValue: 'Masculino' },
     { value: 'Feminino', viewValue: 'Feminino' }
   ];
+  hide = true;
+  hideConfirm = true;
+  isAdding = true;
+  maxDate = new Date(2000, new Date().getUTCMonth(), new Date().getUTCDate());
+  minDate = new Date(1900, 1, 1);
+  user: User = new User();
+  userFormLegal: FormGroup;
+  userFormPhysical: FormGroup;
+  userId: number;
+  userType: string;
+
+  celMask: Array<string | RegExp>;
+  cepMask: Array<string | RegExp>;
+  cnpjMask: Array<string | RegExp>;
+  cpfMask: Array<string | RegExp>;
+  numMask: Array<string | RegExp>;
 
   constructor(
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
-    this.cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
-    this.cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
     this.celMask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
     this.cepMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
+    this.cnpjMask = [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+    this.cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
     this.numMask = [/[1-9]/, /\d/, /\d/, /\d/, /\d/, /\d/];
   }
 
@@ -271,10 +266,6 @@ export class UserAddEditComponent implements OnInit {
     }
   }
 
-  cancelar() {
-    this.router.navigateByUrl('/');
-  }
-
   fillCitiesFromStates() {
 
     this.filtredStates = [];
@@ -321,6 +312,10 @@ export class UserAddEditComponent implements OnInit {
     beforeCnpj = beforeCnpj.replace('/', '');
     beforeCnpj = beforeCnpj.replace('-', '');
     this.user.cd_cnpj_usuario = Number(beforeCnpj);
+  }
+
+  cancelar() {
+    this.router.navigateByUrl('/');
   }
 
 

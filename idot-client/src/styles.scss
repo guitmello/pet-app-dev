@@ -3,6 +3,7 @@
 html,
 body {
   height: 100%;
+  max-height: 100% !important;
 }
 body {
   margin: 0;
@@ -68,7 +69,7 @@ mat-card {
   padding: 10px !important;
 }
 
-mat-list{
+mat-list {
   padding: 0px !important;
 }
 
@@ -89,6 +90,17 @@ mat-list{
   color: #f2f2f2 !important;
 }
 
-#sidenav-menu  .mat-list-item-content {
-  padding: 0 30px 0 15px  !important;
+#sidenav-menu .mat-list-item-content {
+  padding: 0 30px 0 15px !important;
+}
+
+.img-rounded-area {
+  margin: auto;
+}
+
+.img-rounded {
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  overflow: hidden;
 }

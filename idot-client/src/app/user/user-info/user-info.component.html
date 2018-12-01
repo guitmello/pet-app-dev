@@ -1,7 +1,14 @@
-<mat-card>
-  <div class="pure-g">
-    <div class="user-img-area">
-      <img class="user-img" [src]="user?.payload.ds_foto_usuario" alt="Foto do User">
+<div class="container">
+  <mat-card>
+    <div class="pure-g">
+      <div class="img-rounded-area">
+        <div
+          class="img-rounded"
+          [ngStyle]="{
+            'background-image': 'url(' + user?.payload.ds_foto_usuario + ') '
+          }"
+        ></div>
+      </div>
     </div>
-  </div>
-</mat-card>
+  </mat-card>
+</div>

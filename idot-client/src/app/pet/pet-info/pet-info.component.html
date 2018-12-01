@@ -1,17 +1,25 @@
-<!--<p>
-  {{pet?.payload.nm_animal}} - {{pet?.payload.Raca.nm_raca}} - {{pet?.payload.nm_sexo_animal}} -
-  {{pet?.payload.nm_cor_animal}}
-  - {{pet?.payload.nm_tamanho_animal}} - {{pet?.payload.Usuario.nm_endereco_usuario}} -
-  {{pet?.payload.Usuario.cd_numero_endereco_usuario}}
-  - {{pet?.payload.Usuario.nm_cidade_usuario}} - {{pet?.payload.Usuario.nm_estado_usuario}} -
-  {{pet?.payload.Usuario.nm_cidade_usuario}}
-  - {{pet?.payload.createdAt}} -
-</p> -->
-
-<mat-card>
-  <div class="pure-g">
-    <div class="pet-img-area">
-      <img class="pet-img" [src]="pet?.payload.ds_foto_animal" alt="Foto do Pet">
+<!--
+  <p>
+    {{pet?.payload.nm_animal}} - {{pet?.payload.Raca.nm_raca}} - {{pet?.payload.nm_sexo_animal}} -
+    {{pet?.payload.nm_cor_animal}}
+    - {{pet?.payload.nm_tamanho_animal}} - {{pet?.payload.Usuario.nm_endereco_usuario}} -
+    {{pet?.payload.Usuario.cd_numero_endereco_usuario}}
+    - {{pet?.payload.Usuario.nm_cidade_usuario}} - {{pet?.payload.Usuario.nm_estado_usuario}} -
+    {{pet?.payload.Usuario.nm_cidade_usuario}}
+    - {{pet?.payload.createdAt}} -
+  </p>
+-->
+<div class="container">
+  <mat-card>
+    <div class="pure-g">
+      <div class="img-rounded-area">
+        <div
+          class="img-rounded"
+          [ngStyle]="{
+            'background-image': 'url(' + pet?.payload.ds_foto_animal + ') '
+          }"
+        ></div>
+      </div>
     </div>
-  </div>
-</mat-card>
+  </mat-card>
+</div>

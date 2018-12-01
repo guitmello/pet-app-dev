@@ -1,126 +1,126 @@
-<mat-card>
-  <div class="pure-g">
-    <div class="pure-u-1"><h4>Tipo:</h4></div>
-    <div class="pure-u-1">
-      <mat-slide-toggle
-        color="primary"
-        [(ngModel)]="typeFilterOng"
-        (click)="filterChange(ong)"
-      >
-        ONGs
-      </mat-slide-toggle>
-    </div>
-    <div class="pure-u-1">
-      <mat-slide-toggle
-        color="primary"
-        [(ngModel)]="typeFilterPet"
-        (click)="filterChange(pet)"
-      >
-        Animais
-      </mat-slide-toggle>
-    </div>
+<div class="container">
+  <mat-card>
+    <div class="pure-g">
+      <div class="pure-u-1"><h4>Tipo:</h4></div>
+      <div class="pure-u-1">
+        <mat-slide-toggle
+          color="primary"
+          [(ngModel)]="typeFilterOng"
+          (click)="filterChange(ong)"
+        >
+          ONGs
+        </mat-slide-toggle>
+      </div>
+      <div class="pure-u-1">
+        <mat-slide-toggle
+          color="primary"
+          [(ngModel)]="typeFilterPet"
+          (click)="filterChange(pet)"
+        >
+          Animais
+        </mat-slide-toggle>
+      </div>
 
-    <section *ngIf="typeFilterOng" class="mt-20">
-      <form [formGroup]="searchFormOng">
-        <div class="pure-u-1">
-          <mat-form-field>
-            <input
-              matInput
-              formControlName="nm_razao_social_usuario"
-              name="razaoSocial"
-              [(ngModel)]="ongName"
-              type="text"
-              placeholder="Digite o nome da ONG"
-            />
-            <mat-icon matSuffix>search</mat-icon>
-          </mat-form-field>
-        </div>
-
-        <div class="pure-u-1">
-          <div class="button-submit-row row-center">
-            <button
-              mat-raised-button
-              type="submit"
-              color="primary"
-              class="w-50"
-              (click)="search()"
-              [disabled]="searchFormOng.invalid"
-            >
-              Confirmar
-            </button>
-          </div>
-        </div>
-      </form>
-    </section>
-
-    <section *ngIf="typeFilterPet" class="mt-20">
-      <form [formGroup]="searchFormPet">
-        <div class="pure-u-1-2">
-          <div class="form-control">
+      <section *ngIf="typeFilterOng" class="mt-20">
+        <form [formGroup]="searchFormOng">
+          <div class="pure-u-1">
             <mat-form-field>
-              <mat-select
-                formControlName="cd_especie_fk"
-                name="especie"
-                placeholder="Espécie"
-                [(ngModel)]="specieId"
-                (selectionChange)="fillRaces(specieId)"
-                required
-              >
-                <mat-option
-                  *ngFor="let specie of specieArray.payload"
-                  [value]="specie.id"
-                >
-                  {{ specie.nm_especie }}
-                </mat-option>
-              </mat-select>
+              <input
+                matInput
+                formControlName="nm_razao_social_usuario"
+                name="razaoSocial"
+                [(ngModel)]="ongName"
+                type="text"
+                placeholder="Digite o nome da ONG"
+              />
+              <mat-icon matSuffix>search</mat-icon>
             </mat-form-field>
           </div>
-        </div>
 
-        <div class="pure-u-1-2">
-          <div class="form-control">
-            <mat-form-field>
-              <mat-select
-                [(ngModel)]="racaId"
-                formControlName="cd_raca_fk"
-                name="raca"
-                placeholder="Raça"
-                required
+          <div class="pure-u-1">
+            <div class="button-submit-row row-center">
+              <button
+                mat-raised-button
+                type="submit"
+                color="primary"
+                class="w-50"
+                (click)="search()"
+                [disabled]="searchFormOng.invalid"
               >
-                <mat-option
-                  *ngFor="let race of raceArray.payload"
-                  [value]="race.id"
+                Confirmar
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <section *ngIf="typeFilterPet" class="mt-20">
+        <form [formGroup]="searchFormPet">
+          <div class="pure-u-1-2">
+            <div class="form-control">
+              <mat-form-field>
+                <mat-select
+                  formControlName="cd_especie_fk"
+                  name="especie"
+                  placeholder="Espécie"
+                  [(ngModel)]="specieId"
+                  (selectionChange)="fillRaces(specieId)"
+                  required
                 >
-                  {{ race.nm_raca }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+                  <mat-option
+                    *ngFor="let specie of specieArray.payload"
+                    [value]="specie.id"
+                  >
+                    {{ specie.nm_especie }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
           </div>
-        </div>
 
-        <div class="pure-u-1">
-          <div class="button-submit-row row-center">
-            <button
-              mat-raised-button
-              type="submit"
-              color="primary"
-              class="w-50"
-              (click)="search()"
-              [disabled]="searchFormPet.invalid"
-            >
-              Confirmar
-            </button>
+          <div class="pure-u-1-2">
+            <div class="form-control">
+              <mat-form-field>
+                <mat-select
+                  [(ngModel)]="racaId"
+                  formControlName="cd_raca_fk"
+                  name="raca"
+                  placeholder="Raça"
+                  required
+                >
+                  <mat-option
+                    *ngFor="let race of raceArray.payload"
+                    [value]="race.id"
+                  >
+                    {{ race.nm_raca }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
           </div>
-        </div>
-      </form>
-    </section>
-  </div>
-</mat-card>
 
-<section *ngIf="pets">
-    <app-pet-view [pets]="pets"></app-pet-view>
-</section>
+          <div class="pure-u-1">
+            <div class="button-submit-row row-center">
+              <button
+                mat-raised-button
+                type="submit"
+                color="primary"
+                class="w-50"
+                (click)="search()"
+                [disabled]="searchFormPet.invalid"
+              >
+                Confirmar
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </div>
+  </mat-card>
 
-<section *ngIf="users">
+  <section *ngIf="pets"><app-pet-view [pets]="pets"></app-pet-view></section>
+
+  <section *ngIf="users">
     <app-user-view [users]="users"></app-user-view>
-</section>
+  </section>
+</div>

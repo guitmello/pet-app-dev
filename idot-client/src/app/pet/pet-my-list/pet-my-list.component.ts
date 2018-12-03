@@ -4,6 +4,7 @@ import { Pet } from '../pet.model';
 import { ModalDeleteComponent } from '../../modal-delete/modal-delete.component';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-pet-my-list',
@@ -16,15 +17,19 @@ export class PetMyListComponent implements OnInit {
   races: Pet[] = [];
   species: Pet[] = [];
 
+  userId: number;
+
   constructor(
     private petService: PetService,
+    private userService: UserService,
     private router: Router,
     public dialog: MatDialog
   ) { }
 
   ngOnInit() {
-    const userId = parseInt(localStorage.getItem('id'), 0);
-    this.getMyPets(userId);
+    this.userId = this.userService.getUserId();
+    this.getMyPets(this.userId);
+    this.getPetRemoved();
   }
 
   getMyPets(id: number) {
@@ -34,18 +39,26 @@ export class PetMyListComponent implements OnInit {
       });
   }
 
-  openDeleteDialog(id: number) {
+  openDeleteDialog(pet: Pet) {
     const dialogRef = this.dialog.open(ModalDeleteComponent, {
       width: '300px',
       height: '210px',
       data: {
-        id: id
+        pet: pet
       }
     });
   }
 
   goEditPet(id: number) {
     this.router.navigateByUrl('pet/' + id);
+  }
+
+  getPetRemoved() {
+    this.petService.petRemoved.subscribe(pet => {
+      console.log(pet);
+      console.log(this.pets);
+      this.pets.splice(this.pets.indexOf(pet), 1);
+    });
   }
 
 }

@@ -11,18 +11,23 @@
     <mat-card>
       <div class="pure-g">
         <form [formGroup]="userFormPhysical">
-          <div class="pure-u-1">
-            <button mat-fab color="primary" (click)="imgFileInput.click()">
-              <mat-icon aria-label="Tirar Foto">add_a_photo</mat-icon>
-              <input
-                hidden
-                type="file"
-                accept="image/*"
-                id="imgupload"
-                capture="camera"
-                #imgFileInput
-              />
-            </button>
+          <div class="img-rounded-area">
+            <img
+              (click)="imgFileInput.click()"
+              id="img"
+              class="img-rounded"
+              [src]="fotobase64"
+              alt="Foto do Usuário"
+            />
+            <input
+              hidden
+              type="file"
+              accept="image/*"
+              id="imgupload"
+              capture="camera"
+              #imgFileInput
+              (change)="readURL()"
+            />
           </div>
 
           <div class="pure-u-1">
@@ -342,19 +347,24 @@
     <mat-card>
       <div class="pure-g">
         <form [formGroup]="userFormLegal">
-          <div class="pure-u-1">
-            <button mat-fab color="primary" (click)="imgFileInput.click()">
-              <mat-icon aria-label="Tirar Foto">add_a_photo</mat-icon>
-              <input
-                hidden
-                type="file"
-                accept="image/*"
-                id="imgupload"
-                capture="camera"
-                #imgFileInput
-              />
-            </button>
-          </div>
+            <div class="img-rounded-area">
+                <img
+                  (click)="imgFileInput.click()"
+                  id="img"
+                  class="img-rounded"
+                  [src]="fotobase64"
+                  alt="Foto do Usuário"
+                />
+                <input
+                  hidden
+                  type="file"
+                  accept="image/*"
+                  id="imgupload"
+                  capture="camera"
+                  #imgFileInput
+                  (change)="readURL()"
+                />
+              </div>
 
           <div class="pure-u-1">
             <div class="form-control">

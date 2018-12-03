@@ -19,7 +19,6 @@ export class LoginService {
 
   isLoggedIn(): boolean {
     if (this.user) {
-      localStorage.setItem('id', this.user.id);
       localStorage.setItem('token', 'jwt ' + this.user.token);
     }
     return this.user !== undefined;
@@ -33,9 +32,9 @@ export class LoginService {
   }
 
   logout() {
-    localStorage.removeItem('id');
     localStorage.removeItem('token');
     this.user = undefined;
+    this.router.navigateByUrl('/');
   }
 
   handleLogin(path: string = this.lastUrl) {

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Pet } from './pet.model';
 import { API_URL } from '../app.api';
@@ -14,11 +14,13 @@ export class PetService {
   urlGetPetByFilter = '/api/animals/getByFilter/';
   urlGetPet = '/api/animals/';
   urlPostPet = '/api/animals/create';
-  urlPutPet = '/api/animals/update/';
+  urlPutPet = '/api/animals/';
   urlGetSpecies = '/api/especies/all';
   urlGetRaces = '/api/racas/getracas/';
   urlGetFavorite = '/api/favoritos/';
   urlPostFavorite = '/api/favoritos/create';
+
+  petRemoved = new EventEmitter<Pet>();
 
   constructor(private http: HttpClient) { }
 
@@ -55,11 +57,15 @@ export class PetService {
   }
 
   editPet(pet: Pet): Observable<Pet> {
-    return this.http.post<Pet>(API_URL + this.urlPutPet + pet.cd_animal + '/update', pet);
+    return this.http.put<Pet>(API_URL + this.urlPutPet + pet.id + '/update', pet);
   }
 
   deletePet(id: number): Observable<Pet> {
     return this.http.delete<Pet>(API_URL + this.urlGetPet + id + '/destroy');
+  }
+
+  removePet(pet: Pet) {
+    return this.petRemoved.emit(pet);
   }
 
   addFavorite(pet: Pet): Observable<Pet[]> {

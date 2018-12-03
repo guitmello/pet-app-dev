@@ -32,6 +32,7 @@ export class UserAddEditComponent implements OnInit {
   userFormPhysical: FormGroup;
   userId: number;
   userType: string;
+  fotobase64: string;
 
   celMask: Array<string | RegExp>;
   cepMask: Array<string | RegExp>;
@@ -52,17 +53,18 @@ export class UserAddEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.activatedRoute.snapshot.routeConfig.path);
     if (
       this.activatedRoute.snapshot.routeConfig.path === 'usuario-fisico' ||
       this.activatedRoute.snapshot.routeConfig.path === 'usuario-fisico/:id'
     ) {
       this.userType = 'pf';
+      this.user.nm_tipo_usuario = 'Pessoa Física';
     } else if (
       this.activatedRoute.snapshot.routeConfig.path === 'usuario-juridico' ||
       this.activatedRoute.snapshot.routeConfig.path === 'usuario-juridico/:id'
     ) {
       this.userType = 'pj';
+      this.user.nm_tipo_usuario = 'Pessoa Jurídica';
     } else {
       this.router.navigateByUrl('/');
     }
@@ -74,10 +76,14 @@ export class UserAddEditComponent implements OnInit {
           this.userService.getUser(params.id).subscribe(response => {
             this.userTransform(response);
           });
+          this.fotobase64 = this.user.ds_foto_usuario;
+          console.log(this.fotobase64);
           this.isAdding = false;
         } else {
           this.router.navigateByUrl('/');
         }
+      } else {
+        this.fotobase64 = '../../assets/images/ft-user.png';
       }
     });
 
@@ -168,43 +174,58 @@ export class UserAddEditComponent implements OnInit {
     }, { validators: [this.equalsTo], updateOn: 'change' });
 
     this.getCityState();
+    this.changePhoto();
   }
 
   changePhoto() {
-    document.querySelector('#imgupload').addEventListener('change', function () {
-      const filesSelected = (<HTMLInputElement>(
-        document.getElementById('imgupload')
-      )).files;
-      if (filesSelected.length > 0) {
-        const fileToLoad = filesSelected[0];
-        const fileReader = new FileReader();
-        fileReader.onload = function (fileLoadEvent) {
-          const base64value = <FileReader>event.target;
-          (<HTMLInputElement>document.getElementById('imgupload')).setAttribute(
-            'base64-value', base64value.result.toString()
-          );
-        };
-        fileReader.readAsDataURL(fileToLoad);
-      }
-    });
+    document.addEventListener('DOMContentLoaded', function(event) {
+      document.querySelector('#imgupload').addEventListener('change', function () {
+        const filesSelected = (<HTMLInputElement>(
+          document.getElementById('imgupload')
+        )).files;
+        if (filesSelected.length > 0) {
+          const fileToLoad = filesSelected[0];
+          const fileReader = new FileReader();
+          fileReader.onload = function (fileLoadEvent) {
+            const base64value = fileReader;
+            console.log('base64value: ', base64value);
+            (<HTMLInputElement>document.getElementById('imgupload')).setAttribute(
+              'base64-value', base64value.result.toString()
+            );
+          };
+          fileReader.readAsDataURL(fileToLoad);
+        }
+      });
+  });
+  }
+
+  readURL() {
+    const input = <HTMLInputElement>(document.getElementById('imgupload'));
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function(e: any) {
+        document.querySelector('#img').setAttribute('src', e.target.result);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
   }
 
   userRegister() {
     this.removeMasks();
-    let fotobase64 = (<HTMLInputElement>document.getElementById('imgupload')).getAttribute('base64-value');
+    this.fotobase64 = (<HTMLInputElement>document.getElementById('imgupload')).getAttribute('base64-value');
 
-    if (!fotobase64) {
-      fotobase64 = '../../../assets/images/ft-user.png';
-    }
-
-    this.user.ds_foto_usuario = fotobase64;
+    this.user.ds_foto_usuario = this.fotobase64;
+    console.log('Base64',this.fotobase64);
+    console.log('foto',this.user.ds_foto_usuario);
 
     if (this.isAdding) {
+      console.log('Pré', this.user);
       this.userService.createUser(this.user).subscribe(response => {
         console.log(response);
         this.router.navigateByUrl('/');
       });
     } else {
+      console.log('Pré', this.user);
       this.userService.editUser(this.user).subscribe(response => {
         console.log(response);
       });

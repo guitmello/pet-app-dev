@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PetService } from '../pet.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { UserService } from 'src/app/user/user.service';
   templateUrl: './pet-add-edit.component.html',
   styleUrls: ['./pet-add-edit.component.scss']
 })
-export class PetAddEditComponent implements OnInit, OnChanges {
+export class PetAddEditComponent implements OnInit {
 
   isAdding = true;
 
@@ -19,6 +19,8 @@ export class PetAddEditComponent implements OnInit, OnChanges {
   userId: number;
 
   petForm: FormGroup;
+
+  fotobase64: string;
 
   genderArray: Array<Object> = [
     { value: 'Macho', viewValue: 'Macho' },
@@ -53,11 +55,14 @@ export class PetAddEditComponent implements OnInit, OnChanges {
           this.userId = this.userService.getUserId();
           if (Number(response.payload.cd_usuario_fk) === this.userId) {
             this.petTransform(response);
+            this.fotobase64 = this.pet.ds_foto_animal;
           } else {
             this.router.navigateByUrl('/');
           }
         });
         this.isAdding = false;
+      } else {
+        this.fotobase64 = '../../assets/images/ft-pet.png';
       }
     });
 
@@ -91,9 +96,6 @@ export class PetAddEditComponent implements OnInit, OnChanges {
     });
 
     this.fillSpecies();
-  }
-
-  ngOnChanges() {
     this.changePhoto();
   }
 
@@ -104,10 +106,8 @@ export class PetAddEditComponent implements OnInit, OnChanges {
   }
 
   fillRaces(id) {
-    console.log('races');
     this.petService.getRaces(id).subscribe(races => {
       this.raceArray = races;
-      console.log(this.raceArray);
     });
   }
 
@@ -118,9 +118,10 @@ export class PetAddEditComponent implements OnInit, OnChanges {
       )).files;
       if (filesSelected.length > 0) {
         const fileToLoad = filesSelected[0];
+        this.fotobase64 = fileToLoad;
         const fileReader = new FileReader();
         fileReader.onload = function(fileLoadEvent) {
-          const base64value = <FileReader>event.target;
+          const base64value = fileReader;
           (<HTMLInputElement>document.getElementById('imgupload')).setAttribute(
             'base64-value', base64value.result.toString()
           );
@@ -130,25 +131,37 @@ export class PetAddEditComponent implements OnInit, OnChanges {
     });
   }
 
-  petRegister() {
-    let fotobase64 = (<HTMLInputElement>document.getElementById('imgupload')).getAttribute('base64-value');
-
-    if (!fotobase64) {
-      fotobase64 = '../../assets/images/ft-pet.png';
+  readURL() {
+    const input = <HTMLInputElement>(document.getElementById('imgupload'));
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function(e: any) {
+        document.querySelector('#img').setAttribute('src', e.target.result);
+      };
+      reader.readAsDataURL(input.files[0]);
     }
+  }
+
+  petRegister() {
+    this.fotobase64 = (<HTMLInputElement>document.getElementById('imgupload')).getAttribute('base64-value');
+    this.pet.ds_foto_animal = this.fotobase64;
+    this.pet.cd_usuario_fk = this.userService.getUserId();
 
     if (this.isAdding) {
       this.petService.createPet(this.pet).subscribe(response => {
         console.log(response);
+        this.router.navigateByUrl('meus-pets');
       });
     } else {
       this.petService.editPet(this.pet).subscribe(response => {
         console.log(response);
+        this.router.navigateByUrl('meus-pets');
       });
     }
   }
 
   petTransform(petPayload: Pet) {
+    this.pet.id = petPayload.payload.id;
     this.pet.cd_especie_fk = petPayload.payload.cd_especie_fk;
     this.pet.cd_idade_animal = petPayload.payload.cd_idade_animal;
     this.pet.cd_raca_fk = petPayload.payload.cd_raca_fk;

@@ -9,9 +9,14 @@
   <mat-card>
     <div class="pure-g">
       <form [formGroup]="petForm">
-        <div class="pure-u-1">
-          <button mat-fab color="primary" (click)="imgFileInput.click()">
-            <mat-icon aria-label="Tirar Foto">add_a_photo</mat-icon>
+          <div class="img-rounded-area">
+            <img
+              (click)="imgFileInput.click()"
+              id="img"
+              class="img-rounded"
+              [src]="fotobase64"
+              alt="Foto do Pet"
+            />
             <input
               hidden
               type="file"
@@ -19,9 +24,9 @@
               id="imgupload"
               capture="camera"
               #imgFileInput
+              (change)="readURL(this)"
             />
-          </button>
-        </div>
+          </div>
 
         <div class="pure-u-1">
           <div class="form-control">
@@ -62,6 +67,7 @@
               <mat-select
                 name="text_idade"
                 formControlName="nm_idade_animal"
+                [(ngModel)]="pet.nm_idade_animal"
                 placeholder="Período"
                 required
               >

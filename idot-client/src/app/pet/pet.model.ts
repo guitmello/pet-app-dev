@@ -1,7 +1,8 @@
 export class Pet {
-    cd_animal?: number;
+    id?: number;
     nm_animal?: string;
     cd_idade_animal?: number;
+    nm_idade_animal?: string;
     nm_cor_animal?: string;
     nm_tamanho_animal: string;
     ic_deficiencia_animal?: boolean;
@@ -12,12 +13,13 @@ export class Pet {
     nm_especie_animal?: string;
     cd_raca_fk?: number;
     nm_raca_animal?: string;
-    cd_usuario_fk: string;
+    cd_usuario_fk: number;
 
     payload: {
-        cd_animal?: number;
+        id?: number;
         nm_animal?: string;
         cd_idade_animal?: number;
+        nm_idade_animal?: string;
         nm_cor_animal?: string;
         nm_tamanho_animal: string;
         ic_deficiencia_animal?: boolean;
@@ -28,6 +30,6 @@ export class Pet {
         nm_especie_animal?: string;
         cd_raca_fk?: number;
         nm_raca_animal?: string;
-        cd_usuario_fk: string;
+        cd_usuario_fk: number;
     };
 }

@@ -26,16 +26,16 @@ export class ModalDeleteComponent implements OnInit {
   }
 
   deletePet() {
-    this.petService.deletePet(this.data.id).subscribe(destroy => {
-      this.removePet(this.data);
+    console.log(this.data.pet.id);
+    this.petService.deletePet(this.data.pet.id).subscribe(destroy => {
+      this.removePet(this.data.pet);
       console.log('Deletado');
       this.dialogRef.close();
     });
   }
 
   removePet(pet: Pet) {
-    console.log(pet);
-    this.pets.splice(this.pets.indexOf(pet), 1);
+    this.petService.removePet(pet);
   }
 
 }

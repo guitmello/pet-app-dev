@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Pet } from './pet.model';
+import { PetFavorite } from './petFavorite.model';
 import { API_URL } from '../app.api';
 import { Observable } from 'rxjs';
 
@@ -68,12 +69,12 @@ export class PetService {
     return this.petRemoved.emit(pet);
   }
 
-  addFavorite(pet: Pet): Observable<Pet[]> {
-    return this.http.post<Pet[]>(API_URL + this.urlPostFavorite, pet);
+  addFavorite(petFavorite: PetFavorite): Observable<PetFavorite> {
+    return this.http.post<PetFavorite>(API_URL + this.urlPostFavorite, petFavorite);
   }
 
-  deleteFavorite(id: number): Observable<Pet[]> {
-    return this.http.get<Pet[]>(API_URL + this.urlGetMyPets + id + '/destroy');
+  deleteFavorite(id: number): Observable<Pet> {
+    return this.http.get<Pet>(API_URL + this.urlGetMyPets + id + '/destroy');
   }
 
 }

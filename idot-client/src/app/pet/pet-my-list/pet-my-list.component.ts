@@ -55,9 +55,8 @@ export class PetMyListComponent implements OnInit {
 
   getPetRemoved() {
     this.petService.petRemoved.subscribe(pet => {
-      console.log(pet);
-      console.log(this.pets);
-      this.pets.splice(this.pets.indexOf(pet), 1);
+      this.router.navigateByUrl('home');
+      // this.pets.splice(this.pets.indexOf(pet), 1);
     });
   }
 

@@ -12,36 +12,15 @@
       <div class="pure-g">
         <form [formGroup]="userFormPhysical">
           <div class="img-rounded-area">
-            <img
-              (click)="imgFileInput.click()"
-              id="img"
-              class="img-rounded"
-              [src]="fotobase64"
-              alt="Foto do Usuário"
-            />
-            <input
-              hidden
-              type="file"
-              accept="image/*"
-              id="imgupload"
-              capture="camera"
-              #imgFileInput
-              (change)="readURL()"
-            />
+            <img (click)="imgFileInput.click()" id="img" class="img-rounded" [src]="fotobase64" alt="Foto do Usuário" />
+            <input hidden type="file" accept="image/*" id="imgupload" capture="camera" #imgFileInput (change)="readURL()" />
           </div>
 
           <div class="pure-u-1">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [(ngModel)]="user.nm_usuario"
-                  formControlName="nm_usuario"
-                  type="text"
-                  name="nome"
-                  placeholder="Nome"
-                  required
-                />
+                <input matInput [(ngModel)]="user.nm_usuario" formControlName="nm_usuario" type="text" name="nome"
+                  placeholder="Nome" required />
               </mat-form-field>
             </div>
           </div>
@@ -49,15 +28,8 @@
           <div class="pure-u-1">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [(ngModel)]="user.nm_email_usuario"
-                  formControlName="nm_email_usuario"
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  required
-                />
+                <input matInput [(ngModel)]="user.nm_email_usuario" formControlName="nm_email_usuario" type="email"
+                  name="email" placeholder="Email" required />
               </mat-form-field>
             </div>
           </div>
@@ -65,16 +37,8 @@
           <div class="pure-u-1-2">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [textMask]="{ mask: cpfMask }"
-                  [(ngModel)]="user.cd_cpf_usuario"
-                  formControlName="cd_cpf_usuario"
-                  type="text"
-                  name="cpf"
-                  placeholder="CPF"
-                  required
-                />
+                <input matInput [textMask]="{ mask: cpfMask }" [(ngModel)]="user.cd_cpf_usuario" formControlName="cd_cpf_usuario"
+                  type="text" name="cpf" placeholder="CPF" required />
               </mat-form-field>
             </div>
           </div>
@@ -82,17 +46,9 @@
           <div class="pure-u-1-2">
             <div class="form-control">
               <mat-form-field>
-                <mat-select
-                  name="sexo"
-                  [(ngModel)]="user.nm_sexo_usuario"
-                  formControlName="nm_sexo_usuario"
-                  placeholder="Sexo"
-                  required
-                >
-                  <mat-option
-                    *ngFor="let gender of genderArray"
-                    [value]="gender.value"
-                  >
+                <mat-select name="sexo" [(ngModel)]="user.nm_sexo_usuario" formControlName="nm_sexo_usuario"
+                  placeholder="Sexo" required>
+                  <mat-option *ngFor="let gender of genderArray" [value]="gender.value">
                     {{ gender.viewValue }}
                   </mat-option>
                 </mat-select>
@@ -103,26 +59,10 @@
           <div class="pure-u-1">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [(ngModel)]="user.dt_nascimento_usuario"
-                  formControlName="dt_nascimento_usuario"
-                  name="dtNascimento"
-                  [min]="minDate"
-                  [max]="maxDate"
-                  [matDatepicker]="picker"
-                  placeholder="Data de Nascimento"
-                  disabled
-                />
-                <mat-datepicker-toggle
-                  matSuffix
-                  [for]="picker"
-                ></mat-datepicker-toggle>
-                <mat-datepicker
-                  touchUi
-                  #picker
-                  disabled="false"
-                ></mat-datepicker>
+                <input matInput [(ngModel)]="user.dt_nascimento_usuario" formControlName="dt_nascimento_usuario" name="dtNascimento"
+                  [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Data de Nascimento" disabled />
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker disabled="false"></mat-datepicker>
               </mat-form-field>
             </div>
           </div>
@@ -130,16 +70,8 @@
           <div class="pure-u-1-2">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [textMask]="{ mask: celMask }"
-                  [(ngModel)]="user.cd_telefone_usuario"
-                  formControlName="cd_telefone_usuario"
-                  type="text"
-                  name="telefone"
-                  placeholder="Telefone"
-                  required
-                />
+                <input matInput [textMask]="{ mask: celMask }" [(ngModel)]="user.cd_telefone_usuario" formControlName="cd_telefone_usuario"
+                  type="text" name="telefone" placeholder="Telefone" required />
               </mat-form-field>
             </div>
           </div>
@@ -147,16 +79,8 @@
           <div class="pure-u-1-2">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [textMask]="{ mask: cepMask }"
-                  [(ngModel)]="user.cd_cep_usuario"
-                  formControlName="cd_cep_usuario"
-                  type="text"
-                  name="cep"
-                  placeholder="CEP"
-                  required
-                />
+                <input matInput [textMask]="{ mask: cepMask }" [(ngModel)]="user.cd_cep_usuario" formControlName="cd_cep_usuario"
+                  type="text" name="cep" placeholder="CEP" required />
               </mat-form-field>
             </div>
           </div>
@@ -164,25 +88,11 @@
           <div class="pure-u-1-2">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [(ngModel)]="user.nm_estado_usuario"
-                  formControlName="nm_estado_usuario"
-                  id="estado"
-                  [matAutocomplete]="autoStates"
-                  name="estado"
-                  type="text"
-                  placeholder="Estado"
-                  (click)="emptyInput()"
-                  (blur)="blurInStates()"
-                  (keyup)="fillFiltredStates()"
-                  required
-                />
+                <input matInput [(ngModel)]="user.nm_estado_usuario" formControlName="nm_estado_usuario" id="estado"
+                  [matAutocomplete]="autoStates" name="estado" type="text" placeholder="Estado" (click)="emptyInput()"
+                  (blur)="blurInStates()" (keyup)="fillFiltredStates()" required />
                 <mat-autocomplete #autoStates="matAutocomplete">
-                  <mat-option
-                    *ngFor="let option of filtredStates"
-                    [value]="option"
-                  >
+                  <mat-option *ngFor="let option of filtredStates" [value]="option">
                     {{ option }}
                   </mat-option>
                 </mat-autocomplete>
@@ -193,24 +103,11 @@
           <div class="pure-u-1-2">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [(ngModel)]="user.nm_cidade_usuario"
-                  formControlName="nm_cidade_usuario"
-                  id="cidade"
-                  name="cidade"
-                  [matAutocomplete]="autoCities"
-                  type="text"
-                  placeholder="Cidade"
-                  (click)="blurInStates()"
-                  (keyup)="fillFiltredCities()"
-                  required
-                />
+                <input matInput [(ngModel)]="user.nm_cidade_usuario" formControlName="nm_cidade_usuario" id="cidade"
+                  name="cidade" [matAutocomplete]="autoCities" type="text" placeholder="Cidade" (click)="blurInStates()"
+                  (keyup)="fillFiltredCities()" required />
                 <mat-autocomplete #autoCities="matAutocomplete">
-                  <mat-option
-                    *ngFor="let option of filtredCities"
-                    [value]="option"
-                  >
+                  <mat-option *ngFor="let option of filtredCities" [value]="option">
                     {{ option }}
                   </mat-option>
                 </mat-autocomplete>
@@ -221,15 +118,8 @@
           <div class="pure-u-1-2">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [(ngModel)]="user.nm_endereco_usuario"
-                  formControlName="nm_endereco_usuario"
-                  name="endereco"
-                  type="text"
-                  placeholder="Endereço"
-                  required
-                />
+                <input matInput [(ngModel)]="user.nm_endereco_usuario" formControlName="nm_endereco_usuario" name="endereco"
+                  type="text" placeholder="Endereço" required />
               </mat-form-field>
             </div>
           </div>
@@ -237,16 +127,8 @@
           <div class="pure-u-1-2">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [textMask]="{ mask: numMask }"
-                  [(ngModel)]="user.cd_numero_endereco_usuario"
-                  formControlName="cd_numero_endereco_usuario"
-                  name="numero"
-                  type="text"
-                  placeholder="Número"
-                  required
-                />
+                <input matInput [textMask]="{ mask: numMask }" [(ngModel)]="user.cd_numero_endereco_usuario"
+                  formControlName="cd_numero_endereco_usuario" name="numero" type="text" placeholder="Número" required />
               </mat-form-field>
             </div>
           </div>
@@ -254,14 +136,8 @@
           <div class="pure-u-1">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [(ngModel)]="user.ds_complemento_endereco_usuario"
-                  formControlName="ds_complemento_endereco_usuario"
-                  name="complemento"
-                  type="text"
-                  placeholder="Complemento"
-                />
+                <input matInput [(ngModel)]="user.ds_complemento_endereco_usuario" formControlName="ds_complemento_endereco_usuario"
+                  name="complemento" type="text" placeholder="Complemento" />
               </mat-form-field>
             </div>
           </div>
@@ -269,18 +145,11 @@
           <div *ngIf="isAdding" class="pure-u-1">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [(ngModel)]="user.cd_senha_usuario"
-                  formControlName="cd_senha_usuario"
-                  [type]="hide ? 'password' : 'text'"
-                  name="senha"
-                  type="password"
-                  placeholder="Senha"
-                />
+                <input matInput [(ngModel)]="user.cd_senha_usuario" formControlName="cd_senha_usuario" [type]="hide ? 'password' : 'text'"
+                  name="senha" type="password" placeholder="Senha" />
                 <mat-icon matSuffix (click)="hide = !hide">{{
                   hide ? "visibility" : "visibility_off"
-                }}</mat-icon>
+                  }}</mat-icon>
               </mat-form-field>
             </div>
           </div>
@@ -288,44 +157,26 @@
           <div *ngIf="isAdding" class="pure-u-1">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  formControlName="cd_senha_confirmacao_usuario"
-                  [type]="hideConfirm ? 'password' : 'text'"
-                  name="confirmacaoSenha"
-                  type="password"
-                  placeholder="Confirme sua Senha"
-                  required
-                />
+                <input matInput formControlName="cd_senha_confirmacao_usuario" [type]="hideConfirm ? 'password' : 'text'"
+                  name="confirmacaoSenha" type="password" placeholder="Confirme sua Senha" required />
                 <mat-icon matSuffix (click)="hideConfirm = !hideConfirm">{{
                   hideConfirm ? "visibility" : "visibility_off"
-                }}</mat-icon>
+                  }}</mat-icon>
               </mat-form-field>
             </div>
           </div>
 
           <div class="pure-u-1-2">
             <div class="row-center">
-              <button
-                (click)="cancelar()"
-                mat-raised-button
-                type="submit"
-                color="primary"
-                class="w-90"
-              >
+              <button (click)="cancelar()" mat-raised-button type="submit" color="primary" class="w-90">
                 Cancelar
               </button>
             </div>
           </div>
           <div class="pure-u-1-2">
             <div class="row-center">
-              <button
-                (click)="userRegister()"
-                [disabled]="userFormPhysical.invalid"
-                mat-raised-button
-                color="primary"
-                class="w-90"
-              >
+              <button (click)="userRegister()" [disabled]="userFormPhysical.invalid" mat-raised-button color="primary"
+                class="w-90">
                 Confirmar
               </button>
             </div>
@@ -347,37 +198,16 @@
     <mat-card>
       <div class="pure-g">
         <form [formGroup]="userFormLegal">
-            <div class="img-rounded-area">
-                <img
-                  (click)="imgFileInput.click()"
-                  id="img"
-                  class="img-rounded"
-                  [src]="fotobase64"
-                  alt="Foto do Usuário"
-                />
-                <input
-                  hidden
-                  type="file"
-                  accept="image/*"
-                  id="imgupload"
-                  capture="camera"
-                  #imgFileInput
-                  (change)="readURL()"
-                />
-              </div>
+          <div class="img-rounded-area">
+            <img (click)="imgFileInput.click()" id="img" class="img-rounded" [src]="fotobase64" alt="Foto do Usuário" />
+            <input hidden type="file" accept="image/*" id="imgupload" capture="camera" #imgFileInput (change)="readURL()" />
+          </div>
 
           <div class="pure-u-1">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [(ngModel)]="user.nm_razao_social_usuario"
-                  formControlName="nm_razao_social_usuario"
-                  type="text"
-                  name="razaoSocial"
-                  placeholder="Razão Social"
-                  required
-                />
+                <input matInput [(ngModel)]="user.nm_razao_social_usuario" formControlName="nm_razao_social_usuario"
+                  type="text" name="razaoSocial" placeholder="Razão Social" required />
               </mat-form-field>
             </div>
           </div>
@@ -385,15 +215,8 @@
           <div class="pure-u-1">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [(ngModel)]="user.nm_email_usuario"
-                  formControlName="nm_email_usuario"
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  required
-                />
+                <input matInput [(ngModel)]="user.nm_email_usuario" formControlName="nm_email_usuario" type="email"
+                  name="email" placeholder="Email" required />
               </mat-form-field>
             </div>
           </div>
@@ -401,16 +224,8 @@
           <div class="pure-u-1">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [(ngModel)]="user.cd_cnpj_usuario"
-                  formControlName="cd_cnpj_usuario"
-                  [textMask]="{ mask: cnpjMask }"
-                  type="text"
-                  name="cnpj"
-                  placeholder="CNPJ"
-                  required
-                />
+                <input matInput [(ngModel)]="user.cd_cnpj_usuario" formControlName="cd_cnpj_usuario" [textMask]="{ mask: cnpjMask }"
+                  type="text" name="cnpj" placeholder="CNPJ" required />
               </mat-form-field>
             </div>
           </div>
@@ -418,16 +233,8 @@
           <div class="pure-u-1-2">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [textMask]="{ mask: celMask }"
-                  [(ngModel)]="user.cd_telefone_usuario"
-                  formControlName="cd_telefone_usuario"
-                  type="text"
-                  name="telefone"
-                  placeholder="Telefone"
-                  required
-                />
+                <input matInput [textMask]="{ mask: celMask }" [(ngModel)]="user.cd_telefone_usuario" formControlName="cd_telefone_usuario"
+                  type="text" name="telefone" placeholder="Telefone" required />
               </mat-form-field>
             </div>
           </div>
@@ -435,16 +242,8 @@
           <div class="pure-u-1-2">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [textMask]="{ mask: cepMask }"
-                  [(ngModel)]="user.cd_cep_usuario"
-                  formControlName="cd_cep_usuario"
-                  type="text"
-                  name="cep"
-                  placeholder="CEP"
-                  required
-                />
+                <input matInput [textMask]="{ mask: cepMask }" [(ngModel)]="user.cd_cep_usuario" formControlName="cd_cep_usuario"
+                  type="text" name="cep" placeholder="CEP" required />
               </mat-form-field>
             </div>
           </div>
@@ -452,25 +251,11 @@
           <div class="pure-u-1-2">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [(ngModel)]="user.nm_estado_usuario"
-                  formControlName="nm_estado_usuario"
-                  id="estado"
-                  [matAutocomplete]="autoStates"
-                  name="estado"
-                  type="text"
-                  placeholder="Estado"
-                  (click)="emptyInput()"
-                  (blur)="blurInStates()"
-                  (keyup)="fillFiltredStates()"
-                  required
-                />
+                <input matInput [(ngModel)]="user.nm_estado_usuario" formControlName="nm_estado_usuario" id="estado"
+                  [matAutocomplete]="autoStates" name="estado" type="text" placeholder="Estado" (click)="emptyInput()"
+                  (blur)="blurInStates()" (keyup)="fillFiltredStates()" required />
                 <mat-autocomplete #autoStates="matAutocomplete">
-                  <mat-option
-                    *ngFor="let option of filtredStates"
-                    [value]="option"
-                  >
+                  <mat-option *ngFor="let option of filtredStates" [value]="option">
                     {{ option }}
                   </mat-option>
                 </mat-autocomplete>
@@ -481,24 +266,11 @@
           <div class="pure-u-1-2">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [(ngModel)]="user.nm_cidade_usuario"
-                  formControlName="nm_cidade_usuario"
-                  id="cidade"
-                  name="cidade"
-                  [matAutocomplete]="autoCities"
-                  type="text"
-                  placeholder="Cidade"
-                  (click)="blurInStates()"
-                  (keyup)="fillFiltredCities()"
-                  required
-                />
+                <input matInput [(ngModel)]="user.nm_cidade_usuario" formControlName="nm_cidade_usuario" id="cidade"
+                  name="cidade" [matAutocomplete]="autoCities" type="text" placeholder="Cidade" (click)="blurInStates()"
+                  (keyup)="fillFiltredCities()" required />
                 <mat-autocomplete #autoCities="matAutocomplete">
-                  <mat-option
-                    *ngFor="let option of filtredCities"
-                    [value]="option"
-                  >
+                  <mat-option *ngFor="let option of filtredCities" [value]="option">
                     {{ option }}
                   </mat-option>
                 </mat-autocomplete>
@@ -509,15 +281,8 @@
           <div class="pure-u-1">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [(ngModel)]="user.nm_endereco_usuario"
-                  formControlName="nm_endereco_usuario"
-                  name="endereco"
-                  type="text"
-                  placeholder="Endereço"
-                  required
-                />
+                <input matInput [(ngModel)]="user.nm_endereco_usuario" formControlName="nm_endereco_usuario" name="endereco"
+                  type="text" placeholder="Endereço" required />
               </mat-form-field>
             </div>
           </div>
@@ -525,16 +290,8 @@
           <div class="pure-u-1-2">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [textMask]="{ mask: numMask }"
-                  [(ngModel)]="user.cd_numero_endereco_usuario"
-                  formControlName="cd_numero_endereco_usuario"
-                  name="numero"
-                  type="text"
-                  placeholder="Número"
-                  required
-                />
+                <input matInput [textMask]="{ mask: numMask }" [(ngModel)]="user.cd_numero_endereco_usuario"
+                  formControlName="cd_numero_endereco_usuario" name="numero" type="text" placeholder="Número" required />
               </mat-form-field>
             </div>
           </div>
@@ -542,14 +299,8 @@
           <div class="pure-u-1-2">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [(ngModel)]="user.ds_complemento_endereco_usuario"
-                  formControlName="ds_complemento_endereco_usuario"
-                  name="complemento"
-                  type="text"
-                  placeholder="Complemento"
-                />
+                <input matInput [(ngModel)]="user.ds_complemento_endereco_usuario" formControlName="ds_complemento_endereco_usuario"
+                  name="complemento" type="text" placeholder="Complemento" />
               </mat-form-field>
             </div>
           </div>
@@ -557,18 +308,11 @@
           <div *ngIf="isAdding" class="pure-u-1">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  [(ngModel)]="user.cd_senha_usuario"
-                  formControlName="cd_senha_usuario"
-                  [type]="hide ? 'password' : 'text'"
-                  name="senha"
-                  type="password"
-                  placeholder="Senha"
-                />
+                <input matInput [(ngModel)]="user.cd_senha_usuario" formControlName="cd_senha_usuario" [type]="hide ? 'password' : 'text'"
+                  name="senha" type="password" placeholder="Senha" />
                 <mat-icon matSuffix (click)="hide = !hide">{{
                   hide ? "visibility" : "visibility_off"
-                }}</mat-icon>
+                  }}</mat-icon>
               </mat-form-field>
             </div>
           </div>
@@ -576,44 +320,26 @@
           <div *ngIf="isAdding" class="pure-u-1">
             <div class="form-control">
               <mat-form-field>
-                <input
-                  matInput
-                  formControlName="cd_senha_confirmacao_usuario"
-                  [type]="hideConfirm ? 'password' : 'text'"
-                  name="confirmacaoSenha"
-                  type="password"
-                  placeholder="Confirme sua Senha"
-                  required
-                />
+                <input matInput formControlName="cd_senha_confirmacao_usuario" [type]="hideConfirm ? 'password' : 'text'"
+                  name="confirmacaoSenha" type="password" placeholder="Confirme sua Senha" required />
                 <mat-icon matSuffix (click)="hideConfirm = !hideConfirm">{{
                   hideConfirm ? "visibility" : "visibility_off"
-                }}</mat-icon>
+                  }}</mat-icon>
               </mat-form-field>
             </div>
           </div>
 
           <div class="pure-u-1-2">
             <div class="row-center">
-              <button
-                (click)="cancelar()"
-                mat-raised-button
-                type="submit"
-                color="primary"
-                class="w-90"
-              >
+              <button (click)="cancelar()" mat-raised-button type="submit" color="primary" class="w-90">
                 Cancelar
               </button>
             </div>
           </div>
           <div class="pure-u-1-2">
             <div class="row-center">
-              <button
-                (click)="userRegister()"
-                [disabled]="userFormLegal.invalid"
-                mat-raised-button
-                color="primary"
-                class="w-90"
-              >
+              <button (click)="userRegister()" [disabled]="userFormLegal.invalid" mat-raised-button color="primary"
+                class="w-90">
                 Confirmar
               </button>
             </div>

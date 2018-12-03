@@ -5,6 +5,7 @@ import { UserService } from '../user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CityState } from '../cityState.model';
 import { State } from '../state.model';
+import { NotificationService } from '../../notification/notification.service';
 
 @Component({
   selector: 'app-user-add-edit',
@@ -41,6 +42,7 @@ export class UserAddEditComponent implements OnInit {
   numMask: Array<string | RegExp>;
 
   constructor(
+    private notificationService: NotificationService,
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
     private router: Router
@@ -178,7 +180,7 @@ export class UserAddEditComponent implements OnInit {
   }
 
   changePhoto() {
-    document.addEventListener('DOMContentLoaded', function(event) {
+    document.addEventListener('DOMContentLoaded', function (event) {
       document.querySelector('#imgupload').addEventListener('change', function () {
         const filesSelected = (<HTMLInputElement>(
           document.getElementById('imgupload')
@@ -196,14 +198,14 @@ export class UserAddEditComponent implements OnInit {
           fileReader.readAsDataURL(fileToLoad);
         }
       });
-  });
+    });
   }
 
   readURL() {
     const input = <HTMLInputElement>(document.getElementById('imgupload'));
     if (input.files && input.files[0]) {
       const reader = new FileReader();
-      reader.onload = function(e: any) {
+      reader.onload = function (e: any) {
         document.querySelector('#img').setAttribute('src', e.target.result);
       };
       reader.readAsDataURL(input.files[0]);
@@ -215,14 +217,17 @@ export class UserAddEditComponent implements OnInit {
     this.fotobase64 = (<HTMLInputElement>document.getElementById('imgupload')).getAttribute('base64-value');
 
     this.user.ds_foto_usuario = this.fotobase64;
-    console.log('Base64',this.fotobase64);
-    console.log('foto',this.user.ds_foto_usuario);
+    console.log('Base64', this.fotobase64);
+    console.log('foto', this.user.ds_foto_usuario);
 
     if (this.isAdding) {
       console.log('Pré', this.user);
       this.userService.createUser(this.user).subscribe(response => {
         console.log(response);
         this.router.navigateByUrl('/');
+      }, err => {
+        console.log('deu erro');
+        this.notificationService.notification(err.error.messageUser);
       });
     } else {
       console.log('Pré', this.user);

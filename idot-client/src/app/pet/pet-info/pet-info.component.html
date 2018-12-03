@@ -13,12 +13,17 @@
   <mat-card>
     <div class="pure-g">
       <div class="img-rounded-area">
-        <div
-          class="img-rounded"
-          [ngStyle]="{
+        <div class="img-rounded" [ngStyle]="{
             'background-image': 'url(' + pet?.payload.ds_foto_animal + ') '
-          }"
-        ></div>
+          }"></div>
+        <div class="row-center">
+          <button *ngIf="!petFavorited" (click)="favorite()" color="primary" mat-mini-fab>
+            <mat-icon>favorite</mat-icon>
+          </button>
+          <button *ngIf="petFavorited" (click)="unFavorite()" color="primary" mat-mini-fab>
+            <mat-icon>favorite_border</mat-icon>
+          </button>
+        </div>
       </div>
     </div>
   </mat-card>

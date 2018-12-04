@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule,  } from '@angular/common/http';
+import { JsonpModule, Jsonp, Response } from '@angular/http';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -93,6 +94,7 @@ import { CepPipe } from './pipes/cep.pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    JsonpModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     }),

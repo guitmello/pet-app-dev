@@ -4,11 +4,18 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PetService } from '../pet/pet.service';
 import { User } from '../user/user.model';
 import { Pet } from '../pet/pet.model';
+import { fadeIn } from 'ng-animate';
+import { trigger, useAnimation, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
+  animations: [
+    trigger('fadeIn', [transition('* => *', useAnimation(fadeIn, {
+      params: { timing: 0.8, delay: 0 }
+    }))])
+  ]
 })
 export class SearchComponent implements OnInit {
 

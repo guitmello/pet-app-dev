@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../user.model';
-import { fadeInUp, bounceIn, fadeIn } from 'ng-animate';
+import { bounceIn, fadeIn } from 'ng-animate';
 import { trigger, useAnimation, transition } from '@angular/animations';
 
 @Component({

@@ -5,11 +5,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Pet } from '../pet.model';
 import { UserService } from 'src/app/user/user.service';
 import { NotificationService } from '../../notification/notification.service';
+import { fadeIn } from 'ng-animate';
+import { trigger, useAnimation, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-pet-add-edit',
   templateUrl: './pet-add-edit.component.html',
-  styleUrls: ['./pet-add-edit.component.scss']
+  styleUrls: ['./pet-add-edit.component.scss'],
+  animations: [
+    trigger('fadeIn', [transition('* => *', useAnimation(fadeIn, {
+      params: { timing: 0.8, delay: 0 }
+    }))])
+  ]
 })
 export class PetAddEditComponent implements OnInit {
 

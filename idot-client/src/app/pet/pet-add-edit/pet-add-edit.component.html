@@ -7,7 +7,7 @@
   </div>
 
   <mat-card>
-    <div class="pure-g">
+    <div class="pure-g" [@fadeIn]="{ value: fadeIn, params: { timing: myTiming || 0.8, delay: myDelay || 0 } }">
       <form [formGroup]="petForm">
         <div class="img-rounded-area">
           <img (click)="imgFileInput.click()" id="img" class="img-rounded" [src]="fotobase64" alt="Foto do Pet" />

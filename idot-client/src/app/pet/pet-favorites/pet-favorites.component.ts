@@ -3,19 +3,11 @@ import { UserService } from 'src/app/user/user.service';
 import { PetService } from '../pet.service';
 import { Pet } from '../pet.model';
 import { PetAux } from '../petAux.model';
-import { fadeInUp } from 'ng-animate';
-import { trigger, useAnimation, transition } from '@angular/animations';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pet-favorites',
   templateUrl: './pet-favorites.component.html',
-  styleUrls: ['./pet-favorites.component.scss'],
-  animations: [
-    trigger('fadeInUp', [transition('* => *', useAnimation(fadeInUp, {
-      params: { timing: 0.8, delay: 0 }
-    }))])
-  ]
+  styleUrls: ['./pet-favorites.component.scss']
 })
 export class PetFavoritesComponent implements OnInit {
 
@@ -27,7 +19,6 @@ export class PetFavoritesComponent implements OnInit {
   thereIsPet = true;
 
   constructor(
-    private router: Router,
     private userService: UserService,
     private petService: PetService
   ) { }
@@ -58,10 +49,5 @@ export class PetFavoritesComponent implements OnInit {
         }
       });
   }
-
-  goInfo(id: number) {
-    this.router.navigateByUrl('pet-info/' + id);
-  }
-
 
 }

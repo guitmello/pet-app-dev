@@ -303,6 +303,7 @@ export class UserAddEditComponent implements OnInit {
       console.log('Pré', this.user);
       this.userService.createUser(this.user).subscribe(response => {
         console.log(response);
+        this.notificationService.notification('Usuário cadastrado com sucesso!!');
         this.router.navigateByUrl('/');
       }, err => {
         console.log('deu erro');
@@ -313,7 +314,15 @@ export class UserAddEditComponent implements OnInit {
       delete this.user.cd_senha_usuario;
       this.userService.editUser(this.user).subscribe(response => {
         console.log(response);
+<<<<<<< HEAD
+        this.notificationService.notification('Usuário cadastrado com sucesso!!');
         this.router.navigateByUrl('/');
+      }, err => {
+        console.log('deu erro');
+        this.notificationService.notification(err.error.messageUser);
+=======
+        this.router.navigateByUrl('/');
+>>>>>>> d48792673eadff0fbc0adde152eec3115472b1ea
       });
     }
   }

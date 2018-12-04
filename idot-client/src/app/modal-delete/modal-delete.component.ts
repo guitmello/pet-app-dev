@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { PetService } from '../pet/pet.service';
 import { Pet } from '../pet/pet.model';
+import { NotificationService } from '../notification/notification.service';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class ModalDeleteComponent implements OnInit {
 
   constructor(
     private petService: PetService,
+    private notificationService: NotificationService,
     public dialogRef: MatDialogRef<ModalDeleteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
@@ -30,7 +32,10 @@ export class ModalDeleteComponent implements OnInit {
     this.petService.deletePet(this.data.pet.id).subscribe(destroy => {
       this.removePet(this.data.pet);
       console.log('Deletado');
+      this.notificationService.notification('Pet deletado com sucesso!');
       this.dialogRef.close();
+    }, err => {
+      this.notificationService.notification('Erro ao deletar o Pet');
     });
   }
 

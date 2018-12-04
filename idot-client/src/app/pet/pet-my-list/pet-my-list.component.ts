@@ -27,6 +27,8 @@ export class PetMyListComponent implements OnInit {
 
   userId: number;
 
+  thereIsPet = true;
+
   constructor(
     private petService: PetService,
     private userService: UserService,
@@ -35,6 +37,7 @@ export class PetMyListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.userId = this.userService.getUserId();
     this.getMyPets(this.userId);
     this.getPetRemoved();
@@ -44,6 +47,10 @@ export class PetMyListComponent implements OnInit {
     this.petService.getMyPets(id)
       .subscribe(response => {
         this.pets = response;
+        console.log(this.pets);
+        if (this.pets.payload.length === 0) {
+          this.thereIsPet = false;
+        }
       });
   }
 

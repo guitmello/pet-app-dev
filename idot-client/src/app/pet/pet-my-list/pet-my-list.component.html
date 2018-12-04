@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="title">Meus Pets</h1>
+  <h1 class="title">Meus Pets</h1>
   <mat-card *ngFor="let pet of pets.payload" [@fadeInUp]="{ value: fadeInUp, params: { timing: myTiming || 0.8, delay: myDelay || 0 } }">
     <div class="pure-g">
       <div class="pure-u-1">
@@ -8,11 +8,7 @@
             <mat-panel-title>
               <mat-list>
                 <mat-list-item>
-                  <img
-                    matListAvatar
-                    [src]="pet.ds_foto_animal"
-                    alt="Foto do Pet"
-                  />
+                  <img matListAvatar [src]="pet.ds_foto_animal" alt="Foto do Pet" />
                   <h4 mat-line class="font-bold">{{ pet.nm_animal }}</h4>
                   <p mat-line>
                     {{ pet.cd_idade_animal }} {{ pet.nm_idade_animal }}
@@ -57,11 +53,7 @@
                   </button>
                 </li>
                 <li>
-                  <button
-                    mat-mini-fab
-                    (click)="openDeleteDialog(pet)"
-                    class="remove"
-                  >
+                  <button mat-mini-fab (click)="openDeleteDialog(pet)" class="remove">
                     <mat-icon>delete</mat-icon>
                   </button>
                 </li>
@@ -72,4 +64,7 @@
       </div>
     </div>
   </mat-card>
+  <h3 *ngIf="!thereIsPet" class="row-center text-justify" style="margin-top:50%; margin-left: 45px; color:#A9A9A9">
+    Parece que você não tem qualquer pet cadastrado ... ):
+  </h3>
 </div>

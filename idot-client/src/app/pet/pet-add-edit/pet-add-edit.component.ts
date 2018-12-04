@@ -48,15 +48,18 @@ export class PetAddEditComponent implements OnInit {
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
       if (params.id) {
         this.petService.getPet(params.id).subscribe(response => {
           this.userId = this.userService.getUserId();
+          console.log(response);
           if (Number(response.payload.cd_usuario_fk) === this.userId) {
             this.petTransform(response);
+            console.log(this.pet);
+            this.fillRaces(this.pet.cd_especie_fk);
             this.fotobase64 = this.pet.ds_foto_animal;
           } else {
             this.router.navigateByUrl('/');
@@ -93,8 +96,8 @@ export class PetAddEditComponent implements OnInit {
       nm_raca_animal: new FormControl('', {
         validators: [Validators.required]
       }),
-      ic_deficiencia_animal: new FormControl('', { }),
-      ds_deficiencia_animal: new FormControl('', { })
+      ic_deficiencia_animal: new FormControl('', {}),
+      ds_deficiencia_animal: new FormControl('', {})
     });
 
     this.fillSpecies();
@@ -110,11 +113,12 @@ export class PetAddEditComponent implements OnInit {
   fillRaces(id) {
     this.petService.getRaces(id).subscribe(races => {
       this.raceArray = races;
+      console.log(this.raceArray);
     });
   }
 
   changePhoto() {
-    document.querySelector('#imgupload').addEventListener('change', function() {
+    document.querySelector('#imgupload').addEventListener('change', function () {
       const filesSelected = (<HTMLInputElement>(
         document.getElementById('imgupload')
       )).files;
@@ -122,7 +126,7 @@ export class PetAddEditComponent implements OnInit {
         const fileToLoad = filesSelected[0];
         this.fotobase64 = fileToLoad;
         const fileReader = new FileReader();
-        fileReader.onload = function(fileLoadEvent) {
+        fileReader.onload = function (fileLoadEvent) {
           const base64value = fileReader;
           (<HTMLInputElement>document.getElementById('imgupload')).setAttribute(
             'base64-value', base64value.result.toString()
@@ -137,7 +141,7 @@ export class PetAddEditComponent implements OnInit {
     const input = <HTMLInputElement>(document.getElementById('imgupload'));
     if (input.files && input.files[0]) {
       const reader = new FileReader();
-      reader.onload = function(e: any) {
+      reader.onload = function (e: any) {
         document.querySelector('#img').setAttribute('src', e.target.result);
       };
       reader.readAsDataURL(input.files[0]);
@@ -184,6 +188,7 @@ export class PetAddEditComponent implements OnInit {
     this.pet.nm_raca_animal = petPayload.payload.nm_raca_animal;
     this.pet.nm_sexo_animal = petPayload.payload.nm_sexo_animal;
     this.pet.nm_tamanho_animal = petPayload.payload.nm_tamanho_animal;
+    this.pet.nm_idade_animal = petPayload.payload.nm_idade_animal;
   }
 
 }

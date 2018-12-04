@@ -1,6 +1,6 @@
 <div class="container">
   <h1 class="title">Meus favoritos</h1>
-<!-- 
+  <!-- 
   <app-pet-view [pets]="arrayAux"></app-pet-view> -->
   <mat-card *ngFor="let pet of arrayAux.payload" (click)="goInfo(pet.id)" [@fadeInUp]="{ value: fadeInUp, params: { timing: myTiming || 0.8, delay: myDelay || 0 } }">
 
@@ -10,29 +10,34 @@
           <div class="img-rounded" [ngStyle]="{ 'background-image': 'url(' + pet?.ds_foto_animal + ') '}"></div>
         </div>
       </div>
-  
+
       <div class="pure-u-3-4">
         <mat-list>
-  
+
           <mat-list-item>
             <mat-icon matListIcon>pets</mat-icon>
             <h3 mat-line class="">{{pet?.nm_animal}}</h3>
           </mat-list-item>
-  
+
           <mat-list-item>
             <mat-icon matListIcon>calendar_today</mat-icon>
             <h3 mat-line class="">{{pet?.cd_idade_animal}} {{pet?.nm_idade_animal}}</h3>
           </mat-list-item>
-  
+
           <mat-list-item>
             <mat-icon matListIcon>location_on</mat-icon>
-            <h3 *ngIf="pet.nm_cidade_animal && pet.nm_estado_animal" mat-line class="">{{pet?.nm_cidade_animal}} - {{pet?.nm_estado_animal}}</h3>
-            <h3 *ngIf="!pet.nm_cidade_animal && !pet.nm_estado_animal" mat-line class="">{{pet?.Usuario.nm_cidade_usuario}} - {{pet?.Usuario.nm_estado_usuario}}</h3>
+            <h3 *ngIf="pet.nm_cidade_animal && pet.nm_estado_animal" mat-line class="">{{pet?.nm_cidade_animal}} -
+              {{pet?.nm_estado_animal}}</h3>
+            <h3 *ngIf="!pet.nm_cidade_animal && !pet.nm_estado_animal" mat-line class="">{{pet?.Usuario.nm_cidade_usuario}}
+              - {{pet?.Usuario.nm_estado_usuario}}</h3>
           </mat-list-item>
-  
+
         </mat-list>
       </div>
     </div>
-  
+
   </mat-card>
+  <h3 *ngIf="!thereIsPet" class="row-center text-justify" style="margin-top:50%; margin-left: 45px; color:#A9A9A9">
+    Parece que você não tem qualquer pet favoritado ... ):
+  </h3>
 </div>

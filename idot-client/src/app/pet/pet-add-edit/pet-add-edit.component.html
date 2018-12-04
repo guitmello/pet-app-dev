@@ -9,37 +9,16 @@
   <mat-card>
     <div class="pure-g">
       <form [formGroup]="petForm">
-          <div class="img-rounded-area">
-            <img
-              (click)="imgFileInput.click()"
-              id="img"
-              class="img-rounded"
-              [src]="fotobase64"
-              alt="Foto do Pet"
-            />
-            <input
-              hidden
-              type="file"
-              accept="image/*"
-              id="imgupload"
-              capture="camera"
-              #imgFileInput
-              (change)="readURL(this)"
-            />
-          </div>
+        <div class="img-rounded-area">
+          <img (click)="imgFileInput.click()" id="img" class="img-rounded" [src]="fotobase64" alt="Foto do Pet" />
+          <input hidden type="file" accept="image/*" id="imgupload" capture="camera" #imgFileInput (change)="readURL(this)" />
+        </div>
 
         <div class="pure-u-1">
           <div class="form-control">
             <mat-form-field>
-              <input
-                matInput
-                type="text"
-                name="nome"
-                formControlName="nm_animal"
-                [(ngModel)]="pet.nm_animal"
-                placeholder="Nome"
-                required
-              />
+              <input matInput type="text" name="nome" formControlName="nm_animal" [(ngModel)]="pet.nm_animal"
+                placeholder="Nome" required />
             </mat-form-field>
           </div>
         </div>
@@ -47,16 +26,8 @@
         <div class="pure-u-1-2">
           <div class="form-control">
             <mat-form-field>
-              <input
-                matInput
-                type="number"
-                name="idade"
-                formControlName="cd_idade_animal"
-                [(ngModel)]="pet.cd_idade_animal"
-                placeholder="Idade"
-                maxlength="2"
-                required
-              />
+              <input matInput type="number" name="idade" formControlName="cd_idade_animal" [(ngModel)]="pet.cd_idade_animal"
+                placeholder="Idade" maxlength="2" required />
             </mat-form-field>
           </div>
         </div>
@@ -64,13 +35,8 @@
         <div class="pure-u-1-2">
           <div class="form-control">
             <mat-form-field>
-              <mat-select
-                name="text_idade"
-                formControlName="nm_idade_animal"
-                [(ngModel)]="pet.nm_idade_animal"
-                placeholder="Período"
-                required
-              >
+              <mat-select name="text_idade" formControlName="nm_idade_animal" [(ngModel)]="pet.nm_idade_animal"
+                placeholder="Período" required>
                 <mat-option *ngFor="let age of ageArray" [value]="age.value">
                   {{ age.viewValue }}
                 </mat-option>
@@ -82,17 +48,9 @@
         <div class="pure-u-1-2">
           <div class="form-control">
             <mat-form-field>
-              <mat-select
-                name="sexo"
-                formControlName="nm_sexo_animal"
-                [(ngModel)]="pet.nm_sexo_animal"
-                placeholder="Sexo"
-                required
-              >
-                <mat-option
-                  *ngFor="let gender of genderArray"
-                  [value]="gender.value"
-                >
+              <mat-select name="sexo" formControlName="nm_sexo_animal" [(ngModel)]="pet.nm_sexo_animal" placeholder="Sexo"
+                required>
+                <mat-option *ngFor="let gender of genderArray" [value]="gender.value">
                   {{ gender.viewValue }}
                 </mat-option>
               </mat-select>
@@ -102,13 +60,8 @@
 
         <div class="pure-u-1-2">
           <mat-form-field>
-            <mat-select
-              name="tamanho"
-              formControlName="nm_tamanho_animal"
-              [(ngModel)]="pet.nm_tamanho_animal"
-              placeholder="Tamanho"
-              required
-            >
+            <mat-select name="tamanho" formControlName="nm_tamanho_animal" [(ngModel)]="pet.nm_tamanho_animal"
+              placeholder="Tamanho" required>
               <mat-option *ngFor="let size of sizeArray" [value]="size.value">
                 {{ size.viewValue }}
               </mat-option>
@@ -119,15 +72,8 @@
         <div class="pure-u-1">
           <div class="form-control">
             <mat-form-field>
-              <input
-                matInput
-                type="text"
-                name="cor"
-                formControlName="nm_cor_animal"
-                [(ngModel)]="pet.nm_cor_animal"
-                placeholder="Cor"
-                required
-              />
+              <input matInput type="text" name="cor" formControlName="nm_cor_animal" [(ngModel)]="pet.nm_cor_animal"
+                placeholder="Cor" required />
             </mat-form-field>
           </div>
         </div>
@@ -135,18 +81,9 @@
         <div class="pure-u-1-2">
           <div class="form-control">
             <mat-form-field>
-              <mat-select
-                name="especie"
-                placeholder="Espécie"
-                [(ngModel)]="pet.cd_especie_fk"
-                formControlName="nm_especie_animal"
-                (selectionChange)="fillRaces(pet.cd_especie_fk)"
-                required
-              >
-                <mat-option
-                  *ngFor="let specie of specieArray.payload"
-                  [value]="specie.id"
-                >
+              <mat-select name="especie" placeholder="Espécie" [(ngModel)]="pet.cd_especie_fk" formControlName="nm_especie_animal"
+                (selectionChange)="fillRaces(pet.cd_especie_fk)" required>
+                <mat-option *ngFor="let specie of specieArray.payload" [value]="specie.id">
                   {{ specie.nm_especie }}
                 </mat-option>
               </mat-select>
@@ -157,17 +94,9 @@
         <div class="pure-u-1-2">
           <div class="form-control">
             <mat-form-field>
-              <mat-select
-                name="raca"
-                [(ngModel)]="pet.cd_raca_fk"
-                formControlName="nm_raca_animal"
-                placeholder="Raça"
-                required
-              >
-                <mat-option
-                  *ngFor="let race of raceArray.payload"
-                  [value]="race.id"
-                >
+              <mat-select name="raca" [(ngModel)]="pet.cd_raca_fk" formControlName="nm_raca_animal" placeholder="Raça"
+                required>
+                <mat-option *ngFor="let race of raceArray.payload" [value]="race.id">
                   {{ race.nm_raca }}
                 </mat-option>
               </mat-select>
@@ -178,13 +107,8 @@
         <div class="pure-u-1">
           <div class="form-control">
             <div class="checkbox-align">
-              <mat-checkbox
-                name="deficiencia"
-                [(ngModel)]="pet.ic_deficiencia_animal"
-                formControlName="ic_deficiencia_animal"
-                color="primary"
-                >Há alguma deficiência?</mat-checkbox
-              >
+              <mat-checkbox name="deficiencia" [(ngModel)]="pet.ic_deficiencia_animal" formControlName="ic_deficiencia_animal"
+                color="primary">Há alguma deficiência?</mat-checkbox>
             </div>
           </div>
         </div>
@@ -192,27 +116,15 @@
         <div *ngIf="pet.ic_deficiencia_animal" class="pure-u-1">
           <div class="form-control">
             <mat-form-field>
-              <textarea
-                matInput
-                name="ds_deficiencia"
-                [(ngModel)]="pet.ds_deficiencia_animal"
-                formControlName="ds_deficiencia_animal"
-                placeholder="Qual?"
-              ></textarea>
+              <textarea matInput name="ds_deficiencia" [(ngModel)]="pet.ds_deficiencia_animal" formControlName="ds_deficiencia_animal"
+                placeholder="Qual?"></textarea>
             </mat-form-field>
           </div>
         </div>
 
         <div class="pure-u-1">
           <div class="button-submit-row row-center">
-            <button
-              mat-raised-button
-              type="submit"
-              color="primary"
-              class="w-50"
-              (click)="petRegister()"
-              [disabled]="petForm.invalid"
-            >
+            <button mat-raised-button type="submit" color="primary" class="w-50" (click)="petRegister()" [disabled]="petForm.invalid">
               Confirmar
             </button>
           </div>

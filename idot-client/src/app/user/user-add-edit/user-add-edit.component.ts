@@ -125,7 +125,6 @@ export class UserAddEditComponent implements OnInit {
         validators: [Validators.required]
       }),
       ds_complemento_endereco_usuario: new FormControl('', {
-        validators: [Validators.required]
       }),
       cd_senha_usuario: new FormControl('', {
         validators: [Validators.required]
@@ -165,7 +164,6 @@ export class UserAddEditComponent implements OnInit {
         validators: [Validators.required]
       }),
       ds_complemento_endereco_usuario: new FormControl('', {
-        validators: [Validators.required]
       }),
       cd_senha_usuario: new FormControl('', {
         validators: [Validators.required]

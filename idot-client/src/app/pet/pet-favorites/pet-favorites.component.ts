@@ -24,6 +24,7 @@ export class PetFavoritesComponent implements OnInit {
   arrayFalsePet: any[] = [];
   arrayAux: PetAux;
   userId: number;
+  thereIsPet = true;
 
   constructor(
     private router: Router,
@@ -52,6 +53,9 @@ export class PetFavoritesComponent implements OnInit {
           count++;
         });
         console.log('this.arrayAux - dentro do favorites', this.arrayAux);
+        if (this.arrayAux.payload.length === 0) {
+          this.thereIsPet = false;
+        }
       });
   }
 

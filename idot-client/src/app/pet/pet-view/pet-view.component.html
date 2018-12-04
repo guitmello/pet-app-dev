@@ -1,4 +1,4 @@
-<mat-card *ngFor="let pet of pets.payload" (click)="goInfo(pet.id)">
+<mat-card *ngFor="let pet of pets.payload" (click)="goInfo(pet.id)" [@fadeInUp]="{ value: fadeInUp, params: { timing: myTiming || 0.8, delay: myDelay || 0 } }">
 
   <div class="pure-g">
     <div class="pure-u-1-4">

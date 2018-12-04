@@ -1,11 +1,18 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Pet } from '../pet.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { fadeInUp } from 'ng-animate';
+import { trigger, useAnimation, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-pet-view',
   templateUrl: './pet-view.component.html',
-  styleUrls: ['./pet-view.component.scss']
+  styleUrls: ['./pet-view.component.scss'],
+  animations: [
+    trigger('fadeInUp', [transition('* => *', useAnimation(fadeInUp, {
+      params: { timing: 0.8, delay: 0 }
+    }))])
+  ]
 })
 export class PetViewComponent implements OnInit {
 

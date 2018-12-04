@@ -12,7 +12,7 @@ import { PetAux } from '../petAux.model';
 export class PetFavoritesComponent implements OnInit {
 
   @Output() pets: Pet[] = [new Pet()];
-  array: any[];
+  array: PetAux[] = [new PetAux()];
   arrayFalsePet: any[] = [];
   arrayAux: PetAux;
   userId: number;

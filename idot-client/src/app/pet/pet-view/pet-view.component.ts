@@ -16,7 +16,7 @@ import { trigger, useAnimation, transition } from '@angular/animations';
 })
 export class PetViewComponent implements OnInit {
 
-  @Input() pets: Pet[] = [new Pet()];
+  @Input() pets: any[] = [];
 
   constructor(
     private router: Router,
@@ -25,7 +25,7 @@ export class PetViewComponent implements OnInit {
 
   ngOnInit() {
     if (this.activatedRoute.snapshot.routeConfig.path === 'favoritos') {
-      console.log(this.pets);
+      console.log('Console log dentro do pet-view', this.pets);
     }
   }
 

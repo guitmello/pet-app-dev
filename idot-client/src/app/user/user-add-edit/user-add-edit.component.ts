@@ -234,7 +234,7 @@ export class UserAddEditComponent implements OnInit {
       console.log('Pré', this.user);
       this.userService.editUser(this.user).subscribe(response => {
         console.log(response);
-        this.notificationService.notification('Usuário cadastrado com sucesso!!');
+        this.notificationService.notification('Usuário editado com sucesso!!');
         this.router.navigateByUrl('/');
       }, err => {
         console.log('deu erro');

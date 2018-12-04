@@ -4,6 +4,7 @@ import { PetService } from '../pet.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pet } from '../pet.model';
 import { UserService } from 'src/app/user/user.service';
+import { NotificationService } from '../../notification/notification.service';
 
 @Component({
   selector: 'app-pet-add-edit',
@@ -43,6 +44,7 @@ export class PetAddEditComponent implements OnInit {
 
   constructor(
     private petService: PetService,
+    private notificationService: NotificationService,
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
     private router: Router
@@ -150,12 +152,20 @@ export class PetAddEditComponent implements OnInit {
     if (this.isAdding) {
       this.petService.createPet(this.pet).subscribe(response => {
         console.log(response);
+        this.notificationService.notification('Pet cadastrado com sucesso!!');
         this.router.navigateByUrl('meus-pets');
+      }, err => {
+        console.log('deu erro');
+        this.notificationService.notification(err.error.messageUser);
       });
     } else {
       this.petService.editPet(this.pet).subscribe(response => {
         console.log(response);
         this.router.navigateByUrl('meus-pets');
+      }, err => {
+        console.log('deu erro');
+        this.notificationService.notification('Pet editado com sucesso!!');
+        this.notificationService.notification(err.error.messageUser);
       });
     }
   }

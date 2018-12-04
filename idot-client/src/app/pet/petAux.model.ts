@@ -1,3 +1,3 @@
 export class PetAux {
-    payload: [any];
+    payload: any[];
 }

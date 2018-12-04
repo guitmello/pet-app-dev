@@ -3,11 +3,19 @@ import { UserService } from 'src/app/user/user.service';
 import { PetService } from '../pet.service';
 import { Pet } from '../pet.model';
 import { PetAux } from '../petAux.model';
+import { Router } from '@angular/router';
+import { trigger, transition, useAnimation } from '@angular/animations';
+import { fadeInUp } from 'ng-animate';
 
 @Component({
   selector: 'app-pet-favorites',
   templateUrl: './pet-favorites.component.html',
-  styleUrls: ['./pet-favorites.component.scss']
+  styleUrls: ['./pet-favorites.component.scss'], 
+  animations: [
+    trigger('fadeInUp', [transition('* => *', useAnimation(fadeInUp, {
+      params: { timing: 0.8, delay: 0 }
+    }))])
+  ]
 })
 export class PetFavoritesComponent implements OnInit {
 
@@ -20,11 +28,16 @@ export class PetFavoritesComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private router: Router,
     private petService: PetService
   ) { }
 
   ngOnInit() {
     this.getFavorites();
+  }
+
+  goInfo(id: number) {
+    this.router.navigateByUrl('pet-info/' + id);
   }
 
   getFavorites() {

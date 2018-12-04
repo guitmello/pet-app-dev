@@ -62,6 +62,8 @@ import { UserService } from './user/user.service';
 import { NotificationService } from './notification/notification.service';
 import { SearchService } from './search/search.service';
 import { CepPipe } from './pipes/cep.pipe';
+import { PhonePipePipe } from './pipes/phone-pipe.pipe';
+import { CnpjPipe } from './pipes/cnpj.pipe';
 
 
 @NgModule({
@@ -86,6 +88,8 @@ import { CepPipe } from './pipes/cep.pipe';
     UserViewComponent,
     UserInfoComponent,
     CepPipe,
+    PhonePipePipe,
+    CnpjPipe,
   ],
   imports: [
     BrowserModule,

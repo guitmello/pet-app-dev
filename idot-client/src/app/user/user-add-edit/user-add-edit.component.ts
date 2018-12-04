@@ -5,6 +5,7 @@ import { UserService } from '../user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CityState } from '../cityState.model';
 import { State } from '../state.model';
+import { NotificationService } from '../../notification/notification.service';
 
 @Component({
   selector: 'app-user-add-edit',
@@ -41,6 +42,7 @@ export class UserAddEditComponent implements OnInit {
   numMask: Array<string | RegExp>;
 
   constructor(
+    private notificationService: NotificationService,
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
     private router: Router
@@ -254,22 +256,24 @@ export class UserAddEditComponent implements OnInit {
   }
 
   changePhoto() {
-    document.querySelector('#imgupload').addEventListener('change', function() {
-      const filesSelected = (<HTMLInputElement>(
-        document.getElementById('imgupload')
-      )).files;
-      if (filesSelected.length > 0) {
-        const fileToLoad = filesSelected[0];
-        this.fotobase64 = fileToLoad;
-        const fileReader = new FileReader();
-        fileReader.onload = function(fileLoadEvent) {
-          const base64value = fileReader;
-          (<HTMLInputElement>document.getElementById('imgupload')).setAttribute(
-            'base64-value', base64value.result.toString()
-          );
-        };
-        fileReader.readAsDataURL(fileToLoad);
-      }
+    document.addEventListener('DOMContentLoaded', function (event) {
+      document.querySelector('#imgupload').addEventListener('change', function () {
+        const filesSelected = (<HTMLInputElement>(
+          document.getElementById('imgupload')
+        )).files;
+        if (filesSelected.length > 0) {
+          const fileToLoad = filesSelected[0];
+          const fileReader = new FileReader();
+          fileReader.onload = function (fileLoadEvent) {
+            const base64value = fileReader;
+            console.log('base64value: ', base64value);
+            (<HTMLInputElement>document.getElementById('imgupload')).setAttribute(
+              'base64-value', base64value.result.toString()
+            );
+          };
+          fileReader.readAsDataURL(fileToLoad);
+        }
+      });
     });
   }
 
@@ -277,7 +281,7 @@ export class UserAddEditComponent implements OnInit {
     const input = <HTMLInputElement>(document.getElementById('imgupload'));
     if (input.files && input.files[0]) {
       const reader = new FileReader();
-      reader.onload = function(e: any) {
+      reader.onload = function (e: any) {
         document.querySelector('#img').setAttribute('src', e.target.result);
       };
       reader.readAsDataURL(input.files[0]);
@@ -300,6 +304,9 @@ export class UserAddEditComponent implements OnInit {
       this.userService.createUser(this.user).subscribe(response => {
         console.log(response);
         this.router.navigateByUrl('/');
+      }, err => {
+        console.log('deu erro');
+        this.notificationService.notification(err.error.messageUser);
       });
     } else {
       console.log('Pré', this.user);

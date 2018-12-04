@@ -25,7 +25,10 @@ export class PetFavoritesComponent implements OnInit {
   getFavorites() {
     this.userId = this.userService.getUserId();
     this.petService.getMyFavorites(this.userId)
-      .subscribe(response => this.pets = response);
+      .subscribe(response => {
+        this.pets = response;
+        console.log(this.pets);
+      });
   }
 
 }

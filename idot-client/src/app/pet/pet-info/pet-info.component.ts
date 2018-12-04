@@ -34,9 +34,17 @@ export class PetInfoComponent implements OnInit {
   }
 
   getPet(id: number) {
+    this.userId = this.userService.getUserId();
     this.petService.getPet(id)
       .subscribe(response => {
         this.pet = response;
+        this.petService.getMyFavorites(this.userId).subscribe(pets => {
+          // pets.payload.forEach(pet => {
+            // if (this.pet.id === pet.cd_animal_fk) {
+              // this.petFavorited = true;
+            // }
+          // });
+        });
       });
   }
 

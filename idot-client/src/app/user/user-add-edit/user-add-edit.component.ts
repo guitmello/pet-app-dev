@@ -55,6 +55,7 @@ export class UserAddEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.activatedRoute.snapshot.routeConfig.path);
     if (
       this.activatedRoute.snapshot.routeConfig.path === 'usuario-fisico' ||
       this.activatedRoute.snapshot.routeConfig.path === 'usuario-fisico/:id'
@@ -77,9 +78,8 @@ export class UserAddEditComponent implements OnInit {
         if (Number(params.id) === this.userId) {
           this.userService.getUser(params.id).subscribe(response => {
             this.userTransform(response);
+            this.fotobase64 = this.user.ds_foto_usuario;
           });
-          this.fotobase64 = this.user.ds_foto_usuario;
-          console.log(this.fotobase64);
           this.isAdding = false;
         } else {
           this.router.navigateByUrl('/');
@@ -89,91 +89,167 @@ export class UserAddEditComponent implements OnInit {
       }
     });
 
-    // Fisica
-    this.userFormPhysical = new FormGroup({
-      nm_usuario: new FormControl('', {
-        validators: [Validators.required, Validators.minLength(2)]
-      }),
-      nm_email_usuario: new FormControl('', {
-        validators: [Validators.required, Validators.minLength(2), Validators.email]
-      }),
-      cd_cpf_usuario: new FormControl('', {
-        validators: [Validators.required, Validators.minLength(11)]
-      }),
-      dt_nascimento_usuario: new FormControl('', {
-        validators: [Validators.required, Validators.minLength(8)]
-      }),
-      nm_sexo_usuario: new FormControl('', {
-        validators: [Validators.required]
-      }),
-      cd_telefone_usuario: new FormControl('', {
-        validators: [Validators.required]
-      }),
-      cd_cep_usuario: new FormControl('', {
-        validators: [Validators.required, Validators.minLength(8)]
-      }),
-      nm_estado_usuario: new FormControl('', {
-        validators: [Validators.required]
-      }),
-      nm_cidade_usuario: new FormControl('', {
-        validators: [Validators.required]
-      }),
-      nm_endereco_usuario: new FormControl('', {
-        validators: [Validators.required]
-      }),
-      cd_numero_endereco_usuario: new FormControl('', {
-        validators: [Validators.required]
-      }),
-      ds_complemento_endereco_usuario: new FormControl('', {
-        validators: [Validators.required]
-      }),
-      cd_senha_usuario: new FormControl('', {
-        validators: [Validators.required]
-      }),
-      cd_senha_confirmacao_usuario: new FormControl('', {
-        validators: [Validators.required]
-      })
-    }, { validators: [this.equalsTo], updateOn: 'change' });
+    if (this.isAdding) {
+      // Fisica
+      this.userFormPhysical = new FormGroup({
+        nm_usuario: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(2)]
+        }),
+        nm_email_usuario: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(2), Validators.email]
+        }),
+        cd_cpf_usuario: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(11)]
+        }),
+        dt_nascimento_usuario: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(8)]
+        }),
+        nm_sexo_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        cd_telefone_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        cd_cep_usuario: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(8)]
+        }),
+        nm_estado_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        nm_cidade_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        nm_endereco_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        cd_numero_endereco_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        ds_complemento_endereco_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        cd_senha_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        cd_senha_confirmacao_usuario: new FormControl('', {
+          validators: [Validators.required]
+        })
+      }, { validators: [this.equalsTo], updateOn: 'change' });
 
-    // Juridica
-    this.userFormLegal = new FormGroup({
-      nm_razao_social_usuario: new FormControl('', {
-        validators: [Validators.required, Validators.minLength(2)]
-      }),
-      nm_email_usuario: new FormControl('', {
-        validators: [Validators.required, Validators.minLength(2), Validators.email]
-      }),
-      cd_cnpj_usuario: new FormControl('', {
-        validators: [Validators.required, Validators.minLength(13)]
-      }),
-      cd_telefone_usuario: new FormControl('', {
-        validators: [Validators.required]
-      }),
-      cd_cep_usuario: new FormControl('', {
-        validators: [Validators.required, Validators.minLength(8)]
-      }),
-      nm_estado_usuario: new FormControl('', {
-        validators: [Validators.required]
-      }),
-      nm_cidade_usuario: new FormControl('', {
-        validators: [Validators.required]
-      }),
-      nm_endereco_usuario: new FormControl('', {
-        validators: [Validators.required]
-      }),
-      cd_numero_endereco_usuario: new FormControl('', {
-        validators: [Validators.required]
-      }),
-      ds_complemento_endereco_usuario: new FormControl('', {
-        validators: [Validators.required]
-      }),
-      cd_senha_usuario: new FormControl('', {
-        validators: [Validators.required]
-      }),
-      cd_senha_confirmacao_usuario: new FormControl('', {
-        validators: [Validators.required]
-      })
-    }, { validators: [this.equalsTo], updateOn: 'change' });
+      // Juridica
+      this.userFormLegal = new FormGroup({
+        nm_razao_social_usuario: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(2)]
+        }),
+        nm_email_usuario: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(2), Validators.email]
+        }),
+        cd_cnpj_usuario: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(13)]
+        }),
+        cd_telefone_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        cd_cep_usuario: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(8)]
+        }),
+        nm_estado_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        nm_cidade_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        nm_endereco_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        cd_numero_endereco_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        ds_complemento_endereco_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        cd_senha_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        cd_senha_confirmacao_usuario: new FormControl('', {
+          validators: [Validators.required]
+        })
+      }, { validators: [this.equalsTo], updateOn: 'change' });
+    } else {
+      // Fisica
+      this.userFormPhysical = new FormGroup({
+        nm_usuario: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(2)]
+        }),
+        nm_email_usuario: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(2), Validators.email]
+        }),
+        cd_cpf_usuario: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(11)]
+        }),
+        dt_nascimento_usuario: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(8)]
+        }),
+        nm_sexo_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        cd_telefone_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        cd_cep_usuario: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(8)]
+        }),
+        nm_estado_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        nm_cidade_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        nm_endereco_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        cd_numero_endereco_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        ds_complemento_endereco_usuario: new FormControl('', {
+          validators: [Validators.required]
+        })
+      });
+
+      // Juridica
+      this.userFormLegal = new FormGroup({
+        nm_razao_social_usuario: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(2)]
+        }),
+        nm_email_usuario: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(2), Validators.email]
+        }),
+        cd_cnpj_usuario: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(13)]
+        }),
+        cd_telefone_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        cd_cep_usuario: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(8)]
+        }),
+        nm_estado_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        nm_cidade_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        nm_endereco_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        cd_numero_endereco_usuario: new FormControl('', {
+          validators: [Validators.required]
+        }),
+        ds_complemento_endereco_usuario: new FormControl('', {
+          validators: [Validators.required]
+        })
+      });
+    }
 
     this.getCityState();
     this.changePhoto();
@@ -214,7 +290,10 @@ export class UserAddEditComponent implements OnInit {
 
   userRegister() {
     this.removeMasks();
-    this.fotobase64 = (<HTMLInputElement>document.getElementById('imgupload')).getAttribute('base64-value');
+    if ((<HTMLInputElement>document.getElementById('imgupload')).getAttribute('base64-value')) {
+      this.fotobase64 = (<HTMLInputElement>document.getElementById('imgupload')).getAttribute('base64-value');
+      console.log(this.fotobase64);
+    }
 
     this.user.ds_foto_usuario = this.fotobase64;
     console.log('Base64', this.fotobase64);
@@ -232,13 +311,18 @@ export class UserAddEditComponent implements OnInit {
       });
     } else {
       console.log('Pré', this.user);
+      delete this.user.cd_senha_usuario;
       this.userService.editUser(this.user).subscribe(response => {
         console.log(response);
+<<<<<<< HEAD
         this.notificationService.notification('Usuário cadastrado com sucesso!!');
         this.router.navigateByUrl('/');
       }, err => {
         console.log('deu erro');
         this.notificationService.notification(err.error.messageUser);
+=======
+        this.router.navigateByUrl('/');
+>>>>>>> d48792673eadff0fbc0adde152eec3115472b1ea
       });
     }
   }

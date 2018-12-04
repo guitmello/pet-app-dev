@@ -10,20 +10,100 @@
   </p>
 -->
 <div class="container">
+    <h1 class="title">Informações do Pet</h1>
   <mat-card>
     <div class="pure-g">
       <div class="img-rounded-area">
-        <div class="img-rounded" [ngStyle]="{
+        <div
+          class="img-rounded"
+          [ngStyle]="{
             'background-image': 'url(' + pet?.payload.ds_foto_animal + ') '
-          }"></div>
+          }"
+          [@bounceIn]="{ value: bounceIn, params: { timing: myTiming || 0.5, delay: myDelay || 0 } }"
+        ></div>
         <div class="row-center">
-          <button *ngIf="!petFavorited" (click)="favorite()" color="primary" mat-mini-fab>
+          <button
+            *ngIf="!petFavorited"
+            (click)="favorite()"
+            color="primary"
+            mat-mini-fab
+            [@bounceIn]="{ value: bounceIn, params: { timing: myTiming || 0.5, delay: myDelay || 0 } }"
+          >
             <mat-icon>favorite</mat-icon>
           </button>
-          <button *ngIf="petFavorited" (click)="unFavorite()" color="primary" mat-mini-fab>
+          <button
+            *ngIf="petFavorited"
+            (click)="unFavorite()"
+            color="primary"
+            mat-mini-fab
+            [@bounceIn]="{ value: bounceIn, params: { timing: myTiming || 0.5, delay: myDelay || 0 } }"
+          >
             <mat-icon>favorite_border</mat-icon>
           </button>
         </div>
+      </div>
+    </div>
+    <div class="pure-g">
+      <div class="pure-u-1" [@fadeIn]="{ value: fadeIn, params: { timing: myTiming || 0.8, delay: myDelay || 0 } }">
+        <h2 class="title">{{ pet?.payload.nm_animal }}</h2>
+        <div class="row-center">
+          <span
+            class="text-center"
+            *ngIf="pet.payload.nm_cidade_animal && pet.payload.nm_estado_animal"
+            >{{ pet?.payload.nm_cidade_animal }} -
+            {{ pet?.payload.nm_estado_animal }}</span
+          >
+          <span
+            class="text-center"
+            *ngIf="
+              !pet.payload.nm_cidade_animal && !pet.payload.nm_estado_animal
+            "
+            >{{ pet?.payload.Usuario.nm_cidade_usuario }} -
+            {{ pet?.payload.Usuario.nm_estado_usuario }}</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="pure-g">
+      <div class="pure-u-1">
+        <mat-list>
+          <mat-list-item>
+            <mat-icon matListIcon>pets</mat-icon>
+            <h4 mat-line class="font-bold">Espécie</h4>
+            <p mat-line>{{ pet?.payload.Especie.nm_especie }}</p>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListIcon>pets</mat-icon>
+            <h4 mat-line class="font-bold">Raça</h4>
+            <p mat-line>{{ pet?.payload.Raca.nm_raca }}</p>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListIcon>pets</mat-icon>
+            <h4 mat-line class="font-bold">Idade</h4>
+            <p mat-line>{{ pet?.payload.cd_idade_animal }} - {{ pet?.payload.nm_idade_animal }}</p>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListIcon>color_lens</mat-icon>
+            <h4 mat-line class="font-bold">Cor</h4>
+            <p mat-line>{{ pet?.payload.nm_cor_animal }}</p>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListIcon>pets</mat-icon>
+            <h4 mat-line class="font-bold">Tamanho</h4>
+            <p mat-line>{{ pet?.payload.nm_tamanho_animal }}</p>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListIcon>pets</mat-icon>
+            <h4 mat-line class="font-bold">Sexo</h4>
+            <p mat-line>{{ pet?.payload.nm_sexo_animal }}</p>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListIcon>phone</mat-icon>
+            <h4 mat-line class="font-bold">Telefone</h4>
+            <p mat-line>{{ pet?.payload.Usuario.cd_telefone_usuario }}</p>
+          </mat-list-item>
+        </mat-list>
       </div>
     </div>
   </mat-card>

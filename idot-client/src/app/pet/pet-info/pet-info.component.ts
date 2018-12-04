@@ -4,11 +4,25 @@ import { Pet } from '../pet.model';
 import { PetFavorite } from '../petFavorite.model';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
+import { fadeInUp, bounceIn, fadeIn } from 'ng-animate';
+import { trigger, useAnimation, transition } from '@angular/animations';
+
 
 @Component({
   selector: 'app-pet-info',
   templateUrl: './pet-info.component.html',
-  styleUrls: ['./pet-info.component.scss']
+  styleUrls: ['./pet-info.component.scss'],
+  animations: [
+    trigger('fadeInUp', [transition('* => *', useAnimation(fadeInUp, {
+      params: { timing: 0.8, delay: 0 }
+    }))]),
+    trigger('bounceIn', [transition('* => *', useAnimation(bounceIn, {
+      params: { timing: 0.5, delay: 0 }
+    }))]),
+    trigger('fadeIn', [transition('* => *', useAnimation(fadeIn, {
+      params: { timing: 0.8, delay: 0 }
+    }))])
+  ]
 })
 export class PetInfoComponent implements OnInit {
 

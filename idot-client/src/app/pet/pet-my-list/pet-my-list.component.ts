@@ -5,11 +5,19 @@ import { ModalDeleteComponent } from '../../modal-delete/modal-delete.component'
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
+import { fadeInUp } from 'ng-animate';
+import { trigger, useAnimation, transition } from '@angular/animations';
+
 
 @Component({
   selector: 'app-pet-my-list',
   templateUrl: './pet-my-list.component.html',
-  styleUrls: ['./pet-my-list.component.scss']
+  styleUrls: ['./pet-my-list.component.scss'],
+  animations: [
+    trigger('fadeInUp', [transition('* => *', useAnimation(fadeInUp, {
+      params: { timing: 0.8, delay: 0 }
+    }))])
+  ]
 })
 export class PetMyListComponent implements OnInit {
 

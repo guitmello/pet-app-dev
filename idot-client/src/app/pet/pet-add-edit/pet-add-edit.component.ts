@@ -172,10 +172,10 @@ export class PetAddEditComponent implements OnInit {
     } else {
       this.petService.editPet(this.pet).subscribe(response => {
         console.log(response);
+        this.notificationService.notification('Pet editado com sucesso!!');
         this.router.navigateByUrl('meus-pets');
       }, err => {
         console.log('deu erro');
-        this.notificationService.notification('Pet editado com sucesso!!');
         this.notificationService.notification(err.error.messageUser);
       });
     }

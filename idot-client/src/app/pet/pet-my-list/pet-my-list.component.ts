@@ -48,7 +48,7 @@ export class PetMyListComponent implements OnInit {
       .subscribe(response => {
         this.pets = response;
         console.log(this.pets);
-        if (this.pets.payload.length === 0) {
+        if (this.pets.length === 0) {
           this.thereIsPet = false;
         }
       });

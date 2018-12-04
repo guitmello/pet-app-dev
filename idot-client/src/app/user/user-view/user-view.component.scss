@@ -1,4 +1,12 @@
-.user-image {
+.mat-list .mat-list-item {
+    height: 32px !important;
+    padding: 0px !important;
+    padding-left: 10px !important;
+    &.mat-list-item-with-avatar {
+      height: 32px !important;
+    }
+  }
+  .img-rounded {
     height: 95px;
     width: 95px;
-}
+  }

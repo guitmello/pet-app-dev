@@ -7,8 +7,53 @@
           [ngStyle]="{
             'background-image': 'url(' + user?.payload.ds_foto_usuario + ') '
           }"
+          [@bounceIn]="{ value: bounceIn, params: { timing: myTiming || 0.5, delay: myDelay || 0 } }"
         ></div>
       </div>
     </div>
+
+    <div class="pure-g">
+        <div class="pure-u-1" [@fadeIn]="{ value: fadeIn, params: { timing: myTiming || 0.8, delay: myDelay || 0 } }">
+          <h2 *ngIf="user.payload.nm_razao_social_usuario" class="title">{{ user?.payload.nm_razao_social_usuario }}</h2>
+          <div class="row-center">
+            <span class="text-center">
+              {{ user?.payload.nm_cidade_usuario }} -
+              {{ user?.payload.nm_estado_usuario }}
+              </span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <mat-list>
+            <mat-list-item>
+              <mat-icon matListIcon>people</mat-icon>
+              <h4 mat-line class="font-bold">CNPJ</h4>
+              <p mat-line>{{ user?.payload.cd_cnpj_usuario }}</p>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon matListIcon>email</mat-icon>
+              <h4 mat-line class="font-bold">Email</h4>
+              <p mat-line>{{ user?.payload.nm_email_usuario }}</p>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon matListIcon>location_on</mat-icon>
+              <h4 mat-line class="font-bold">Endereço</h4>
+              <p mat-line>{{ user?.payload.nm_endereco_usuario }}</p>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon matListIcon>location_on</mat-icon>
+                <h4 mat-line class="font-bold">Complemento</h4>
+                <p mat-line>{{ user?.payload.cd_numero_endereco_usuario }} - {{ user?.payload.ds_complemento_endereco_usuario }}</p>
+              </mat-list-item>
+            <mat-list-item>
+              <mat-icon matListIcon>phone</mat-icon>
+              <h4 mat-line class="font-bold">Telefone</h4>
+              <p mat-line>{{ user?.payload.cd_telefone_usuario }}</p>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
   </mat-card>
 </div>

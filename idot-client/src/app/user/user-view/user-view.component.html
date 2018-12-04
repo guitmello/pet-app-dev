@@ -3,7 +3,7 @@
   <div class="pure-g">
     <div class="pure-u-1-4">
       <div class="img-rounded-area">
-        <div class="img-rounded" [ngStyle]="{ 'background-image': 'url(' + user.ds_foto_usuario + ') '}"></div>
+        <div class="img-rounded" [ngStyle]="{ 'background-image': 'url(' + user?.ds_foto_usuario + ') '}"></div>
       </div>
     </div>
 
@@ -12,17 +12,17 @@
 
         <mat-list-item>
           <mat-icon matListIcon>person</mat-icon>
-          <h3 mat-line class="">{{user.nm_razao_social_usuario}}</h3>
+          <h3 mat-line class="">{{user?.nm_razao_social_usuario}}</h3>
         </mat-list-item>
 
         <mat-list-item>
           <mat-icon matListIcon>location_on</mat-icon>
-          <h3 mat-line class="">{{user.nm_cidade_usuario}} - {{user.nm_estado_usuario}}</h3>
+          <h3 mat-line class="">{{user?.nm_cidade_usuario}} - {{user.nm_estado_usuario}}</h3>
         </mat-list-item>
 
         <mat-list-item>
           <mat-icon matListIcon>phone</mat-icon>
-          <h3 mat-line class="">{{user.cd_telefone_usuario}}</h3>
+          <h3 mat-line class="">{{user?.cd_telefone_usuario}}</h3>
         </mat-list-item>
 
       </mat-list>

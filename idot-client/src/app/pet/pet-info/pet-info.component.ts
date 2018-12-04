@@ -13,9 +13,6 @@ import { trigger, useAnimation, transition } from '@angular/animations';
   templateUrl: './pet-info.component.html',
   styleUrls: ['./pet-info.component.scss'],
   animations: [
-    trigger('fadeInUp', [transition('* => *', useAnimation(fadeInUp, {
-      params: { timing: 0.8, delay: 0 }
-    }))]),
     trigger('bounceIn', [transition('* => *', useAnimation(bounceIn, {
       params: { timing: 0.5, delay: 0 }
     }))]),

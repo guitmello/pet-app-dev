@@ -74,7 +74,7 @@ export class PetService {
   }
 
   deleteFavorite(id: number): Observable<Pet> {
-    return this.http.get<Pet>(API_URL + this.urlGetMyPets + id + '/destroy');
+    return this.http.get<Pet>(API_URL + this.urlGetFavorite + id + '/destroy');
   }
 
 }

@@ -12,17 +12,18 @@
 
         <mat-list-item>
           <mat-icon matListIcon>pets</mat-icon>
-          <h3 mat-line class="">{{pet.nm_animal}}</h3>
+          <h3 mat-line class="">{{pet?.nm_animal}}</h3>
         </mat-list-item>
 
         <mat-list-item>
           <mat-icon matListIcon>calendar_today</mat-icon>
-          <h3 mat-line class="">{{pet.cd_idade_animal}}</h3>
+          <h3 mat-line class="">{{pet?.cd_idade_animal}} {{pet?.nm_idade_animal}}</h3>
         </mat-list-item>
 
         <mat-list-item>
           <mat-icon matListIcon>location_on</mat-icon>
-          <h3 mat-line class="">{{pet.nm_cidade_animal}} - {{pet.nm_estado_animal}}</h3>
+          <h3 *ngIf="pet.nm_cidade_animal && pet.nm_estado_animal" mat-line class="">{{pet?.nm_cidade_animal}} - {{pet?.nm_estado_animal}}</h3>
+          <h3 *ngIf="!pet.nm_cidade_animal && !pet.nm_estado_animal" mat-line class="">{{pet?.Usuario.nm_cidade_usuario}} - {{pet?.Usuario.nm_estado_usuario}}</h3>
         </mat-list-item>
 
       </mat-list>

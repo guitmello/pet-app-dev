@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   getAll() {
     this.petService.getAllPets()
       .subscribe(response => this.pets = response);
+      console.log(this.pets);
   }
 
 }
